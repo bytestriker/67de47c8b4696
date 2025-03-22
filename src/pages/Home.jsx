@@ -9,25 +9,15 @@ import style from '@Sass/pages/general.module.scss';
 
 const Home = () => {
   return (
-    <div>
-      <div className={style.bodyLayout}>
-        <div className="parallax">
-          <div className="clouds" id="clouds">
-            <div className="stars" id="stars">
-              <section className="Home">
-                <Video />
-                <Element name="bio">
-                  <Planets />
-                </Element>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className={style.footerLayout}>
-        <Footer />
-      </div>
-    </div>
+    <>
+      <section className="Home">
+        <Video />
+        <Element name="bio">
+          <Planets />
+        </Element>
+      </section>
+      <Footer />
+    </>
   );
 };
 

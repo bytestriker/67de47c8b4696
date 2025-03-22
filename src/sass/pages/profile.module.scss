@@ -378,7 +378,6 @@
       h3 {
         font-size: 1.4rem;
         text-align: left;
-        font-family: $MontserratBold;
         @include mediumDevicesMax {
           text-align: center;
           font-size: 1.2rem;
@@ -390,7 +389,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-family: $MontserratBold;
         @include mediumDevicesMax {
           font-size: 0.8rem;
         }

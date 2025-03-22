@@ -1,8 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 import { scroller } from 'react-scroll';
 
+
 // Images
 import { BiCaretRightCircle } from 'react-icons/bi';
+import astronauta from '@Assets/images/astronauta.png';
 
 // Styles
 import '@Components/Video/video.scss';
@@ -72,28 +74,33 @@ const Index = () => {
   };
 
   const previewVideo = (params) => {
-    if (params.length > 0) {
+    /*if (params.length == 0) {
       const url = params[0].url;
       const urlObject = new URL(url);
-      const videoId = urlObject.searchParams.get('v');
+      const videoId = urlObject.searchParams.get('v');*/
       return (
         <div className="video-container">
-      <div className="partial-border-pseudo">Haz de tu proyecto una realidad
-        <p>Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que conquistar el sistema solar.</p>
-      </div>
-      <div className="playvideo"><img src={playvideo} alt="playvideo" /><p className="texto">Reproducir video</p></div>
+          <div className="video-launcher">
+            <h1 class="fw-extralight">Haz de tu proyecto una realidad</h1>
+            <p>Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que conquistar el sistema solar.</p>
+          </div>
+          <button>
+            <img src={playvideo} alt="playvideo" />
+            <span>Reproducir video</span>
+          </button>
         </div>
       );
-    }
+    //}
     
   };
 
   return (
     <div className="video" id="bio">
       {previewVideo(sliderInfo)}
-      <div className="videoIconLounch">
+      <div className="buttonReady2Launch">
         <img src={_IconDown} alt="icondown" onClick={scrollingToanimate} />
       </div>
+      <img src={astronauta} alt="Space Man" className="space-man" />
     </div>
   );
 };
