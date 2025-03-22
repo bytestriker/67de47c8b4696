@@ -1,0 +1,79 @@
+{
+  "name": "rocketnow",
+  "version": "2.0.0",
+  "private": true,
+  "homepage": "/",
+  "engines": {
+    "node": "18.x",
+    "yarn": "1.x",
+    "npm": "8.x || 10.x"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.29.19",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.3.0",
+    "@testing-library/user-event": "13.5.0",
+    "animejs": "3.2.1",
+    "axios": "0.27.2",
+    "react": "18.1.0",
+    "react-alice-carousel": "2.7.1",
+    "react-dom": "18.1.0",
+    "react-hook-form": "7",
+    "react-icons": "4.4.0",
+    "react-router-dom": "5.3.3",
+    "react-scripts": "5.0.1",
+    "react-scroll": "1.8.7",
+    "web-vitals": "2.1.4",
+    "yarn": "^1.22.22",
+    "zustand": "4.3.8"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "eslint src/ --fix",
+    "start": "cross-env EXTEND_ESLINT=true NODE_ENV=development react-app-rewired start",
+    "build": "cross-env EXTEND_ESLINT=true NODE_ENV=production react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "defaults": [],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 10 chrome version",
+      "last 10 firefox version",
+      "last 10 safari version"
+    ]
+  },
+  "main": "index.js",
+  "repository": "https://ericmonroydev@bitbucket.org/ericmonroydev/rocketnow.git",
+  "author": "ericmonroy <ericmonroydev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "@types/react-router-dom": "5.3.3",
+    "cross-env": "^7.0.3",
+    "customize-cra": "1.0.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.24.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-promise": "5.1.0",
+    "eslint-plugin-react": "7.33.0",
+    "prettier": "2.3.2",
+    "react-app-rewired": "2.1.8",
+    "sass": "1.49.0"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

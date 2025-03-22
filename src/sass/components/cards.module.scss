@@ -1,0 +1,103 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.item {
+  width: 100%;
+  height: 150px;
+  background: $--colorWhite;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  @include mediumDevicesMax {
+    width: 96%;
+    padding: 9px;
+    height: auto;
+  }
+  .profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    @include mediumDevicesMax {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar {
+      width: 70px;
+      height: 70px;
+      background: $--colorAzul;
+      border-radius: 50%;
+      img{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+    }
+    .name {
+      margin-left: 1.2rem;
+      @include mediumDevicesMax {
+        margin-left: 0;
+      }
+      h4 {
+        font-family: $MontserratSemiBold;
+        font-size: 1rem;
+        line-height: 20px;
+        color: $--colorGris;
+        margin: 0;
+        @include mediumDevicesMax {
+          font-size: 0.8rem;
+          text-align: center;
+        }
+      }
+      small {
+        font-family: $MontserratRegular;
+        font-size: 1rem;
+        line-height: 20px;
+        color: $--colorGris;
+        margin: 0;
+        @include mediumDevicesMax {
+          font-size: 0.8rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .contentDetail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    .infoContent {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-top: 1rem;
+      .icon {
+        width: 26px;
+        height: 26px;
+        margin-right: 12px;
+        @include mediumDevicesMax {
+          width: 20px;
+          height: 20px;
+          margin-right: 3px;
+        }
+      }
+      .info {
+        font-family: $MontserratRegular;
+        font-size: 1rem;
+        line-height: 20px;
+        color: $--colorGris;
+        @include mediumDevicesMax {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

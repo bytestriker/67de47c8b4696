@@ -1,0 +1,79 @@
+@import '@Sass/_variables';
+@import '@Sass/components/extends';
+@import '@Sass/_fonts';
+
+/********* Footer Style ********/
+.Footer {
+
+  font-family: $MontserratExtraLight;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  position: relative;
+
+  .footer_content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 250px;
+    padding-left: 50px;
+    
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+
+    .f1 {
+      .footer_social {
+        padding-bottom: 12px;
+        img {
+          margin-right: 12px;
+        }
+        p{ 
+          
+          font-family: $MontserratExtraLight;
+          color: $--colorYellow;
+          font-size: 0.7rem;
+          line-height: 1.9;
+          font-weight: 700;
+          cursor: pointer;
+          text-decoration: none;
+          width: auto;
+        }
+      }
+      .linksFooter {
+        display: flex;
+        flex-direction: row;
+        gap: 10px; 
+        position: relative;
+
+        .linkFooter {
+          color: $--colorYellow;
+          font-size: 0.7rem;
+          line-height: 1.9;
+          font-weight: 700;
+          cursor: pointer;
+          text-decoration: none;
+          width: auto;
+
+          &:hover {
+            @extend %transition;
+            color: $--colorPurple;
+          }
+        }
+      }
+
+      .copy {
+        color: $--colorYellow;
+        font-size: 0.7rem;
+        line-height: 1;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        width: auto;
+        position: relative;
+      }
+    }
+  }
+}

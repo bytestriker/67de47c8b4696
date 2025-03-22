@@ -1,0 +1,59 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.Saturno {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  height: 100%;
+
+  .textarea {
+    @extend %textArea;
+  }
+  .btnPlanet {
+    @extend %buttonOn;
+  }
+  .btnPlanetOff {
+    @extend %buttonOff;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: $--colorPurple;
+    width: 100%;
+    height: 427px;
+    img {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      position: relative;
+    }
+    h5 {
+      font-family: $MontserratSemiBold;
+      font-size: 16px;
+      color: $--colorWhite;
+      padding: 12px 0 12px 0;
+      margin: 0 auto;
+      width: 80%;
+    }
+    p {
+      font-family: $MontserratMedium;
+      font-size: 16px;
+      color: $--colorWhite;
+      width: 80%;
+      padding: 12px 0 12px 0;
+      margin: 0 auto;
+    }
+  }
+
+  .info {
+    font-family: $MontserratMedium;
+    font-size: 16px;
+    color: $--colorWhite;
+    margin-top: 1rem;
+  }
+}

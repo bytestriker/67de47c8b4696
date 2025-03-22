@@ -1,0 +1,498 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.Venus {
+  //margin-top: 3rem;
+  margin-bottom: 3rem;
+  //padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: relative;
+  .venusContainer {
+    height: 100%;
+
+    .venusQuestions {
+      .paintpoint {
+        font-family: $MontserratSemiBold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        color: #bd00ff;
+      }
+
+      .fortalezas {
+        font-size: 1rem;
+        font-family: $MontserratRegular;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 20px;
+        color: #ffffff;
+        margin: 30px 0 18px 0;
+      }
+
+      .questions {
+        font-size: 1rem;
+        font-family: $MontserratLight;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 20px;
+        color: #ffffff;
+        margin: 0 0 8px 0;
+      }
+
+      .add {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 146px;
+        margin-top: 6px;
+        &:hover {
+          .icon {
+            color: #bd00ff;
+          }
+          b {
+            color: #bd00ff;
+          }
+        }
+        .icon {
+          color: #04daf6;
+          font-size: 1.6rem;
+        }
+        b {
+          font-family: $MontserratRegular;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+          text-decoration-line: underline;
+          color: #04daf6;
+          left: 8px;
+          position: relative;
+        }
+      }
+
+      .addbuyer {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 300px;
+        margin: 20px auto;
+        &:hover {
+          .icon {
+            color: #bd00ff;
+          }
+          b {
+            color: #bd00ff;
+          }
+        }
+        .icon {
+          color: #04daf6;
+          font-size: 1.6rem;
+        }
+        b {
+          font-family: $MontserratRegular;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+          text-decoration-line: underline;
+          color: #04daf6;
+          left: 8px;
+          position: relative;
+        }
+      }
+
+      .identify {
+        font-family: $MontserratRegular;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        color: #ffffff;
+        margin-right: 12px;
+      }
+      .imgcruce {
+        position: relative;
+        left: 30px;
+      }
+
+      .conclusion {
+        width: 100%;
+        left: 0px;
+        top: 0px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        border: none;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        outline: none;
+        font-size: 0.9rem;
+        font-family: $MontserratMedium;
+        text-align: left;
+        padding-left: 10px;
+        padding-top: 10px;
+        &::placeholder {
+          padding-left: 10px;
+          font-size: 1rem;
+        }
+      }
+
+      .inputContainer {
+        margin: 0 0 9px 0;
+        display: flex;
+        flex-direction: column;
+        .input {
+          @extend %inputMedium;
+        }
+      }
+
+      .selectContainer {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        label {
+          color: $--colorWhite;
+          font-family: $MontserratSemiBold;
+          font-size: 16px;
+        }
+
+        .selectHeader {
+          width: 100%;
+          border-radius: 10px;
+          border: none;
+          background: rgba(255, 255, 255, 0.8);
+          margin-top: 4px;
+          margin-bottom: 4px;
+          padding: 12px 0 12px 6px;
+          color: #3f3f56;
+          font-family: $MontserratMedium;
+          font-size: 1rem;
+          outline: none;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .selectSpanText {
+          }
+          .selectSpanArrow {
+            text-align: center;
+            color: #bd00ff;
+            width: 50px;
+            height: 22px;
+            position: relative;
+            font-size: 2.5rem;
+            top: -10px;
+          }
+        }
+        .selectOptions {
+          background: rgba(255, 255, 255, 0.8);
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          width: 98%;
+          padding: 6px;
+          .option {
+            color: #3f3f56;
+            font-family: $MontserratMedium;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+            margin-top: 4px;
+            height: 20px;
+            padding: 10px;
+            &:hover {
+              @extend %transition;
+              background-color: $--colorGray;
+            }
+          }
+        }
+      }
+
+      .buttonsContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .btnPlanet {
+        @extend %buttonOn;
+        margin-top: 1rem;
+        width: 248px;
+        @include mediumDevicesMax {
+        }
+        @include smallDevices {
+        }
+      }
+
+      .btnPlanetOff {
+        @extend %buttonOff;
+        margin-top: 1rem;
+      }
+      .btnStepDosOff {
+        @extend %buttonOff;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .btnStepDos {
+        @extend %buttonOn;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .btnBuyer {
+        @extend %buttonOn;
+        margin: 0 auto;
+      }
+
+      .btnBuyerOff {
+        @extend %buttonOff;
+        margin: 0 auto;
+      }
+
+    }
+
+    .buyer {
+      margin-top: 9rem;
+      margin-bottom: 3rem;
+
+      .card1 {
+        width: 516px;
+        height: 300px;
+        background-color: #04daf6;
+        border-radius: 10px;
+
+        .card1Content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .imageContent {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            img {
+              border-radius: 50%;
+              width: auto;
+              height: auto;
+              position: absolute;
+              z-index: 1;
+              top: -110px;
+              left: 150px;
+              margin: 0 auto;
+            }
+          }
+          .inputBuyernanme {
+            border: none;
+            width: 90%;
+            margin-top: 12px;
+            background: none;
+            text-align: center;
+            //border-bottom: 1px solid #ffffff;
+            outline: none;
+            caret-color: $--colorPurple;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0 auto;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            &::placeholder {
+              color: #ffffff;
+              font-weight: 600;
+              text-align: center;
+            }
+          }
+          .inputFrase {
+            border: none;
+            width: 40%;
+            background: none;
+            text-align: center;
+            //border-bottom: 1px solid #ffffff;
+            outline: none;
+            caret-color: $--colorPurple;
+            font-weight: 400;
+            font-size: 1rem;
+            margin: 0 auto;
+            color: #ffffff;
+            margin-bottom: 16px;
+            margin-top: 8px;
+            &::placeholder {
+              color: #ffffff;
+              font-weight: 600;
+              text-align: center;
+            }
+          }
+
+          .iconsContent {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-top: 1rem;
+            .box {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              color: $--colorWhite;
+
+              .inputCard1 {
+                border: none;
+                width: 80px;
+                margin-top: 12px;
+                background: none;
+                text-align: center;
+                //border-bottom: 1px solid #ffffff;
+                outline: none;
+                caret-color: $--colorPurple;
+                font-weight: 600;
+                color: #ffffff;
+                &::placeholder {
+                  color: #ffffff;
+                  font-weight: 600;
+                  text-align: center;
+                }
+              }
+              .icon {
+                font-size: 1.6rem;
+              }
+            }
+          }
+        }
+      }
+
+      .card2 {
+        width: 516px;
+        height: 280px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 6px;
+        .descripcion {
+          width: 100%;
+          left: 0px;
+          top: 0px;
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 10px;
+          border: none;
+          margin-top: 4px;
+          margin-bottom: 4px;
+          outline: none;
+          font-size: 0.9rem;
+          font-family: $MontserratMedium;
+          text-align: left;
+          padding-left: 10px;
+          padding-top: 10px;
+          &::placeholder {
+            padding-left: 10px;
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .card3 {
+        .options {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .item {
+            p {
+              font-family: $MontserratBold;
+              font-size: 1rem;
+              line-height: 20px;
+              color: $--colorWhite;
+              cursor: pointer;
+              width: auto;
+              &:hover {
+                color: #04daf6;
+                width: auto;
+                height: 20px;
+                color: #04daf6;
+                border-bottom: 3px solid #00ff9f;
+                padding-bottom: 10px;
+                transition: all 0.2s;
+              }
+              &.activeItem {
+                color: #04daf6;
+                width: auto;
+                height: 20px;
+                color: #04daf6;
+                border-bottom: 3px solid #00ff9f;
+                padding-bottom: 10px;
+                transition: all 0.2s;
+              }
+            }
+          }
+        }
+        .info {
+          font-family: $MontserratRegular;
+          font-size: 1rem;
+          line-height: 20px;
+          color: $--colorWhite;
+        }
+        .metas {
+          width: 100%;
+          left: 0px;
+          top: 0px;
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 10px;
+          border: none;
+          margin-top: 4px;
+          margin-bottom: 4px;
+          outline: none;
+          font-size: 0.9rem;
+          font-family: $MontserratMedium;
+          text-align: left;
+          padding-left: 10px;
+          padding-top: 10px;
+          &::placeholder {
+            padding-left: 10px;
+            font-size: 1rem;
+          }
+        }
+        .section {
+          display: none; /* Oculta todas las secciones por defecto */
+        }
+
+        /* Estilo para la sección activa */
+        .active {
+          display: block; /* Muestra la sección activa */
+        }
+      }
+
+      .btnContent {
+        margin-top: 1rem;
+        display: inline-block;
+        .btnBuyer {
+          @extend %buttonOn;
+          position: relative;
+        }
+      }
+    }
+
+    .buyerInfo {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      align-items: center;
+      .astronaut {
+        position: relative;
+        height: 100%;
+        bottom: -70px;
+        img {
+          width: 100%;
+          height: auto;
+          margin: 0 auto;
+          
+        }
+      }
+    }
+  }
+}

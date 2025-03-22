@@ -1,0 +1,97 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+
+.NavTank {
+  width: 320px;
+  height: 100vh;
+  background-color: $--colorAzulMarino;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  filter: drop-shadow(-9px 4px 7px rgba(0, 0, 0, 0.49));
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  @include tablet {
+    width: 30%;
+  }
+  @include mobilePlusMax {
+    width: 100%;
+  }
+
+  .NavTankContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .NavTankTitle {
+      text-align: center;
+      color: $--colorWhite;
+      font-family: $MontserratMedium;
+    }
+
+    .NavTank_Tanks {
+      margin: 0;
+      text-align: center;
+      color: $--colorAzul;
+      font-size: 1.6rem;
+      font-family: $MontserratBlack;
+    }
+
+    .NavTank_Img {
+      margin-top: 1.6rem;
+      margin-bottom: 2rem;
+      width: 120px;
+    }
+
+    .LinkRecharger {
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: $--colorGreen;
+      text-decoration: none;
+      font-family: $MontserratMedium;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.NavTank_colapse {
+  width: 0%;
+  height: 100%;
+  background-color: $--colorAzulMarino;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  right: -70%;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  .NavTank_Img {
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+    width: 0;
+  }
+}
+
+.closeNav {
+  width: 100%;
+  padding: 12px;
+  .iconClose {
+    color: $--colorWhite;
+    font-size: 1.6rem;
+    cursor: pointer;
+    &:hover {
+      color: $--colorPurple;
+    }
+  }
+}

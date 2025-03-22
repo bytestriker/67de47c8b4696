@@ -1,0 +1,106 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/utils';
+
+.Alerts {
+
+  .error {
+    width: 100%;
+    .spanError {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: $--colorWhite;
+      .icon {
+        font-size: 1rem;
+        margin-left: 8px;
+      }
+      p {
+        font-family: $MontserratMedium;
+        margin-left: 8px;
+      }
+    }
+  }
+
+}
+
+.Modal {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  overflow: hidden;
+
+  .ModalContent {
+    background: $--colorWhite;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 2rem 2rem 0.2rem 2rem;
+    position: relative;
+    margin: 0 auto;
+    @include mediumDevicesMax {
+      max-width: 100%;
+      padding: 2rem;
+    }
+    p {
+      color: $--colorGris;
+      font-weight: 400;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0;
+      font-family: $MontserratRegular;
+      strong {
+        font-style: italic;
+      }
+    }
+    h3 {
+      margin: 0 0 8px 0;
+      font-style: normal;
+      color: $--colorGris;
+      font-family: $MontserratBold;
+    }
+    h4 {
+      margin: 0;
+      color: $--colorGris;
+      font-family: $MontserratBold;
+    }
+    .ButtonContent {
+      .buttonContinue {
+        border-radius: 30px;
+        border: none;
+        width: 220px;
+        height: 34px;
+        margin: 2rem 12px 12px 12px;
+        position: relative;
+        color: $--colorWhite;
+        text-align: center;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: none;
+        vertical-align: middle;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        letter-spacing: 1px;
+        background: $--colorPurple;
+        font-family: $MontserratRegular;
+        &:hover {
+          background: $--colorAzul;
+        }
+      }
+    }
+  }
+}

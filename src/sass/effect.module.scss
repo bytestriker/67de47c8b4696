@@ -1,0 +1,144 @@
+.lunaEffect {
+  animation: luna 9s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes luna {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.mercurioEffect {
+  animation: mercurio 7s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes mercurio {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.venusEffect {
+  animation: venus 8s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes venus {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.tierraEffect {
+  animation: tierra 6s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes tierra {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.marteEffect {
+  animation: marte 5s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes marte {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.jupiterEffect {
+  animation: jupiter 7s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes jupiter {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.saturnoEffect {
+  animation: saturno 4s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes saturno {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.uranoEffect {
+  animation: urano 6s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes urano {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.neptunoEffect {
+  animation: neptuno 7s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes neptuno {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(0);
+  }
+}
+
+.galaxia{
+  position: absolute;
+  z-index: 10;
+  margin: 0 auto;
+  animation: girar 3s infinite linear reverse; 
+  padding: 12px;
+  box-shadow: inset 40px 40px 40px 40px rgba(0, 0, 0, 0.9) ;
+  border-radius: 50%;
+
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

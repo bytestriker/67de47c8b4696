@@ -1,0 +1,496 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+%texto {
+  color: $--colorWhite;
+  position: absolute;
+  top: -35px;
+  font-family: $MontserratMedium;
+  font-size: 0.8rem;
+  text-align: left;
+  position: relative;
+}
+
+%BorderContent {
+  width: 100px;
+  height: 20px;
+  border: 1px solid $--colorWhite;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  position: absolute;
+  z-index: 10;
+}
+
+.lines_luna {
+  .lines_luna_1 {
+    @extend %BorderContent;
+    left: -60px;
+    top: 20px;
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+
+  .lines_luna_2 {
+    @extend %BorderContent;
+    right: -64px;
+    top: 81px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -10px;
+      right: 0;
+      bottom: 0;
+      border-left: 2px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_luna_3 {
+    @extend %BorderContent;
+    left: -66px;
+    top: 103px;
+    p {
+      @extend %texto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+}
+
+.lines_mercurio {
+  .lines_mercurio_1 {
+    @extend %BorderContent;
+    left: -80px;
+    top: 30px;
+
+    p {
+      @extend %texto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+}
+
+.lines_venus {
+  .lines_venus_1 {
+    @extend %BorderContent;
+    left: -60px;
+    top: 42px;
+
+    p {
+      @extend %texto;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+
+  .lines_venus_2 {
+    @extend %BorderContent;
+    right: -50px;
+    bottom: 15px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: -12px;
+      right: 0;
+      bottom: 20px;
+      border-left: 1px solid $--colorWhite;
+      transform: skewX(45deg);
+      display: flex;
+    }
+  }
+}
+
+.lines_tierra {
+  .lines_tierra_1 {
+    @extend %BorderContent;
+    right: -60px;
+    top: 44px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+      font-size: 0.8rem;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      left: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_tierra_2 {
+    @extend %BorderContent;
+    left: -60px;
+    bottom: 20px;
+
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+
+  .lines_tierra_3 {
+    @extend %BorderContent;
+    right: -60px;
+    bottom: 20px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      left: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+}
+
+.lines_marte {
+  .lines_marte_1 {
+    @extend %BorderContent;
+    right: -60px;
+    top: 50px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      left: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_marte_2 {
+    @extend %BorderContent;
+    left: -20px;
+    bottom: 20px;
+
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: 0;
+      right: -13px;
+      bottom: 20px;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+}
+
+.lines_jupiter {
+  .lines_jupiter_1 {
+    @extend %BorderContent;
+    right: -60px;
+    top: 50px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      left: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_jupiter_2 {
+    @extend %BorderContent;
+    left: -20px;
+    bottom: 20px;
+
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: 0;
+      right: -13px;
+      bottom: 20px;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+}
+
+.lines_saturno {
+  .lines_saturno_1 {
+    @extend %BorderContent;
+    left: -60px;
+    top: 50px;
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+
+  .lines_saturno_2 {
+    @extend %BorderContent;
+    right: -64px;
+    top: 81px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -10px;
+      right: 0;
+      bottom: 0;
+      border-left: 2px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_saturno_3 {
+    @extend %BorderContent;
+    left: -40px;
+    bottom: 30px;
+
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: 0;
+      right: -13px;
+      bottom: 20px;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+}
+
+.lines_urano {
+  .lines_urano_1 {
+    @extend %BorderContent;
+    left: -60px;
+    top: 50px;
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+
+  .lines_urano_2 {
+    @extend %BorderContent;
+    right: -64px;
+    top: 81px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -10px;
+      right: 0;
+      bottom: 0;
+      border-left: 2px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_urano_3 {
+    @extend %BorderContent;
+    right: -50px;
+    bottom: 15px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: -12px;
+      right: 0;
+      bottom: 20px;
+      border-left: 1px solid $--colorWhite;
+      transform: skewX(45deg);
+      display: flex;
+    }
+  }
+}
+
+.lines_neptuno {
+  .lines_neptuno_1 {
+    @extend %BorderContent;
+    left: -60px;
+    top: 30px;
+    p {
+      @extend %texto;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: -11px;
+      bottom: 0;
+      border-right: 1px solid $--colorWhite;
+      transform: skewX(43deg);
+    }
+  }
+
+  .lines_neptuno_2 {
+    @extend %BorderContent;
+    right: -64px;
+    top: 60px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -10px;
+      right: 0;
+      bottom: 0;
+      border-left: 2px solid $--colorWhite;
+      transform: skewX(-43deg);
+    }
+  }
+
+  .lines_neptuno_3 {
+    @extend %BorderContent;
+    right: -30px;
+    bottom: 15px;
+
+    p {
+      @extend %texto;
+      text-align: right;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: -25px;
+      left: -12px;
+      right: 0;
+      bottom: 20px;
+      border-left: 1px solid $--colorWhite;
+      transform: skewX(45deg);
+      display: flex;
+    }
+  }
+}

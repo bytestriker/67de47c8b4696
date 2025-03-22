@@ -1,0 +1,391 @@
+@import '@Sass/_variables.scss';
+@import '@Sass/_fonts.scss';
+
+.Checkout {
+  width: min(100% - 30px, 1180px);
+  margin-inline: auto;
+  height: 100%;
+  padding-bottom: 3rem;
+
+  .container {
+    width: min(100% - 30px, 520px);
+    margin-inline: auto;
+    height: 100%;
+    .titlePage {
+      text-align: center;
+      color: $--colorAzul;
+      font-size: 1.5rem;
+      font-family: $MontserratBlack;
+      @include mediumDevicesMax {
+        font-size: 1.4rem;
+      }
+      @include smallDevices {
+        font-size: 1.3rem;
+      }
+    }
+
+    .formContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      %Label {
+        display: flex;
+        flex-direction: row;
+        text-align: left;
+        color: $--colorWhite;
+        font-family: $MontserratRegular;
+        line-height: 30px;
+        small {
+          color: $--colorGreen;
+          margin-left: 6px;
+        }
+      }
+
+      %InputText {
+        border: 1px solid $--colorPurple;
+        width: 280px;
+        border-radius: 0;
+        padding: 5px 12px 5px 12px;
+        text-align: left;
+        outline: none;
+        font-family: $MontserratRegular;
+        font-size: 0.9rem;
+      }
+
+      %Text {
+        color: $--colorWhite;
+        font-family: $MontserratRegular;
+        font-size: 0.9rem;
+        margin-left: 20px;
+      }
+
+      .form1 {
+        .link {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-bottom: 6px;
+          p {
+            color: $--colorWhite;
+            font-family: $MontserratRegular;
+            font-size: 0.9rem;
+            margin: 0;
+          }
+          a {
+            color: $--colorGreen;
+            font-family: $MontserratRegular;
+            font-size: 0.8rem;
+            margin-left: 8px;
+            cursor: pointer;
+          }
+        }
+
+        h2 {
+          text-align: left;
+          color: $--colorWhite;
+          font-family: $MontserratMedium;
+          font-size: 1rem;
+          margin-top: 2rem;
+          
+        }
+
+        .form {
+          .formControl {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            gap: 20px;
+            width: 100%;
+
+            .formInputs {
+              margin-top: 0.8rem;
+              .formLabel {
+                @extend %Label;
+              }
+              .inputText {
+                @extend %InputText;
+              }
+              .texts {
+                @extend %Text;
+              }
+            }
+          }
+
+          .formControlPlus {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 0;
+            width: 100%;
+
+            .formInputs {
+              .formLabel {
+                @extend %Label;
+              }
+              .inputText {
+                @extend %InputText;
+                width: 96%;
+              }
+              .texts {
+                @extend %Text;
+              }
+            }
+          }
+          .spanError {
+            display: flex;
+            align-items: center;
+            color: $--colorWhite;
+            padding-top: 6px;
+            padding-left: 6px;
+            span {
+              margin-left: 6px;
+              font-size: 1rem;
+              top: 2px;
+              position: relative;
+              font-family: $MontserratRegular;
+            }
+          }
+        }
+
+        .metodoPago {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          a {
+            background-color: $--colorPurple;
+            border: none;
+            color: $--colorWhite;
+            font-family: $MontserratBold;
+            padding: 12px 28px 12px 28px;
+            text-align: keft;
+            cursor: pointer;
+            width: 100%;
+            height: auto;
+            font-size: 1rem;
+            &:hover {
+              background-color: $--colorAzul;
+              color: $--colorAzulMarino;
+            }
+          }
+        }
+        .informacion {
+          color: $--colorWhite;
+          font-family: $MontserratRegular;
+          font-size: 0.9rem;
+          a {
+            color: $--colorWhite;
+            font-family: $MontserratRegular;
+            font-size: 0.9rem;
+            margin-left: 6px;
+            &:hover {
+              color: $--colorPurple;
+            }
+          }
+        }
+        .compra {
+          margin-top: 2rem;
+          background-color: $--colorPurple;
+          border: none;
+          color: $--colorWhite;
+          font-family: $MontserratBold;
+          padding: 6px 28px 6px 28px;
+          text-align: center;
+          cursor: pointer;
+          width: 50%;
+          height: auto;
+          font-size: 0.9rem;
+          &:hover {
+            background-color: $--colorAzul;
+            color: $--colorAzulMarino;
+          }
+        }
+
+        .verdatos{
+
+          display: flex;
+          h2 {
+            text-align: left;
+            color: $--colorWhite;
+            font-family: $MontserratMedium;
+            font-size: 1rem;
+            margin-top: 2rem;
+            flex:1 0 40%;
+            
+          }
+          span{
+
+            padding-top: 5%;
+            text-decoration: underline;
+            color: #00ff9f;
+            cursor: pointer;
+            flex:1 0 100%;
+          }
+  
+        }
+
+        .ocultardatos{
+
+          display: flex;
+          h2 {
+            text-align: left;
+            color: $--colorWhite;
+            font-family: $MontserratMedium;
+            font-size: 1rem;
+            margin-top: 2rem;
+  
+            
+          }
+          span{
+
+            padding-top: 5%;
+            padding-left: 5%;
+            text-decoration: underline;
+            color: #00ff9f;
+            cursor: pointer;
+          }
+  
+        }
+      }
+
+      .result {
+        .totalInfo {
+          border: 1px solid $--colorPurple;
+          width: 90%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 22px;
+
+          h2 {
+            text-align: center;
+            color: $--colorGreen;
+            font-family: $MontserratMedium;
+            font-size: 1rem;
+            margin-top: 2rem;
+          }
+          .producto {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid $--colorWhite;
+            h3 {
+              text-align: center;
+              color: $--colorWhite;
+              font-family: $MontserratMedium;
+            }
+          }
+          .subTotal {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid $--colorWhite;
+
+            .subTotalInfo {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              p {
+                color: $--colorWhite;
+                font-family: $MontserratRegular;
+                font-size: 0.9rem;
+                strong {
+                  font-family: $MontserratMedium;
+                }
+                &.colorGreen {
+                  color: $--colorGreen;
+                }
+              }
+            }
+          }
+          .total {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 120px;
+            p {
+              color: $--colorWhite;
+              font-family: $MontserratRegular;
+              font-size: 0.9rem;
+              strong {
+                font-family: $MontserratMedium;
+              }
+              &.colorGreen {
+                color: $--colorGreen;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  overflow: hidden;
+  .ModalContent {
+    background: $--colorWhite;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 3rem 2rem 2rem 2rem;
+    position: relative;
+    margin: 0 auto;
+    @include mediumDevicesMax {
+      max-width: 100%;
+      padding: 2rem;
+    }
+    .conekta {
+      width: 480px;
+      height: 520px;
+    }
+
+    .success {
+      width: 100px;
+      height: 50px;
+    }
+    .closeNav {
+      padding: 12px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      position: absolute;
+      top: 0;
+      right: 0;
+      .iconClose {
+        color: $--colorAzulMarino;
+        font-size: 1.6rem;
+        cursor: pointer;
+
+        &:hover {
+          color: $--colorPurple;
+          -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+        }
+      }
+    }
+  }
+}

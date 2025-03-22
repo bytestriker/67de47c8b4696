@@ -1,0 +1,164 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+
+.NavPack {
+  width: 420px;
+  height: 100vh;
+  background-color: $--colorAzulMarino;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  filter: drop-shadow(-9px 4px 7px rgba(0, 0, 0, 0.49));
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  @include tablet {
+    width: 30%;
+  }
+  @include mobilePlusMax {
+    width: 100%;
+  }
+
+  .NavPackContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    height: 600px;
+
+    .NavPackTitle {
+      text-align: center;
+      color: $--colorAzul;
+      font-family: $MontserratBold;
+      font-size: 1.5rem;
+    }
+
+    .descriptionPack {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .tanqueImageContent {
+        width: 100%;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        border: 2px solid $--colorWhite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 30px;
+          height: 30px;
+          position: relative;
+          margin: 0 auto;
+        }
+      }
+
+      .tanqueDescriptionContent {
+        width: 70%;
+        padding-left: 12px;
+        p {
+          color: $--colorWhite;
+          font-family: $MontserratRegular;
+          font-size: 1.1rem;
+          margin: 10px;
+        }
+
+        .tanqueButtons {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+
+          button {
+            width: 20px;
+            height: 30px;
+            border: none;
+            border-radius: none;
+            background-color: $--colorPurple;
+            color: $--colorWhite;
+            font-weight: 800;
+            cursor: pointer;
+            &:hover {
+              background-color: $--colorAzul;
+              color: $--colorAzulMarino;
+            }
+          }
+          .tanqueButtonRest {
+            margin-left: 12px;
+          }
+          .tanqueButtonMore {
+            margin-left: 34px;
+          }
+        }
+      }
+    }
+
+    .tanqueTotal {
+      width: 90%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      p {
+        color: $--colorWhite;
+        font-family: $MontserratRegular;
+        font-size: 1.1rem;
+        margin: 10px;
+      }
+    }
+    .Link {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.NavPackColapse {
+  width: 0%;
+  height: 100%;
+  background-color: $--colorAzulMarino;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  right: -70%;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+
+  .NavPackImg {
+    margin-top: 1.6rem;
+    margin-bottom: 2rem;
+    width: 0;
+  }
+}
+
+.closeNav {
+  width: 100%;
+  height: 70px;
+  padding: 12px;
+  position: relative;
+  .iconClose {
+    color: $--colorWhite;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 52px;
+    right: 56px;
+    &:hover {
+      color: $--colorPurple;
+    }
+  }
+}

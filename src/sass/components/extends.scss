@@ -1,0 +1,156 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/utils';
+
+/**** Input *****/
+%inputMedium {
+  width: 100%;
+  height: 35px;
+  left: 0px;
+  top: 0px;
+  background: $--rgbaColorGray;
+  border-radius: 10px;
+  border: none;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  outline: none;
+  font-size: 0.9rem;
+  font-family: $MontserratMedium;
+  text-align: left;
+  padding-left: 12px;
+  @include placeholder {
+    font-size: 0.8rem;
+    color: $--colorPlaceHolder;
+  }
+}
+
+/**** Select *****/
+%selectOn {
+  position: relative;
+  display: flex;
+  select,
+  option {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.8);
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 12px 0 12px 6px;
+    color: #3f3f56;
+    font-family: $MontserratMedium;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .arrow {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    top: 3px;
+    right: 40px;
+    z-index: -0;
+    background-color: red;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      left: 12px;
+    }
+    &::before {
+      border-color: #bd00ff transparent transparent transparent;
+      border-width: 14px 10px 0 10px;
+      bottom: 40%;
+      left: 7px;
+    }
+    &::after {
+      border-color: #bd00ff transparent transparent transparent;
+      border-width: 14px 10px 0 10px;
+      bottom: 40%;
+      left: 7px;
+    }
+  }
+}
+
+/**** TextAreas *****/
+%textArea {
+  margin-top: 12px;
+  margin-bottom: 1rem;
+  border: none;
+  background: $--rgbaColorGray;
+  border-radius: 10px;
+  padding: 12px;
+  outline: none;
+  width: 95%;
+  @include placeholder {
+    font-size: 0.8rem;
+    color: $--colorPlaceHolder;
+  }
+  @include tablet {
+    padding: 8px;
+    width: 97%;
+  }
+}
+
+/**** Buttons ****/
+%buttonOn {
+  
+  background: url("../../assets/images/planets/empieza.png");
+  border-radius: 30px;
+  width: 254px;
+  height: 50px;
+  border: none;
+  font-size: 0.9rem;
+  text-align: center;
+  color: $--colorWhite;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  position: relative;
+  font-family: $MontserratBold;
+
+  
+}
+
+%buttonOff {
+  background: url("../../assets/images/planets/empieza.png");
+  border-radius: 30px;
+  width: 254px;
+  height: 50px;
+  border: none;
+  font-size: 0.9rem;
+  text-align: center;
+  color: $--colorWhite;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  position: relative;
+  font-family: $MontserratBold;
+  @include mediumDevicesMax {
+    width: 100%;
+    margin: 12px 2px 8px 2px;
+  }
+  @include smallDevices {
+    height: 42px;
+  }
+}
+
+%transition {
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}

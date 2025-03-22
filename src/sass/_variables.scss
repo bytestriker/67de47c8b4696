@@ -1,0 +1,157 @@
+/*=============== VARIABLES CSS ===============*/
+$largeDeviceExtra: 1400px;
+$largeDevicePlus: 1300px;
+$largeDevice1200: 1200px;
+$largeDevices: 1024px;
+$desktop: 968px;
+$tabletPlus: 768px;
+$tablet: 767px;
+$mobilePlus: 721px;
+$mediumDevices: 568px;
+$smallDevices: 360px;
+$header-height: 3rem;
+
+/*========== Colors ==========*/
+$--colorBlack: #000000;
+$--colorYellow: #E0FF4E;
+$--colorWhite: #ffffff;
+$--colorPurple: #bd00ff;
+$--colorAzulMarino: #162858;
+$--colorGris: #3f3d56;
+$--colorGreen: #00ff9f;
+$--colorAzul: #04daf6;
+$--colorPurpleStrong: #8a00bc;
+$--colorError: #bc1300;
+$--colorGray: #a6a5ae;
+$--colorGrayLight: #c7c7c7;
+$--colorGrayLight2: #f2f2f2;
+$--rgbaColorGray: rgba(255, 255, 255, 0.8);
+$--error: #eb5757;
+$--colorPlaceHolder: #666;
+
+
+/*========== Font and typography ==========*/
+$--fontFamily: 'Fahkwang', sans-serif;
+
+/*========== Mixins =================*/
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+/*=============== MEDIA QUERIES ===============*/
+@mixin desktopMax {
+  @media screen and (max-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+/* For tall screens on mobiles y desktop*/
+@mixin mobilePlus {
+  @media screen and (min-height: #{$mobilePlus}) {
+    @content;
+  }
+}
+@mixin mobilePlusMax {
+  @media screen and (max-width: #{$mobilePlus}) {
+    @content;
+  }
+}
+
+/* For large devices */
+@mixin largeDevicesMax {
+  @media screen and (max-width: #{$largeDevicePlus}) {
+    @content;
+  }
+}
+
+@mixin largeDevices1024 {
+  @media screen and (max-width: #{$largeDevices}) {
+    @content;
+  }
+}
+@mixin largeDevices {
+  @media screen and (min-width: #{$largeDevices}) {
+    @content;
+  }
+}
+@mixin largeDevices1200 {
+  @media screen and (max-width: #{$largeDevice1200}) {
+    @content;
+  }
+}
+
+@mixin largeDevicesExtra {
+  @media screen and (min-width: #{$largeDeviceExtra}) {
+    @content;
+  }
+}
+
+@mixin largeDevicesExtraMax {
+  @media screen and (max-width: #{$largeDeviceExtra}) {
+    @content;
+  }
+}
+
+@mixin largeDesktopPlus {
+  @media screen and (min-width: #{$largeDevicePlus}) {
+    @content;
+  }
+}
+
+/* For medium devices */
+@mixin mediumDevices {
+  @media screen and (min-width: #{$mediumDevices}) {
+    @content;
+  }
+}
+
+@mixin mediumDevicesMax {
+  @media screen and (max-width: #{$mediumDevices}) {
+    @content;
+  }
+}
+
+@mixin tabletPlus {
+  @media screen and (min-width: #{$tabletPlus}) {
+    @content;
+  }
+}
+
+/* For small devices */
+@mixin smallDevices {
+  @media screen and (max-width: #{$smallDevices}) {
+    @content;
+  }
+}

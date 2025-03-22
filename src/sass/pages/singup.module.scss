@@ -1,0 +1,194 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.createAccount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  @include mediumDevicesMax {
+    display: block;
+  }
+  h2 {
+    font-size: 1.2rem;
+    color: $--colorWhite;
+    text-align: center;
+    position: relative;
+    font-family: $MontserratBold;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    .label_account {
+      color: $--colorWhite;
+      font-family: $MontserratRegular;
+      font-size: 1rem;
+      padding-left: 8px;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .account_input {
+      width: 360px;
+      height: 42px;
+      border: 1px solid $--colorPurple;
+      font-family: $MontserratRegular;
+      border-radius: 30px;
+      background: transparent;
+      color: $--colorWhite;
+      padding-left: 14px;
+      outline: none;
+      @include mediumDevicesMax {
+        width: 100%;
+      }
+    }
+
+    .spanError {
+      display: flex;
+      align-items: center;
+      color: $--colorWhite;
+      padding-top: 6px;
+      padding-left: 6px;
+      span {
+        margin-left: 6px;
+        font-size: 1rem;
+        top: 2px;
+        position: relative;
+        font-family: $MontserratRegular;
+      }
+    }
+  }
+
+  .linkTerminos {
+    width: 360px;
+    color: $--colorWhite;
+    font-size: 1rem;
+    text-align: center;
+    font-family: $MontserratRegular;
+    line-height: 1.6;
+    @include mediumDevicesMax {
+      width: 100%;
+    }
+    b {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    .urlTerminos {
+      color: $--colorWhite;
+      font-size: 0.9rem;
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover {
+        color: $--colorPurple;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  .buttonRegister {
+    background: $--colorAzul;
+    border-radius: 30px;
+    width: 360px;
+    height: 42px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: $--colorWhite;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 2px;
+    position: relative;
+    margin: 12px 0 12px 0;
+    text-align: center;
+    font-family: $MontserratMedium;
+    &:hover {
+      background: $--colorPurple;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+    }
+    @include mediumDevicesMax {
+      width: 100%;
+    }
+  }
+
+  .buttonFacebook {
+    background: transparent;
+    border-radius: 30px;
+    width: 360px;
+    height: 42px;
+    border: 1px solid $--colorPurple;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: $--colorWhite;
+    font-family: $MontserratMedium;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    position: relative;
+    margin: 12px 0 12px 0;
+    &:hover {
+      background: $--colorPurple;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+    }
+    @include mediumDevicesMax {
+      width: 100%;
+    }
+
+    .buttonFacebookIcon {
+      color: $--colorWhite;
+      font-size: 1.1rem;
+    }
+  }
+
+  .haveAccount {
+    color: $--colorWhite;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1;
+    margin: 0 auto;
+    position: relative;
+    font-family: $MontserratRegular;
+
+    @include mediumDevicesMax {
+      width: 100%;
+    }
+  }
+
+  .loginLink {
+    color: $--colorWhite;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2;
+    font-family: $MontserratRegular;
+    position: relative;
+
+    @include mediumDevicesMax {
+      width: 100%;
+      display: block;
+    }
+  }
+}

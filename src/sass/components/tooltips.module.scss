@@ -1,0 +1,103 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.TooltipInfo {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.TooltipInfo .tooltiptext {
+  &:hover {
+    visibility: visible;
+  }
+}
+
+.Tooltip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  position: relative;
+  width: auto;
+
+  .TooltipContent {
+    width: auto;
+
+    .background {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0;
+      position: relative;
+      cursor: pointer;
+
+      h4 {
+        color: $--colorWhite;
+        font-family: $MontserratSemiBold;
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0;
+        margin-right: 1rem;
+      }
+      p {
+        font-family: $MontserratSemiBold;
+        font-size: 1rem;
+        line-height: 20px;
+        color: $--colorWhite;
+      }
+
+      .toolImg {
+        img {
+          width: 24px;
+          height: 24px;
+        }
+        &:hover {
+          .TooltipText {
+            display: flex;
+          }
+        }
+
+        .TooltipText {
+          display: none;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          width: 320px;
+          background-color: $--colorPurple;
+          padding: 0 12px 0 20px;
+          position: absolute;
+          z-index: 1;
+          top: -100px;
+          color: $--colorWhite;
+          transition: all 1s ease-in-out;
+          p {
+            font-family: $MontserratRegular;
+            font-size: 14px;
+            line-height: 17px;
+            width: 100%;
+            color: $--colorWhite;
+          }
+          .icon {
+            font-size: 2rem;
+          }
+
+          .tab {
+            width: 32px;
+            height: 15px;
+            background-color: $--colorPurple;
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+            transform: rotate(180deg);
+            position: absolute;
+            bottom: -14px;
+            left: 12px;
+          }
+        }
+      }
+    }
+  }
+}

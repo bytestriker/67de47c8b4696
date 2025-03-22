@@ -1,0 +1,32 @@
+
+$MontserratBlack: 'Fahkwang-Regular'; // 900
+$MontserratExtraBold: 'Fahkwang-Bold'; // 800
+$MontserratBold: 'Fahkwang-SemiBold'; // 700
+$MontserratSemiBold: 'Fahkwang-SemiBold'; // 600
+$MontserratMedium: 'Fahkwang-Medium'; // 500
+$MontserratRegular: 'Fahkwang-Regular'; // 400
+$MontserratLight: 'Fahkwang-Light'; // 300
+$MontserratExtraLight: 'Fahkwang-ExtraLight'; // 200
+$MontserratThin: 'Fahkwang-ExtraLight'; // 100
+
+@each $fontname
+  in (
+    $MontserratBlack,
+    $MontserratBold,
+    $MontserratExtraBold,
+    $MontserratExtraLight,
+    $MontserratLight,
+    $MontserratMedium,
+    $MontserratRegular,
+    $MontserratSemiBold,
+    $MontserratThin
+  )
+{
+  @font-face {
+    font-family: $fontname;
+    src: url('../assets/fonts/static/#{$fontname}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}

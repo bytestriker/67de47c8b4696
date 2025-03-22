@@ -1,0 +1,52 @@
+@import '../../sass/variables';
+@import '../../sass/fonts';
+
+.ThankYou {
+  .ThankYouContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+    img {
+      max-width: 120px;
+    }
+    h2 {
+      text-align: center;
+      color: $--colorAzul;
+      font-size: $MontserratBlack;
+      font-size: 1.7rem;
+    }
+    p {
+      padding-bottom: 2%;
+      position: relative;
+      font-size: 1rem;
+      text-align: center;
+      color: $--colorWhite;
+      font-family: $MontserratRegular;
+      @include mediumDevicesMax {
+        font-size: 1.1rem;
+        width: 90%;
+      }
+
+      strong {
+        color: $--colorGreen;
+        font-family: $MontserratBold;
+      }
+    }
+    .links {
+      margin: 12px;
+      .linkInicio {
+        background: none;
+        border: 2px solid $--colorGreen;
+        color: $--colorGreen;
+        &:hover{
+          border: 2px solid $--colorPurpleStrong;
+          background-color: $--colorPurpleStrong;
+          color: $--colorWhite;
+        }
+
+      }
+    }
+  }
+}

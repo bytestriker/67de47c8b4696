@@ -1,0 +1,50 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+
+.slider-controls {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+
+  .slider-control {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    &.left {
+      left: -26px;
+      background-image: url('../assets/images/arrow_left.png');
+    }
+    &.right {
+      right: -26px;
+      background-image: url('../assets/images/arrow_right.png');
+    }
+  }
+}
+
+.alice-carousel__dots {
+  margin: 10px 0px 0px 0px !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .alice-carousel__dots-item {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    background-color: gray !important;
+    margin: 0px 4px !important;
+    &.__active {
+      width: 10px !important;
+      height: 10px !important;
+      background-color: $--colorWhite !important;
+    }
+  }
+}
+
+.alice-carousel__wrapper {
+  height: 100% !important;
+  padding: 1rem 12px 1rem 12px;
+}

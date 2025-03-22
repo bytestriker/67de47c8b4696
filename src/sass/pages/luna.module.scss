@@ -1,0 +1,330 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.Luna{
+
+  width: 100%;
+  height: 100%;
+  background-image: url("../../assets/images/R.N.Back-Luna.jpg");
+  background-position: center;
+  z-index: -1; 
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.launch {
+  .rocketLuna {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    height: auto;
+    @include mediumDevicesMax {
+      display: none;
+    }
+  }
+
+  .rocketLunaEffect {
+    animation: urano 8s ease-in-out infinite alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+
+  /** Questions content **/
+  .LaunchText {
+    font-weight: 300;
+    font-size: 1.2rem;
+    text-align: center;
+    color: $--colorWhite;
+    line-height: normal;
+    @include mediumDevicesMax {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    @include smallDevices {
+      font-size: 1rem;
+    }
+  }
+
+  .LaunchQuestion {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    flex-direction: column;
+
+    .title {
+      color: $--colorWhite;
+      font-size: 1.2rem;
+      font-weight: 600;
+      @include mediumDevicesMax {
+        font-size: 1.1rem;
+      }
+    }
+
+    .video{
+    
+      video{
+  
+        flex:0 1 100%;
+        object-fit: fill;
+        height: 70vh;
+        width: 70vw;
+      }
+    
+    }
+
+    .resume {
+      color: $--colorWhite;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: left;
+      line-height: normal;
+      @include mediumDevicesMax {
+        margin: 2px 0 12px 0;
+        font-size: 1rem;
+      }
+      @include smallDevices {
+        font-size: 0.8rem;
+      }
+    }
+
+    .link {
+      color: $--colorGreen;
+      font-weight: 600;
+      text-decoration: none;
+      width: 100px;
+      cursor: pointer;
+
+      &:hover {
+        color: $--colorGreen;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+    }
+
+    .labelPage {
+      width: 100%;
+      text-align: right;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $--colorWhite;
+      letter-spacing: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .response {
+      margin-top: 12px;
+      margin-bottom: 1rem;
+      border: 2px solid #E6F85A;
+      background:  rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 12px;
+      outline: none;
+      width: auto;
+      &::placeholder{
+        color: #fff;
+      }
+    }
+
+    .nameProjectContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+
+      .labelProjectName {
+        color: $--colorWhite;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: left;
+        line-height: 4;
+        margin-left: 6px;
+      }
+
+      .inputProjectName {
+        width: 98%;
+        height: 50px;
+        border: 1px solid $--colorPurple;
+        border-radius: 30px;
+        background: transparent;
+        color: $--colorWhite;
+        outline: none;
+        padding-left: 12px;
+        margin-bottom: 1rem;
+        @include placeholder {
+          padding-left: 12px;
+        }
+
+        @include mediumDevicesMax {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .btmOverwrite {
+      width: 360px;
+      height: 42px;
+      margin-bottom: 1rem;
+    }
+
+    .btnPlanet {
+      @extend %buttonOn;
+    }
+    .btnPlanetOff {
+      @extend %buttonOff;
+    }
+  }
+
+  .LaunchQuestion1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    
+
+    .title {
+      color: $--colorWhite;
+      font-size: 1.2rem;
+      font-weight: 600;
+      @include mediumDevicesMax {
+        font-size: 1.1rem;
+      }
+    }
+
+    .video{
+    
+      width: 595px;
+      img{
+        width: 595px;
+      }
+  
+    
+    }
+
+    .resume {
+      color: $--colorWhite;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: left;
+      line-height: normal;
+      @include mediumDevicesMax {
+        margin: 2px 0 12px 0;
+        font-size: 1rem;
+      }
+      @include smallDevices {
+        font-size: 0.8rem;
+      }
+    }
+
+    .link {
+      color: $--colorGreen;
+      font-weight: 600;
+      text-decoration: none;
+      width: 100px;
+      cursor: pointer;
+
+      &:hover {
+        color: $--colorGreen;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+    }
+
+    .labelPage {
+      width: 100%;
+      text-align: right;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: $--colorWhite;
+      letter-spacing: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .response {
+      margin-top: 12px;
+      margin-bottom: 1rem;
+      border: none;
+      background: $--rgbaColorGray;
+      border-radius: 10px;
+      padding: 12px;
+      outline: none;
+      width: auto;
+      
+    }
+
+    
+
+    .nameProjectContent {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+
+      .labelProjectName {
+        color: $--colorWhite;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: left;
+        line-height: 4;
+        margin-left: 6px;
+      }
+
+      .inputProjectName {
+        width: 98%;
+        height: 50px;
+        border: 1px solid #E6F85A;
+        background: rgba(0, 0, 0, 0.5);
+        color: $--colorWhite;
+        outline: none;
+        padding-left: 12px;
+        margin-bottom: 1rem;
+        @include placeholder {
+          padding-left: 12px;
+        }
+
+        @include mediumDevicesMax {
+          width: 100%;
+          padding-left: 0;
+        }
+      }
+    }
+
+    .btmOverwrite {
+      width: 360px;
+      height: 42px;
+      margin-bottom: 1rem;
+    }
+
+    .btnPlanet {
+      @extend %buttonOn;
+    }
+    .btnPlanetOff {
+      @extend %buttonOff;
+    }
+  }
+}
+
+@keyframes urano {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(-14deg);
+  }
+}
+
+@keyframes astronaut {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(24px) rotateZ(-4deg);
+  }
+}

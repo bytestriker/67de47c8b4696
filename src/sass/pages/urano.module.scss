@@ -1,0 +1,269 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.Urano {
+  .btnPlanet {
+    @extend %buttonOn;
+  }
+  .btnPlanetOff {
+    @extend %buttonOff;
+  }
+
+  .carrusel {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .inputProjectName {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    background: $--rgbaColorGray;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+    height: 160px;
+    text-align: left;
+    font-family: $MontserratMedium;
+    padding-left: 6px;
+    padding-top: 12px;
+    caret-color: $--colorPurple;
+  }
+
+  .entriesBrands {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    @include mediumDevicesMax {
+      flex-direction: column;
+    }
+
+    p {
+      font-family: $MontserratMedium;
+      font-size: 12px;
+      line-height: 15px;
+      color: $--colorWhite;
+      width: 60%;
+      margin-left: 1rem;
+      text-align: left;
+      @include mediumDevicesMax {
+        width: 92%;
+      }
+    }
+    img {
+      width: 113px;
+      height: 114px;
+    }
+  }
+
+  .subirTxt {
+    font-family: $MontserratRegular;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: $--colorGreen;
+  }
+
+  .recomendacion {
+    font-family: $MontserratSemiBold;
+    font-size: 16px;
+    line-height: 20px;
+    color: $--colorWhite;
+  }
+
+  .upload {
+    border: 1px dashed $--colorWhite;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      cursor: pointer;
+      padding: 10px 20px;
+    }
+    input[type='file'] {
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+
+  .checkText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    input[type='checkbox'] {
+      cursor: pointer;
+      appearance: none;
+      background-color: none;
+      margin: 0;
+      color: $--colorWhite;
+      width: 2em;
+      height: 2em;
+      border: 1px solid $--colorWhite;
+      margin-right: 12px;
+      display: grid;
+      place-content: center;
+    }
+    input[type='checkbox']::before {
+      content: '';
+      width: 1.8em;
+      height: 1.8em;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em $--colorGreen;
+      background-color: $--colorGreen;
+    }
+
+    input[type='checkbox']:checked::before {
+      transform: scale(1);
+    }
+    p {
+      font-family: $MontserratRegular;
+      font-size: 1rem;
+      line-height: 20px;
+      color: $--colorWhite;
+    }
+  }
+
+  .input_search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    .search {
+      width: 100%;
+      border: 1px solid $--colorPurple;
+      border-radius: 30px;
+      height: 34px;
+      background: none;
+      outline: none;
+      padding-left: 10px;
+      caret-color: $--colorPurple;
+      color: $--colorWhite;
+      @include placeholder {
+        color: $--colorPlaceHolder;
+        font-family: $MontserratMedium;
+        font-size: 1rem;
+        line-height: 20px;
+        text-align: center;
+      }
+    }
+
+    .icon {
+      color: $--colorPurple;
+      font-size: 1.2rem;
+      position: relative;
+      left: -40px;
+    }
+  }
+
+  .cardContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+    position: relative;
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      .item {
+        width: 90px;
+        height: 90px;
+        background: $--colorAzul;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          width: 92px;
+          height: 92px;
+          transition: all ease-in-out 0.2s;
+          border: 3px solid $--colorPurple;
+        }
+        img{
+          width: 100%;
+          height: auto;
+          margin: 0 auto;
+        }
+      }
+      p {
+        font-family: $MontserratSemiBold;
+        font-size: 1rem;
+        line-height: 20px;
+        text-align: center;
+        letter-spacing: -0.01em;
+        color: $--colorWhite;
+      }
+    }
+  }
+
+  .cardMarketing {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+    height: 50px;
+    .vermas {
+      font-size: 1rem;
+      background: none;
+      font-family: $MontserratBold;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      text-decoration-line: underline;
+      color: $--colorGreen;
+      cursor: pointer;
+    }
+  }
+
+  .downloadContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    .descargarTxt {
+      font-family: $MontserratSemiBold;
+      font-size: 1rem;
+      line-height: 20px;
+      text-decoration-line: underline;
+      color: $--colorAzul;
+    }
+    .downloadIcon {
+      width: 20px;
+      height: 20px;
+      margin-left: 1rem;
+    }
+  }
+
+  .subir {
+    font-family: $MontserratSemiBold;
+    font-size: 1rem;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: $--colorAzul;
+    cursor: pointer;
+  }
+}

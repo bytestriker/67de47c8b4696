@@ -1,0 +1,166 @@
+@import '@Sass/variables';
+@import '@Sass/fonts';
+
+.Packs {
+  display: flex;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+  height: 100vh;
+
+  .packContent {
+    display: flex;
+    flex-direction: column;
+
+    .packsTitle {
+      text-align: center;
+      color: $--colorAzul;
+      font-size: 1.5rem;
+      font-family: $MontserratBlack;
+      @include mediumDevicesMax {
+        font-size: 1.4rem;
+      }
+      @include smallDevices {
+        font-size: 1.3rem;
+      }
+    }
+
+    .packsParagraph {
+      text-align: center;
+      color: $--colorWhite;
+      font-size: 1rem;
+      font-style: normal;
+      line-height: 20px;
+      font-family: $MontserratRegular;
+      margin: 0;
+      padding: 18px;
+      @include mediumDevicesMax {
+        font-size: 0.9rem;
+        line-height: 1.2;
+      }
+    }
+
+    .packsItemsContent {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      margin: 1rem 0 2rem 0;
+      gap: 20px;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      padding-inline-start: 0;
+
+      .packsItems {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 1px solid $--colorPurple;
+        border-radius: 30px;
+        width: 320px;
+        height: 58px;
+        margin: 0 auto;
+        padding: 1rem;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+          border: 3px solid $--colorPurple;
+          -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+          -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
+        }
+
+        @include mediumDevicesMax {
+          width: 100%;
+          padding: 12px 0 12px 0;
+        }
+        span {
+          img {
+            width: auto;
+            height: auto;
+          }
+        }
+
+        .articlePack {
+          line-height: 1.3;
+          h4 {
+            color: $--colorWhite;
+            font-size: 1rem;
+            margin: 4px;
+            font-family: $MontserratSemiBold;
+          }
+          p {
+            color: $--colorWhite;
+            margin: 4px;
+            font-size: 1rem;
+            font-weight: 200;
+            font-family: $MontserratRegular;
+          }
+          .linkCompra {
+            color: $--colorGreen;
+            font-family: $MontserratBold;
+            font-size: 1rem;
+            text-decoration: none;
+            margin: 0.2rem 0 0 4px;
+          }
+        }
+        
+      }
+
+      .packsItems-codigo {
+        cursor: auto;
+        flex-direction: column;
+        height: 100px;
+        input {
+          background: #fffc;
+          border: none;
+          border-radius: 10px;
+          outline: none;
+          padding: 5px 12px;
+          text-align: center;
+        }
+        button {
+          width: auto;
+          height: auto;
+          margin: 10px auto 0 auto;
+          padding: 5px 15px;
+        }
+        .articlePack{
+          p {
+            color: #00ff9f;
+            text-align: center;
+            font-weight: 900;
+          }
+        }
+      }
+    }
+    .packTerminos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      .urlTerminos {
+        color: $--colorWhite;
+        font-size: 0.9rem;
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+        &:hover {
+          color: $--colorPurple;
+          -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+          -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+        }
+      }
+    }
+  }
+}
+.articlePack-error {
+  text-align: center;
+  p {
+    font-size: 12px!important;
+  }
+}

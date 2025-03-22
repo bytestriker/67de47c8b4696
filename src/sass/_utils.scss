@@ -1,0 +1,24 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+
+.rocketLoading {
+  animation: rocket 2s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes rocket {
+  from {
+    transform: translateY(0%) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(30px) rotateZ(0deg);
+  }
+}
+
+/* class para pintar el texto del proyecto seleccionado */
+.activeLink {
+  border-bottom: 3px solid $--colorPurple;
+  color: $--colorPurple;
+}
+

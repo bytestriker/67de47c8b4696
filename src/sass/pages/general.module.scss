@@ -1,0 +1,289 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+
+.planetPageMain {
+  
+  position: relative;
+  z-index: 1; 
+  width: 595px;
+  margin-top: 100px;
+  margin-left: 25%;
+  border: none;
+  background-color: rgba(77, 84, 47, 0.45);
+ 
+  &::before{
+
+    content: "";
+  position: absolute;
+  top: -8px; /* Posiciona la imagen justo por encima del borde */
+  left: 50%; /* Centra la imagen horizontalmente */
+  transform: translateX(-50%); /* Ajuste para centrar la imagen exactamente */
+  width: 610px; /* Tamaño de la imagen */
+  height: 250px; /* Tamaño de la imagen */
+  background-image: url("../../assets/images/borde_superior.svg");
+  background-position: top center; /* Centra la imagen en la parte superior */
+  background-repeat: no-repeat; /* No repite la imagen */
+  background-size: contain;
+  }
+}
+
+.planetPageContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.planetPageContainerUrano {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.planetPageContainerSocial {
+  width: min(100% - 30px, 520px);
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.planetPageContainer2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pageContainer {
+  width: min(100% - 30px, 520px);
+  margin-inline: auto;
+  
+  height: 100%;
+  
+}
+
+.inputMedium {
+  width: 100%;
+  height: 35px;
+  left: 0px;
+  top: 0px;
+  background: $--rgbaColorGray;
+  border-radius: 10px;
+  border: none;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  outline: none;
+  font-size: 0.9rem;
+  font-family: $MontserratMedium;
+  text-align: left;
+  padding-left: 4px;
+  @include placeholder {
+    font-size: 0.8rem;
+    color: $--colorPlaceHolder;
+    padding-left: 10px;
+  }
+}
+
+.TextArea {
+  margin-top: 12px;
+  margin-bottom: 1rem;
+  border: none;
+  background: $--rgbaColorGray;
+  border-radius: 10px;
+  padding: 12px 0 0 8px;
+  outline: none;
+  width: 100%;
+  @include placeholder {
+    font-size: 0.8rem;
+    color: $--colorPlaceHolder;
+  }
+  @include tablet {
+    padding: 8px;
+    width: 97%;
+  }
+}
+
+.selectContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+  label {
+    color: $--colorWhite;
+    font-family: $MontserratSemiBold;
+    font-size: 16px;
+  }
+  select,
+  option {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: $--rgbaColorGray;
+    margin-top: 16px;
+    margin-bottom: 4px;
+    padding: 12px 0 12px 6px;
+    color: #3f3f56;
+    font-family: $MontserratMedium;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .arrow {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    top: 14px;
+    right: 40px;
+    z-index: -0;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      left: 12px;
+    }
+    &::before {
+      border-color: $--colorPurple transparent transparent transparent;
+      border-width: 14px 10px 0 10px;
+      bottom: 40%;
+      left: 7px;
+    }
+    &::after {
+      border-color: $--colorPurple transparent transparent transparent;
+      border-width: 14px 10px 0 10px;
+      bottom: 40%;
+      left: 7px;
+    }
+  }
+}
+
+/* Boton agregas mas */
+.add {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 146px;
+  margin-top: 1rem;
+  &:hover {
+    .icon {
+      color: $--colorPurple;
+    }
+    b {
+      color: $--colorPurple;
+    }
+  }
+  .icon {
+    color: $--colorAzul;
+    font-size: 1.6rem;
+  }
+  b {
+    font-family: $MontserratRegular;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: $--colorAzul;
+    left: 8px;
+    position: relative;
+  }
+}
+
+/** leyenda escribe minimo **/
+.minimo {
+  font-size: 1rem;
+  font-family: $MontserratLight;
+  line-height: 20px;
+  color: $--colorWhite;
+  margin: 8px 0 8px 0;
+}
+
+/** contenedor de los botones siguiente y anteior ***/
+.contentButtons {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.flexButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/** Boton paso 2 **/
+.btnStepDos {
+  @extend %buttonOn;
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.textCenter {
+  width: 90%;
+  text-align: center;
+  color: $--colorWhite;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 20px;
+  font-family: $MontserratRegular;
+}
+
+.textCenterthanksp {
+  width: 100%;
+  text-align: center;
+  color: $--colorWhite;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 20px;
+  font-family: $MontserratRegular;
+  padding-top: 8%;
+}
+
+.textCenterthanks {
+  width: 100%;
+  text-align: center;
+  color: $--colorWhite;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 20px;
+  font-family: $MontserratRegular;
+  padding-bottom: 7%;
+}
+
+.paddingTop {
+  padding-top: 3rem;
+}
+.paddingBottom {
+  padding-bottom: 8rem;
+}
+.footerLayout{
+
+  width: 100%; /* Ancho completo del contenedor */
+  height: 500px; /* Altura específica para el footer */
+  background-size: contain; /* La imagen se ajusta para estar completamente dentro del contenedor */
+  
+  clear: both; /* Asegura que el footer esté debajo de los elementos flotantes */
+  margin-top: auto;
+  
+  background: url('../../assets/images/Astronauta_Footer.svg') top 120px right no-repeat,
+              url('../../assets/images/Rectangle29.svg') repeat center center;
+             
+
+
+}

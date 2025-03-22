@@ -1,0 +1,46 @@
+@import '../../sass/variables';
+
+.SocialHub {
+  
+
+  .SocialHubContent {
+
+    img {
+      
+      display: block;
+      margin: auto;
+      
+      @include smallDevices {
+        width: 110px;
+      }
+
+      padding-bottom: 7%;
+    }
+
+    .customSocialBtn {
+      background: none;
+      border: 1px solid $--colorPurple;
+      margin: auto;
+
+      &:hover {
+        background-color: $--colorAzul;
+        border: 1px solid $--colorAzul;
+      }
+    }
+  }
+
+  .contentLuna {
+    
+
+    img {
+      
+      margin: 0 auto;
+      width: auto;
+      top: -20px;
+
+      @include mediumDevicesMax {
+        width: 100%;
+      }
+    }
+  }
+}

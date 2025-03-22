@@ -1,0 +1,219 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+.Jupiter {
+  height: 100%;
+  padding-bottom: 3rem;
+
+  .selectContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    label {
+      color: $--colorWhite;
+      font-family: $MontserratSemiBold;
+      font-size: 16px;
+    }
+
+    .selectHeader {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.8);
+      margin-top: 4px;
+      margin-bottom: 4px;
+      padding: 12px 0 12px 6px;
+      color: #3f3f56;
+      font-family: $MontserratMedium;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .selectSpanText {
+      }
+      .selectSpanArrow {
+        text-align: center;
+        color: #bd00ff;
+        width: 50px;
+        height: 22px;
+        position: relative;
+        font-size: 2.5rem;
+        top: -10px;
+      }
+    }
+    .selectOptions {
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      width: 98%;
+      padding: 6px;
+      .option {
+        color: #3f3f56;
+        font-family: $MontserratMedium;
+        font-size: 1rem;
+        outline: none;
+        cursor: pointer;
+        margin-top: 4px;
+        height: 20px;
+        padding: 10px;
+        &:hover {
+          @extend %transition;
+          background-color: $--colorGray;
+        }
+      }
+    }
+  }
+
+  .buyerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .astronaut {
+    position: relative;
+    height: 100%;
+    bottom: -70px;
+    img {
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+  .carrusel {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .entriesBrands {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @include mediumDevicesMax {
+      flex-direction: column;
+    }
+    p {
+      font-family: $MontserratMedium;
+      font-size: 12px;
+      line-height: 15px;
+      color: $--colorWhite;
+      width: 60%;
+      margin-left: 1rem;
+      text-align: left;
+      @include mediumDevicesMax {
+        width: 92%;
+      }
+    }
+    img {
+      width: 113px;
+      height: 114px;
+    }
+  }
+
+  .subirTxt {
+    font-family: $MontserratRegular;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: $--colorGreen;
+  }
+
+  .recomendacion {
+    font-family: $MontserratSemiBold;
+    font-size: 16px;
+    line-height: 20px;
+    color: $--colorWhite;
+  }
+
+  .upload {
+    border: 1px dashed $--colorWhite;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      cursor: pointer;
+      padding: 10px 20px;
+    }
+    input[type='file'] {
+      cursor: pointer;
+      opacity: 0;
+      position: absolute;
+      z-index: 0;
+    }
+  }
+
+  .checkText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    input[type='checkbox'] {
+      cursor: pointer;
+      appearance: none;
+      background-color: none;
+      margin: 0;
+      color: $--colorWhite;
+      width: 2em;
+      height: 2em;
+      border: 1px solid $--colorWhite;
+      margin-right: 12px;
+      display: grid;
+      place-content: center;
+    }
+    input[type='checkbox']::before {
+      content: '';
+      width: 1.8em;
+      height: 1.8em;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em $--colorGreen;
+      background-color: $--colorGreen;
+    }
+
+    input[type='checkbox']:checked::before {
+      transform: scale(1);
+    }
+    p {
+      font-family: $MontserratRegular;
+      font-size: 1rem;
+      line-height: 20px;
+      color: $--colorWhite;
+    }
+  }
+
+  .textarea {
+    @extend %textArea;
+  }
+  .btnPlanet {
+    @extend %buttonOn;
+    margin-top: 1rem;
+    width: 248px;
+  }
+
+  .btnPlanetOff {
+    @extend %buttonOff;
+    margin-top: 1rem;
+  }
+  .btnStepDosOff {
+    @extend %buttonOff;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .btnStepDos {
+    @extend %buttonOn;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

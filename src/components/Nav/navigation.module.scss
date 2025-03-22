@@ -1,0 +1,110 @@
+@import '@Sass/variables';
+@import '@Sass/fonts';
+.navigation {
+  width: 30%;
+  height: 100vh;
+  background-color: $--colorBlack;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  filter: drop-shadow(-9px 4px 7px rgba(0, 0, 0, 0.49));
+
+  @include tablet {
+    width: 30%;
+  }
+  @include mobilePlusMax {
+    width: 100%;
+  }
+}
+
+.closeNav {
+  padding: 2rem 1rem 6px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  .iconClose {
+    color: $--colorWhite;
+    font-size: 1.6rem;
+    cursor: pointer;
+    &:hover {
+      color: $--colorPurple;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+    }
+  }
+}
+
+.navigation_content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.8rem;
+  width: 90%;
+
+  .link_proyects {
+    h3 {
+      font-size: 1rem;
+      color: $--colorYellow;
+      line-height: 1;
+      text-decoration: none;
+      text-align: right;
+      cursor: pointer;
+      font-family: $MontserratBold;
+      &:hover {
+        color: $--colorWhite;
+        text-decoration: underline;
+      }
+    }
+    .iconSing {
+      position: relative;
+      top: 2px;
+      margin-right: 6px;
+    }
+
+    ul {
+      list-style: none;
+      text-align: right;
+      color: $--colorWhite;
+      margin: 0;
+      .linkProject {
+        margin: 12px 0 12px 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        h4 {
+          text-decoration: none;
+          width: auto;
+          padding: 0;
+          margin: 0;
+          text-align: right;
+          font-family: $MontserratBold;
+          &:hover {
+            color: $--colorPurple;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navigation_colapse {
+  font-family: $--fontFamily;
+  width: 0%;
+  height: 100%;
+  background-color: $--colorAzulMarino;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  right: -70%;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}

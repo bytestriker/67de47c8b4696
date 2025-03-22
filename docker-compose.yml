@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rocket_now_front_end
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - #enviroments
+      #REACT_APP_DEV_API=https://api.rocketnow.randominteractive.site/
+      REACT_APP_DEV_API=http://rocketnow_backend.test/
+      - #REACT_APP_DEV_API=https://apirocket.digitalferrer.com/
+      - #REACT_APP_DEV_WP=https://admin.rocketnow.randominteractive.site/index.php/wp-json/wp/v2
+      - REACT_APP_DEV_WP=http://rocketnow-cms.test/wp-json/wp/v2
+      - #REACT_APP_DEV_WP=https://wprocket.digitalferrer.com/wp-json/wp/v2
+      - REACT_APP_WEBSITE_NAME=ROCKETNOW
+      - REACT_APP_CONEKTA_APIKEY_PRIVATE=key_ii5WEqevaZn4JPWg2jPCLAa
+      - REACT_APP_CONEKTA_APIKEY_PRIVATEBASE64=a2V5X2lpNVdFcWV2YVpuNEpQV2cyalBDTEFh
+      - REACT_APP_CONEKTA_APIKEY_PUBLIC=key_NGWdJPIvOGrkfRKMAlyZZLw
+      - REACT_APP_CONEKTA_APIKEY_PUBLICBASE64=a2V5X05HV2RKUEl2T0dya2ZSS01BbHlaWkx3
+      - REACT_APP_CONEKTA_API=https://api.conekta.io
+      - DISABLE_ESLINT_PLUGIN=true
+
+    command: yarn start

@@ -1,0 +1,17 @@
+.AstroContent {
+  width: 100%;
+  height: auto;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  margin-top: 12px;
+  display: flex;
+  
+  .astroImage {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+  }
+}

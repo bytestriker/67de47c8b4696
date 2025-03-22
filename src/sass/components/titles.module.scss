@@ -1,0 +1,99 @@
+@import '@Sass/variables';
+@import '@Sass/fonts.scss';
+
+.TitlesContet {
+  .TitlePage {
+    text-align: center;
+    color: #F4FABF;
+    font-size: 1.7rem;
+    font-family: $MontserratBlack;
+    margin-top: 80px;
+  }
+
+  .QuestionH4 {
+    color: $--colorPurple;
+    font-size: 1.2rem;
+    font-family: $MontserratBold;
+    text-align: left;
+  }
+
+  .ParagraphInfo {
+    text-align: left;
+    p {
+      color: $--colorWhite;
+      font-size: 1rem;
+      font-style: normal;
+      line-height: 20px;
+      font-family: $MontserratRegular;
+
+      strong {
+        font-size: 1rem;
+        line-height: 20px;
+        color: $--colorWhite;
+        font-family: $MontserratSemiBold;
+      }
+    }
+    &.colorP {
+      color: $--colorWhite;
+    }
+
+    a {
+      color: $--colorWhite;
+      font-size: 1rem;
+      font-family: $MontserratRegular;
+      text-decoration: underline;
+    }
+    h1,
+    h2 {
+      color: $--colorWhite;
+      font-size: 2rem;
+      font-family: $MontserratRegular;
+    }
+
+    h4 {
+      color: $--colorWhite;
+      font-size: 1rem;
+      font-family: $MontserratRegular;
+    }
+    ul,
+    ol > li {
+      color: $--colorWhite;
+      font-size: 1rem;
+      font-style: normal;
+      line-height: 20px;
+      font-family: $MontserratRegular;
+    }
+  }
+
+  .Title2 {
+    font-family: $MontserratSemiBold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #F4FABF;
+  }
+
+  .TitlePre {
+    font-family: $MontserratSemiBold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #F4FABF;
+  }
+
+  .Title3 {
+    color: $--colorAzul;
+    font-family: $MontserratBold;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0;
+    line-height: normal;
+    margin-top: 1rem;
+  }
+}
