@@ -19,13 +19,11 @@ const AppRouter = () => {
 
   return (
     <Fragment>
-      
-        <Router>
-          <Switch>
-            <Main />
-          </Switch>
-        </Router>
-      
+      <Router>
+        <Switch>
+          <Main />
+        </Switch>
+      </Router>
     </Fragment>
   );
 };

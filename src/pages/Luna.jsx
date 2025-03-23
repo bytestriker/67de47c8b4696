@@ -13,6 +13,7 @@ import { useEventsLuna } from '@Hooks/useEventsLuna';
 import { LunaWPText } from '@Hooks/useFetchWP';
 import { Title } from '@Components/Atomos/Titles';
 
+import astronauta from '@Assets/images/astronauta.png';
 import borde from '@Assets/images/borde_superior.svg';
 
 // Components
@@ -185,7 +186,8 @@ const Luna = () => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+      <img src={astronauta} alt="Space Man" className="space-man" />
     </div>
   );
 };

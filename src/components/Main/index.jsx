@@ -86,32 +86,30 @@ const Main = () => {
         <div className={style.headerLayout}>
           <Header />
         </div>
-        
-          
-                <Route exact path="/" component={Home} />
-                <Route exact path="/login" render={() => (contextValue.isLogged() ? <Redirect to="/" /> : <Login />)} />
-                <Route exact path="/terminos" component={Tycos} />
-                <Route exact path="/acercade" component={AboutUs} />
-                <Route exact path="/asesoria" component={Index} />
-                <Route exact path="/paquetes" component={Packs} />
-                <Route exact path="/singup" component={SingUp} />
-                <Route exact path="/gracias" component={Thanks} />
-                <Route exact path="/graciasCode" component={ThanksCode} />
-                <Route exact path="/social-hub" component={SocialHub} />
-                <Route exact path="/privacidad" component={Privacy} />
-                <Route exact path="/saber-mas" component={KnowMore} />
-                <Route exact path="/bienvenido" component={Welcome} />
-                <Route exact path="/repassword" component={RePassword} />
-                <Route exact path="/launch" component={Luna} />
-                <PrivateRoute exact path="/perfil" component={Profile} />
-                <PrivateRoute exact path="/mercurio" component={Mercurio} />
-                <PrivateRoute exact path="/venus" component={Venus} />
-                <PrivateRoute exact path="/marte" component={Marte} />
-                <PrivateRoute exact path="/jupiter" component={Jupiter} />
-                <PrivateRoute exact path="/saturno" component={Saturno} />
-                <PrivateRoute exact path="/urano" component={Urano} />
-                <PrivateRoute exact path="/carrito" component={ShoppingCar} />
-                <PrivateRoute exact path="/checkout" component={Checkout} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" render={() => (contextValue.isLogged() ? <Redirect to="/" /> : <Login />)} />
+        <Route exact path="/terminos" component={Tycos} />
+        <Route exact path="/acercade" component={AboutUs} />
+        <Route exact path="/asesoria" component={Index} />
+        <Route exact path="/paquetes" component={Packs} />
+        <Route exact path="/singup" component={SingUp} />
+        <Route exact path="/gracias" component={Thanks} />
+        <Route exact path="/graciasCode" component={ThanksCode} />
+        <Route exact path="/social-hub" component={SocialHub} />
+        <Route exact path="/privacidad" component={Privacy} />
+        <Route exact path="/saber-mas" component={KnowMore} />
+        <Route exact path="/bienvenido" component={Welcome} />
+        <Route exact path="/repassword" component={RePassword} />
+        <Route exact path="/launch" component={Luna} />
+        <PrivateRoute exact path="/perfil" component={Profile} />
+        <PrivateRoute exact path="/mercurio" component={Mercurio} />
+        <PrivateRoute exact path="/venus" component={Venus} />
+        <PrivateRoute exact path="/marte" component={Marte} />
+        <PrivateRoute exact path="/jupiter" component={Jupiter} />
+        <PrivateRoute exact path="/saturno" component={Saturno} />
+        <PrivateRoute exact path="/urano" component={Urano} />
+        <PrivateRoute exact path="/carrito" component={ShoppingCar} />
+        <PrivateRoute exact path="/checkout" component={Checkout} />
 
                 {/* 
                 <Route path="*">

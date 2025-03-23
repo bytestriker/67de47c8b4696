@@ -5,13 +5,16 @@
 
 .Luna{
 
+  background-image: url("../../assets/images/planets/luna-radar.svg"), url("../../assets/images/planets/luna-bg.png"), url("../../assets/images/bg-stars.png");
+  background-position: bottom 9vw left 50px, bottom left, center;
+  background-size: 40vw, 80vw, cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  background-image: url("../../assets/images/R.N.Back-Luna.jpg");
-  background-position: center;
-  z-index: -1; 
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 .launch {
   .rocketLuna {
