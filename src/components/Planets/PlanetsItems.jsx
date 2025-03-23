@@ -32,16 +32,14 @@ const PlanetsItems = () => {
   return (
     <section>
       <div className={style.PlanetsItem}>
-      <Mercurio mercurioInfo={mercurioInfo} />
-      <Venus venusInfo={venusInfo} />
-      <Tierra tierraInfo={tierraInfo} />
-      <Marte marteInfo={marteInfo} />
-      <Jupiter jupiterInfo={jupiterInfo} />
-      <Saturno saturnoInfo={saturnoInfo} />
-      </div>
-      <div className={style.PlanetsItem2}>
-      <Urano uranoInfo={uranoInfo} />
-      <Neptuno neptunoInfo={neptunoInfo} />
+        <Mercurio mercurioInfo={mercurioInfo} />
+        <Venus venusInfo={venusInfo} />
+        <Tierra tierraInfo={tierraInfo} />
+        <Marte marteInfo={marteInfo} />
+        <Jupiter jupiterInfo={jupiterInfo} />
+        <Saturno saturnoInfo={saturnoInfo} />
+        <Urano uranoInfo={uranoInfo} />
+        <Neptuno neptunoInfo={neptunoInfo} />
       </div>
     </section>
   );

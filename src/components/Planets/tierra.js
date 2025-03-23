@@ -4,9 +4,9 @@ import style from '@Components/Planets/planets.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 
 // IMAGES
-import _tank from '@Assets/images/tanques.svg';
-import _lock from '@Assets/images/lock.svg';
-import _textura from '@Assets/images/textura.svg';
+import tank from '@Assets/images/planet-tank.svg';
+import lock from '@Assets/images/lock.svg';
+import grid from '@Assets/images/planet-grid.png';
 import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
@@ -28,7 +28,7 @@ export const Tierra = ({ tierraInfo }) => {
     },
   ]);
   const [description, setDescription] = useState('');
-  const [title, setTitle] = useState('TIERRA');
+  const [title, setTitle] = useState('Tierra');
 
 
   const { popup } = valPackage();
@@ -44,16 +44,20 @@ export const Tierra = ({ tierraInfo }) => {
   return (
     <div>
       <div className={style.cardItem}>
-        <div className={`${style.planetImage_content}  `}>
+        <div className={`${style.planetFigure}  `}>
           
-            <div>
-            <img src={_lock} alt="lock" className={style.imgLock} />
-            <img src={_textura} alt="lock" className={style.imgTextura} />
-            <img src={_colonizar} alt="lock" className={style.imgColonizar} />
-            </div>
+          <div className={`${style.planetLocked}`}>
+            <img src={grid} alt="lock" />
+            <img src={lock} alt="lock" />
+          </div>
           
           <img src={tierra} alt="planet" className={`${style.planetImage}  ${style.mercurio}`} />
-          <img src={_tank} alt="tank" className={style.imgTank} />
+          
+
+<div className={style.tankCount}>
+          <img src={tank} alt="tank" />
+          <span>x3</span>
+        </div>
           
         </div>
         

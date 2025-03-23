@@ -26,5 +26,5 @@ export const uranoStore = create((set, get) => ({
   setUnblock: (newState) =>
     set((state) => ({ dataUrano: { ...state.dataUrano, lockedPlanet: newState } })),
 
-  geUrano: () => JSON.parse(getFromStorage(LocalStoragePlanets.URANO)) || get().dataUrano,
+  getUrano: () => JSON.parse(getFromStorage(LocalStoragePlanets.URANO)) || get().dataUrano,
 }));

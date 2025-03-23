@@ -8,10 +8,10 @@ import { mercurioStore } from '@Store/mercurio';
 import { valPackage } from '@Hooks/useValidatePlanet';
 
 // Images
-import _tank from '@Assets/images/tanques.svg';
-import _lock from '@Assets/images/lock.svg';
-import mercurio from '@Assets/images/planets/mercurio.svg';
-import _textura from '@Assets/images/textura.svg';
+import tank from '@Assets/images/planet-tank.svg';
+import lock from '@Assets/images/lock.svg';
+import grid from '@Assets/images/planet-grid.png';
+import mercurio from '@Assets/images/planets/mercurio.png';
 import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
@@ -28,7 +28,7 @@ export const Mercurio = ({ mercurioInfo }) => {
     },
   ]);
   const [description, setDescription] = useState('');
-  const [title, setTitle] = useState('MERCURIO');
+  const [title, setTitle] = useState('Mercurio');
 
   // Store de mercurio
   const { getMercurio, dataMercurio } = mercurioStore(
@@ -52,19 +52,22 @@ export const Mercurio = ({ mercurioInfo }) => {
   return (
     <div>
       <div className={style.cardItem}>
-        <div className={`${style.planetImage_content}  `}>
-          {getMercurio().lockedPlanet === 'desbloqueado' ? (
-            <></>
-          ) : (
-            <div>
-            <img src={_lock} alt="lock" className={style.imgLock} />
-            <img src={_textura} alt="lock" className={style.imgTextura} />
-            <img src={_colonizar} alt="lock" className={style.imgColonizar} />
-            </div>
-          )}
-          <img src={mercurio} alt="planet" className={`${style.planetImage}  ${style.mercurio}`} />
-          <img src={_tank} alt="tank" className={style.imgTank} />
+        <div className={`${style.planetFigure}`}>
+          <img src={mercurio} alt="planet" className={`${style.planetImage}`} />
           
+          {
+            getMercurio().lockedPlanet !== 'desbloqueado' &&
+            <div className={`${style.planetLocked}`}>
+              <img src={grid} alt="lock" />
+              <img src={lock} alt="lock" />
+            </div>
+          }
+          
+
+<div className={style.tankCount}>
+          <img src={tank} alt="tank" />
+          <span>x3</span>
+        </div>
         </div>
         
           

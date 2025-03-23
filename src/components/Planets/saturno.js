@@ -13,9 +13,9 @@ import lines from '@Components/Planets/lines.module.scss';
 import buttons from '@Sass/components/buttons.module.scss';
 
 // Images
-import _tank from '@Assets/images/tanques.svg';
-import _lock from '@Assets/images/lock.svg';
-import _textura from '@Assets/images/textura.svg';
+import tank from '@Assets/images/planet-tank.svg';
+import lock from '@Assets/images/lock.svg';
+import grid from '@Assets/images/planet-grid.png';
 import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
@@ -34,7 +34,7 @@ export const Saturno = ({ saturnoInfo }) => {
     },
   ]);
   const [description, setDescription] = useState('');
-  const [title, setTitle] = useState('SATURNO');
+  const [title, setTitle] = useState('Saturno');
   const { getSaturno, dataSaturno } = saturnoStore(
     (state) => ({
       getSaturno: state.getSaturno,
@@ -56,18 +56,21 @@ export const Saturno = ({ saturnoInfo }) => {
   return (
     <div>
       <div className={style.cardItem}>
-        <div className={`${style.planetImage_content}  `}>
-          {getSaturno().lockedPlanet === 'desbloqueado' ? (
-            <></>
-          ) : (
-            <div>
-            <img src={_lock} alt="lock" className={style.imgLock} />
-            <img src={_textura} alt="lock" className={style.imgTextura} />
-            <img src={_colonizar} alt="lock" className={style.imgColonizar} />
-            </div>
-          )}
+        <div className={`${style.planetFigure}  `}>
           <img src={saturno} alt="planet" className={`${style.planetImage}  ${style.mercurio}`} />
-          <img src={_tank} alt="tank" className={style.imgTank} />
+          {
+            getSaturno().lockedPlanet !== 'desbloqueado' &&
+            <div className={`${style.planetLocked}`}>
+              <img src={grid} alt="lock" />
+              <img src={lock} alt="lock" />
+            </div>
+          }
+          
+
+<div className={style.tankCount}>
+          <img src={tank} alt="tank" />
+          <span>x3</span>
+        </div>
           
         </div>
         
