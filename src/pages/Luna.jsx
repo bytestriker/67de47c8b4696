@@ -14,6 +14,7 @@ import { LunaWPText } from '@Hooks/useFetchWP';
 import { Title } from '@Components/Atomos/Titles';
 
 import astronauta from '@Assets/images/astronauta.png';
+import satelite from '@Assets/images/satelite.png';
 import borde from '@Assets/images/borde_superior.svg';
 
 // Components
@@ -124,7 +125,7 @@ const Luna = () => {
         return;
       }
     }
-    
+
     if (page === 6) {
       setPageLuna(page);
       history.push('/singup');
@@ -135,57 +136,57 @@ const Luna = () => {
 
   return (
     <div className={luna.Luna}>
-    <section className={style.planetPageMain}>
-      <div className={style.planetPageContainer}>
-        <div>
-                <Title title={titlePage} />
-              </div>
-
-        <div className={style.pageContainer}>
-          <div className={luna.launch}>
-            {getPageLuna === 1 ? (
-              <NameProject
-                handleNextPage={handleNextPage}
-                setPageLuna={setPageLuna}
-                texts={texts}
-                setTitlePage={setTitlePage}
-              />
-            ) : null}
-            {getPageLuna === 2 ? (
-              <QuestionsLaunch1
-                handleNextPage={handleNextPage}
-                setPageLuna={setPageLuna}
-                texts2={texts2}
-                setTitlePage={setTitlePage}
-              />
-            ) : null}
-            {getPageLuna === 3 ? (
-              <QuestionsLaunch2
-                handleNextPage={handleNextPage}
-                setPageLuna={setPageLuna}
-                texts3={texts3}
-                setTitlePage={setTitlePage}
-              />
-            ) : null}
-            {getPageLuna === 4 ? (
-              <QuestionsLaunch3
-                handleNextPage={handleNextPage}
-                setPageLuna={setPageLuna}
-                texts4={texts4}
-                setTitlePage={setTitlePage}
-              />
-            ) : null}
-            {getPageLuna === 5 ? (
-              <QuestionsLaunch5
-                handleNextPage={handleNextPage}
-                setPageLuna={setPageLuna}
-                texts5={texts5}
-                setTitlePage={setTitlePage}
-              />
-            ) : null}
+      <img src={satelite} alt="Satelite" className={style.satelite} />
+      <section className={style.planetPageMain}>
+        <div className={style.planetPageContainer}>
+          <div>
+            <Title title={titlePage} />
+          </div>
+          <div className={style.pageContainer}>
+            <div className={luna.launch}>
+              {getPageLuna === 1 ? (
+                <NameProject
+                  handleNextPage={handleNextPage}
+                  setPageLuna={setPageLuna}
+                  texts={texts}
+                  setTitlePage={setTitlePage}
+                />
+              ) : null}
+              {getPageLuna === 2 ? (
+                <QuestionsLaunch1
+                  handleNextPage={handleNextPage}
+                  setPageLuna={setPageLuna}
+                  texts2={texts2}
+                  setTitlePage={setTitlePage}
+                />
+              ) : null}
+              {getPageLuna === 3 ? (
+                <QuestionsLaunch2
+                  handleNextPage={handleNextPage}
+                  setPageLuna={setPageLuna}
+                  texts3={texts3}
+                  setTitlePage={setTitlePage}
+                />
+              ) : null}
+              {getPageLuna === 4 ? (
+                <QuestionsLaunch3
+                  handleNextPage={handleNextPage}
+                  setPageLuna={setPageLuna}
+                  texts4={texts4}
+                  setTitlePage={setTitlePage}
+                />
+              ) : null}
+              {getPageLuna === 5 ? (
+                <QuestionsLaunch5
+                  handleNextPage={handleNextPage}
+                  setPageLuna={setPageLuna}
+                  texts5={texts5}
+                  setTitlePage={setTitlePage}
+                />
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
       </section>
       <img src={astronauta} alt="Space Man" className="space-man" />
     </div>

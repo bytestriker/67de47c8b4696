@@ -9,24 +9,26 @@
   width: 70%;
   max-width: 720px;
   &::before {
-    background-image: url("../../assets/images/corner-top-left.svg"), url("../../assets/images/corner-top-right.svg");
+    border-top: 1px solid #E6F85A;
+    display: block;
+    content: '';
+    width: 80%;
+    bottom: 100%;
+  }
+  &::after {
+    background-image: url("../../assets/images/corner-left.svg"), url("../../assets/images/corner-right.svg");
     background-position: left, right;
     background-repeat: no-repeat;
     background-size: auto 16px;
-
     display: block;
-    content: '';
-    width: 100%;
+    content: "";
+    width: auto;
     height: 16px;
     position: absolute;
-  }
-  &::after {
-    background-color: #E6F85A;
-    display: block;
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: auto;
+    bottom: 100%;
+    left: 50%;
+    width: calc(100% + 35px);
+    transform: translateX(-50%);
   }
 }
 
@@ -290,8 +292,15 @@
 
 }
 
+.satelite {
+  animation: floatingSatellite 16s ease-in-out infinite;
+  position: fixed;
+  top: 48px;
+  right: 72px;
+}
+
 .space-man {
-  animation: float 6s ease-in-out infinite;
+  animation: floatingSpaceman 6s ease-in-out infinite;
   position: fixed;
   top: 56%;
   left: 110%;
@@ -300,4 +309,28 @@
     top: 50%;
     width: 36%;
   }
+}
+
+@keyframes floatingSatellite {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes floatingSpaceman {
+	0% {
+		transform: translate(-80%, 0px);
+	}
+	50% {
+		transform: translate(-80%, -20px);
+	}
+	100% {
+		transform: translate(-80%, 0px);
+	}
 }
