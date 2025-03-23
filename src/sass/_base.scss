@@ -6,6 +6,27 @@ body {
   overflow-x: hidden;
   min-height: 100%;
   font-family: $--fontFamily;
+  font-size: 3vw;
   color: #F4FABF;
+  @include largeDevices {
+    font-size: 16px;
+  }
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Fahkwang';
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 6vw;
+  font-weight: 300;
+  @include largeDevices {
+    font-size: 32px;
+  }
+}
+
+input, button {
+  font-family: 'Fahkwang';
 }
 
