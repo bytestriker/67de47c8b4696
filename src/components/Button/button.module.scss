@@ -1,5 +1,10 @@
 @import "../../sass/variables";
 
+.centerButton {
+  display: flex;
+  justify-content: center;
+}
+
 .buttonPrimary {
   background-color: transparent;
   border: none;

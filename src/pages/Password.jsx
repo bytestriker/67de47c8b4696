@@ -8,16 +8,17 @@ import useAuth from '@Auth/userAuth';
 // Components
 import { ErrorAlert } from '@Components/Atomos/Alerts';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
+import Button from '@Components/Button';
 
 // Service
 import { ConfirmEmail, restartPasword } from '@Service/entries';
 
 // Styles
-import base from '@Sass/pages/general.module.scss';
-import styles from '@Sass/pages/repassword.module.scss';
+import general from '@Sass/pages/general.module.scss';
+import styles from '@Sass/pages/login.module.scss';
 
-// Images
-import _rocket from '@Assets/images/rocket_2.svg';
+//import styles from '@Sass/pages/repassword.module.scss';
+
 
 const RePassword = () => {
   const { setLoading } = useAuth();
@@ -25,11 +26,10 @@ const RePassword = () => {
   const [page, setPage] = useState(1);
 
   return (
-    <section className={base.planetPageMain}>
-      <img src={_rocket} alt="rocketluna" className={`${styles.rocketLuna}`} />
+    <section className={general.formAuthPageMain}>
       <ScrollToTop />
-      <div className={base.planetPageContainer}>
-        <div className={base.pageContainer}>
+      <div className={general.formAuthContainer}>
+        <div className={general.pageContainer}>
           {page === 1 ? <RestartEmail setPage={setPage} setLoading={setLoading} /> : <></>}
           {page === 2 ? <EmailConfirm setPage={setPage} /> : <></>}
           {page === 3 ? (
@@ -38,12 +38,6 @@ const RePassword = () => {
             <></>
           )}
           {page === 4 ? <RestartConfirm setPage={setPage} /> : <></>}
-          <div className={styles.contentInfo}>
-            <p className={styles.haveAccount}>¿Tienes una cuenta?</p>
-            <p className={styles.loginLink} onClick={() => history.push('/login')}>
-              Ingresa aquí.
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -86,10 +80,11 @@ export const RestartEmail = ({ setPage, setLoading }) => {
   return (
     <div className={styles.passwordContent}>
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.loginContent}>
         <h2>Restablece tu contraseña</h2>
         <div className={styles.formGroup}>
           <label htmlFor="email" className={styles.label_account}>
-            Ingresa tu correo electrónico para enviar un link de recuperación.
+            Dirección de correo electrónico*
           </label>
           <input
             type="email"
@@ -103,10 +98,15 @@ export const RestartEmail = ({ setPage, setLoading }) => {
             })}
           />
           <span>{message ? <ErrorAlert message={message} /> : null}</span>
-          {errors.email && <ErrorAlert message="Ingrese su correo" />}
-          <button className={styles.buttonRegister} type="submit">
-            OKAY
-          </button>
+            {errors.email && <ErrorAlert message="Ingrese su correo" />}
+        </div>
+        <Button
+            text="Enviar código"
+            onClick={() => history.push({ pathname: '/launch', from: location })}
+            isCentered={true}
+            isSubmit={true}
+            
+          />
         </div>
       </form>
     </div>
@@ -185,7 +185,7 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
             name="password"
             id="password"
             className={styles.account_input}
-            placeholder="NUEVA CONTRASEÑA"
+            placeholder="Nueva contraseña*"
             required={true}
             {...register('password', {
               required: 'Ingrese nuevamente la contraseña',
@@ -203,7 +203,7 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
             name="repassword"
             id="repassword"
             className={styles.account_input}
-            placeholder="CONFIRMA LA CONTRASEÑA"
+            placeholder="Repite la contraseña*"
             required={true}
             {...register('repassword', {
               required: 'Ingrese nuevamente la contraseña',
@@ -214,9 +214,13 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
             })}
           />
           {errors.repassword && <ErrorAlert message={errors.repassword.message} />}
-          <button className={styles.buttonRegister} type="submit">
-            OKAY
-          </button>
+          <Button
+            text="Guardar contraseña"
+            onClick={() => history.push({ pathname: '/launch', from: location })}
+            isCentered={true}
+            isSubmit={true}
+            
+          />
           <div className={styles.contentinfo}>
             <div className={styles.messageInfo}>{message}</div>
           </div>
