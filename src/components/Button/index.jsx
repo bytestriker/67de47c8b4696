@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import style from '@Components/Button/button.module.scss';
 
-  const Button = ({className, text, onClick}) => {
+  const Button = ({ text = "Click me", onClick = () => {} }, isSubmit = false) => {
 
   return (
     <button
       className={`${style.buttonPrimary}`}
+      type={isSubmit ? "submit" : undefined}
       onClick={onClick}
     >
       <svg width="242" height="42" viewBox="0 0 242 42" xmlns="http://www.w3.org/2000/svg" fill="none">

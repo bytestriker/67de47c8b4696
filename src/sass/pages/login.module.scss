@@ -7,55 +7,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding-bottom: 2rem;
   @include mediumDevicesMax {
     display: block;
   }
 
   h2 {
-    font-size: 1.2rem;
-    color: $--colorWhite;
     text-align: center;
-    position: relative;
-    font-family: $MontserratBold;
   }
 
   .formGroup {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
     position: relative;
-    padding-top: 8px;
-    padding-bottom: 8px;
 
-    .label_account {
-      color: $--colorWhite;
-      font-family: $MontserratRegular;
-      font-size: 1rem;
-      padding-left: 8px;
-      margin-bottom: 6px;
-      line-height: 1;
-    }
-
-    .account_input {
-      width: 360px;
-      height: 42px;
-      border: 1px solid $--colorPurple;
-      font-family: $MontserratRegular;
-      border-radius: 30px;
-      background: transparent;
-      color: $--colorWhite;
-      padding-left: 14px;
-      outline: none;
-      @include mediumDevicesMax {
-        width: 100%;
-      }
+    + .formGroup {
+      margin-top: 20px;
     }
   }
 
   .contentinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     .buttonRegister {
       @extend %buttonOn;
       width: 374px;
@@ -66,49 +41,49 @@
       }
     }
 
-    .buttonFacebook {
-      background: transparent;
-      border-radius: 30px;
-      width: 376px;
-      height: 42px;
-      border: 1px solid $--colorPurple;
-      font-size: 0.9rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2px;
-      position: relative;
-      margin: 12px 0 12px 0;
-      letter-spacing: 2px;
-      font-family: $MontserratMedium;
+    // .buttonFacebook {
+    //   background: transparent;
+    //   border-radius: 30px;
+    //   width: 376px;
+    //   height: 42px;
+    //   border: 1px solid $--colorPurple;
+    //   font-size: 0.9rem;
+    //   text-align: center;
+    //   color: rgba(255, 255, 255, 0.6);
+    //   cursor: pointer;
+    //   text-decoration: none;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   padding: 2px;
+    //   position: relative;
+    //   margin: 12px 0 12px 0;
+    //   letter-spacing: 2px;
+    //   font-family: $MontserratMedium;
 
-      &:hover {
-        background: $--colorPurple;
-        -webkit-transition-timing-function: ease-out;
-        transition-timing-function: ease-out;
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-      }
-      @include mediumDevicesMax {
-        width: 100%;
-        margin: 12px 0 0 0;
-      }
-      @include smallDevices {
-        font-size: 0.6rem;
-      }
+    //   &:hover {
+    //     background: $--colorPurple;
+    //     -webkit-transition-timing-function: ease-out;
+    //     transition-timing-function: ease-out;
+    //     -webkit-transition-duration: 0.3s;
+    //     transition-duration: 0.3s;
+    //   }
+    //   @include mediumDevicesMax {
+    //     width: 100%;
+    //     margin: 12px 0 0 0;
+    //   }
+    //   @include smallDevices {
+    //     font-size: 0.6rem;
+    //   }
 
-      .buttonFacebookIcon {
-        color: $--colorWhite;
-        font-size: 1.2rem;
-        margin-right: 8px;
-      }
-    }
+    //   .buttonFacebookIcon {
+    //     color: $--colorWhite;
+    //     font-size: 1.2rem;
+    //     margin-right: 8px;
+    //   }
+    // }
 
-    .recoveryPassword {
+    /*.recoveryPassword {
       color: $--colorGreen;
       text-decoration: underline;
       cursor: pointer;
@@ -117,7 +92,7 @@
       text-align: center;
       font-family: $MontserratMedium;
       display: block;
-    }
+    }*/
 
     .haveAccount {
       color: $--colorWhite;

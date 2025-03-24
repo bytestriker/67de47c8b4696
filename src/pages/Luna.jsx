@@ -32,7 +32,7 @@ import { ModalAlert } from '@Components/UtilsComponents/ModalAlert';
 import _rocket from '@Assets/images/lauchLuna.png';
 
 // Styles
-import style from '@Sass/pages/general.module.scss';
+import general from '@Sass/pages/general.module.scss';
 import luna from '@Sass/pages/luna.module.scss';
 
 const Luna = () => {
@@ -135,14 +135,14 @@ const Luna = () => {
   };
 
   return (
-    <div className={luna.Luna}>
-      <img src={satelite} alt="Satelite" className={style.satelite} />
-      <section className={style.planetPageMain}>
-        <div className={style.planetPageContainer}>
+    <section className={`${luna.Luna} ${general.planetWrap}`}>
+      <img src={satelite} alt="Satelite" className={general.satelite} />
+      <div className={general.planetPageMain}>
+        <div className={general.planetPageContainer}>
           <div>
             <Title title={titlePage} />
           </div>
-          <div className={style.pageContainer}>
+          <div className={general.pageContainer}>
             <div className={luna.launch}>
               {getPageLuna === 1 ? (
                 <NameProject
@@ -187,9 +187,9 @@ const Luna = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <img src={astronauta} alt="Space Man" className="space-man" />
-    </div>
+    </section>
   );
 };
 

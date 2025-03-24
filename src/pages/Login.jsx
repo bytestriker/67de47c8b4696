@@ -8,6 +8,7 @@ import useAuth from '@Auth/userAuth';
 // COMPONENTS
 import { ErrorAlert } from '@Components/Atomos/Alerts';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
+import Button from '@Components/Button';
 
 // SERVICE
 import { login } from '@Service/entries';
@@ -16,7 +17,7 @@ import { login } from '@Service/entries';
 import { FaFacebookF } from 'react-icons/fa';
 
 // STYLES
-import base from '@Sass/pages/general.module.scss';
+import general from '@Sass/pages/general.module.scss';
 import styles from '@Sass/pages/login.module.scss';
 
 const Login = () => {
@@ -52,13 +53,12 @@ const Login = () => {
   };
 
   return (
-    <section className={base.planetPageMain}>
+    <section className={general.formAuthPageMain}>
       <ScrollToTop />
-      <div className={base.planetPageContainer}>
-        <form method="POST" className={base.pageContainer} onSubmit={handleSubmit(onSubmit)}>
+      <div className={general.formAuthContainer}>
+        <form method="POST" className={general.pageContainer} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.loginContent}>
-            <h2>INICIAR SESIÓN</h2>
-
+            <h2>Iniciar sesión</h2>
             <div className={styles.formGroup}>
               <label htmlFor="email" className={styles.label_account}>
                 Dirección de correo electrónico *
@@ -67,17 +67,14 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
-                className={styles.account_input}
                 placeholder="ejemplo@rocketnow.mx"
                 {...register('email', {
                   required: true,
                   pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
                 })}
               />
-
               {errors.email && <ErrorAlert message="Ingrese su correo" />}
             </div>
-
             <div className={styles.formGroup}>
               <label htmlFor="password" className={styles.label_account}>
                 Contraseña *
@@ -86,7 +83,6 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
-                className={styles.account_input}
                 placeholder="* * * * * *"
                 {...register('password', { required: true })}
               />
@@ -98,21 +94,21 @@ const Login = () => {
             </div>
 
             <div className={styles.contentinfo}>
-              <button className={styles.buttonRegister} type="submit">
-                INICIAR SESIÓN
-              </button>
-              <button className={styles.buttonFacebook} type="button">
-                <FaFacebookF className={styles.buttonFacebookIcon} /> CREAR CUENTA CON FACEBOOK
-              </button>
+              <Button
+                text="INICIAR SESIÓN"
+                isSubmit={true}
+                onClick={() => history.push({ pathname: '/launch', from: location })}
+              />
               <Link className={styles.recoveryPassword} to="/repassword">
-                OLVIDASTE TU CONTRASEÑA
+                ¿Olvidaste tu contraseña?
               </Link>
-              <br></br>
-              <br></br>
-              <p className={styles.haveAccount}>¿Aún no tienes cuenta?</p>
-              <p className={styles.loginLink} onClick={() => handleLogin()}>
-                Empieza aquí
-              </p>
+              <div className={styles.formGroup}>
+                <label>O inicia con:</label>
+                <button className={styles.buttonFacebook} type="button">
+                  <FaFacebookF className={styles.buttonFacebookIcon} />FACEBOOK
+                </button>
+              </div>
+              <p className={styles.haveAccount}>¿Tienes una cuenta? <a className={styles.loginLink} onClick={() => handleLogin()}>Ingresa aquí</a></p>
             </div>
           </div>
         </form>
