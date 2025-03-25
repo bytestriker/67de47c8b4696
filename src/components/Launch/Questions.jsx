@@ -19,6 +19,7 @@ import lunaStyle from '@Sass/pages/luna.module.scss';
 
 import video from '@Assets/images/video.svg';
 import boton_copiar from '@Assets/images/icons/boton_copiar.svg'
+import { Title } from 'src';
 
 
 // Nombra tu proyecto
@@ -202,6 +203,7 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
       <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion}>
         <div className={lunaStyle.questionContent}>
+
           <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
           <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
           <SaberMas data={texts3} />
@@ -377,6 +379,21 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
     }
   };
 
+  const [copied, setCopied] = useState(false);
+  const [copy_text, setCopyText] = useState("Copiar")
+
+  const handleCopy = async (text) => { 
+    try {
+      console.log("text ", text )
+      await navigator.clipboard.writeText(text);
+      setCopied(true)
+      setTimeout(() => { setCopied(false)}, 2000)
+    } catch (error) {
+      
+    }
+  }
+
+
   return (
     <>
       <ScrollToTop />
@@ -388,15 +405,17 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
             className={style.textCenter}
             dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}
           ></p>
-          <label htmlFor="promo_code">Código Promocional</label>
           <section
+          id="promo-code-section"
             style={{
               alignItems: 'center',
               justifyContent: 'center',
               width: '100%',
-              marging: "20px",
+              marginBottom: "24px",
+              marginTop: "5px",
             }}
           >
+          <label htmlFor="promo_code">Código Promocional</label>
             <div
               id="promo-code"
               style={{
@@ -424,7 +443,6 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
               >
                 <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
               </div>
-
               <div
                 style={{
                   display: 'flex', // Ensures content aligns inside the div
@@ -438,8 +456,16 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
                   backgroundColor: '#E0FF4E',
                   color: '#000'
                 }}
+                onClick={()=>handleCopy('R0cketN0w')}
               >
-                <img src={boton_copiar} alt="Botón Copiar" />
+              { 
+              !copied && 
+                
+                <img src={boton_copiar} alt="Botón Copiar"/>
+              }
+              {
+                copied && <h1>Copiado</h1>
+              }
               </div>
             </div>
           </section>
