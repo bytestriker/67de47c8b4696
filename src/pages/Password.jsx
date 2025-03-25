@@ -51,6 +51,7 @@ export const RestartEmail = ({ setPage, setLoading }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const history = useHistory();
 
   const onSubmit = async (data) => {
     if (data.email) {
@@ -80,33 +81,34 @@ export const RestartEmail = ({ setPage, setLoading }) => {
   return (
     <div className={styles.passwordContent}>
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.loginContent}>
-        <h2>Restablece tu contraseña</h2>
-        <div className={styles.formGroup}>
-          <label htmlFor="email" className={styles.label_account}>
-            Dirección de correo electrónico*
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className={styles.account_input}
-            placeholder="CORREO ELECTRÓNICO"
-            {...register('email', {
-              required: true,
-              pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-            })}
-          />
-          <span>{message ? <ErrorAlert message={message} /> : null}</span>
-            {errors.email && <ErrorAlert message="Ingrese su correo" />}
-        </div>
-        <Button
+        <div className={styles.loginContent}>
+          <h2>Restablece tu contraseña</h2>
+          <p>Ingresa tu correo electrónico para enviar
+          un link de recuperación.</p>
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label_account}>
+              Dirección de correo electrónico*
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className={styles.account_input}
+              placeholder="ejemplo@codeup.com"
+              {...register('email', {
+                required: true,
+                pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+              })}
+            />
+            <span>{message ? <ErrorAlert message={message} /> : null}</span>
+              {errors.email && <ErrorAlert message="Ingrese su correo" />}
+          </div>
+          <Button
             text="Enviar código"
             onClick={() => history.push({ pathname: '/launch', from: location })}
             isCentered={true}
             isSubmit={true}
-            
-          />
+            />
         </div>
       </form>
     </div>
@@ -129,9 +131,12 @@ export const EmailConfirm = ({ setPage }) => {
           <label htmlFor="info" className={styles.label_account}>
             Hemos enviado un mensaje al correo electrónico que registraste para verificar tu cuenta.
           </label>
-          <button className={styles.buttonRegister} onClick={() => handleSubmit()}>
-            OKAY
-          </button>
+          <Button
+            text="Okay"
+            onClick={() => handleSubmit()}
+            isCentered={true}
+            isSubmit={true}
+            />
         </div>
       </form>
     </div>
@@ -144,6 +149,8 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const history = useHistory();
+
   const [message, setMessage] = useState('');
   const onSubmit = async (data) => {
     if (data.password === data.repassword) {
@@ -212,18 +219,17 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
                 message: 'La contraseña debe ser mayor a 10 caracteres',
               },
             })}
-          />
-          {errors.repassword && <ErrorAlert message={errors.repassword.message} />}
-          <Button
-            text="Guardar contraseña"
-            onClick={() => history.push({ pathname: '/launch', from: location })}
-            isCentered={true}
-            isSubmit={true}
-            
-          />
-          <div className={styles.contentinfo}>
-            <div className={styles.messageInfo}>{message}</div>
-          </div>
+            />
+        </div>
+        {errors.repassword && <ErrorAlert message={errors.repassword.message} />}
+        <Button
+          text="Guardar contraseña"
+          onClick={() => history.push({ pathname: '/launch', from: location })}
+          isCentered={true}
+          isSubmit={true}
+        />
+        <div className={styles.contentinfo}>
+          <div className={styles.messageInfo}>{message}</div>
         </div>
       </form>
     </div>
@@ -240,10 +246,12 @@ export const RestartConfirm = () => {
           <label htmlFor="info" className={styles.label_account}>
             ¡Tu contraseña ha sido restablecida! Prueba iniciar sesión con tu nueva contraseña.
           </label>
-
-          <button className={styles.buttonRegister} onClick={() => history.push('/login')}>
-            INICIAR SESIÓN
-          </button>
+          <Button
+            text="Iniciar sesión"
+            onClick={() => history.push('/login')}
+            isCentered={true}
+            isSubmit={true}
+            />
         </div>
       </form>
     </div>

@@ -4,20 +4,28 @@
 
 .formAuthPageMain {
   background-image: url('../../assets/images/bg-form.jpg');
-  background-position: center;
+  background-position: 20% center;
   background-size: cover;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
   height: 100%;
   width: 100%;
+  @include tabletPlus {
+    align-items: normal;
+    justify-content: flex-end;
+  }
 }
 
 .formAuthContainer {
   background-color: rgba(77, 84, 47, 0.45);
-  padding: 150px 5vw 0;
-  right: 5vw;
-  width: 47%;
+  padding: 48px 2.5vw 0;
   position: relative;
+  width: 100%;
+  @include tabletPlus {
+    padding: 150px 5vw 0;
+    right: 7.5vw;
+    width: 47%;
+  }
 
 }
 

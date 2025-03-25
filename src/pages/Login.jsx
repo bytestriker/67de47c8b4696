@@ -89,9 +89,12 @@ const Login = () => {
               {errors.password && <ErrorAlert message="Ingrese su password" />}
             </div>
 
-            <div className={styles.contentinfo}>
-              <div className={styles.messageInfo}>{message}</div>
-            </div>
+            {
+              message &&
+              <div className={styles.contentinfo}>
+                <div className={styles.messageInfo}>{message}</div>
+              </div>
+            }
 
             <div className={styles.contentinfo}>
               <Button

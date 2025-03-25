@@ -18,7 +18,7 @@
   color: inherit;
   font-size: inherit;
   text-align: center;
-  @include largeDevices {
+  @include tabletPlus {
     height: 48px;
     width: 248px;
   }

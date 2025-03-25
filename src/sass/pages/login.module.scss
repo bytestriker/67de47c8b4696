@@ -31,7 +31,7 @@
   .contentinfo {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     text-align: center;
     .buttonRegister {
       @extend %buttonOn;
@@ -115,20 +115,7 @@
       }
     }
 
-    .loginLink {
-      color: $--colorWhite;
-      font-size: 1rem;
-      text-align: center;
-      line-height: normal;
-      font-family: $MontserratRegular;
-      position: relative;
-      text-decoration: underline;
-      cursor: pointer;
-      @include mediumDevicesMax {
-        width: 100%;
-        display: block;
-      }
-    }
+    
 
     .messageInfo {
       margin: 1rem 0 1rem 0;
