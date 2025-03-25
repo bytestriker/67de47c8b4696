@@ -8,16 +8,17 @@ import { lunaStore } from '@Store/luna';
 
 // COMPONENTS
 import { ScrollToTop } from '../UtilsComponents/ScrollTop';
-import { Title2, TitlePre, ParagraphPlanet } from '@Components/Atomos/Titles';
+
 import { SaberMas } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
 import lunaStyle from '@Sass/pages/luna.module.scss';
-import login from '@Sass/pages/login.module.scss';
+
 
 import video from '@Assets/images/video.svg';
+import boton_copiar from '@Assets/images/icons/boton_copiar.svg'
 
 
 // Nombra tu proyecto
@@ -62,20 +63,24 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
       <ScrollToTop />
       <div className={lunaStyle.LaunchQuestion1}>
         <h2>Launch</h2>
-        {
-          texts?.slogan
-          ? <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
-          : <p className="text-center">¡Nombra tu proyecto!</p>
-        }
-        <figure><img src={video} alt="video" /></figure>
+        {texts?.slogan ? (
+          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
+        ) : (
+          <p className="text-center">¡Nombra tu proyecto!</p>
+        )}
+        <figure>
+          <img src={video} alt="video" />
+        </figure>
         <div className={lunaStyle.questionContent}>
-          {
-            texts?.descripcion
-            ? <p
-              className="text-center"
-              dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-            : <p>Antes de despegar, ponle nombre a tu proyecto. Podrás modificarlo a lo largo de tu viaje. Recuerda que cada vez que te venga la inspiración, este es el espacio correcto para hacer las modificaciones que necesites.</p>
-          }
+          {texts?.descripcion ? (
+            <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+          ) : (
+            <p>
+              Antes de despegar, ponle nombre a tu proyecto. Podrás modificarlo a lo largo de tu
+              viaje. Recuerda que cada vez que te venga la inspiración, este es el espacio correcto
+              para hacer las modificaciones que necesites.
+            </p>
+          )}
           <h2>¿Cómo se va a llamar?</h2>
           <fieldset>
             <label htmlFor="email">Nombre de tu proyecto</label>
@@ -89,11 +94,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
               onChange={(e) => handleNameProject(e)}
             />
           </fieldset>
-          <Button
-            text="Siguiente"
-            isSubmit={true}
-            onClick={() => handleNextPage(2)}
-            />
+          <Button text="Siguiente" isSubmit={true} onClick={() => handleNextPage(2)} />
         </div>
       </div>
     </>
@@ -133,17 +134,13 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion}>
         <div className={lunaStyle.questionContent}>
-          <h2>Launch</h2>
-          <p>Déjanos saber la idea y motivación de tu proyecto.</p>
-          <h3>¿Por qué quieres emprender?</h3>
-          <p>Ahora ¿Por qué quieres construir esto que ya plasmaste? Escribe en este espacio</p>
+          <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
+          <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
           <SaberMas data={texts2} />
-          {/*
-            <Title2 text={texts2?.pregunta} />
-            <ParagraphPlanet text={texts2?.descripcion} />
-          */}
           <fieldset>
-            <label htmlFor="launchQ1" className="text-right">1/3</label>
+            <label htmlFor="launchQ1" className="text-right">
+              1/3
+            </label>
             <textarea
               ref={Q1}
               className={lunaStyle.response}
@@ -162,15 +159,13 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
               text="REGRESAR"
               onClick={() => setPageLuna(1)}
               isAlt
-              />
+            />
             <Button
               className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
               text="SIGUIENTE"
               onClick={() => handleNextPage(3)}
-              />
+            />
           </div>
-
-        
         </div>
       </div>
     </>
@@ -205,68 +200,39 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
     <>
       <ScrollToTop />
       <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
-      
       <div className={lunaStyle.LaunchQuestion}>
         <div className={lunaStyle.questionContent}>
-          {
-            texts?.descripcion
-            ? <p
-              className="text-center"
-              dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-            : <p>Antes de despegar, ponle nombre a tu proyecto. Podrás modificarlo a lo largo de tu viaje. Recuerda que cada vez que te venga la inspiración, este es el espacio correcto para hacer las modificaciones que necesites.</p>
-          }
-          <h2>¿Cómo se va a llamar?</h2>
+          <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
+          <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
+          <SaberMas data={texts3} />
           <fieldset>
-            <label htmlFor="email">Nombre de tu proyecto</label>
-            <input
-              ref={projectName}
-              type="text"
-              name="projectName"
-              id="projectName"
-              placeholder="NOMBRE"
-              value={getLuna().nombre}
-              onChange={(e) => handleNameProject(e)}
-            />
+            <label htmlFor="launchQ1">2/3</label>
+            <textarea
+              ref={Q2}
+              className={lunaStyle.response}
+              name="why"
+              id="launchQ1"
+              cols="30"
+              rows="10"
+              placeholder="Desarrolla tu idea"
+              value={getLuna().porque}
+              onChange={(e) => handleQuestion2(e)}
+            ></textarea>
           </fieldset>
-          <Button
-            text="Siguiente"
-            isSubmit={true}
-            onClick={() => handleNextPage(2)}
-            />
-        </div>
-        <Title2 text={texts3?.pregunta} />
-        <ParagraphPlanet text={texts3?.descripcion} />
-        <SaberMas data={texts3} />
-        <label htmlFor="launchQ1" className={lunaStyle.labelPage}>
-          2/3
-        </label>
-        <textarea
-          ref={Q2}
-          className={lunaStyle.response}
-          name="why"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Desarrolla tu idea"
-          value={getLuna().porque}
-          onChange={(e) => handleQuestion2(e)}
-        ></textarea>
 
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button className={lunaStyle.btnPlanet} onClick={() => setPageLuna(2)}>
-              REGRESAR
-            </button>
-            <button
-              className={
-                getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
-              }
-              type="button"
-              disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
-              onClick={() => handleNextPage(4)}
-            >
-              SIGUIENTE
-            </button>
+          <div className={style.contentButtons}>
+            <div className={style.flexButtons}>
+              <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
+              <Button
+                text="Siguiente"
+                isSubmit={false}
+                disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
+                onClick={() => handleNextPage(4)}
+                className={
+                  getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
+                }
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -276,7 +242,7 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
 
 // ¿Como lo quieres hacer? HOW
 export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitlePage }) => {
-  const { contextValue} = useAuth();
+  const { contextValue } = useAuth();
 
   const { dataLuna, setStateLuna, getLuna } = lunaStore(
     (state) => ({
@@ -311,74 +277,68 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
       <ScrollToTop />
       <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion}>
-        <Title2 text={texts4?.pregunta} />
-        <ParagraphPlanet text={texts4?.descripcion} />
-        <SaberMas data={texts4} />
-        <label htmlFor="launchQ1" className={lunaStyle.labelPage}>
-          3/3
-        </label>
-        <textarea
-          ref={Q3}
-          className={lunaStyle.response}
-          name="how"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Escribe tu primer punto"
-          value={getLuna().como1}
-          onChange={(e) => handleQuestion31(e)}
-        ></textarea>
-        <textarea
-          ref={Q3}
-          className={lunaStyle.response}
-          name="how"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Eacribe tu segundo punto"
-          value={getLuna().como2}
-          onChange={(e) => handleQuestion32(e)}
-        ></textarea>
-        <textarea
-          ref={Q3}
-          className={lunaStyle.response}
-          name="how"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Escribe tu tercer punto"
-          value={getLuna().como3}
-          onChange={(e) => handleQuestion33(e)}
-        ></textarea>
+        <div className={lunaStyle.questionContent}>
+          <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
+          <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
+          <SaberMas data={texts4} />
+          <fieldset>
+            <label htmlFor="launchQ1" className={lunaStyle.labelPage}>
+              3/3
+            </label>
+            <textarea
+              ref={Q3}
+              className={lunaStyle.response}
+              name="how"
+              id="launchQ1"
+              cols="30"
+              rows="10"
+              placeholder="Escribe tu primer punto"
+              value={getLuna().como1}
+              onChange={(e) => handleQuestion31(e)}
+            ></textarea>
+            <textarea
+              ref={Q3}
+              className={lunaStyle.response}
+              name="how"
+              id="launchQ1"
+              cols="30"
+              rows="10"
+              placeholder="Eacribe tu segundo punto"
+              value={getLuna().como2}
+              onChange={(e) => handleQuestion32(e)}
+            ></textarea>
+            <textarea
+              ref={Q3}
+              className={lunaStyle.response}
+              name="how"
+              id="launchQ1"
+              cols="30"
+              rows="10"
+              placeholder="Escribe tu tercer punto"
+              value={getLuna().como3}
+              onChange={(e) => handleQuestion33(e)}
+            ></textarea>
+          </fieldset>
+          <div className={style.contentButtons}>
+            <div className={style.flexButtons}>
+              <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
 
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button className={lunaStyle.btnPlanet} onClick={() => setPageLuna(3)}>
-              REGRESAR
-            </button>
-            {/* <button
-              className={getLuna().como.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
-              type={'button'}
-              disabled={getLuna().como.length <= 12 ? 'disabled' : ''}
-              onClick={() => handleNextPage(5)}
-            > */}
-            {/* <button
-              className={lunaStyle.btnPlanet}
-              type={'button'}
-              onClick={() => handleNextPage(5)}
-            >
-              SIGUIENTE
-            </button> */}
-
-            {contextValue.isLogged() ? (
-            <button type="button" className={lunaStyle.btnPlanet} onClick={() => handleNextPage(6)}>
-              SIGUIENTE
-            </button>
-          ) : (
-            <button type="button" className={lunaStyle.btnPlanet} onClick={() => handleNextPage(5)}>
-              SIGUIENTE
-            </button>
-          )}
+              {contextValue.isLogged() ? (
+                <Button
+                  text="Siguiente"
+                  isAlt={false}
+                  isSubmit={false}
+                  onClick={() => handleNextPage(6)}
+                />
+              ) : (
+                <Button
+                  text="Siguiente"
+                  isAlt={false}
+                  isSubmit={false}
+                  onClick={() => handleNextPage(5)}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -388,8 +348,6 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
 
 // Video pre-registro
 export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
-
-
   const { dataLuna, setStateLuna, getLuna } = lunaStore(
     (state) => ({
       dataLuna: state.dataLuna,
@@ -422,21 +380,73 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
   return (
     <>
       <ScrollToTop />
+      <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion1}>
-        <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
-        <div className={lunaStyle.video}><img src={video} alt="video"  /></div>
-        <p
-          className={style.textCenter}
-          dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}
-        ></p>
+        <img src={video} alt="video" />
+        <div className={lunaStyle.questionContent}>
+          <p
+            className={style.textCenter}
+            dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}
+          ></p>
+          <label htmlFor="promo_code">Código Promocional</label>
+          <section
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              marging: "20px",
+            }}
+          >
+            <div
+              id="promo-code"
+              style={{
+                margin: '0 auto', // Centers the container horizontally
+                height: '50px',
+                marginTop: '3px',
+                display: 'flex',
+                width: '75%',
+                position: 'relative',
+                alignItems: 'center',
+                justifyContent: 'center', // Centers the child elements
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex', // Ensures content aligns inside the div
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '50px',
+                  width: '75%',
+                  border: '1px solid #E0FF4E',
+                  textAlign: 'center',
+                  fontSize: '2rem',
+                }}
+              >
+                <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
+              </div>
 
-        <div className={`${lunaStyle.nameProjectContent}`}>
+              <div
+                style={{
+                  display: 'flex', // Ensures content aligns inside the div
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '50px',
+                  width: '25%',
+                  border: '1px solid yellow',
+                  fontSize: '1rem',
+                  textAlign: 'center',
+                  backgroundColor: '#E0FF4E',
+                  color: '#000'
+                }}
+              >
+                <img src={boton_copiar} alt="Botón Copiar" />
+              </div>
+            </div>
+          </section>
 
-          <TitlePre text={texts5?.pregunta}  />
-
-          <button type="button" className={lunaStyle.btnPlanet}>
-              SIGUIENTE
-            </button>
+          <div className={`${lunaStyle.nameProjectContent}`}>
+            <Button text="Siguiente" isAlt={false} isSubmit={false} />
+          </div>
         </div>
       </div>
     </>
