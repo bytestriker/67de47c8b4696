@@ -59,10 +59,8 @@ const Login = () => {
         <form method="POST" className={general.pageContainer} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.loginContent}>
             <h2>Iniciar sesión</h2>
-            <div className={styles.formGroup}>
-              <label htmlFor="email" className={styles.label_account}>
-                Dirección de correo electrónico *
-              </label>
+            <fieldset>
+              <label htmlFor="email">Dirección de correo electrónico *</label>
               <input
                 type="email"
                 name="email"
@@ -74,11 +72,9 @@ const Login = () => {
                 })}
               />
               {errors.email && <ErrorAlert message="Ingrese su correo" />}
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="password" className={styles.label_account}>
-                Contraseña *
-              </label>
+            </fieldset>
+            <fieldset>
+              <label htmlFor="password">Contraseña *</label>
               <input
                 type="password"
                 name="password"
@@ -86,9 +82,8 @@ const Login = () => {
                 placeholder="* * * * * *"
                 {...register('password', { required: true })}
               />
-              {errors.password && <ErrorAlert message="Ingrese su password" />}
-            </div>
-
+            </fieldset>
+            {errors.password && <ErrorAlert message="Ingrese su password" />}
             {
               message &&
               <div className={styles.contentinfo}>

@@ -10,10 +10,12 @@ import { lunaStore } from '@Store/luna';
 import { ScrollToTop } from '../UtilsComponents/ScrollTop';
 import { Title2, TitlePre, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
 import lunaStyle from '@Sass/pages/luna.module.scss';
+import login from '@Sass/pages/login.module.scss';
 
 import video from '@Assets/images/video.svg';
 
@@ -28,8 +30,6 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
     }),
     shallow
   );
-
-  // console.log(texts);
 
   const handleNameProject = (event) => {
     setStateLuna({ ...dataLuna, nombre: event.target.value });
@@ -61,34 +61,39 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
     <>
       <ScrollToTop />
       <div className={lunaStyle.LaunchQuestion1}>
-        <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
-        <div className={lunaStyle.video}><img src={video} alt="video"  /></div>
-        <p
-          className={style.textCenter}
-          dangerouslySetInnerHTML={{ __html: texts?.descripcion }}
-        ></p>
-
-        <div className={lunaStyle.nameProjectContent}>
-          <Title2 text={texts?.pregunta} />
-          <input
-            ref={projectName}
-            type="text"
-            name="projectName"
-            id="projectName"
-            className={lunaStyle.inputProjectName}
-            placeholder="NOMBRE"
-            value={getLuna().nombre}
-            onChange={(e) => handleNameProject(e)}
-          />
-
-          <button
-            type="button"
-            className={getLuna().nombre.length <= 2 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
-            disabled={getLuna().nombre.length <= 2 ? 'disabled' : ''}
+        <h2>Launch</h2>
+        {
+          texts?.slogan
+          ? <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
+          : <p className="text-center">¡Nombra tu proyecto!</p>
+        }
+        <figure><img src={video} alt="video" /></figure>
+        <div className={lunaStyle.questionContent}>
+          {
+            texts?.descripcion
+            ? <p
+              className="text-center"
+              dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+            : <p>Antes de despegar, ponle nombre a tu proyecto. Podrás modificarlo a lo largo de tu viaje. Recuerda que cada vez que te venga la inspiración, este es el espacio correcto para hacer las modificaciones que necesites.</p>
+          }
+          <h2>¿Cómo se va a llamar?</h2>
+          <fieldset>
+            <label htmlFor="email">Nombre de tu proyecto</label>
+            <input
+              ref={projectName}
+              type="text"
+              name="projectName"
+              id="projectName"
+              placeholder="NOMBRE"
+              value={getLuna().nombre}
+              onChange={(e) => handleNameProject(e)}
+            />
+          </fieldset>
+          <Button
+            text="Siguiente"
+            isSubmit={true}
             onClick={() => handleNextPage(2)}
-          >
-            SIGUIENTE
-          </button>
+            />
         </div>
       </div>
     </>
@@ -125,40 +130,47 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
   return (
     <>
       <ScrollToTop />
-      <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion}>
-        <Title2 text={texts2?.pregunta} />
-        <ParagraphPlanet text={texts2?.descripcion} />
-        <SaberMas data={texts2} />
-        <label htmlFor="launchQ1" className={lunaStyle.labelPage}>
-          1/3
-        </label>
-        <textarea
-          ref={Q1}
-          className={lunaStyle.response}
-          name="what"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Escribe aquí tu idea"
-          value={getLuna().que}
-          onChange={(e) => handleQuestion1(e)}
-        ></textarea>
-
-        <div className={style.contentButtons}>
+        <div className={lunaStyle.questionContent}>
+          <h2>Launch</h2>
+          <p>Déjanos saber la idea y motivación de tu proyecto.</p>
+          <h3>¿Por qué quieres emprender?</h3>
+          <p>Ahora ¿Por qué quieres construir esto que ya plasmaste? Escribe en este espacio</p>
+          <SaberMas data={texts2} />
+          {/*
+            <Title2 text={texts2?.pregunta} />
+            <ParagraphPlanet text={texts2?.descripcion} />
+          */}
+          <fieldset>
+            <label htmlFor="launchQ1" className="text-right">1/3</label>
+            <textarea
+              ref={Q1}
+              className={lunaStyle.response}
+              name="what"
+              id="launchQ1"
+              cols="30"
+              rows="10"
+              placeholder="Escribe aquí tu idea"
+              value={getLuna().que}
+              onChange={(e) => handleQuestion1(e)}
+            ></textarea>
+          </fieldset>
           <div className={style.flexButtons}>
-            <button className={lunaStyle.btnPlanet} onClick={() => setPageLuna(1)}>
-              REGRESAR
-            </button>
-            <button
+            <Button
               className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
-              type={'button'}
-              disabled={getLuna().que.length <= 12 ? 'disabled' : ''}
+              text="REGRESAR"
+              onClick={() => setPageLuna(1)}
+              isAlt
+              />
+            <Button
+              className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
+              text="SIGUIENTE"
               onClick={() => handleNextPage(3)}
-            >
-              SIGUIENTE
-            </button>
+              />
           </div>
+
+        
         </div>
       </div>
     </>
@@ -193,7 +205,35 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
     <>
       <ScrollToTop />
       <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
+      
       <div className={lunaStyle.LaunchQuestion}>
+        <div className={lunaStyle.questionContent}>
+          {
+            texts?.descripcion
+            ? <p
+              className="text-center"
+              dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+            : <p>Antes de despegar, ponle nombre a tu proyecto. Podrás modificarlo a lo largo de tu viaje. Recuerda que cada vez que te venga la inspiración, este es el espacio correcto para hacer las modificaciones que necesites.</p>
+          }
+          <h2>¿Cómo se va a llamar?</h2>
+          <fieldset>
+            <label htmlFor="email">Nombre de tu proyecto</label>
+            <input
+              ref={projectName}
+              type="text"
+              name="projectName"
+              id="projectName"
+              placeholder="NOMBRE"
+              value={getLuna().nombre}
+              onChange={(e) => handleNameProject(e)}
+            />
+          </fieldset>
+          <Button
+            text="Siguiente"
+            isSubmit={true}
+            onClick={() => handleNextPage(2)}
+            />
+        </div>
         <Title2 text={texts3?.pregunta} />
         <ParagraphPlanet text={texts3?.descripcion} />
         <SaberMas data={texts3} />

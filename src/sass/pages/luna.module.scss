@@ -49,7 +49,7 @@
       font-size: 1rem;
     }
   }
-
+  /*
   .LaunchQuestion {
     display: flex;
     flex-wrap: wrap;
@@ -182,14 +182,28 @@
       @extend %buttonOff;
     }
   }
+  */
 
   .LaunchQuestion1 {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
     justify-content: center;
     margin: 0;
-    
-
+    padding: 24px 0;
+    text-align: center;
+    figure {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    h2, p {
+      margin: 0 0 20px;
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    /*
     .title {
       color: $--colorWhite;
       font-size: 1.2rem;
@@ -199,14 +213,11 @@
       }
     }
 
-    .video{
-    
-      width: 595px;
-      img{
-        width: 595px;
+    .video {
+      img {
+        display: block;
+        width: 100%;
       }
-  
-    
     }
 
     .resume {
@@ -268,7 +279,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      margin-bottom: 4rem;
+      margin-bottom: 20px;
 
       .labelProjectName {
         color: $--colorWhite;
@@ -310,8 +321,13 @@
     }
     .btnPlanetOff {
       @extend %buttonOff;
-    }
+    }*/
   }
+}
+
+.questionContent {
+  padding: 0px 32px 24px;
+
 }
 
 @keyframes urano {

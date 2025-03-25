@@ -241,7 +241,7 @@
 
 .space-man {
   animation: float 6s ease-in-out infinite;
-  position: absolute;
+  position: fixed;
   top: 56%;
   left: 110%;
   width: 55%;
@@ -250,7 +250,6 @@
     width: 36%;
   }
 }
-
 
 @keyframes float {
 	0% {

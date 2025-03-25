@@ -139,9 +139,9 @@ const Luna = () => {
       <img src={satelite} alt="Satelite" className={general.satelite} />
       <div className={general.planetPageMain}>
         <div className={general.planetPageContainer}>
-          <div>
-            <Title title={titlePage} />
-          </div>
+          {
+            titlePage && <Title title={titlePage} />
+          }
           <div className={general.pageContainer}>
             <div className={luna.launch}>
               {getPageLuna === 1 ? (

@@ -15,111 +15,112 @@
   h2, p {
     text-align: center;
   }
+}
 
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    position: relative;
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
 
-    + .formGroup,
-    + div {
-      margin-top: 20px;
+  + .formGroup,
+  + button,
+  + div {
+    margin-top: 20px;
+  }
+}
+
+.contentinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  .buttonRegister {
+    @extend %buttonOn;
+    width: 374px;
+    margin: 12px 0 12px 0;
+    @include mediumDevicesMax {
+      width: 100%;
+      margin: 12px 0 0 0;
     }
   }
 
-  .contentinfo {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .buttonFacebook {
+    box-shadow: 0 0 4px #E0FF4E, inset 0 0 4px #E0FF4E;
+    color: #E0FF4E;
+  }
+
+  // .buttonFacebook {
+  //   background: transparent;
+  //   border-radius: 30px;
+  //   width: 376px;
+  //   height: 42px;
+  //   border: 1px solid $--colorPurple;
+  //   font-size: 0.9rem;
+  //   text-align: center;
+  //   color: rgba(255, 255, 255, 0.6);
+  //   cursor: pointer;
+  //   text-decoration: none;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   padding: 2px;
+  //   position: relative;
+  //   margin: 12px 0 12px 0;
+  //   letter-spacing: 2px;
+  //   font-family: $MontserratMedium;
+
+  //   &:hover {
+  //     background: $--colorPurple;
+  //     -webkit-transition-timing-function: ease-out;
+  //     transition-timing-function: ease-out;
+  //     -webkit-transition-duration: 0.3s;
+  //     transition-duration: 0.3s;
+  //   }
+  //   @include mediumDevicesMax {
+  //     width: 100%;
+  //     margin: 12px 0 0 0;
+  //   }
+  //   @include smallDevices {
+  //     font-size: 0.6rem;
+  //   }
+
+  //   .buttonFacebookIcon {
+  //     color: $--colorWhite;
+  //     font-size: 1.2rem;
+  //     margin-right: 8px;
+  //   }
+  // }
+
+  /*.recoveryPassword {
+    color: $--colorGreen;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     text-align: center;
-    .buttonRegister {
-      @extend %buttonOn;
-      width: 374px;
-      margin: 12px 0 12px 0;
-      @include mediumDevicesMax {
-        width: 100%;
-        margin: 12px 0 0 0;
-      }
+    font-family: $MontserratMedium;
+    display: block;
+  }*/
+
+  .haveAccount {
+    color: $--colorWhite;
+    font-size: 1rem;
+    text-align: center;
+    line-height: normal;
+    margin: 0 auto;
+    position: relative;
+    font-family: $MontserratRegular;
+
+    @include mediumDevicesMax {
+      width: 100%;
     }
+  }
 
-    .buttonFacebook {
-      box-shadow: 0 0 4px #E0FF4E, inset 0 0 4px #E0FF4E;
-      color: #E0FF4E;
-    }
+  
 
-    // .buttonFacebook {
-    //   background: transparent;
-    //   border-radius: 30px;
-    //   width: 376px;
-    //   height: 42px;
-    //   border: 1px solid $--colorPurple;
-    //   font-size: 0.9rem;
-    //   text-align: center;
-    //   color: rgba(255, 255, 255, 0.6);
-    //   cursor: pointer;
-    //   text-decoration: none;
-    //   display: flex;
-    //   align-items: center;
-    //   justify-content: center;
-    //   padding: 2px;
-    //   position: relative;
-    //   margin: 12px 0 12px 0;
-    //   letter-spacing: 2px;
-    //   font-family: $MontserratMedium;
-
-    //   &:hover {
-    //     background: $--colorPurple;
-    //     -webkit-transition-timing-function: ease-out;
-    //     transition-timing-function: ease-out;
-    //     -webkit-transition-duration: 0.3s;
-    //     transition-duration: 0.3s;
-    //   }
-    //   @include mediumDevicesMax {
-    //     width: 100%;
-    //     margin: 12px 0 0 0;
-    //   }
-    //   @include smallDevices {
-    //     font-size: 0.6rem;
-    //   }
-
-    //   .buttonFacebookIcon {
-    //     color: $--colorWhite;
-    //     font-size: 1.2rem;
-    //     margin-right: 8px;
-    //   }
-    // }
-
-    /*.recoveryPassword {
-      color: $--colorGreen;
-      text-decoration: underline;
-      cursor: pointer;
-      margin-bottom: 1rem;
-      margin-top: 1rem;
-      text-align: center;
-      font-family: $MontserratMedium;
-      display: block;
-    }*/
-
-    .haveAccount {
-      color: $--colorWhite;
-      font-size: 1rem;
-      text-align: center;
-      line-height: normal;
-      margin: 0 auto;
-      position: relative;
-      font-family: $MontserratRegular;
-
-      @include mediumDevicesMax {
-        width: 100%;
-      }
-    }
-
-    
-
-    .messageInfo {
-      margin: 1rem 0 1rem 0;
-      color: $--colorWhite;
-    }
+  .messageInfo {
+    margin: 1rem 0 1rem 0;
+    color: $--colorWhite;
   }
 }
