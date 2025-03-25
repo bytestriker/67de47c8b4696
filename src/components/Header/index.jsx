@@ -45,43 +45,40 @@ const Header = () => {
   }, [dataLuna]);
 
   return (
-    <>
-      <header className={styles.Header}>
-        <div className={styles.header_content}>
-          <div className={styles.logo_content}>
-            <Href to="/">
-              <img src={_logo} alt="logo" className={styles.logo} />
+    <header className={styles.Header}>
+      <div className={styles.header_content}>
+        <div className={styles.logo_content}>
+          <Href to="/">
+            <img src={_logo} alt="logo" className={styles.logo} />
+          </Href>
+        </div>
+        <div className={styles.list_items}>
+        {contextValue.isLogged() ? (
+            <Href to="/perfil" className={styles.icon_item_profile} title="Mi Perfil">
+              <img src={_astro} alt="astro" />
             </Href>
-          </div>
-          <div className={styles.list_items}>
+          ) : null}
           {contextValue.isLogged() ? (
-              <Href to="/perfil" className={styles.icon_item_profile} title="Mi Perfil">
-                <img src={_astro} alt="astro" />
-              </Href>
-            ) : null}
-            {contextValue.isLogged() ? (
-              <div className={styles.icon_item}>{nameProject ? <h4>{nameProject}</h4> : null}</div>
-            ) : null}
+            <div className={styles.icon_item}>{nameProject ? <h4>{nameProject}</h4> : null}</div>
+          ) : null}
 
-            {contextValue.isLogged() ? (
-              <div className={styles.icon_item_world} title="Mis Tanques">
-                <img src={_tank} alt="tank" id="iconTank" onClick={() => setNavTankState(true)} />
-              </div>
-            ) : null}
-
-            <Href to="/social-hub" className={styles.icon_item_world} title="Social">
-              <img src={_earth} alt="earth" />
-            </Href>
-            <div className={styles.icon_item}>
-              <img src={_menu} alt="menu" onClick={() => setNavState(true)} />
+          {contextValue.isLogged() ? (
+            <div className={styles.icon_item_world} title="Mis Tanques">
+              <img src={_tank} alt="tank" id="iconTank" onClick={() => setNavTankState(true)} />
             </div>
+          ) : null}
+
+          <Href to="/social-hub" className={styles.icon_item_world} title="Social">
+            <img src={_earth} alt="earth" />
+          </Href>
+          <div className={styles.icon_item}>
+            <img src={_menu} alt="menu" onClick={() => setNavState(true)} />
           </div>
         </div>
-      </header>
-
+      </div>
       <Nav navState={navState} setNavState={setNavState} />
       <NavTank navTankState={navTankState} setNavTankState={setNavTankState} />
-    </>
+    </header>
   );
 };
 

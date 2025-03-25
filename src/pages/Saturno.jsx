@@ -111,7 +111,7 @@ const Saturno = () => {
   }, [saturnoQ4]);
 
   return (
-    <section className={style.planetPageMain}>
+    <section className={style.planetContainer}>
       {modalSalir ? (
         <ModalSalirSaturno
           title="Estás a punto de salir"

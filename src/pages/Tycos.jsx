@@ -23,17 +23,17 @@ const Tycos = () => {
 
   if (!isSuccess)
     return (
-      <div className={styles.planetPageMain}>
-        <div className={styles.planetPageContainer}></div>
+      <div className={styles.planetContainer}>
+        <div className={styles.planetContent}></div>
       </div>
     );
 
   return (
     <section>
       <ScrollToTop />
-      <div className={styles.planetPageMain}>
+      <div className={styles.planetContainer}>
         <GoBack />
-        <div className={`${styles.planetPageContainer2} ${styles.paddingBottom}`}>
+        <div className={`${styles.planetContent2} ${styles.paddingBottom}`}>
           {data ? (
             <Title title={data?.title?.rendered} />
           ) : (

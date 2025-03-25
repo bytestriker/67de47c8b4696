@@ -6,6 +6,7 @@ html, body {
 }
 
 body {
+  background-color: $--colorBlack;
   display: flex;
   flex-direction: column;
   font-family: $--fontFamily;

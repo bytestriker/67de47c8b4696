@@ -137,8 +137,8 @@ const Luna = () => {
   return (
     <section className={`${luna.Luna} ${general.planetWrap}`}>
       <img src={satelite} alt="Satelite" className={general.satelite} />
-      <div className={general.planetPageMain}>
-        <div className={general.planetPageContainer}>
+      <div className={general.planetContainer}>
+        <div className={general.planetContent}>
           {
             titlePage && <Title title={titlePage} />
           }

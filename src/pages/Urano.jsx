@@ -82,7 +82,7 @@ const Urano = () => {
   
 
   return (
-    <section className={style.planetPageMain}>
+    <section className={style.planetContainer}>
       {modalSalir ? <ModalMain setModalSalir={setModalSalir} /> : null}
 
       {modal ? (
@@ -98,7 +98,7 @@ const Urano = () => {
         />
       ) : null}
 
-      <div className={style.planetPageContainerUrano}>
+      <div className={style.planetContentUrano}>
         {page === 3 ? (
           <ButtonGoBack titlePage={title} setPage={setPage} page={2} />
         ) : (

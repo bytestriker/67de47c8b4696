@@ -218,7 +218,7 @@ const Venus = () => {
     }
   };
   return (
-    <section className={base.planetPageMain}>
+    <section className={base.planetContainer}>
       {modalSalir ? (
         <ModalSalirVenus
           title="Estás a punto de salir"

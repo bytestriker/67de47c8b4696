@@ -174,7 +174,7 @@ const Jupiter = () => {
   };
 
   return (
-    <section className={style.planetPageMain}>
+    <section className={style.planetContainer}>
       {modalSalir ? (
         <ModalSalirJupiter
           title="Estás a punto de salir"

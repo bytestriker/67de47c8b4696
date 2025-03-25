@@ -83,9 +83,7 @@ const Main = () => {
         <ModalPopup setPopup={setPopup} />
       ) : null}
       <main className={style.layout}>
-        <div className={style.headerLayout}>
-          <Header />
-        </div>
+        <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/login" render={() => (contextValue.isLogged() ? <Redirect to="/" /> : <Login />)} />
         <Route exact path="/terminos" component={Tycos} />
@@ -110,12 +108,11 @@ const Main = () => {
         <PrivateRoute exact path="/urano" component={Urano} />
         <PrivateRoute exact path="/carrito" component={ShoppingCar} />
         <PrivateRoute exact path="/checkout" component={Checkout} />
-
-                {/* 
-                <Route path="*">
-                  <Redirect to="/" />
-                </Route> 
-                */}
+        {/* 
+        <Route path="*">
+          <Redirect to="/" />
+        </Route> 
+        */}
       </main>
     </>
   );

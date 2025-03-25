@@ -75,8 +75,8 @@ const Thanks = () => {
 
   return (
     <section className={page.ThankYou}>
-      <div className={style.planetPageMain}>
-        <div className={style.planetPageContainer}>
+      <div className={style.planetContainer}>
+        <div className={style.planetContent}>
           <div className={page.ThankYouContent}>
             <img src={cohete} alt="cohete" />
             <Title title="¡GRACIAS!" />

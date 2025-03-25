@@ -100,7 +100,7 @@ const MercurioMain = () => {
   };
 
   return (
-    <section className={base.planetPageMain}>
+    <section className={base.planetContainer}>
       {modalSalir ? (
         <ModalMercurio
           title="Estás a punto de salir"
@@ -114,7 +114,7 @@ const MercurioMain = () => {
 
       <ScrollToTop />
 
-      <div className={base.planetPageContainer}>
+      <div className={base.planetContent}>
         <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
         <img src={Mercurio} alt="mercurio" className={style.MercurioImage} />
         <div className={style.Mercurio}>

@@ -13,8 +13,8 @@ import "@Components/SocialHub/SocialHub.scss";
 const SocialHub = () => {
   return (
 
-    <section className={style.planetPageMain}>
-      <div className={style.planetPageContainerSocial}>
+    <section className={style.planetContainer}>
+      <div className={style.planetContentSocial}>
       <div className="SocialHub">
       <div className="SocialHubContent">
               <Title title="SOCIAL HUB" />

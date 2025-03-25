@@ -39,8 +39,8 @@ const Register = () => {
   };
 
   return (
-    <section className={styles.planetPageMain}>
-      <div className={styles.planetPageContainer}>
+    <section className={styles.planetContainer}>
+      <div className={styles.planetContent}>
         <ScrollToTop />
         <div className={styles.pageContainer}>
           <form className={singup.createAccount} onSubmit={handleSubmit(onSubmit)}>

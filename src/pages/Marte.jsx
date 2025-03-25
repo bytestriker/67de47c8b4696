@@ -136,7 +136,7 @@ const Marte = () => {
   }, [marteQ3]);
 
   return (
-    <section className={base.planetPageMain}>
+    <section className={base.planetContainer}>
       {modalSalir ? (
         <ModalSalirMarte
           title="Estás a punto de salir"
