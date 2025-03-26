@@ -23,14 +23,12 @@ import '@Components/PlanetContent/PlanetContent.scss';
 
 const Planets = () => {
 
-  const {
-    lunaInfo
-  } = ServiceWPHome();
+  const { lunaInfo } = ServiceWPHome();
+
   return (
     <section className="planets">
       <Luna lunaInfo={lunaInfo} />
       <PlanetsItem />
-      
     </section>
   );
 };

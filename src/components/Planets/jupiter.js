@@ -53,52 +53,48 @@ export const Jupiter = ({ jupiterInfo }) => {
   }, [jupiterInfo]);
 
   return (
-    <div>
-      <div className={style.cardItem}>
-        <div className={`${style.planetFigure}  `}>
-          <img src={jupiter} alt="planet" className={`${style.planetImage}  ${style.mercurio}`} />
-          {
-            getJupiter().lockedPlanet !== 'desbloqueado' &&
-            <div className={`${style.planetLocked}`}>
-              <img src={grid} alt="lock" />
-              <img src={lock} alt="lock" />
-            </div>
-          }
-          
-
-<div className={style.tankCount}>
+    <div className={style.planetGridItem}>
+      <div className={`${style.planetFigure}`}>
+        <img src={jupiter} alt="planet" className={`${style.planetImage}  ${style.mercurio}`} />
+        {getJupiter().lockedPlanet !== 'desbloqueado' && (
+          <div className={`${style.lockedPlanet}`}>
+            <img src={grid} alt="lock" />
+            <img src={lock} alt="lock" />
+          </div>
+        )}
+        <div className={style.tankCount}>
           <img src={tank} alt="tank" />
           <span>x3</span>
         </div>
-        </div>
-        <div className={style.planetInfo}>
-        <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
-          <img src={_rayo} alt="lock" className={style.imgRayo} />
-          <p dangerouslySetInnerHTML={{ __html: description }}></p>
-          
-        </div>
-
-        <div className={style.planetButton_content}>
-          {getJupiter().id ? (
-            <button
-              className={`${
-                dataMercurio.complete === 1
-                  ? buttons.buttonPlanetCompleted
-                  : dataMercurio.complete === 2
-                  ? buttons.buttonPlanetIncomplete
-                  : dataMercurio.complete === 0
-                  ? buttons.buttonPlanet
-                  : buttons.buttonPlanet
-              }`}
-              onClick={() => validateProject('jupiter', 1)}
-            >
-              {dataMercurio.label}
-            </button>
-          ) : (
-            <img src={empieza} alt="empieza"  />
-          )}
-        </div>
       </div>
+
+      <div className={style.planetInfo}>
+        <h2>
+          <span dangerouslySetInnerHTML={{ __html: title }}></span>
+          <span className={style.planetUnderline}></span>
+        </h2>
+        <span className={style.planetUnderline}></span>
+        <p dangerouslySetInnerHTML={{ __html: description }}></p>
+      </div>
+
+      {getJupiter().id ? (
+        <button
+          className={`${
+            dataMercurio.complete === 1
+              ? buttons.buttonPlanetCompleted
+              : dataMercurio.complete === 2
+              ? buttons.buttonPlanetIncomplete
+              : dataMercurio.complete === 0
+              ? buttons.buttonPlanet
+              : buttons.buttonPlanet
+          }`}
+          onClick={() => validateProject('jupiter', 1)}
+        >
+          {dataMercurio.label}
+        </button>
+      ) : (
+        <img src={empieza} alt="empieza" />
+      )}
     </div>
   );
 };

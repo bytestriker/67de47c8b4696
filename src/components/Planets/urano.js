@@ -39,12 +39,12 @@ export const Urano = ({ uranoInfo }) => {
 
   // Store de Urano
   const { getUrano, dataUrano } = uranoStore(
-      (state) => ({
-        getUrano: state.getUrano,
-        dataUrano: state.dataUrano,
-      }),
-      shallow
-    );
+    (state) => ({
+      getUrano: state.getUrano,
+      dataUrano: state.dataUrano,
+    }),
+    shallow
+  );
 
   const { validateProject } = valPackage();
 
@@ -57,40 +57,30 @@ export const Urano = ({ uranoInfo }) => {
   }, [uranoInfo]);
 
   return (
-    <div>
-    <div className={style.cardItem}>
+    <div className={`${style.planetGridItem} ${style.planetGridItemUrano}`}>
       <div className={`${style.planetFigure}  `}>
         <img src={urano} alt="planet" className={`${style.planetImage} ${style.urano}`} />
         {
-          getUrano().lockedPlanet !== 'desbloqueado' &&
-          <div className={`${style.planetLocked}`}>
+          getUrano().lockedPlanet !== 'desbloqueado' && (
+          <div className={`${style.lockedPlanet}`}>
             <img src={grid} alt="lock" />
             <img src={lock} alt="lock" />
           </div>
+          )
         }
         <div className={style.tankCount}>
           <img src={tank} alt="tank" />
           <span>x3</span>
         </div>
-        
       </div>
-      
-        
       <div className={style.planetInfo}>
-        <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
-        <img src={_rayo} alt="lock" className={style.imgRayo} />
+        <h2>
+          <span dangerouslySetInnerHTML={{ __html: title }}></span>
+          <span className={style.planetUnderline}></span>
+        </h2>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
-        
       </div>
-
-      <div className={style.planetButton_content}>
-        
-         
-        
-          <img src={empieza} alt="empieza"  />
-        
-      </div>
+      <img src={empieza} alt="empieza" />
     </div>
-  </div>
   );
 };

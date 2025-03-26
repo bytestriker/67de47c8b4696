@@ -3,7 +3,7 @@
 @import '@Sass/components/extends.scss';
 @import '@Sass/utils';
 
-.lunaContainer {
+.lunaWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,8 @@
   }
 }
 
-.lunaWrapper {
+.lunaFigure {
+  position: relative;
   @include largeDevices {
     transform: translateX(-5%);
   }
@@ -37,76 +38,84 @@
     margin-right: -5vw;
     width: 110vw;
   }
-}
-
-.luna {
-  display: block;
-  width: 100%;
-}
-
-.radarWrapper {
-  position: absolute;
-  top: 18%;
-  left: 4.5vw;
-  width: 48%;
-  @include largeDevices {
-    left: 44%;
-    top: 14%;
+  .lunaImage {
+    display: block;
+    width: 100%;
   }
-}
-
-.radar {
-  display: flex;
-  transform: rotate(50deg);
-  width: 100%;
-}
-
-.bulletLeft {
-  position: absolute;
-  bottom: 50%;
-  left: 55%;
-  width: 50%;
-  @include largeDevices1024 {
-    display: none;
+  .rocketImage {
+    display: block;
+    position: absolute;
+    bottom: 86%;
+    right: 60%;
+    width: 180vw;
+    @include largeDevices {
+      bottom: 64%;
+      right: 84%;
+      width: 70vw;
+    }
   }
-}
-
-.bulletTop {
-  position: absolute;
-  height: 75%;
-  top: 65%;
-  right: 50%;
-  @include largeDevices {
-    display: none;
-  }
-}
-
-.bulletList {
-  list-style: none;
-  position: absolute;
-  top: 66%;
-  right: 0;
-  width: 25%;
-  li {
-    position: relative;
-    &:before {
-      border: 1px solid #E0FF4E;
-      display: block;
-      content: '';
-      width: 1.4vw;
-      height: 1.4vw;
+  .radarWrapper {
+    position: absolute;
+    top: 18%;
+    left: 4.5vw;
+    width: 48%;
+    @include largeDevices {
+      left: 44%;
+      top: 14%;
+    }
+    .radar {
+      display: flex;
+      transform: rotate(50deg);
+      width: 100%;
+    }
+    
+    .bulletLeft {
       position: absolute;
-      top: 50%;
-      right: 110%;
-      transform: translateY(-50%) rotate(45deg);
-      @include largeDevices {
-        width: .56vw;
-        height: .56vw;
+      bottom: 50%;
+      left: 55%;
+      width: 50%;
+      @include largeDevices1024 {
+        display: none;
       }
     }
-    &:not(:last-child) {  margin-bottom: 8px;}
-    &:nth-child(1) {  margin-left: 24%; }
-    &:nth-child(2) {  margin-left: 12%; }
+    
+    .bulletTop {
+      position: absolute;
+      height: 75%;
+      top: 65%;
+      right: 50%;
+      @include largeDevices {
+        display: none;
+      }
+    }
+  }
+  .bulletList {
+    list-style: none;
+    position: absolute;
+    top: 66%;
+    right: 0;
+    width: 25%;
+    li {
+      position: relative;
+      &:before {
+        border: 1px solid #E0FF4E;
+        display: block;
+        content: '';
+        width: 1.4vw;
+        height: 1.4vw;
+        position: absolute;
+        top: 50%;
+        right: 110%;
+        transform: translateY(-50%) rotate(45deg);
+        @include largeDevices {
+          width: .56vw;
+          height: .56vw;
+        }
+      }
+      &:not(:last-child) {  margin-bottom: 8px;}
+      &:nth-child(1) {  margin-left: 24%; }
+      &:nth-child(2) {  margin-left: 12%; }
+    }
   }
 }
 
@@ -115,166 +124,166 @@
     padding: 0 10vw;
     text-align: center;
   }
-  /* padding-right: 22%;
-  padding-bottom: 6%;
-  color: #F4FABF;
-  font-family: $MontserratExtraLight;
-  font-weight: 200; */
-  h2 { margin: 0
-
-
+  h2 {
+    margin: 0
   }
   .moon_launchBtn {
     @extend %buttonOn;
   }
 }
 
-.bullets {
-  position: absolute;
-  width: 15%;
-  padding-right: 18%;
-  padding-top: 25%;
-}
-
-
-
-.punto {
-  position: absolute;
-  padding-left: 1%;
-  padding-bottom: 17%;
-}
-
-.empieza {
-  position: absolute;
-  padding-left: 87%;
-  padding-bottom: 25%;
-}
-
-.planets {
-  background-image: url("../../assets/images/bg-stars.png");
-}
-
-
-.PlanetsItem {
-  display: grid;
-  grid-template-columns:  repeat(3, 1fr); /* Primeras 2 columnas de 1fr y la última de 2fr */
-  grid-gap: 2rem;
-  max-width: 1320px;
+.planetGrid {
   margin: auto;
-  
-
-  @include desktopMax {
-    grid-template-columns: 1fr 1fr;
+  width: 90%;
+  max-width: 1280px;
+  @include mediumDevices {
+    display: grid;
+    grid-gap: 5vw;
+    grid-template-columns:  repeat(2, 1fr);
   }
-
-  @include mediumDevicesMax {
-    grid-template-columns: 1fr;
+  @include largeDevices {
+    grid-template-columns:  repeat(6, 1fr);
   }
+}
 
-  .cardItem {
+.planetGridItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  @include mediumDevices {
+    
+  }
+  @include largeDevices {
+    grid-column: span 2;
+    
+  }
+  .planetFigure {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    margin-bottom: 2.5vw;
+    width: 80%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    @include largeDevices {
+      margin-bottom: 0.5vw;
 
+      width: 100%;
+    }
+    
 
-
-  
-
-
-
-
-
-
-
-      .planetImage {
-        position: absolute;
-        width: auto;
-        height: 100%;
-        &.urano {
-          height: 140%;
-        }
+    .planetImage {
+      position: absolute;
+      width: auto;
+      height: 100%;
+      &.urano {
+        height: 140%;
       }
+    }
 
-    .planetButton_content {
+    .lockedPlanet {
       display: flex;
       justify-content: center;
       align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      right: 0;
       width: 100%;
-      height: auto;
-      padding-top: 12px;
-      padding-bottom: 12px;
-
-      
+      height: 100%;
+      img {
+        position: absolute;
+        &:first-of-type {
+          height: 112%;
+          opacity: .7;
+        }
+        &:last-of-type {
+          width: 12vw;
+          animation: glowing 3s linear infinite;
+          @include mediumDevices {
+            width: 6vw;
+    
+          }
+          @include largeDevices {
+            width: 3.2vw;
+          }
+        }
+      }
     }
-
-    .buttonPlanet {
-      @extend %buttonOn;
+    .tankCount {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 15%;
+      width: 90px;
+      height: 50px;
+      bottom: 0;
+      img {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+      }
+      span {
+        position: absolute;
+        left: 26%;
+        font-size: 90%;
+        display: block;
+        padding-top: 2px;
+      }
+    
     }
   }
-}
-
-.planetFigure {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  position: relative;
-}
-
-.planetLocked {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  img {
-    position: absolute;
-    &:first-of-type {
-      height: 112%;
-      opacity: .7;
+  .planetInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      margin: 20px 0 12px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+      span.planetUnderline {
+        background-image: url(../../assets/images/shape-right.svg), url(../../assets/images/shape-left.svg);
+        background-position: right, left;
+        background-repeat: no-repeat;
+        background-size: auto 16px;
+        display: block;
+        height: 16px;
+        width: calc(100% + 148px);
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -8px);
+        &:before {
+          background-color: #E6F85A;
+          content: "";
+          display: block;
+          position: absolute;
+          left: 64px;
+          right: 64px;
+          width: auto;
+          height: 1px;
+          top: 10px;
+        }
+      }
     }
-    &:last-of-type {
-      width: 64px;
-    }
+  }
+  &.planetGridItemUrano {   grid-column: 2 / 4; }
+  &.planetGridItemNeptuno { grid-column: 4 / 6; }
+}
+
+@keyframes glowing {
+  0% {
+    filter: drop-shadow(0px 2px 6px #E6F85A);
+  }
+  50% {
+    filter: drop-shadow(0px 2px 2px #E6F85A);
+  }
+  100% {
+    filter: drop-shadow(0px 2px 6px #E6F85A);
   }
 }
 
-.planetInfo {
-  h2 {
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 0 0;
-  }
-}
 
-.tankCount {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 15%;
-  width: 90px;
-  height: 50px;
-  bottom: 0;
-  img {
-    position: absolute;
-    width: inherit;
-    height: inherit;
-  }
-  span {
-    position: absolute;
-    left: 26%;
-    font-size: 90%;
-    display: block;
-    padding-top: 2px;
-  }
-
-}

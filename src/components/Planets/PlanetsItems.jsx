@@ -12,7 +12,7 @@ import {
 } from '@Components/Planets';
 
 // Styles
-import style from '@Components/Planets/planets.module.scss';
+import planets from '@Components/Planets/planets.module.scss';
 
 // Hook
 import { ServiceWPHome } from '@Hooks/useFetchWP';
@@ -31,7 +31,7 @@ const PlanetsItems = () => {
   } = ServiceWPHome();
   return (
     <section>
-      <div className={style.PlanetsItem}>
+      <div className={planets.planetGrid}>
         <Mercurio mercurioInfo={mercurioInfo} />
         <Venus venusInfo={venusInfo} />
         <Tierra tierraInfo={tierraInfo} />

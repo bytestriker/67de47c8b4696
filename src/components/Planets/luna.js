@@ -6,12 +6,13 @@ import { lunaStore } from '@Store/luna';
 import { Title } from '@Components/Atomos/Titles';
 
 // Styles
-import style from '@Components/Planets/planets.module.scss';
+import planets from '@Components/Planets/planets.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 import buttons from '@Sass/components/buttons.module.scss';
 
 // Images
 import luna from '@Assets/images/moon.png';
+import rocket from '@Assets/images/rocket.png';
 import bulletLeft from '@Assets/images/bullet-left.svg';
 import bulletTop from '@Assets/images/bullet-top.svg';
 import radar from '@Assets/images/radar.svg';
@@ -54,28 +55,29 @@ export const Luna = ({ lunaInfo }) => {
   }, [lunaInfo]);
 
   return (
-    <div id="launch-moon" className={`${style.lunaContainer}`}>
-      <div className={`${style.lunaWrapper}`}>
-        <img src={luna} className={`${style.luna}`} alt="luna" />
-        <div className={`${style.radarWrapper}`}>
-          <img src={radar} className={`${style.radar}`} alt="Radar" />
-          <img src={bulletTop} alt="Bullet SVG" className={`${style.bulletTop}`} />
-          <img src={bulletLeft} alt="Bullet SVG" className={`${style.bulletLeft}`} />
+    <div id="launch-moon" className={`${planets.lunaWrapper}`}>
+      <div className={`${planets.lunaFigure}`}>
+        <img src={luna} className={`${planets.lunaImage}`} alt="luna" />
+        <img src={rocket} className={`${planets.rocketImage}`} alt="rocket" />
+        <div className={`${planets.radarWrapper}`}>
+          <img src={radar} className={`${planets.radar}`} alt="Radar" />
+          <img src={bulletTop} alt="Bullet SVG" className={`${planets.bulletTop}`} />
+          <img src={bulletLeft} alt="Bullet SVG" className={`${planets.bulletLeft}`} />
         </div>
-        <ul className={`${style.bulletList}`}>
+        <ul className={`${planets.bulletList}`}>
           <li>Colonizar</li>
           <li>Liftoff!</li>
           <li>Transporte</li>
         </ul>
       </div>
       {/*
-      <img src={bullets} alt="bullets" className={`${style.bullets}`} />
-      <img src={punto} alt="punto" className={`${style.punto}`} /> */}
-      <div className={`${style.lunaContent}`}>
+      <img src={bullets} alt="bullets" className={`${planets.bullets}`} />
+      <img src={punto} alt="punto" className={`${planets.punto}`} /> */}
+      <div className={`${planets.lunaContent}`}>
         
         <h2>{title}</h2>
         <p>{description}</p>
-        <div className={style.planetButton_content}>
+        <div className={planets.planetButton_content}>
           {getLuna().id ? (
             <button
               className={`${

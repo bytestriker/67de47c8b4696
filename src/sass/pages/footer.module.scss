@@ -4,21 +4,25 @@
 
 /********* Footer Style ********/
 .Footer {
+  background-image: url(../../assets/images/footer-space-man.png),
+    url(../../assets/images/footer-bg.png);
+  background-position: bottom right, 150% 160%;
+  background-repeat: no-repeat;
+  background-size: 60vw, 117vw;
+  padding: 5vw 5vw 75vw;
+  @include desktop {
+    background-position: right top, 66% -3vw;
+    background-size: contain, 75%;
+    padding: 10vw 3vw 3vw;
+  }
 
-  font-family: $MontserratExtraLight;
-  width: 100%;
-  height: 100%;
-  bottom: 0;
-  left: 0;
-  top: 0;
-  position: relative;
+  @include largeDevices {
+    background-position: right top, 92% -4vw;
+  }
 
   .footer_content {
     display: flex;
     flex-direction: column;
-    padding-top: 250px;
-    padding-left: 50px;
-    
 
     @include tablet {
       grid-template-columns: 1fr;
@@ -30,8 +34,7 @@
         img {
           margin-right: 12px;
         }
-        p{ 
-          
+        p {
           font-family: $MontserratExtraLight;
           color: $--colorYellow;
           font-size: 0.7rem;
@@ -45,7 +48,7 @@
       .linksFooter {
         display: flex;
         flex-direction: row;
-        gap: 10px; 
+        gap: 10px;
         position: relative;
 
         .linkFooter {

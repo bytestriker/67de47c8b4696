@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { scroller } from 'react-scroll';
 
-
 // Images
 import { BiCaretRightCircle } from 'react-icons/bi';
 import astronauta from '@Assets/images/astronauta.png';
@@ -96,7 +95,9 @@ const Index = () => {
 
   return (
     <div className="video" id="bio">
-      {previewVideo(sliderInfo)}
+      {
+        previewVideo(sliderInfo)
+      }
       <div className="buttonReady2Launch">
         <img src={_IconDown} alt="icondown" onClick={scrollingToanimate} />
       </div>

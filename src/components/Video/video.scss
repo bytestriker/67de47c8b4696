@@ -241,11 +241,10 @@
 
 .space-man {
   animation: float 6s ease-in-out infinite;
-  position: fixed;
+  position: absolute;
   top: 56%;
   left: 110%;
   width: 55%;
-  pointer-events: none;
   @include largeDevices {
     top: 50%;
     width: 36%;

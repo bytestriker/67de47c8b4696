@@ -49,7 +49,10 @@ const KnowMore = () => {
       <div className="container">
         <GoBack />
         <div className="video-knowmore">
-          <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
+          <h2>
+          <span dangerouslySetInnerHTML={{ __html: title }}></span>
+          <span className={style.planetUnderline}></span>
+        </h2>
           <div className="videoYoutube">{handleVideo()}</div>
         </div>
 
