@@ -4,13 +4,13 @@ import { scroller } from 'react-scroll';
 // Images
 import { BiCaretRightCircle } from 'react-icons/bi';
 import astronauta from '@Assets/images/astronauta.png';
+import rocket from '@Assets/images/rocket-tail.png';
+import _IconDown from '@Assets/images/ScrollDown.svg';
+import playvideo from '@Assets/images/playvideo.svg';
 
 // Styles
 import '@Components/Video/video.scss';
 
-// Images
-import _IconDown from '@Assets/images/ScrollDown.svg';
-import playvideo from '@Assets/images/playvideo.svg';
 
 // Hooks
 import { HomeSlider } from '@Hooks/useFetchWP';
@@ -79,6 +79,7 @@ const Index = () => {
       const videoId = urlObject.searchParams.get('v');*/
       return (
         <div className="video-container">
+          <img src={rocket} className="rocketImage" alt="rocket" />
           <div className="video-launcher">
             <h1 class="fw-extralight">Haz de tu proyecto una realidad</h1>
             <p>Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que conquistar el sistema solar.</p>

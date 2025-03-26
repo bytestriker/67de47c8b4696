@@ -133,9 +133,9 @@
 }
 
 .planetGrid {
-  margin: auto;
-  width: 90%;
-  max-width: 1280px;
+  margin: 5vw auto;
+  width: 86%;
+  max-width: 1326px;
   @include mediumDevices {
     display: grid;
     grid-gap: 5vw;
@@ -148,9 +148,10 @@
 
 .planetGridItem {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px; 
   text-align: center;
   @include mediumDevices {
     
@@ -163,7 +164,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2.5vw;
     width: 80%;
     aspect-ratio: 16 / 9;
     position: relative;

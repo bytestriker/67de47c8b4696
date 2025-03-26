@@ -8,6 +8,17 @@
   display: none;
 }
 
+.rocketImage {
+  position: absolute;
+  top: 49%;
+  mix-blend-mode: plus-lighter;
+  left: -21%;
+  width: 40vw;
+  @include largeDevices {
+    top: 40%;
+  }
+}
+
 .video {
   background-image: url("../../assets/images/bg-earth.jpg");
   background-position: bottom;
