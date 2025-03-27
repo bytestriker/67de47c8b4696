@@ -422,8 +422,6 @@ export const WatchLunaVideos = ({ params }) => {
       if (!videoId) return null;
       if (!src_video) return null;
       
-      console.log(videoId)
-      console.log(src_video)
       return (
         <iframe
           className={style.modal__video__style}
@@ -433,7 +431,6 @@ export const WatchLunaVideos = ({ params }) => {
           height="500"
           src={src_video}
           title="YouTube video player"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />

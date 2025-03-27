@@ -357,19 +357,6 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
     setTitlePage(texts5.titulo_de_la_vista);
   }, [texts5]);
 
-  const handleVideo = () => {
-    if (texts5?.video) {
-      return (
-        <video controls>
-          <source
-            src="https://wprocket.digitalferrer.com/wp-content/uploads/2023/04/ROCKETNOW-pre-registro.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      );
-    }
-  };
 
   const [copied, setCopied] = useState(false);
 
