@@ -417,3 +417,14 @@
 		transform: translate(-80%, 0px);
 	}
 }
+
+
+
+/* adding background stars to body  */
+.bgStars{
+  background-image: url("../../assets/images/bg-stars.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat-y;
+
+}

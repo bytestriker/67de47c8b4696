@@ -10,7 +10,7 @@ import style from '@Sass/pages/general.module.scss';
 const Home = () => {
   return (
     <>
-      <section className="Home">
+      <section className={style.bgStars}>
         <Video />
         <Element name="bio">
           <Planets />
