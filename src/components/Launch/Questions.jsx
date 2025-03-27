@@ -19,7 +19,9 @@ import lunaStyle from '@Sass/pages/luna.module.scss';
 
 import video from '@Assets/images/video.svg';
 import boton_copiar from '@Assets/images/icons/boton_copiar.svg'
-import { Title } from 'src';
+import successIcon from '@Assets/images/icons/success-icon.svg'
+
+
 
 
 // Nombra tu proyecto
@@ -54,7 +56,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
         <video controls>
           <source src={texts?.video} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> 
       );
     }
   };
@@ -62,7 +64,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
   return (
     <div className={lunaStyle.LaunchQuestion1}>
       <ScrollToTop />
-      <h2>Launch</h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}>{}</h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
       <figure>
         <img src={video} alt="video" />
@@ -118,9 +120,9 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
   return (
     <div className={lunaStyle.LaunchQuestion}>
       <ScrollToTop />
-      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
       <div className={lunaStyle.questionContent}>
         <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
+        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
         <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
         <SaberMas data={texts2} />
         <fieldset>
@@ -182,9 +184,9 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
   return (
     <div className={lunaStyle.LaunchQuestion}>
       <ScrollToTop />
-      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
       <div className={lunaStyle.questionContent}>
         <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
+        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
         <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
         <SaberMas data={texts3} />
 
@@ -257,10 +259,10 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
   return (
     <>
       <ScrollToTop />
-      <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion}>
         <div className={lunaStyle.questionContent}>
           <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
+          <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
           <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
           <SaberMas data={texts4} />
           <fieldset>
@@ -360,6 +362,7 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
   };
 
   const [copied, setCopied] = useState(false);
+  
   const [copy_text, setCopyText] = useState("Copiar")
 
   const handleCopy = async (text) => { 
@@ -378,11 +381,12 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
     <>
       <div className={lunaStyle.LaunchQuestion1}>
         <ScrollToTop />
+        <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
+        <img src={video} alt="video" />
+        <div className={lunaStyle.questionContent}>
         {
           texts5?.slogan && <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
         }
-        <img src={video} alt="video" />
-        <div className={lunaStyle.questionContent}>
           <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
           <fieldset id="promo-code-section">
             <label htmlFor="promo_code">Código Promocional</label>
@@ -429,12 +433,10 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
                 onClick={()=>handleCopy('R0cketN0w')}
               >
               { 
-              !copied && 
-                
+              !copied ? 
                 <img src={boton_copiar} alt="Botón Copiar"/>
-              }
-              {
-                copied && <h1>Copiado</h1>
+              :
+                <img src={successIcon} alt="Copiado"/>
               }
               </div>
             </div>
