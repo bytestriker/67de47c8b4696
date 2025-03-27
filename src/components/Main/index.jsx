@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, useLocation } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
 // Context
@@ -46,7 +46,8 @@ import style from '@Sass/pages/general.module.scss';
 
 const Main = () => {
   const { contextValue, getLoading } = useAuth();
-
+  const location = useLocation();
+  const currentPathName = location.pathname.split('/').pop();
   // Store global
   const { warningData, setAlert } = globalStore(
     (state) => ({
@@ -77,43 +78,46 @@ const Main = () => {
       {warningData.modalAlert ? (
         <ModalInfoProject setAlert={setAlert} warningData={warningData} />
       ) : null}
-      {storeTankModal.modalTank ? <ModalBlockPlanet /> : null}
+      {
+        storeTankModal.modalTank ? <ModalBlockPlanet /> : null
+      }
       
-      {popupstate.modalP ? (
-        <ModalPopup setPopup={setPopup} />
-      ) : null}
-      <main className={style.layout}>
-        <Header />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" render={() => (contextValue.isLogged() ? <Redirect to="/" /> : <Login />)} />
-        <Route exact path="/terminos" component={Tycos} />
-        <Route exact path="/acercade" component={AboutUs} />
-        <Route exact path="/asesoria" component={Index} />
-        <Route exact path="/paquetes" component={Packs} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/gracias" component={Thanks} />
-        <Route exact path="/graciasCode" component={ThanksCode} />
-        <Route exact path="/social-hub" component={SocialHub} />
-        <Route exact path="/privacidad" component={Privacy} />
-        <Route exact path="/saber-mas" component={KnowMore} />
-        <Route exact path="/bienvenido" component={Welcome} />
-        <Route exact path="/repassword" component={RePassword} />
-        <Route exact path="/launch" component={Luna} />
-        <PrivateRoute exact path="/perfil" component={Profile} />
-        <PrivateRoute exact path="/mercurio" component={Mercurio} />
-        <PrivateRoute exact path="/venus" component={Venus} />
-        <PrivateRoute exact path="/marte" component={Marte} />
-        <PrivateRoute exact path="/jupiter" component={Jupiter} />
-        <PrivateRoute exact path="/saturno" component={Saturno} />
-        <PrivateRoute exact path="/urano" component={Urano} />
-        <PrivateRoute exact path="/carrito" component={ShoppingCar} />
-        <PrivateRoute exact path="/checkout" component={Checkout} />
-        {/* 
-        <Route path="*">
-          <Redirect to="/" />
-        </Route> 
-        */}
-      </main>
+      {
+        popupstate.modalP
+          ? <ModalPopup setPopup={setPopup} />
+          : <main className={`${currentPathName}`}>
+            <Header />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" render={() => (contextValue.isLogged() ? <Redirect to="/" /> : <Login />)} />
+            <Route exact path="/terminos" component={Tycos} />
+            <Route exact path="/acercade" component={AboutUs} />
+            <Route exact path="/asesoria" component={Index} />
+            <Route exact path="/paquetes" component={Packs} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/gracias" component={Thanks} />
+            <Route exact path="/graciasCode" component={ThanksCode} />
+            <Route exact path="/social-hub" component={SocialHub} />
+            <Route exact path="/privacidad" component={Privacy} />
+            <Route exact path="/saber-mas" component={KnowMore} />
+            <Route exact path="/bienvenido" component={Welcome} />
+            <Route exact path="/repassword" component={RePassword} />
+            <Route exact path="/launch" component={Luna} />
+            <PrivateRoute exact path="/perfil" component={Profile} />
+            <PrivateRoute exact path="/mercurio" component={Mercurio} />
+            <PrivateRoute exact path="/venus" component={Venus} />
+            <PrivateRoute exact path="/marte" component={Marte} />
+            <PrivateRoute exact path="/jupiter" component={Jupiter} />
+            <PrivateRoute exact path="/saturno" component={Saturno} />
+            <PrivateRoute exact path="/urano" component={Urano} />
+            <PrivateRoute exact path="/carrito" component={ShoppingCar} />
+            <PrivateRoute exact path="/checkout" component={Checkout} />
+            {/* 
+          <Route path="*">
+            <Redirect to="/" />
+          </Route> 
+          */}
+          </main>
+      }
     </>
   );
 };

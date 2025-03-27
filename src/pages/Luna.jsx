@@ -136,7 +136,7 @@ const Luna = () => {
   };
 
   return (
-    <section className={`${luna.Luna} ${general.planetWrap}`}>
+    <section className={`${general.planetWrap}`}>
       <img src={satelite} alt="Satelite" className={general.satelite} />
       
       <ButtonGoHome  
