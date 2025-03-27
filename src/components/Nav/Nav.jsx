@@ -105,7 +105,7 @@ const Nav = ({ setNavState, navState }) => {
   }, []);
 
   const handleMenu = () => {
-    if (!contextValue.isLogged()) {
+    if (contextValue.isLogged()) {
       return (
         <nav>
           <a className={style.link_proyects} onClick={() => newProject()}>
