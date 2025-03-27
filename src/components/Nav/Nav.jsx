@@ -105,38 +105,35 @@ const Nav = ({ setNavState, navState }) => {
   }, []);
 
   const handleMenu = () => {
-    if (contextValue.isLogged()) {
+    if (!contextValue.isLogged()) {
       return (
-        <>
-          <div className={style.link_proyects} onClick={() => newProject()}>
-            <h3>
-              <FaFolderPlus className={style.iconSing} /> CREAR NUEVO
-            </h3>
-          </div>
-          <div className={style.link_proyects}>
-            {data && data.length > 0 ? (
-              <h3>
-                <FaFolderOpen className={style.iconSing} /> VER PROYECTOS
-              </h3>
-            ) : null}
-            <ul className="content">
-              {data && data.length > 0
-                ? data.map((item) => (
-                    <li key={item.id} className={`content_li ${style.linkProject}`}>
-                      <h4 onClick={() => handleURL(item)} id={item.id} ref={reference}>
-                        {item.nombre}
-                      </h4>
-                    </li>
-                  ))
-                : null}
-            </ul>
-          </div>
-          <div className={style.link_proyects} onClick={() => handleLogOut()}>
-            <h3>
-              <FaSignOutAlt className={style.iconSing} /> CERRAR SESIÓN
-            </h3>
-          </div>
-        </>
+        <nav>
+          <a className={style.link_proyects} onClick={() => newProject()}>
+            <span>Crear nuevo</span>
+          </a>
+          {
+            data && data.length > 0
+            ? <a className={style.link_proyects}>
+              <nav>
+              {
+                data.map((item) => (
+                  <a key={item.id}
+                    id={item.id}
+                    ref={reference}
+                    className={`content_li ${style.linkProject}`}
+                    onClick={() => handleURL(item)}>
+                    {item.nombre}
+                  </a>
+                ))
+              }
+              </nav>
+            </a>
+              : null
+          }
+          <a className={style.link_proyects} onClick={() => handleLogOut()}>
+            <span>Cerrar sesión</span>
+          </a>
+        </nav>
       );
     } else {
       return (
@@ -146,25 +143,23 @@ const Nav = ({ setNavState, navState }) => {
           onClick={() => setNavState(false)}
           style={{ textDecoration: 'none' }}
         >
-          <h3>
-            <FaSignInAlt className={style.iconSing} /> INICIAR SESIÓN
-          </h3>
+          <span>Iniciar sesión</span>
         </Link>
       );
     }
   };
   return (
-    <nav
+    <div
       className={navState ? style.navigation : style.navigation_colapse}
       id="navigation"
       data-nav="navigation"
       ref={menuRef}
     >
-      <div className={style.closeNav}>
+      <a className={style.closeNav}>
         <FaRegTimesCircle className={style.iconClose} onClick={() => setNavState(false)} />
-      </div>
-      <div className={style.navigation_content}>{handleMenu()}</div>
-    </nav>
+      </a>
+      {handleMenu()}
+    </div>
   );
 };
 

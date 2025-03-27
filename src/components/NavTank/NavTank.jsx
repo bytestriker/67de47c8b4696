@@ -40,16 +40,10 @@ const NavTank = ({ setNavTankState, navTankState }) => {
       <div className={styles.closeNav}>
         <FaRegTimesCircle className={styles.iconClose} onClick={() => setNavTankState(false)} />
       </div>
-
-      <div>
-        <div className={styles.NavTankContent}>
-          <h3 className={styles.NavTankTitle}>TE QUEDAN</h3>
-          <h4 className={styles.NavTank_Tanks}>{valueTank} TANQUES</h4>
-          <img src={_Astronaut} alt="astronaut" className={styles.NavTank_Img} />
-          <button onClick={() => handleLink()} className="buttonPlanet">
-            RECARGAR
-          </button>
-        </div>
+      <div className={styles.NavTankContent}>
+        <h2>TE QUEDAN <span>{valueTank} TANQUES</span></h2>
+        <img src={_Astronaut} alt="astronaut" className={styles.NavTank_Img} />
+        <button onClick={() => handleLink()} className="buttonPlanet">RECARGAR</button>
       </div>
     </nav>
   );
