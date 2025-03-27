@@ -21,8 +21,8 @@ import { MercurioWPText } from '@Hooks/useFetchWP';
 import Mercurio from '@Assets/images/mercurio.png';
 
 // Styles
+import general from '@Sass/pages/general.module.scss';
 import style from '@Sass/pages/mercurio.module.scss';
-import base from '@Sass/pages/general.module.scss';
 
 const MercurioMain = () => {
   const { mercurioGetProjectById } = useEventsMercurio();
@@ -100,7 +100,8 @@ const MercurioMain = () => {
   };
 
   return (
-    <section className={base.planetContainer}>
+    <section className={general.planetWrap}>
+      
       {modalSalir ? (
         <ModalMercurio
           title="Estás a punto de salir"
@@ -114,46 +115,42 @@ const MercurioMain = () => {
 
       <ScrollToTop />
 
-      <div className={base.planetContent}>
-        <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
-        <img src={Mercurio} alt="mercurio" className={style.MercurioImage} />
-        <div className={style.Mercurio}>
-          <div className={base.pageContainer}>
-            {page === 1 ? (
-              <MercurioQ1
-                setPage={setPage}
-                setStateMercurio={setStateMercurio}
-                dataMercurio={dataMercurio}
-                setTitlePage={setTitlePage}
-                texts={texts}
-              />
-            ) : (
-              <></>
-            )}
-            {page === 2 ? (
-              <MercurioQ2
-                setAlert={setAlert}
-                setPage={setPage}
-                setStateMercurio={setStateMercurio}
-                dataMercurio={dataMercurio}
-                setTitlePage={setTitlePage}
-                texts={texts2}
-              />
-            ) : (
-              <></>
-            )}
-            {page === 3 ? (
-              <MercurioQ3
-                setAlert={setAlert}
-                setPage={setPage}
-                setStateMercurio={setStateMercurio}
-                dataMercurio={dataMercurio}
-                setTitlePage={setTitlePage}
-                texts={texts3}
-              />
-            ) : (
-              <></>
-            )}
+      <div className={general.planetContainer}>
+        <div className={general.planetContent}>
+          <div className={general.pageContainer}>
+            <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
+            <div className={style.Mercurio}>
+              {page === 1 ? (
+                <MercurioQ1
+                  setPage={setPage}
+                  setStateMercurio={setStateMercurio}
+                  dataMercurio={dataMercurio}
+                  setTitlePage={setTitlePage}
+                  texts={texts}
+                />
+              ) : null
+              }
+              {page === 2 ? (
+                <MercurioQ2
+                  setAlert={setAlert}
+                  setPage={setPage}
+                  setStateMercurio={setStateMercurio}
+                  dataMercurio={dataMercurio}
+                  setTitlePage={setTitlePage}
+                  texts={texts2}
+                />
+              ) : null}
+              {page === 3 ? (
+                <MercurioQ3
+                  setAlert={setAlert}
+                  setPage={setPage}
+                  setStateMercurio={setStateMercurio}
+                  dataMercurio={dataMercurio}
+                  setTitlePage={setTitlePage}
+                  texts={texts3}
+                />
+              ) : null }
+            </div>
           </div>
         </div>
       </div>

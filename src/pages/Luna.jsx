@@ -138,12 +138,11 @@ const Luna = () => {
   return (
     <section className={`${general.planetWrap}`}>
       <img src={satelite} alt="Satelite" className={general.satelite} />
-      
       <ButtonGoHome  
-      className={general.planetBackToTheHomepage} 
-      onClick={()=>{history.push("/")}}
-      text="Volver al Inicio"
-      />
+        className={general.planetBackToTheHomepage} 
+        onClick={()=>{history.push("/")}}
+        text="Volver al Inicio"
+        />
       
       <div className={general.planetContainer}>
         <div className={general.planetContent}>
