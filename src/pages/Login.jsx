@@ -33,6 +33,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
+    console.log("access request data ", data)
     await login(data).then((response) => {
       if (response?.response?.status === 401) {
         setMessage(response.response.data.error);
@@ -97,8 +98,7 @@ const Login = () => {
             <div className={styles.contentinfo}>
               <Button
                 text="INICIAR SESIÓN"
-                isSubmit={true}
-                onClick={() => history.push({ pathname: '/launch', from: location })}
+                type="submit"
               />
               <Link className={styles.recoveryPassword} to="/repassword">
                 ¿Olvidaste tu contraseña?

@@ -444,7 +444,7 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
           </fieldset>
 
           <div className={`${lunaStyle.nameProjectContent}`}>
-            <Button text="Siguiente" isAlt={false} isSubmit={false} onClick={()=>{history.pushState()}}/>
+            <Button text="Siguiente" isAlt={false} onClick={()=>{history.push('/signup')}}/>
           </div>
         </div>
       </div>

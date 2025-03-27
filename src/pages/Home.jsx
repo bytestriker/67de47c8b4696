@@ -8,6 +8,7 @@ import Footer from '@Components/Footer';
 import style from '@Sass/pages/general.module.scss';
 
 const Home = () => {
+
   return (
     <>
       <section className={style.bgStars}>

@@ -20,7 +20,9 @@ export const login = async (data) => {
     const body = new URLSearchParams();
     body.append('email', data.email);
     body.append('password', data.password);
+
     const response = await instanceWithRocket.post(`/auth/login`, body, headersUrlencoded);
+
     return response;
   } catch (error) {
     return error;

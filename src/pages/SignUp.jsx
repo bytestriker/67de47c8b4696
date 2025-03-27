@@ -115,7 +115,7 @@ const Register = () => {
               </label>
               <Button
                 text="REGISTRARME"
-                isSubmit={true}
+                type="submit"
                 isCentered={true}
               />
             </fieldset>

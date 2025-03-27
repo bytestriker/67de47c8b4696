@@ -65,6 +65,7 @@ export const ButtonOut = (props) => {
 };
 
 export const SaberMas = ({ data }) => {
+
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
 
@@ -127,6 +128,9 @@ export const SaberMas = ({ data }) => {
     </p>
   );
 };
+
+
+
 export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
@@ -238,5 +242,142 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
         </section>
       )}
     </button>
+  );
+};
+
+
+import playvideo from '@Assets/images/playvideo.svg';
+
+
+export const WatchYTVideo = ({ params }) => {
+  const [modalVideo, setModalVideo] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
+
+  // Handle params more safely
+  const link_video = params?.length > 0 ? params[0]?.url : null;
+  const image = params?.length > 0 ? params[0]?.url : null;
+
+  const openModalVideo = () => {
+    setModalVideo(!modalVideo);
+  };
+
+  const handleVideoCanPlay = () => {
+    setVideoLoading(false);
+  };
+
+  const spinner = () => {
+    setVideoLoading(!videoLoading);
+  };
+
+  const renderVideo = () => {
+    if (!link_video) return null;
+    
+    try {
+      const urlObject = new URL(link_video);
+      const videoId = urlObject.searchParams.get('v');
+      if (!videoId) return null;
+
+      return (
+        <iframe
+          className={style.modal__video__style}
+          onLoad={spinner}
+          loading="lazy"
+          width="1200"
+          height="500"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      );
+    } catch (e) {
+      console.error("Invalid YouTube URL", e);
+      return null;
+    }
+  };
+
+  return (
+    <>
+      <button onClick={openModalVideo}>
+      <img src={playvideo} alt={"Play Video"} />
+        Reproducir Video
+      </button>
+      
+      {modalVideo && (
+        <section
+          className={style.modal__bg}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.9)',
+            zIndex: 9999,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '1200px',
+              padding: '20px',
+            }}
+          >
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+              }}
+            >
+              <IoCloseOutline
+                style={{
+                  position: 'absolute',
+                  top: '-40px',
+                  right: '0',
+                  color: 'white',
+                  fontSize: '2rem',
+                  cursor: 'pointer',
+                }}
+                aria-label="Cerrar Ventana"
+                onClick={() => {
+                  setModalVideo(false);
+                  setVideoLoading(true);
+                }}
+              />
+              <div
+                style={{
+                  width: '100%',
+                  aspectRatio: '16/9',
+                }}
+              >
+                {renderVideo()}
+                {videoLoading && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      height: '100%',
+                    }}
+                  >
+                    <BiLoaderAlt
+                      style={{
+                        fontSize: '3rem',
+                        color: 'white',
+                        animation: 'spin 1s linear infinite',
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 };

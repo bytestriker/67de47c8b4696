@@ -2,13 +2,12 @@ import { useEffect, useState, useRef } from 'react';
 import { scroller } from 'react-scroll';
 
 // Images
-import { BiCaretRightCircle } from 'react-icons/bi';
+// import { BiCaretRightCircle } from 'react-icons/bi';
 import astronauta from '@Assets/images/astronauta.png';
 import rocket from '@Assets/images/rocket-tail.png';
 import _IconDown from '@Assets/images/ScrollDown.svg';
-import playvideo from '@Assets/images/playvideo.svg';
 
-import { WatchSelfHostedVideo } from '@Components/Atomos/Buttons';
+import { SaberMas, WatchSelfHostedVideo, WatchYTVideo } from '@Components/Atomos/Buttons';
 
 // Styles
 import '@Components/Video/video.scss';
@@ -48,6 +47,7 @@ const Index = () => {
   const handleLoadedMetadata = (event) => {
     event.target.volume = 0.4;
   };
+
   const handlePlayVideo = () => {
     setShowButton(false);
     if (window.innerWidth < 992) {
@@ -56,6 +56,7 @@ const Index = () => {
       videoRefDesktop.current.play();
     }
   };
+
   const handlePauseVideo = () => {
     setShowButton(true);
     if (window.innerWidth < 992) {
@@ -74,6 +75,7 @@ const Index = () => {
   };
 
   const previewVideo = (params) => {
+
     return (
       <div className="video-container">
         <img src={rocket} className="rocketImage" alt="rocket" />
@@ -84,7 +86,8 @@ const Index = () => {
             conquistar el sistema solar.
           </p>
         </div>
-          <WatchSelfHostedVideo img_src={playvideo} alt_img="Play Video"/>
+          {/* <WatchSelfHostedVideo img_src={playvideo} alt_img="Play Video"/> */}
+          <WatchYTVideo params={params}/>
       </div>
     );
 
