@@ -60,45 +60,31 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
   };
 
   return (
-    <>
+    <div className={lunaStyle.LaunchQuestion1}>
       <ScrollToTop />
-      <div className={lunaStyle.LaunchQuestion1}>
-        <h2>Launch</h2>
-        {texts?.slogan ? (
-          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
-        ) : (
-          <p className="text-center">¡Nombra tu proyecto!</p>
-        )}
-        <figure>
-          <img src={video} alt="video" />
-        </figure>
-        <div className={lunaStyle.questionContent}>
-          {texts?.descripcion ? (
-            <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-          ) : (
-            <p>
-              Antes de despegar, ponle nombre a tu proyecto. Podrás modificarlo a lo largo de tu
-              viaje. Recuerda que cada vez que te venga la inspiración, este es el espacio correcto
-              para hacer las modificaciones que necesites.
-            </p>
-          )}
-          <h2>¿Cómo se va a llamar?</h2>
-          <fieldset>
-            <label htmlFor="email">Nombre de tu proyecto</label>
-            <input
-              ref={projectName}
-              type="text"
-              name="projectName"
-              id="projectName"
-              placeholder="NOMBRE"
-              value={getLuna().nombre}
-              onChange={(e) => handleNameProject(e)}
-            />
-          </fieldset>
-          <Button text="Siguiente" isSubmit={true} onClick={() => handleNextPage(2)} />
-        </div>
+      <h2>Launch</h2>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
+      <figure>
+        <img src={video} alt="video" />
+      </figure>
+      <div className={lunaStyle.questionContent}>
+        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+        <h2>¿Cómo se va a llamar?</h2>
+        <fieldset>
+          <label htmlFor="email">Nombre de tu proyecto</label>
+          <input
+            ref={projectName}
+            type="text"
+            name="projectName"
+            id="projectName"
+            placeholder="NOMBRE"
+            value={getLuna().nombre}
+            onChange={(e) => handleNameProject(e)}
+          />
+        </fieldset>
+        <Button text="Siguiente" isSubmit={true} onClick={() => handleNextPage(2)} />
       </div>
-    </>
+    </div>
   );
 };
 
@@ -130,46 +116,42 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
   }, [texts2]);
 
   return (
-    <>
+    <div className={lunaStyle.LaunchQuestion}>
       <ScrollToTop />
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
-      <div className={lunaStyle.LaunchQuestion}>
-        <div className={lunaStyle.questionContent}>
-          <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
-          <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
-          <SaberMas data={texts2} />
-          <fieldset>
-            <label htmlFor="launchQ1" className="text-right">
-              1/3
-            </label>
-            <textarea
-              ref={Q1}
-              className={lunaStyle.response}
-              name="what"
-              id="launchQ1"
-              cols="30"
-              rows="10"
-              placeholder="Escribe aquí tu idea"
-              value={getLuna().que}
-              onChange={(e) => handleQuestion1(e)}
-            ></textarea>
-          </fieldset>
-          <div className={style.flexButtons}>
-            <Button
-              className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
-              text="REGRESAR"
-              onClick={() => setPageLuna(1)}
-              isAlt
-            />
-            <Button
-              className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
-              text="SIGUIENTE"
-              onClick={() => handleNextPage(3)}
-            />
-          </div>
+      <div className={lunaStyle.questionContent}>
+        <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
+        <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
+        <SaberMas data={texts2} />
+        <fieldset>
+          <label htmlFor="launchQ1" className="text-right">1/3</label>
+          <textarea
+            ref={Q1}
+            className={lunaStyle.response}
+            name="what"
+            id="launchQ1"
+            cols="30"
+            rows="10"
+            placeholder="Escribe aquí tu idea"
+            value={getLuna().que}
+            onChange={(e) => handleQuestion1(e)}
+          ></textarea>
+        </fieldset>
+        <div className={style.flexButtons}>
+          <Button
+            className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
+            text="REGRESAR"
+            onClick={() => setPageLuna(1)}
+            isAlt
+          />
+          <Button
+            className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
+            text="SIGUIENTE"
+            onClick={() => handleNextPage(3)}
+          />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -198,47 +180,45 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
   }, [texts3]);
 
   return (
-    <>
+    <div className={lunaStyle.LaunchQuestion}>
       <ScrollToTop />
-      <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
-      <div className={lunaStyle.LaunchQuestion}>
-        <div className={lunaStyle.questionContent}>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
+      <div className={lunaStyle.questionContent}>
+        <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
+        <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
+        <SaberMas data={texts3} />
 
-          <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
-          <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
-          <SaberMas data={texts3} />
-          <fieldset>
-            <label htmlFor="launchQ1">2/3</label>
-            <textarea
-              ref={Q2}
-              className={lunaStyle.response}
-              name="why"
-              id="launchQ1"
-              cols="30"
-              rows="10"
-              placeholder="Desarrolla tu idea"
-              value={getLuna().porque}
-              onChange={(e) => handleQuestion2(e)}
-            ></textarea>
-          </fieldset>
+        <fieldset>
+          <label htmlFor="launchQ1" className="text-right">2/3</label>
+          <textarea
+            ref={Q2}
+            className={lunaStyle.response}
+            name="why"
+            id="launchQ1"
+            cols="30"
+            rows="10"
+            placeholder="Desarrolla tu idea"
+            value={getLuna().porque}
+            onChange={(e) => handleQuestion2(e)}
+          ></textarea>
+        </fieldset>
 
-          <div className={style.contentButtons}>
-            <div className={style.flexButtons}>
-              <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
-              <Button
-                text="Siguiente"
-                isSubmit={false}
-                disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
-                onClick={() => handleNextPage(4)}
-                className={
-                  getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
-                }
-              />
-            </div>
+        <div className={style.contentButtons}>
+          <div className={style.flexButtons}>
+            <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
+            <Button
+              text="Siguiente"
+              isSubmit={false}
+              disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
+              onClick={() => handleNextPage(4)}
+              className={
+                getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
+              }
+            />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -284,12 +264,10 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
           <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
           <SaberMas data={texts4} />
           <fieldset>
-            <label htmlFor="launchQ1" className={lunaStyle.labelPage}>
-              3/3
-            </label>
+            <label htmlFor="launchQ1" className="text-right">3/3</label>
             <textarea
               ref={Q3}
-              className={lunaStyle.response}
+              className="text-area-sm"
               name="how"
               id="launchQ1"
               cols="30"
@@ -298,9 +276,12 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
               value={getLuna().como1}
               onChange={(e) => handleQuestion31(e)}
             ></textarea>
+          </fieldset>
+          <fieldset>
+
             <textarea
               ref={Q3}
-              className={lunaStyle.response}
+              className="text-area-sm"
               name="how"
               id="launchQ1"
               cols="30"
@@ -309,9 +290,11 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
               value={getLuna().como2}
               onChange={(e) => handleQuestion32(e)}
             ></textarea>
+          </fieldset>
+          <fieldset>
             <textarea
               ref={Q3}
-              className={lunaStyle.response}
+              className="text-area-sm"
               name="how"
               id="launchQ1"
               cols="30"
@@ -324,7 +307,6 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
           <div className={style.contentButtons}>
             <div className={style.flexButtons}>
               <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
-
               {contextValue.isLogged() ? (
                 <Button
                   text="Siguiente"
@@ -358,8 +340,6 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
     }),
     shallow
   );
-
-  // console.log(texts5);
 
   useEffect(() => {
     setTitlePage(texts5.titulo_de_la_vista);
@@ -396,26 +376,16 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
 
   return (
     <>
-      <ScrollToTop />
-      <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
       <div className={lunaStyle.LaunchQuestion1}>
+        <ScrollToTop />
+        {
+          texts5?.slogan && <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
+        }
         <img src={video} alt="video" />
         <div className={lunaStyle.questionContent}>
-          <p
-            className={style.textCenter}
-            dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}
-          ></p>
-          <section
-          id="promo-code-section"
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              marginBottom: "24px",
-              marginTop: "5px",
-            }}
-          >
-          <label htmlFor="promo_code">Código Promocional</label>
+          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
+          <fieldset id="promo-code-section">
+            <label htmlFor="promo_code">Código Promocional</label>
             <div
               id="promo-code"
               style={{
@@ -468,7 +438,7 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
               }
               </div>
             </div>
-          </section>
+          </fieldset>
 
           <div className={`${lunaStyle.nameProjectContent}`}>
             <Button text="Siguiente" isAlt={false} isSubmit={false} />

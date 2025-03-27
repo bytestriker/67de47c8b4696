@@ -48,10 +48,20 @@
 
 .buttonFacebook {
   background-color: transparent !important;
-  display: flex !important;
+  border: 1px solid #E0FF4E;
+  box-sizing: border-box;
+  color: #E0FF4E;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 9px;
+  padding: 12px 20px;
+  width: 100%;
+  height: 50px;
+  font-family: 'Fahkwang';
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
   svg {
     display: block;
     width: 24px;
@@ -143,10 +153,10 @@
 }
 
 .pageContainer {
+  margin: auto;
+  padding: 24px 0;
   width: 100%;
-  margin-inline: auto;
-  height: 100%;
-  
+  height: 100%; 
 }
 
 .inputMedium {

@@ -111,8 +111,7 @@ const Register = () => {
             )}
             <fieldset>
               <label className={signup.linkTerminos}>
-                Al continuar aceptas los <strong className={signup.urlTerminos} onClick={() => history.push({ pathname: '/terminos', from: location })}
-                >Términos y Condiciones</strong> del Aviso de Privacidad
+                Al continuar aceptas los <strong className={signup.urlTerminos} onClick={() => history.push({ pathname: '/terminos', from: location })}>Términos y Condiciones</strong> del Aviso de Privacidad
               </label>
               <Button
                 text="REGISTRARME"

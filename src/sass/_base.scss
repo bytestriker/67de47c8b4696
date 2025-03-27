@@ -87,8 +87,12 @@ input, textarea {
 }
 
 textarea {
-  height: 150px;
+  height: 160px;
+  &.text-area-sm {
+    height: 80px;
+  }
 }
+
 
 button {
   color: #E0FF4E;
