@@ -70,16 +70,64 @@
 }
 
 .planetWrap {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: 24px; 
+  padding: 100px 0 0;
   scrollbar-color: #363636 transparent;
-  overflow: auto;
-  height: 100vh;
+  @include largeDevices {
+    display: grid;
+    grid-template-columns: 1fr minmax(50%, 700px) 1fr;
+    padding: 100px 32px 0;
+    height: 100vh;
+
+  }
+}
+
+.planetBackToTheHomepage {
+  background-color: transparent;
+  background-image: url(../../assets/images/button-bg.svg);
+  border: 0;
+  height: 56px;
+  width: 259px;
+  span {
+    display: block;
+    position: relative;
+    &::after,
+    &::before {
+      display: block;
+      content: "";
+      top: 50%;
+      
+      position: absolute;
+      right: 100%;
+    }
+    &::after{
+      background: url(data:image/svg+xml,%3Csvg%20width%3D%2215%22%20height%3D%2231%22%20viewBox%3D%220%200%2015%2031%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M11.3208%207.67619L15%200H10.4717L6.50943%207.67619H4.24528L0%2015.6476L4.24528%2023.619H6.50943L10.4717%2031H15L11.0377%2023.619H9.0566L4.81132%2015.6476L9.0566%207.67619H11.3208Z%22%20fill%3D%22%23E6F85A%22%20fill-opacity%3D%220.3%22%2F%3E%3C%2Fsvg%3E);
+      height: 31px;
+      width: 16px;
+      transform: translate(-100%, -50%);
+    }
+    &::before {
+      background: url(data:image/svg+xml,%3Csvg%20width%3D%225%22%20height%3D%2211%22%20viewBox%3D%220%200%205%2011%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%2011V0H3.4375L0%205.5L3.4375%2011H5Z%22%20fill%3D%22%23E6F85A%22%2F%3E%3C%2Fsvg%3E);
+      width: 5px;
+      height: 12px;
+      transform: translate(-16px, -50%);
+    }
+  }
 }
 
 .planetContainer {
   background-color: rgba(77, 84, 47, 0.45);
   position: relative;
-  top: 100px;
+  top: 9px;
   width: 100%;
+  order: +1;
+  @include largeDevices {
+    order: initial;
+  }
   &::before {
     border-top: 1px solid #E6F85A;
     background: rgba(77, 84, 47, 0.45);
@@ -97,9 +145,6 @@
     }
   }
   @include largeDevices {
-    margin: auto;
-    max-width: 720px;
-    width: 70%;
     &::after {
       background-image: url("../../assets/images/corner-left.svg"), url("../../assets/images/corner-right.svg");
       background-position: left, right;
@@ -123,6 +168,92 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.planetHelper {
+  position: relative;
+  padding: 0 3vw;
+  width: calc(100% - 6vw);
+  @include largeDevices {
+    padding: 0;
+    top: 32px;
+    width: 100%;
+  }
+  .planetHelperBorder {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    &::before,
+    &::after {
+      box-sizing: border-box;
+      display: block;
+      content: '';
+      height: 30px;
+    }
+    &::before {
+      background-image: url(../../assets/images/card-corners.svg);
+      width: 30px; 
+    }
+    &::after {
+      background-color: rgba(152, 69, 55, 0.55);
+      flex-grow: 1;
+      border-style: solid;
+      border-color: rgb(152, 69, 55);
+    }
+  }
+  .planetHelperBorderTop {
+    &::after {
+      border-width: 1px 1px 0 0;
+    }
+  }
+  .planetHelperBorderBottom {
+    flex-direction: row-reverse;
+    &::after {
+      border-width: 0 0 1px 1px;
+    }
+    &::before {
+      background-position: bottom right;
+    }
+
+  }
+  .planetHelperContainer {
+    background-color: rgba(152, 69, 55, 0.55);
+    border-color: rgb(152, 69, 55);
+    border-style: solid;
+    border-width: 0 1px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .planetHelperTitle {
+    border-bottom: 1px solid #984521;
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
+    margin: 0 20px;
+    h2 {
+      font-size: 17px;
+      font-weight: bold;
+      margin: 0 0 0 12px;
+    }
+  }
+  
+  .planetHelperContent {
+    padding: 1px 20px;
+    a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      position: relative;
+      &::after {
+        background: url(data:image/svg+xml,%3Csvg%20width%3D%225%22%20height%3D%2212%22%20viewBox%3D%220%200%205%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M9.61651e-07%200.5L0%2011.5L1.5625%2011.5L5%206L1.5625%200.5L9.61651e-07%200.5Z%22%20fill%3D%22%23E6F85A%22%2F%3E%3C%2Fsvg%3E);
+        display: block;
+        content: '';
+        height: 12px;
+        width: 5px;
+      }
+    }
+  }
+
 }
 
 .planetContentUrano {
@@ -380,6 +511,8 @@
   position: fixed;
   top: 48px;
   right: 72px;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .space-man {

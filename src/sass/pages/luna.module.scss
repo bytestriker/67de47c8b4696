@@ -190,18 +190,18 @@
     align-items: stretch;
     justify-content: center;
     margin: 0;
-    padding: 24px 0;
     text-align: center;
     figure {
       margin: 0;
       padding: 0;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      img {
+        display: block;
+        width: 100%;
+      }
     }
     h2, p {
-      margin: 0 0 20px;
-    }
-    p {
-      margin-bottom: 20px;
+      margin: 0 0 24px;
     }
     /*
     .title {
@@ -326,7 +326,7 @@
 }
 
 .questionContent {
-  padding: 24px 32px;
+  padding: 0 32px;
 
 }
 
