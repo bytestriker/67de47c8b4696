@@ -11,11 +11,10 @@ import { lunaStore } from '@Store/luna';
 // Hooks
 import { useEventsLuna } from '@Hooks/useEventsLuna';
 import { LunaWPText } from '@Hooks/useFetchWP';
-import { Title } from '@Components/Atomos/Titles';
+
 
 import astronauta from '@Assets/images/astronauta.png';
 import satelite from '@Assets/images/satelite.png';
-import borde from '@Assets/images/borde_superior.svg';
 
 // Components
 import {
@@ -25,6 +24,7 @@ import {
   QuestionsLaunch5,
   NameProject,
 } from '@Components/Launch/Questions';
+
 import { ButtonClose } from '@Components/Atomos/Buttons';
 import { ModalAlert } from '@Components/UtilsComponents/ModalAlert';
 

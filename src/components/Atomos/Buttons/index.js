@@ -6,8 +6,8 @@ import { useRef, useEffect, useState } from 'react';
 import { FaReply, FaTimes } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
-import { IoCloseOutline } from "react-icons/io5";
-import { BiLoaderAlt } from "react-icons/bi";
+import { IoCloseOutline } from 'react-icons/io5';
+import { BiLoaderAlt } from 'react-icons/bi';
 
 // Components
 import { Title } from '@Components/Atomos/Titles';
@@ -65,47 +65,43 @@ export const ButtonOut = (props) => {
 };
 
 export const SaberMas = ({ data }) => {
-
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
-  
-    const openModalVideo = () => {
-      setModalVideo(!modalVideo);
-    };
-  
-    const spinner = () => {
-      setVideoLoading(!videoLoading);
-    };
 
-    const handleVideo = () => {
-      if (data?.link_video) {
-        const url = data?.link_video;
-        const urlObject = new URL(url);
-        const videoId = urlObject.searchParams.get('v');
-        return (
-          <iframe
-                    className={style.modal__video__style}
-                    onLoad={spinner}
-                    loading="lazy"
-                    width="1200"
-                    height="500"
-                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
-        );
-      }
-    };
-    
+  const openModalVideo = () => {
+    setModalVideo(!modalVideo);
+  };
+
+  const spinner = () => {
+    setVideoLoading(!videoLoading);
+  };
+
+  const handleVideo = () => {
+    if (data?.link_video) {
+      const url = data?.link_video;
+      const urlObject = new URL(url);
+      const videoId = urlObject.searchParams.get('v');
+      return (
+        <iframe
+          className={style.modal__video__style}
+          onLoad={spinner}
+          loading="lazy"
+          width="1200"
+          height="500"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      );
+    }
+  };
+
   return (
     <p className={style.saberMas}>
-      <a
-        href="#"
-        onClick={openModalVideo} 
-      >
-        {data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}
+      <a href="#" onClick={openModalVideo}>
+        {data?.secciondeapoyo ? data?.secciondeapoyo : 'Saber más'}
         {modalVideo ? (
           <section className={style.modal__bg}>
             <div className={style.modal__align}>
@@ -118,10 +114,7 @@ export const SaberMas = ({ data }) => {
                 <div className={style.modal__video__align}>
                   {videoLoading ? (
                     <div className={style.modal__spinner}>
-                      <BiLoaderAlt
-                        className={style.modal__spinner__style}
-                        fadeIn="none"
-                      />
+                      <BiLoaderAlt className={style.modal__spinner__style} fadeIn="none" />
                     </div>
                   ) : null}
                   {handleVideo()}
@@ -130,8 +123,121 @@ export const SaberMas = ({ data }) => {
             </div>
           </section>
         ) : null}
-
       </a>
     </p>
   );
+};
+
+export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
+  const [modalVideo, setModalVideo] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
+
+  const openModalVideo = () => {
+    setModalVideo(!modalVideo);
+  };
+
+  const handleVideoCanPlay = () => {
+    setVideoLoading(false);
+  };
+
+  const handleVideo = () => {
+    return (
+      <video
+        className={style.modal__video__style}
+        onCanPlay={handleVideoCanPlay}
+        onLoadStart={() => setVideoLoading(true)}
+        loading="lazy"
+        controls
+        autoPlay
+        width="100%"
+      >
+        <source
+          src="https://wprocket.digitalferrer.com/wp-content/uploads/2023/04/ROCKETNOW-pre-registro.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    );
+  };
+
+  return (
+    <button onClick={openModalVideo}>
+
+    <img src={img_src} alt={img_alt} />
+    Reproducir Video
+    {modalVideo && (
+      <section
+        className={style.modal__bg}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0,0,0,0.9)',
+          zIndex: 9999,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '1200px',
+            padding: '20px',
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+            }}
+          >
+            <IoCloseOutline
+              style={{
+                position: 'absolute',
+                top: '-40px',
+                right: '0',
+                color: 'white',
+                fontSize: '2rem',
+                cursor: 'pointer',
+              }}
+              arial-label="Cerrar Ventana"
+              onClick={() => {
+                setModalVideo(false);
+                setVideoLoading(true); // Reset loading state when closing
+              }}
+            />
+            <div
+              style={{
+                width: '100%',
+                aspectRatio: '16/9',
+              }}
+            >
+              {videoLoading && (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
+                  }}
+                >
+                  <BiLoaderAlt
+                    style={{
+                      fontSize: '3rem',
+                      color: 'white',
+                      animation: 'spin 1s linear infinite',
+                    }}
+                  />
+                </div>
+              )}
+
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+  </button>  );
 };

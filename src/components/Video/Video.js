@@ -8,9 +8,10 @@ import rocket from '@Assets/images/rocket-tail.png';
 import _IconDown from '@Assets/images/ScrollDown.svg';
 import playvideo from '@Assets/images/playvideo.svg';
 
+import { WatchSelfHostedVideo } from '@Components/Atomos/Buttons';
+
 // Styles
 import '@Components/Video/video.scss';
-
 
 // Hooks
 import { HomeSlider } from '@Hooks/useFetchWP';
@@ -73,32 +74,26 @@ const Index = () => {
   };
 
   const previewVideo = (params) => {
-    /*if (params.length == 0) {
-      const url = params[0].url;
-      const urlObject = new URL(url);
-      const videoId = urlObject.searchParams.get('v');*/
-      return (
-        <div className="video-container">
-          <img src={rocket} className="rocketImage" alt="rocket" />
-          <div className="video-launcher">
-            <h1 class="fw-extralight">Haz de tu proyecto una realidad</h1>
-            <p>Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que conquistar el sistema solar.</p>
-          </div>
-          <button>
-            <img src={playvideo} alt="playvideo" />
-            <span>Reproducir video</span>
-          </button>
+    return (
+      <div className="video-container">
+        <img src={rocket} className="rocketImage" alt="rocket" />
+        <div className="video-launcher">
+          <h1 className="fw-extralight">Haz de tu proyecto una realidad</h1>
+          <p>
+            Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que
+            conquistar el sistema solar.
+          </p>
         </div>
-      );
-    //}
-    
+          <WatchSelfHostedVideo img_src={playvideo} alt_img="Play Video"/>
+      </div>
+    );
+
   };
 
   return (
     <div className="video" id="bio">
-      {
-        previewVideo(sliderInfo)
-      }
+      {previewVideo(sliderInfo)}
+
       <div className="buttonReady2Launch">
         <img src={_IconDown} alt="icondown" onClick={scrollingToanimate} />
       </div>
