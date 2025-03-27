@@ -15,7 +15,7 @@ import { Title } from '@Components/Atomos/Titles';
 
 import astronauta from '@Assets/images/astronauta.png';
 import satelite from '@Assets/images/satelite.png';
-import borde from '@Assets/images/borde_superior.svg';
+import moretools from '@Assets/images/icon-mas-herramientas.svg';
 
 // Components
 import {
@@ -137,6 +137,9 @@ const Luna = () => {
   return (
     <section className={`${luna.Luna} ${general.planetWrap}`}>
       <img src={satelite} alt="Satelite" className={general.satelite} />
+      <button className={general.planetBackToTheHomepage}>
+        <span>Volver al Inicio</span>
+      </button>
       <div className={general.planetContainer}>
         <div className={general.planetContent}>
           <div className={general.pageContainer}>
@@ -185,6 +188,24 @@ const Luna = () => {
           </div>
         </div>
       </div>
+      <div className={general.planetHelper}>
+        <span className={`${general.planetHelperBorder} ${general.planetHelperBorderTop}`}>
+        </span>
+        <div className={general.planetHelperContainer}>
+          <div className={general.planetHelperTitle}>
+            <img src={moretools} alt="Satelite" />
+            <h2>Más herramientas</h2>
+          </div>
+          <div className={general.planetHelperContent}>
+            <p>¿Necesitas más ayuda para realizar esta tarea?, aquí contamos con algunos materiales para ti.</p>
+            <a href="">
+              <span>Continuar</span>  
+            </a>
+          </div>
+        </div>
+        <span className={`${general.planetHelperBorder} ${general.planetHelperBorderBottom}`}>
+        </span>
+      </div>      
       <img src={astronauta} alt="Space Man" className="space-man" />
     </section>
   );

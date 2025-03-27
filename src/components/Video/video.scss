@@ -265,8 +265,8 @@
 
 .space-man {
   animation: floatingSpaceMan 6s ease-in-out infinite;
-  position: absolute;
-  top: 56%;
+  position: fixed;
+  top: 76%;
   left: 110%;
   width: 55%;
   @include largeDevices {

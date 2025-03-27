@@ -66,7 +66,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}>{}</h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
-      <figure>
+      <figure className={lunaStyle.LaunchQuestionVideo}>
         <img src={video} alt="video" />
       </figure>
       <div className={lunaStyle.questionContent}>
@@ -262,7 +262,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
       <div className={lunaStyle.LaunchQuestion}>
         <div className={lunaStyle.questionContent}>
           <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
-          <p className={style.textCenter} dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
+          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
           <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
           <SaberMas data={texts4} />
           <fieldset>
