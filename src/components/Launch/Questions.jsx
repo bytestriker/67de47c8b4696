@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
 import useAuth from '@Auth/userAuth';
@@ -288,7 +289,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
               id="launchQ1"
               cols="30"
               rows="10"
-              placeholder="Eacribe tu segundo punto"
+              placeholder="Escribe tu segundo punto"
               value={getLuna().como2}
               onChange={(e) => handleQuestion32(e)}
             ></textarea>
@@ -334,6 +335,9 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
 
 // Video pre-registro
 export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
+
+  const history = useHistory();
+
   const { dataLuna, setStateLuna, getLuna } = lunaStore(
     (state) => ({
       dataLuna: state.dataLuna,
@@ -362,15 +366,12 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
   };
 
   const [copied, setCopied] = useState(false);
-  
-  const [copy_text, setCopyText] = useState("Copiar")
 
   const handleCopy = async (text) => { 
     try {
-      console.log("text ", text )
       await navigator.clipboard.writeText(text);
       setCopied(true)
-      setTimeout(() => { setCopied(false)}, 2000)
+      setTimeout(() => { setCopied(false)}, 1500)
     } catch (error) {
       
     }
@@ -443,7 +444,7 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
           </fieldset>
 
           <div className={`${lunaStyle.nameProjectContent}`}>
-            <Button text="Siguiente" isAlt={false} isSubmit={false} />
+            <Button text="Siguiente" isAlt={false} isSubmit={false} onClick={()=>{history.pushState()}}/>
           </div>
         </div>
       </div>

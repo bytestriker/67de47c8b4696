@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <section className={style.bgStars}>
-        <Video />
+        <Video controls/>
         <Element name="bio">
           <Planets />
         </Element>
