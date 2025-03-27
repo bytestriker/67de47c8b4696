@@ -22,7 +22,7 @@ import _Astro from '@Assets/images/astro.png';
 import '@Components/PlanetContent/PlanetContent.scss';
 
 const Planets = () => {
-
+FGio
   const { lunaInfo } = ServiceWPHome();
 
   return (

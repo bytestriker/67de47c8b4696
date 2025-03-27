@@ -1,6 +1,45 @@
 @import '@Sass/variables';
 @import '@Sass/fonts.scss';
 
+
+@import '@Sass/components/extends.scss';
+@import '@Sass/utils';
+
+body {
+  display: none;
+}
+
+.profile {
+  
+  .profileContent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+    figure {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 24px;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    h2, p {
+      margin: 0 0 24px;
+    }
+
+  }
+}
+
+.profileContent {
+  padding: 0 32px;
+
+}
+
+
 .Profile {
   width: 100%;
   height: 100%;
