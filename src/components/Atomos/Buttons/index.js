@@ -127,7 +127,6 @@ export const SaberMas = ({ data }) => {
     </p>
   );
 };
-
 export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
@@ -162,82 +161,82 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
 
   return (
     <button onClick={openModalVideo}>
-
-    <img src={img_src} alt={img_alt} />
-    Reproducir Video
-    {modalVideo && (
-      <section
-        className={style.modal__bg}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0,0,0,0.9)',
-          zIndex: 9999,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <div
+      <img src={img_src} alt={img_alt} />
+      Reproducir Video
+      {modalVideo && (
+        <section
+          className={style.modal__bg}
           style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
             width: '100%',
-            maxWidth: '1200px',
-            padding: '20px',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.9)',
+            zIndex: 9999,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <div
             style={{
-              position: 'relative',
               width: '100%',
+              maxWidth: '1200px',
+              padding: '20px',
             }}
           >
-            <IoCloseOutline
-              style={{
-                position: 'absolute',
-                top: '-40px',
-                right: '0',
-                color: 'white',
-                fontSize: '2rem',
-                cursor: 'pointer',
-              }}
-              arial-label="Cerrar Ventana"
-              onClick={() => {
-                setModalVideo(false);
-                setVideoLoading(true); // Reset loading state when closing
-              }}
-            />
             <div
               style={{
+                position: 'relative',
                 width: '100%',
-                aspectRatio: '16/9',
               }}
             >
-              {videoLoading && (
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
-                  }}
-                >
-                  <BiLoaderAlt
+              <IoCloseOutline
+                style={{
+                  position: 'absolute',
+                  top: '-40px',
+                  right: '0',
+                  color: 'white',
+                  fontSize: '2rem',
+                  cursor: 'pointer',
+                }}
+                arial-label="Cerrar Ventana"
+                onClick={() => {
+                  setModalVideo(false);
+                  setVideoLoading(true); // Reset loading state when closing
+                }}
+              />
+              <div
+                style={{
+                  width: '100%',
+                  aspectRatio: '16/9',
+                }}
+              >
+                {handleVideo()} {/* Render the video here */}
+                {videoLoading && (
+                  <div
                     style={{
-                      fontSize: '3rem',
-                      color: 'white',
-                      animation: 'spin 1s linear infinite',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      height: '100%',
                     }}
-                  />
-                </div>
-              )}
-
+                  >
+                    <BiLoaderAlt
+                      style={{
+                        fontSize: '3rem',
+                        color: 'white',
+                        animation: 'spin 1s linear infinite',
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    )}
-  </button>  );
+        </section>
+      )}
+    </button>
+  );
 };
