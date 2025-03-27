@@ -26,7 +26,7 @@ import {
   NameProject,
 } from '@Components/Launch/Questions';
 
-import { ButtonClose } from '@Components/Atomos/Buttons';
+import ButtonGoHome from '@Components/ButtonGoHome';
 import { ModalAlert } from '@Components/UtilsComponents/ModalAlert';
 
 // Images
@@ -138,9 +138,13 @@ const Luna = () => {
   return (
     <section className={`${luna.Luna} ${general.planetWrap}`}>
       <img src={satelite} alt="Satelite" className={general.satelite} />
-      <button className={general.planetBackToTheHomepage}>
-        <span>Volver al Inicio</span>
-      </button>
+      
+      <ButtonGoHome  
+      className={general.planetBackToTheHomepage} 
+      onClick={()=>{history.push("/")}}
+      text="Volver al Inicio"
+      />
+      
       <div className={general.planetContainer}>
         <div className={general.planetContent}>
           <div className={general.pageContainer}>
