@@ -381,3 +381,151 @@ export const WatchHomeVideo = ({ params }) => {
     </>
   );
 };
+
+
+
+export const WatchLunaVideos = ({ params }) => {
+  const [modalVideo, setModalVideo] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
+
+  // Handle params more safely
+  const link_video = params?.length > 0 ? params[0]?.url : null;
+  console.log("params ", params)
+  
+  const openModalVideo = () => {
+    setModalVideo(!modalVideo);
+  };
+
+  
+  
+  const spinner = () => {
+    setVideoLoading(!videoLoading);
+  };
+
+  const renderVideo = () => {
+    if (!link_video) return null;
+    
+    try {
+      const urlObject = new URL(link_video);
+      let videoId = urlObject.searchParams.get('v');
+      let src_video = null;
+      if (videoId) {
+        src_video = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`
+      }
+
+      if (!videoId ) {
+        videoId = urlObject.pathname
+        src_video = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`
+        
+      }
+      
+      if (!videoId) return null;
+      if (!src_video) return null;
+      
+      console.log(videoId)
+      console.log(src_video)
+      return (
+        <iframe
+          className={style.modal__video__style}
+          onLoad={spinner}
+          loading="lazy"
+          width="1200"
+          height="500"
+          src={src_video}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      );
+    } catch (e) {
+      console.error("Invalid YouTube URL", e);
+      return null;
+    }
+  };
+
+  return (
+    <>
+      
+      <a href="#" onClick={openModalVideo}>
+
+        <img src={params[0]?.playvideo} alt="video" />
+      </a>
+
+      {modalVideo && (
+        <section
+          className={style.modal__bg}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0,0,0,0.9)',
+            zIndex: 9999,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '1200px',
+              padding: '20px',
+            }}
+          >
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+              }}
+            >
+              <IoCloseOutline
+                style={{
+                  position: 'absolute',
+                  top: '-40px',
+                  right: '0',
+                  color: 'white',
+                  fontSize: '2rem',
+                  cursor: 'pointer',
+                }}
+                aria-label="Cerrar Ventana"
+                onClick={() => {
+                  setModalVideo(false);
+                  setVideoLoading(true);
+                }}
+              />
+              <div
+                style={{
+                  width: '100%',
+                  aspectRatio: '16/9',
+                }}
+              >
+                {renderVideo()}
+                {videoLoading && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      height: '100%',
+                    }}
+                  >
+                    <BiLoaderAlt
+                      style={{
+                        fontSize: '3rem',
+                        color: 'white',
+                        animation: 'spin 1s linear infinite',
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+};

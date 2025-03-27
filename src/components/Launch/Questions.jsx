@@ -10,7 +10,7 @@ import { lunaStore } from '@Store/luna';
 // COMPONENTS
 import { ScrollToTop } from '../UtilsComponents/ScrollTop';
 
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { SaberMas, WatchLunaVideos } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
@@ -49,27 +49,33 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
 
   useEffect(() => {
     setTitlePage(texts.titulo_de_la_vista);
+    console.log("name project  ", texts)
   }, [texts]);
 
-  const handleVideo = () => {
-    if (texts?.video) {
-      return (
-        <video controls>
-          <source src={texts?.video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video> 
-      );
-    }
-  };
 
   return (
     <div className={lunaStyle.LaunchQuestion1}>
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}>{}</h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
+
       <figure className={lunaStyle.LaunchQuestionVideo}>
-        <img src={video} alt="video" />
+      {texts?.video && (
+          <WatchLunaVideos
+            params={[
+              {
+                playvideo: video, 
+                alt:"play video",
+                url: texts?.link_video,
+                // You can add additional video params here if needed
+              }
+            ]} 
+          />
+        )}
       </figure>
+      <div className={lunaStyle.LaunchQuestionVideo}>
+        
+      </div>
       <div className={lunaStyle.questionContent}>
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <h2>¿Cómo se va a llamar?</h2>
@@ -383,8 +389,24 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
       <div className={lunaStyle.LaunchQuestion1}>
         <ScrollToTop />
         <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
-        <img src={video} alt="video" />
+
+
         <div className={lunaStyle.questionContent}>
+
+        <figure className={lunaStyle.LaunchQuestionVideo}>
+          {texts5?.video && (
+              <WatchLunaVideos
+                params={[
+                  {
+                    playvideo: video, 
+                    alt:"play video",
+                    url: texts5?.link_video,
+                    // You can add additional video params here if needed
+                  }
+                ]} 
+              />
+            )}
+      </figure>
         {
           texts5?.slogan && <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
         }
