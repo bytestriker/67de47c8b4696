@@ -212,6 +212,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    animation: floatingButton 3s ease-in-out infinite;
     h2 {
       color: $--colorGreen;
       text-align: center;
@@ -224,6 +225,18 @@
     }
   }
 
+}
+
+@keyframes floatingButton {
+	0% {
+		transform: translateY(20px);
+	}
+	50% {
+		transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(20px);
+	}
 }
 
 @keyframes pulse {
@@ -251,7 +264,7 @@
 }
 
 .space-man {
-  animation: float 6s ease-in-out infinite;
+  animation: floatingSpaceMan 6s ease-in-out infinite;
   position: absolute;
   top: 56%;
   left: 110%;
@@ -262,7 +275,7 @@
   }
 }
 
-@keyframes float {
+@keyframes floatingSpaceMan {
 	0% {
 		transform: translate(-80%, 0px);
 	}

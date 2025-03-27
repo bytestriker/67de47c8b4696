@@ -8,9 +8,10 @@
   background-size: cover;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
   width: 100%;
-  @include tabletPlus {
+  @include largeDevices {
     align-items: normal;
     justify-content: flex-end;
   }
@@ -18,14 +19,43 @@
 
 .formAuthContainer {
   background-color: rgba(77, 84, 47, 0.45);
-  padding: 48px 2.5vw 0;
+  padding: 64px 2.5vw 0;
   position: relative;
+  max-width: 640px;
   width: 100%;
-  @include tabletPlus {
+  @include largeDevices {
     padding: 150px 5vw 0;
     right: 7.5vw;
     width: 47%;
     max-width: 720px;
+  }
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+  position: relative;
+  @include mediumDevicesMax {
+    display: block;
+  }
+
+  h2, p {
+    text-align: center;
+  }
+}
+
+.buttonFacebook {
+  background-color: transparent !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  svg {
+    display: block;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -83,7 +113,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .planetContentUrano {
@@ -116,7 +145,6 @@
 .pageContainer {
   width: 100%;
   margin-inline: auto;
-  
   height: 100%;
   
 }

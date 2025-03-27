@@ -16,8 +16,8 @@ export const useEventsRegister = () => {
 
   const handleRegister = async (data) => {
     try {
-      const singup = await singUpUser(data);
-      if (singup.code === 0) {
+      const signup = await singUpUser(data);
+      if (signup.code === 0) {
         const logIn = await login(data);
         const token = logIn.data;
         contextValue.login(token.token);
@@ -33,11 +33,11 @@ export const useEventsRegister = () => {
           location.reload();
         }, 4000);
         
-      } else if (singup.code < 0) {
-        if (singup.messageError === 'The email has already been taken.') {
+      } else if (signup.code < 0) {
+        if (signup.messageError === 'The email has already been taken.') {
           setLoading(false);
           return 'El email ya está registrado';
-        }else if (singup.messageError === 'The password field must be at least 6 characters.') {
+        }else if (signup.messageError === 'The password field must be at least 6 characters.') {
           setLoading(false);
           return 'El password debe tener mínimo 6 caracteres';
         }else{

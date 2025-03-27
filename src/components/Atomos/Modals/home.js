@@ -23,7 +23,7 @@ export const ModalMain = (props) => {
         history.push('/');
       } else {
         setModalSalir(false);
-        history.push('/singup');
+        history.push('/signup');
       }
     } else if (action === 'CANCELAR') {
       setModalSalir(false);

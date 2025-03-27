@@ -33,7 +33,7 @@ export const ModalAlert = ({ data, title, message, setModalSalir, getPageLuna })
         setModalSalir(false);
       } else {
         setModalSalir(false);
-        history.push('/singup');
+        history.push('/signup');
       }
     } else if (action === 'CANCELAR') {
       if (params.id) {

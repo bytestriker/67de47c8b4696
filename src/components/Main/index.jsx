@@ -33,7 +33,7 @@ import ShoppingCar from '@Pages/ShoppingCar';
 import Mercurio from '@Pages/Mercurio';
 import Luna from '@Pages/Luna';
 import Login from '@Pages/Login';
-import SingUp from '@Pages/SingUp';
+import SignUp from '@Pages/SignUp';
 import Venus from '@Pages/Venus';
 import Marte from '@Pages/Marte';
 import Jupiter from '@Pages/Jupiter';
@@ -90,7 +90,7 @@ const Main = () => {
         <Route exact path="/acercade" component={AboutUs} />
         <Route exact path="/asesoria" component={Index} />
         <Route exact path="/paquetes" component={Packs} />
-        <Route exact path="/singup" component={SingUp} />
+        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/gracias" component={Thanks} />
         <Route exact path="/graciasCode" component={ThanksCode} />
         <Route exact path="/social-hub" component={SocialHub} />

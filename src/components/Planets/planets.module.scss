@@ -270,8 +270,10 @@
       }
     }
   }
-  &.planetGridItemUrano {   grid-column: 2 / 4; }
-  &.planetGridItemNeptuno { grid-column: 4 / 6; }
+  @include largeDevices {
+    &.planetGridItemUrano {   grid-column: 2 / 4; }
+    &.planetGridItemNeptuno { grid-column: 4 / 6; }
+  }
 }
 
 @keyframes glowing {

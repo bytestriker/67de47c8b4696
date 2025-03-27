@@ -9,6 +9,7 @@ import useAuth from '@Auth/userAuth';
 import { ErrorAlert } from '@Components/Atomos/Alerts';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import Button from '@Components/Button';
+import ButtonClose from '@Components/ButtonClose';
 
 // Service
 import { ConfirmEmail, restartPasword } from '@Service/entries';
@@ -30,14 +31,25 @@ const RePassword = () => {
       <ScrollToTop />
       <div className={general.formAuthContainer}>
         <div className={general.pageContainer}>
-          {page === 1 ? <RestartEmail setPage={setPage} setLoading={setLoading} /> : <></>}
-          {page === 2 ? <EmailConfirm setPage={setPage} /> : <></>}
-          {page === 3 ? (
-            <RestartPasswordConfirm setPage={setPage} setLoading={setLoading} />
-          ) : (
-            <></>
-          )}
-          {page === 4 ? <RestartConfirm setPage={setPage} /> : <></>}
+
+          <div className={general.formContent}>
+            {
+              page === 1 &&
+              <RestartEmail setPage={setPage} setLoading={setLoading} />
+            }
+            {
+              page === 2 &&
+              <EmailConfirm setPage={setPage} />
+            }
+            {
+              page === 3 &&
+              <RestartPasswordConfirm setPage={setPage} setLoading={setLoading} />
+            }
+            {
+              page === 4 &&
+              <RestartConfirm setPage={setPage} />
+            }
+          </div>
         </div>
       </div>
     </section>
@@ -82,13 +94,12 @@ export const RestartEmail = ({ setPage, setLoading }) => {
     <div className={styles.passwordContent}>
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.loginContent}>
+          <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
           <h2>Restablece tu contraseña</h2>
           <p>Ingresa tu correo electrónico para enviar
           un link de recuperación.</p>
-          <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.label_account}>
-              Dirección de correo electrónico*
-            </label>
+          <fieldset>
+            <label htmlFor="email">Dirección de correo electrónico*</label>
             <input
               type="email"
               name="email"
@@ -102,7 +113,7 @@ export const RestartEmail = ({ setPage, setLoading }) => {
             />
             <span>{message ? <ErrorAlert message={message} /> : null}</span>
               {errors.email && <ErrorAlert message="Ingrese su correo" />}
-          </div>
+          </fieldset>
           <Button
             text="Enviar código"
             onClick={() => history.push({ pathname: '/launch', from: location })}

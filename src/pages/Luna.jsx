@@ -128,7 +128,7 @@ const Luna = () => {
 
     if (page === 6) {
       setPageLuna(page);
-      history.push('/singup');
+      history.push('/signup');
     } else {
       setPageLuna(page);
     }

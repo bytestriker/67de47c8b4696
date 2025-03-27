@@ -9,6 +9,7 @@ import useAuth from '@Auth/userAuth';
 import { ErrorAlert } from '@Components/Atomos/Alerts';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import Button from '@Components/Button';
+import ButtonClose from '@Components/ButtonClose';
 
 // SERVICE
 import { login } from '@Service/entries';
@@ -54,10 +55,12 @@ const Login = () => {
 
   return (
     <section className={general.formAuthPageMain}>
+      
       <ScrollToTop />
       <div className={general.formAuthContainer}>
         <form method="POST" className={general.pageContainer} onSubmit={handleSubmit(onSubmit)}>
-          <div className={styles.loginContent}>
+          <div className={general.formContent}>
+            <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
             <h2>Iniciar sesión</h2>
             <fieldset>
               <label htmlFor="email">Dirección de correo electrónico *</label>
@@ -100,12 +103,13 @@ const Login = () => {
               <Link className={styles.recoveryPassword} to="/repassword">
                 ¿Olvidaste tu contraseña?
               </Link>
-              <div className={styles.formGroup}>
+              <fieldset>
                 <label>O inicia con:</label>
-                <button className={styles.buttonFacebook} type="button">
-                  <FaFacebookF className={styles.buttonFacebookIcon} />FACEBOOK
+                <button className={general.buttonFacebook} type="button">
+                  <FaFacebookF className={styles.buttonFacebookIcon} />
+                  <span>FACEBOOK</span>
                 </button>
-              </div>
+              </fieldset>
               <p className={styles.haveAccount}>¿Tienes una cuenta? <a className={styles.loginLink} onClick={() => handleLogin()}>Ingresa aquí</a></p>
             </div>
           </div>
