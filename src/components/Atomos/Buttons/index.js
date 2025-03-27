@@ -249,7 +249,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
 import playvideo from '@Assets/images/playvideo.svg';
 
 
-export const WatchYTVideo = ({ params }) => {
+export const WatchHomeVideo = ({ params }) => {
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
 
