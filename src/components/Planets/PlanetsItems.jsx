@@ -11,9 +11,6 @@ import {
   Neptuno,
 } from '@Components/Planets';
 
-// Styles
-import planets from '@Components/Planets/planets.module.scss';
-
 // Hook
 import { ServiceWPHome } from '@Hooks/useFetchWP';
 
@@ -31,7 +28,7 @@ const PlanetsItems = () => {
   } = ServiceWPHome();
   return (
     <section>
-      <div className={planets.planetGrid}>
+      <div className="planetGrid">
         <Mercurio mercurioInfo={mercurioInfo} />
         <Venus venusInfo={venusInfo} />
         <Tierra tierraInfo={tierraInfo} />

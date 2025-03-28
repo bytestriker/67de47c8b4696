@@ -33,7 +33,7 @@ import { ModalAlert } from '@Components/UtilsComponents/ModalAlert';
 import _rocket from '@Assets/images/lauchLuna.png';
 
 // Styles
-import general from '@Sass/pages/general.module.scss';
+import '@Sass/pages/planet.scss';
 import luna from '@Sass/pages/luna.module.scss';
 
 const Luna = () => {
@@ -136,18 +136,17 @@ const Luna = () => {
   };
 
   return (
-    <section className={`${general.planetWrap}`}>
-      <img src={satelite} alt="Satelite" className={general.satelite} />
+    <section className="planetWrap">
+      <img src={satelite} alt="Satelite" className="satelite" />
       <ButtonGoHome  
-        className={general.planetBackToTheHomepage} 
+        className="planetBackToTheHomepage" 
         onClick={()=>{history.push("/")}}
         text="Volver al Inicio"
         />
-      
-      <div className={general.planetContainer}>
-        <div className={general.planetContent}>
-          <div className={general.pageContainer}>
-            <div className={luna.launch}>
+      <div className="planetContainer">
+        <div className="planetContent">
+          <div className="pageContainer">
+            <div className="launch">
               {getPageLuna === 1 ? (
                 <NameProject
                   handleNextPage={handleNextPage}
@@ -192,22 +191,22 @@ const Luna = () => {
           </div>
         </div>
       </div>
-      <div className={general.planetHelper}>
-        <span className={`${general.planetHelperBorder} ${general.planetHelperBorderTop}`}>
+      <div className="planetHelper">
+        <span className="planetHelperBorder planetHelperBorderTop">
         </span>
-        <div className={general.planetHelperContainer}>
-          <div className={general.planetHelperTitle}>
+        <div className="planetHelperContainer">
+          <div className="planetHelperTitle">
             <img src={moretools} alt="Satelite" />
             <h2>Más herramientas</h2>
           </div>
-          <div className={general.planetHelperContent}>
+          <div className="planetHelperContent">
             <p>¿Necesitas más ayuda para realizar esta tarea?, aquí contamos con algunos materiales para ti.</p>
             <a href="">
               <span>Continuar</span>  
             </a>
           </div>
         </div>
-        <span className={`${general.planetHelperBorder} ${general.planetHelperBorderBottom}`}>
+        <span className="planetHelperBorder planetHelperBorderBottom">
         </span>
       </div>      
       <img src={astronauta} alt="Space Man" className="space-man" />

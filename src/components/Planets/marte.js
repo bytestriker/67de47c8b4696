@@ -8,7 +8,6 @@ import { marteStore } from '@Store/marte';
 import { valPackage } from '@Hooks/useValidatePlanet';
 
 // Styles
-import style from '@Components/Planets/planets.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 import buttons from '@Sass/components/buttons.module.scss';
 
@@ -57,28 +56,28 @@ export const Marte = ({ marteInfo }) => {
   }, [dataMarte]); */
 
   return (
-    <div className={style.planetGridItem}>
-      <div className={`${style.planetFigure}`}>
-        <img src={marte} alt="planet" className={`${style.planetImage}  ${style.mercurio}`} />
+    <div className="planetGridItem">
+      <div className="planetFigure">
+        <img src={marte} alt="planet" className="planetImage" />
         {getMarte().lockedPlanet !== 'desbloqueado' && (
-          <div className={`${style.lockedPlanet}`}>
+          <div className="lockedPlanet">
             <img src={grid} alt="lock" />
             <img src={lock} alt="lock" />
           </div>
         )}
 
-        <div className={style.tankCount}>
+        <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>
         </div>
       </div>
 
-      <div className={style.planetInfo}>
+      <div className="planetInfo">
         <h2>
           <span dangerouslySetInnerHTML={{ __html: title }}></span>
-          <span className={style.planetUnderline}></span>
+          <span className="planetUnderline"></span>
         </h2>
-        <span className={style.planetUnderline}></span>
+        <span className="planetUnderline"></span>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
 

@@ -14,7 +14,7 @@ import { SaberMas, WatchLunaVideos } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
-import style from '@Sass/pages/general.module.scss';
+import general from '@Sass/pages/general.module.scss';
 import lunaStyle from '@Sass/pages/luna.module.scss';
 
 
@@ -54,12 +54,12 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
 
 
   return (
-    <div className={lunaStyle.LaunchQuestion1}>
+    <div className={general.questionWrap}>
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}>{}</h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
 
-      <figure className={lunaStyle.LaunchQuestionVideo}>
+      <figure>
       {texts?.video && (
           <WatchLunaVideos
             params={[
@@ -73,10 +73,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
           />
         )}
       </figure>
-      <div className={lunaStyle.LaunchQuestionVideo}>
-        
-      </div>
-      <div className={lunaStyle.questionContent}>
+      <div className="px-lg">
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <h2>¿Cómo se va a llamar?</h2>
         <fieldset>
@@ -91,7 +88,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
             onChange={(e) => handleNameProject(e)}
           />
         </fieldset>
-        <Button text="Siguiente" isSubmit={true} onClick={() => handleNextPage(2)} />
+        <Button text="SIGUIENTE" isSubmit={true} onClick={() => handleNextPage(2)} />
       </div>
     </div>
   );
@@ -125,9 +122,9 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
   }, [texts2]);
 
   return (
-    <div className={lunaStyle.LaunchQuestion}>
+    <div className={general.questionWrap}>
       <ScrollToTop />
-      <div className={lunaStyle.questionContent}>
+      <div className="px-lg">
         <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
         <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
@@ -146,7 +143,7 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
             onChange={(e) => handleQuestion1(e)}
           ></textarea>
         </fieldset>
-        <div className={style.flexButtons}>
+        <div className={general.flexButtons}>
           <Button
             className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
             text="REGRESAR"
@@ -212,11 +209,11 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
           ></textarea>
         </fieldset>
 
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
+        <div className={general.contentButtons}>
+          <div className={general.flexButtons}>
+            <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
             <Button
-              text="Siguiente"
+              text="SIGUIENTE"
               isSubmit={false}
               disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
               onClick={() => handleNextPage(4)}
@@ -313,19 +310,19 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
               onChange={(e) => handleQuestion33(e)}
             ></textarea>
           </fieldset>
-          <div className={style.contentButtons}>
-            <div className={style.flexButtons}>
-              <Button text="Regresar" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
+          <div className={general.contentButtons}>
+            <div className={general.flexButtons}>
+              <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
               {contextValue.isLogged() ? (
                 <Button
-                  text="Siguiente"
+                  text="SIGUIENTE"
                   isAlt={false}
                   isSubmit={false}
                   onClick={() => handleNextPage(6)}
                 />
               ) : (
                 <Button
-                  text="Siguiente"
+                  text="SIGUIENTE"
                   isAlt={false}
                   isSubmit={false}
                   onClick={() => handleNextPage(5)}
@@ -453,7 +450,7 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
           </fieldset>
 
           <div className={`${lunaStyle.nameProjectContent}`}>
-            <Button text="Siguiente" isAlt={false} onClick={()=>{history.push('/signup')}}/>
+            <Button text="SIGUIENTE" isAlt={false} onClick={()=>{history.push('/signup')}}/>
           </div>
         </div>
       </div>

@@ -17,7 +17,6 @@ import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 
 // Styles
-import style from '@Components/Planets/planets.module.scss';
 import buttons from '@Sass/components/buttons.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 
@@ -50,27 +49,27 @@ export const Mercurio = ({ mercurioInfo }) => {
   }, [mercurioInfo]);
 
   return (
-    <div className={style.planetGridItem}>
-      <div className={`${style.planetFigure}`}>
-        <img src={mercurio} alt="planet" className={`${style.planetImage}`} />
+    <div className="planetGridItem">
+      <div className="planetFigure">
+        <img src={mercurio} alt="planet" className="planetImage" />
         {
           getMercurio().lockedPlanet !== 'desbloqueado' &&
-          <div className={`${style.lockedPlanet}`}>
+          <div className="lockedPlanet">
             <img src={grid} alt="lock" />
             <img src={lock} alt="lock" />
           </div>
         }
-        <div className={style.tankCount}>
+        <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>
         </div>
       </div>
-      <div className={style.planetInfo}>
+      <div className="planetInfo">
         <h2>
           <span dangerouslySetInnerHTML={{ __html: title }}></span>
-          <span className={style.planetUnderline}></span>
+          <span className="planetUnderline"></span>
         </h2>
-        <span className={style.planetUnderline}></span>
+        <span className="planetUnderline"></span>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
       {getMercurio().id ? (

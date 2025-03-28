@@ -9,7 +9,6 @@ import { uranoStore } from '@Store/urano';
 import { valPackage } from '@Hooks/useValidatePlanet';
 
 // Styles
-import style from '@Components/Planets/planets.module.scss';
 import buttons from '@Sass/components/buttons.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 
@@ -57,26 +56,26 @@ export const Urano = ({ uranoInfo }) => {
   }, [uranoInfo]);
 
   return (
-    <div className={`${style.planetGridItem} ${style.planetGridItemUrano}`}>
-      <div className={`${style.planetFigure}  `}>
-        <img src={urano} alt="planet" className={`${style.planetImage} ${style.urano}`} />
+    <div className="planetGridItem planetGridItemUrano">
+      <div className="planetFigure">
+        <img src={urano} alt="planet" className="planetImage urano" />
         {
           getUrano().lockedPlanet !== 'desbloqueado' && (
-          <div className={`${style.lockedPlanet}`}>
+          <div className="lockedPlanet">
             <img src={grid} alt="lock" />
             <img src={lock} alt="lock" />
           </div>
           )
         }
-        <div className={style.tankCount}>
+        <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>
         </div>
       </div>
-      <div className={style.planetInfo}>
+      <div className="planetInfo">
         <h2>
           <span dangerouslySetInnerHTML={{ __html: title }}></span>
-          <span className={style.planetUnderline}></span>
+          <span className="planetUnderline"></span>
         </h2>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>

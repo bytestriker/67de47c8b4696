@@ -6,7 +6,6 @@ import { lunaStore } from '@Store/luna';
 import { Title } from '@Components/Atomos/Titles';
 
 // Styles
-import planets from '@Components/Planets/planets.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 import buttons from '@Sass/components/buttons.module.scss';
 
@@ -55,29 +54,29 @@ export const Luna = ({ lunaInfo }) => {
   }, [lunaInfo]);
 
   return (
-    <div id="launch-moon" className={`${planets.lunaWrapper}`}>
-      <div className={`${planets.lunaFigure}`}>
-        <img src={luna} className={`${planets.lunaImage}`} alt="luna" />
-        <img src={rocket} className={`${planets.rocketImage}`} alt="rocket" />
-        <div className={`${planets.radarWrapper}`}>
-          <img src={radar} className={`${planets.radar}`} alt="Radar" />
-          <img src={bulletTop} alt="Bullet SVG" className={`${planets.bulletTop}`} />
-          <img src={bulletLeft} alt="Bullet SVG" className={`${planets.bulletLeft}`} />
+    <div id="launch-moon" className="lunaWrapper">
+      <div className="lunaFigure">
+        <img src={luna} className="lunaImage" alt="luna" />
+        <img src={rocket} className="rocketImage" alt="rocket" />
+        <div className="radarWrapper">
+          <img src={radar} className="radar" alt="Radar" />
+          <img src={bulletTop} alt="Bullet SVG" className="bulletTop" />
+          <img src={bulletLeft} alt="Bullet SVG" className="bulletLeft" />
         </div>
-        <ul className={`${planets.bulletList}`}>
+        <ul className="bulletList">
           <li>Colonizar</li>
           <li>Liftoff!</li>
           <li>Transporte</li>
         </ul>
       </div>
       {/*
-      <img src={bullets} alt="bullets" className={`${planets.bullets}`} />
-      <img src={punto} alt="punto" className={`${planets.punto}`} /> */}
-      <div className={`${planets.lunaContent}`}>
+      <img src={bullets} alt="bullets" className="bullets" />
+      <img src={punto} alt="punto" className="punto" /> */}
+      <div className="lunaContent">
         
         <h2>{title}</h2>
         <p>{description}</p>
-        <div className={planets.planetButton_content}>
+        <div className="planetButton_content">
           {getLuna().id ? (
             <button
               className={`${

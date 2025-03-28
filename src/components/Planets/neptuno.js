@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 // STYLES
-import style from '@Components/Planets/planets.module.scss';
 import lines from '@Components/Planets/lines.module.scss';
 
 // IMAGES
@@ -40,24 +39,24 @@ export const Neptuno = ({ neptunoInfo }) => {
   }, [neptunoInfo]);
 
   return (
-    <div className={`${style.planetGridItem} ${style.planetGridItemNeptuno}`}>
-      <div className={`${style.planetFigure}  `}>
-        <img src={neptuno} alt="planet" className={`${style.planetImage} ${style.mercurio}`} />
-        <div className={`${style.lockedPlanet}`}>
+    <div className="planetGridItem planetGridItemNeptuno">
+      <div className="planetFigure">
+        <img src={neptuno} alt="planet" className="planetImage" />
+        <div className="lockedPlanet">
           <img src={grid} alt="lock" />
           <img src={lock} alt="lock" />
         </div>
-        <div className={style.tankCount}>
+        <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>
         </div>
       </div>
-      <div className={style.planetInfo}>
+      <div className="planetInfo">
         <h2>
           <span dangerouslySetInnerHTML={{ __html: title }}></span>
-          <span className={style.planetUnderline}></span>
+          <span className="planetUnderline"></span>
         </h2>
-        <span className={style.planetUnderline}></span>
+        <span className="planetUnderline"></span>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
       <img src={empieza} alt="empieza" />

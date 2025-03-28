@@ -19,10 +19,10 @@ import { ServiceWPHome } from '@Hooks/useFetchWP';
 import _Astro from '@Assets/images/astro.png';
 
 // STYLES
-import '@Components/PlanetContent/PlanetContent.scss';
+import '@Components/PlanetContent/planetContent.scss';
 
 const Planets = () => {
-FGio
+
   const { lunaInfo } = ServiceWPHome();
 
   return (

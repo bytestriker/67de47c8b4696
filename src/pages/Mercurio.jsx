@@ -101,7 +101,6 @@ const MercurioMain = () => {
 
   return (
     <section className={general.planetWrap}>
-      
       {modalSalir ? (
         <ModalMercurio
           title="Estás a punto de salir"
@@ -128,8 +127,7 @@ const MercurioMain = () => {
                   setTitlePage={setTitlePage}
                   texts={texts}
                 />
-              ) : null
-              }
+              ) : null}
               {page === 2 ? (
                 <MercurioQ2
                   setAlert={setAlert}
@@ -149,7 +147,7 @@ const MercurioMain = () => {
                   setTitlePage={setTitlePage}
                   texts={texts3}
                 />
-              ) : null }
+              ) : null}
             </div>
           </div>
         </div>
@@ -214,7 +212,14 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
   );
 };
 
-export const MercurioQ2 = ({ setPage, setAlert, setStateMercurio, dataMercurio, setTitlePage, texts }) => {
+export const MercurioQ2 = ({
+  setPage,
+  setAlert,
+  setStateMercurio,
+  dataMercurio,
+  setTitlePage,
+  texts,
+}) => {
   const { mercurioCreateProject } = useEventsMercurio();
   // Stores
   const { getMercurio } = mercurioStore(
@@ -298,7 +303,14 @@ export const MercurioQ2 = ({ setPage, setAlert, setStateMercurio, dataMercurio, 
   );
 };
 
-export const MercurioQ3 = ({ setPage, setAlert, setStateMercurio, dataMercurio, setTitlePage, texts }) => {
+export const MercurioQ3 = ({
+  setPage,
+  setAlert,
+  setStateMercurio,
+  dataMercurio,
+  setTitlePage,
+  texts,
+}) => {
   const { mercurioCreateProject } = useEventsMercurio();
   // Stores
   const { getMercurio } = mercurioStore(
