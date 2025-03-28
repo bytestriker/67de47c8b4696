@@ -18,9 +18,6 @@ import { ServiceWPHome } from '@Hooks/useFetchWP';
 // IMAGES
 import _Astro from '@Assets/images/astro.png';
 
-// STYLES
-import '@Components/PlanetContent/planetContent.scss';
-
 const Planets = () => {
 
   const { lunaInfo } = ServiceWPHome();

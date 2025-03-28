@@ -18,8 +18,7 @@ import { login } from '@Service/entries';
 import { FaFacebookF } from 'react-icons/fa';
 
 // STYLES
-import general from '@Sass/pages/general.module.scss';
-import styles from '@Sass/pages/login.module.scss';
+import '@Sass/pages/form.scss';
 
 const Login = () => {
   const { setLoading, contextValue, setPageLuna } = useAuth();
@@ -55,12 +54,11 @@ const Login = () => {
   };
 
   return (
-    <section className={general.formAuthPageMain}>
-      
+    <section className="formAuthPageMain">
       <ScrollToTop />
-      <div className={general.formAuthContainer}>
-        <form method="POST" className={general.pageContainer} onSubmit={handleSubmit(onSubmit)}>
-          <div className={general.formContent}>
+      <div className="formAuthContainer">
+        <form method="POST" className="px-lg" onSubmit={handleSubmit(onSubmit)}>
+          <div className="formContent">
             <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
             <h2>Iniciar sesión</h2>
             <fieldset>
@@ -90,28 +88,30 @@ const Login = () => {
             {errors.password && <ErrorAlert message="Ingrese su password" />}
             {
               message &&
-              <div className={styles.contentinfo}>
-                <div className={styles.messageInfo}>{message}</div>
+              <div className="contentinfo">
+                <div className="messageInfo">{message}</div>
               </div>
             }
-
-            <div className={styles.contentinfo}>
+            <fieldset>
               <Button
                 text="INICIAR SESIÓN"
                 type="submit"
+                isCentered={true}
               />
-              <Link className={styles.recoveryPassword} to="/repassword">
+            </fieldset>
+            <fieldset className="text-right">
+              <Link to="/repassword">
                 ¿Olvidaste tu contraseña?
               </Link>
-              <fieldset>
-                <label>O inicia con:</label>
-                <button className={general.buttonFacebook} type="button">
-                  <FaFacebookF className={styles.buttonFacebookIcon} />
-                  <span>FACEBOOK</span>
-                </button>
-              </fieldset>
-              <p className={styles.haveAccount}>¿Tienes una cuenta? <a className={styles.loginLink} onClick={() => handleLogin()}>Ingresa aquí</a></p>
-            </div>
+            </fieldset>
+            <fieldset className="text-center">
+              <label>O inicia con:</label>
+              <button className="buttonFacebook" type="button">
+                <FaFacebookF className="buttonFacebookIcon" />
+                <span>FACEBOOK</span>
+              </button>
+            </fieldset>
+            <p className="haveAccount">¿Tienes una cuenta? <a className="loginLink" onClick={() => handleLogin()}>Ingresa aquí</a></p>
           </div>
         </form>
       </div>

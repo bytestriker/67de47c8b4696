@@ -12,7 +12,6 @@ import { lunaStore } from '@Store/luna';
 import { useEventsLuna } from '@Hooks/useEventsLuna';
 import { LunaWPText } from '@Hooks/useFetchWP';
 
-
 import astronauta from '@Assets/images/astronauta.png';
 import satelite from '@Assets/images/satelite.png';
 import moretools from '@Assets/images/icon-mas-herramientas.svg';
@@ -138,77 +137,78 @@ const Luna = () => {
   return (
     <section className="planetWrap">
       <img src={satelite} alt="Satelite" className="satelite" />
-      <ButtonGoHome  
-        className="planetBackToTheHomepage" 
-        onClick={()=>{history.push("/")}}
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
         text="Volver al Inicio"
-        />
+      />
       <div className="planetContainer">
         <div className="planetContent">
-          <div className="pageContainer">
-            <div className="launch">
-              {getPageLuna === 1 ? (
-                <NameProject
-                  handleNextPage={handleNextPage}
-                  setPageLuna={setPageLuna}
-                  texts={texts}
-                  setTitlePage={setTitlePage}
-                />
-              ) : null}
-              {getPageLuna === 2 ? (
-                <QuestionsLaunch1
-                  handleNextPage={handleNextPage}
-                  setPageLuna={setPageLuna}
-                  texts2={texts2}
-                  setTitlePage={setTitlePage}
-                />
-              ) : null}
-              {getPageLuna === 3 ? (
-                <QuestionsLaunch2
-                  handleNextPage={handleNextPage}
-                  setPageLuna={setPageLuna}
-                  texts3={texts3}
-                  setTitlePage={setTitlePage}
-                />
-              ) : null}
-              {getPageLuna === 4 ? (
-                <QuestionsLaunch3
-                  handleNextPage={handleNextPage}
-                  setPageLuna={setPageLuna}
-                  texts4={texts4}
-                  setTitlePage={setTitlePage}
-                />
-              ) : null}
-              {getPageLuna === 5 ? (
-                <QuestionsLaunch5
-                  handleNextPage={handleNextPage}
-                  setPageLuna={setPageLuna}
-                  texts5={texts5}
-                  setTitlePage={setTitlePage}
-                />
-              ) : null}
-            </div>
+          <div className="py-lg">
+            {getPageLuna === 1 ? (
+              <NameProject
+                handleNextPage={handleNextPage}
+                setPageLuna={setPageLuna}
+                texts={texts}
+                setTitlePage={setTitlePage}
+              />
+            ) : null}
+            {getPageLuna === 2 ? (
+              <QuestionsLaunch1
+                handleNextPage={handleNextPage}
+                setPageLuna={setPageLuna}
+                texts2={texts2}
+                setTitlePage={setTitlePage}
+              />
+            ) : null}
+            {getPageLuna === 3 ? (
+              <QuestionsLaunch2
+                handleNextPage={handleNextPage}
+                setPageLuna={setPageLuna}
+                texts3={texts3}
+                setTitlePage={setTitlePage}
+              />
+            ) : null}
+            {getPageLuna === 4 ? (
+              <QuestionsLaunch3
+                handleNextPage={handleNextPage}
+                setPageLuna={setPageLuna}
+                texts4={texts4}
+                setTitlePage={setTitlePage}
+              />
+            ) : null}
+            {getPageLuna === 5 ? (
+              <QuestionsLaunch5
+                handleNextPage={handleNextPage}
+                setPageLuna={setPageLuna}
+                texts5={texts5}
+                setTitlePage={setTitlePage}
+              />
+            ) : null}
           </div>
         </div>
       </div>
       <div className="planetHelper">
-        <span className="planetHelperBorder planetHelperBorderTop">
-        </span>
+        <span className="planetHelperBorder planetHelperBorderTop"></span>
         <div className="planetHelperContainer">
           <div className="planetHelperTitle">
             <img src={moretools} alt="Satelite" />
             <h2>Más herramientas</h2>
           </div>
           <div className="planetHelperContent">
-            <p>¿Necesitas más ayuda para realizar esta tarea?, aquí contamos con algunos materiales para ti.</p>
+            <p>
+              ¿Necesitas más ayuda para realizar esta tarea?, aquí contamos con algunos materiales
+              para ti.
+            </p>
             <a href="">
-              <span>Continuar</span>  
+              <span>Continuar</span>
             </a>
           </div>
         </div>
-        <span className="planetHelperBorder planetHelperBorderBottom">
-        </span>
-      </div>      
+        <span className="planetHelperBorder planetHelperBorderBottom"></span>
+      </div>
       <img src={astronauta} alt="Space Man" className="space-man" />
     </section>
   );

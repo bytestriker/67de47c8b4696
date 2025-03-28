@@ -15,11 +15,7 @@ import ButtonClose from '@Components/ButtonClose';
 import { ConfirmEmail, restartPasword } from '@Service/entries';
 
 // Styles
-import general from '@Sass/pages/general.module.scss';
-import styles from '@Sass/pages/login.module.scss';
-
-//import styles from '@Sass/pages/repassword.module.scss';
-
+import '@Sass/pages/form.scss';
 
 const RePassword = () => {
   const { setLoading } = useAuth();
@@ -27,12 +23,12 @@ const RePassword = () => {
   const [page, setPage] = useState(1);
 
   return (
-    <section className={general.formAuthPageMain}>
+    <section className="formAuthPageMain">
       <ScrollToTop />
-      <div className={general.formAuthContainer}>
-        <div className={general.pageContainer}>
+      <div className="formAuthContainer">
+        <div className="pageContainer">
 
-          <div className={general.formContent}>
+          <div className="formContent">
             {
               page === 1 &&
               <RestartEmail setPage={setPage} setLoading={setLoading} />
@@ -91,9 +87,9 @@ export const RestartEmail = ({ setPage, setLoading }) => {
   };
 
   return (
-    <div className={styles.passwordContent}>
+    <div className="passwordContent">
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.loginContent}>
+        <div className="loginContent">
           <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
           <h2>Restablece tu contraseña</h2>
           <p>Ingresa tu correo electrónico para enviar
@@ -104,7 +100,7 @@ export const RestartEmail = ({ setPage, setLoading }) => {
               type="email"
               name="email"
               id="email"
-              className={styles.account_input}
+              className="account_input"
               placeholder="ejemplo@codeup.com"
               {...register('email', {
                 required: true,
@@ -135,11 +131,11 @@ export const EmailConfirm = ({ setPage }) => {
   };
 
   return (
-    <div className={styles.passwordContent}>
+    <div className="passwordContent">
       <form method="POST">
         <h2>¡Revisa tu correo!</h2>
-        <div className={styles.formGroup}>
-          <label htmlFor="info" className={styles.label_account}>
+        <div className="formGroup">
+          <label htmlFor="info" className="label_account">
             Hemos enviado un mensaje al correo electrónico que registraste para verificar tu cuenta.
           </label>
           <Button
@@ -194,15 +190,15 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
   };
 
   return (
-    <div className={styles.passwordContent}>
+    <div className="passwordContent">
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
         <h2>Restablece tu contraseña</h2>
-        <div className={styles.formGroup}>
+        <div className="formGroup">
           <input
             type="text"
             name="password"
             id="password"
-            className={styles.account_input}
+            className="account_input"
             placeholder="Nueva contraseña*"
             required={true}
             {...register('password', {
@@ -215,12 +211,12 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
           />
           {errors.password && <ErrorAlert message={errors.password.message} />}
         </div>
-        <div className={styles.formGroup}>
+        <div className="formGroup">
           <input
             type="password"
             name="repassword"
             id="repassword"
-            className={styles.account_input}
+            className="account_input"
             placeholder="Repite la contraseña*"
             required={true}
             {...register('repassword', {
@@ -239,8 +235,8 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
           isCentered={true}
           isSubmit={true}
         />
-        <div className={styles.contentinfo}>
-          <div className={styles.messageInfo}>{message}</div>
+        <div className="contentinfo">
+          <div className="messageInfo">{message}</div>
         </div>
       </form>
     </div>
@@ -250,11 +246,11 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
 export const RestartConfirm = () => {
   const history = useHistory();
   return (
-    <div className={styles.passwordContent}>
+    <div className="passwordContent">
       <form method="POST">
         <h2>Yaaay!</h2>
-        <div className={styles.formGroup}>
-          <label htmlFor="info" className={styles.label_account}>
+        <div className="formGroup">
+          <label htmlFor="info" className="label_account">
             ¡Tu contraseña ha sido restablecida! Prueba iniciar sesión con tu nueva contraseña.
           </label>
           <Button

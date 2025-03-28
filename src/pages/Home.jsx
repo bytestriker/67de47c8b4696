@@ -5,12 +5,12 @@ import Video from '@Components/Video/Video';
 import Planets from '@Components/PlanetContent/PlanetContent';
 import Footer from '@Components/Footer';
 
-import style from '@Sass/pages/general.module.scss';
+import '@Sass/pages/planets.scss';
 
 const Home = () => {
   return (
     <>
-      <section className={style.bgStars}>
+      <section>
         <Video/>
         <Element name="bio">
           <Planets />

@@ -54,24 +54,24 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
 
 
   return (
-    <div className={general.questionWrap}>
+    <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}>{}</h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
-
       <figure>
-      {texts?.video && (
-          <WatchLunaVideos
-            params={[
-              {
-                playvideo: video, 
-                alt:"play video",
-                url: texts?.link_video,
-                // You can add additional video params here if needed
-              }
-            ]} 
-          />
-        )}
+      {
+        texts?.video &&
+        <WatchLunaVideos
+          params={[
+            {
+              playvideo: video, 
+              alt:"play video",
+              url: texts?.link_video,
+              // You can add additional video params here if needed
+            }
+          ]} 
+        />
+      }
       </figure>
       <div className="px-lg">
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
@@ -122,7 +122,7 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
   }, [texts2]);
 
   return (
-    <div className={general.questionWrap}>
+    <div className="questionWrap">
       <ScrollToTop />
       <div className="px-lg">
         <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
@@ -186,14 +186,14 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
   }, [texts3]);
 
   return (
-    <div className={lunaStyle.LaunchQuestion}>
-      <ScrollToTop />
-      <div className={lunaStyle.questionContent}>
+    <div className="questionWrap">
+      <div className="px-lg">
+
+        <ScrollToTop />
         <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
         <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
         <SaberMas data={texts3} />
-
         <fieldset>
           <label htmlFor="launchQ1" className="text-right">2/3</label>
           <textarea
@@ -208,20 +208,17 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
             onChange={(e) => handleQuestion2(e)}
           ></textarea>
         </fieldset>
-
-        <div className={general.contentButtons}>
-          <div className={general.flexButtons}>
-            <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
-            <Button
-              text="SIGUIENTE"
-              isSubmit={false}
-              disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
-              onClick={() => handleNextPage(4)}
-              className={
-                getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
-              }
-            />
-          </div>
+        <div className="flexButtons">
+          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
+          <Button
+            text="SIGUIENTE"
+            isSubmit={false}
+            disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
+            onClick={() => handleNextPage(4)}
+            className={
+              getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
+            }
+          />
         </div>
       </div>
     </div>
@@ -263,8 +260,8 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
   return (
     <>
       <ScrollToTop />
-      <div className={lunaStyle.LaunchQuestion}>
-        <div className={lunaStyle.questionContent}>
+      <div className="questionWrap">
+        <div className="px-lg">
           <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
           <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
           <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
@@ -310,26 +307,24 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
               onChange={(e) => handleQuestion33(e)}
             ></textarea>
           </fieldset>
-          <div className={general.contentButtons}>
-            <div className={general.flexButtons}>
-              <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
-              {contextValue.isLogged() ? (
-                <Button
-                  text="SIGUIENTE"
-                  isAlt={false}
-                  isSubmit={false}
-                  onClick={() => handleNextPage(6)}
-                />
-              ) : (
-                <Button
-                  text="SIGUIENTE"
-                  isAlt={false}
-                  isSubmit={false}
-                  onClick={() => handleNextPage(5)}
-                />
-              )}
+          <div className="flexButtons">
+            <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
+            {contextValue.isLogged() ? (
+              <Button
+                text="SIGUIENTE"
+                isAlt={false}
+                isSubmit={false}
+                onClick={() => handleNextPage(6)}
+              />
+            ) : (
+              <Button
+                text="SIGUIENTE"
+                isAlt={false}
+                isSubmit={false}
+                onClick={() => handleNextPage(5)}
+              />
+            )}
             </div>
-          </div>
         </div>
       </div>
     </>
@@ -370,13 +365,9 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
 
   return (
     <>
-      <div className={lunaStyle.LaunchQuestion1}>
+      <div className="questionWrap">
         <ScrollToTop />
         <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
-
-
-        <div className={lunaStyle.questionContent}>
-
         <figure className={lunaStyle.LaunchQuestionVideo}>
           {texts5?.video && (
               <WatchLunaVideos
@@ -390,10 +381,9 @@ export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
                 ]} 
               />
             )}
-      </figure>
-        {
-          texts5?.slogan && <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
-        }
+        </figure>
+        <div className="px-lg">
+          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
           <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
           <fieldset id="promo-code-section">
             <label htmlFor="promo_code">Código Promocional</label>
