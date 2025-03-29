@@ -24,9 +24,6 @@ import {
 
 import { ButtonClose } from '@Components/Atomos/Buttons';
 
-// Styles
-import style from '@Components/Nav/navigation.module.scss';
-
 const Nav = ({ setNavState, navState }) => {
   const { contextValue, setLoading, reloadPacks, setPageLuna } = useAuth();
   const { handleNewProject } = useEventsLuna();
@@ -110,29 +107,29 @@ const Nav = ({ setNavState, navState }) => {
     if (contextValue.isLogged()) {
       return (
         <nav>
-          <a className={style.link_proyects} onClick={() => newProject()}>
+          <a onClick={() => newProject()}>
             <span>Crear nuevo</span>
           </a>
           {
             data && data.length > 0
-            ? <a className={style.link_proyects}>
+            ? <div >
+              <span>Ver Proyectos</span>
               <nav>
               {
-                data.map((item) => (
-                  <a key={item.id}
-                    id={item.id}
-                    ref={reference}
-                    className={`content_li ${style.linkProject}`}
-                    onClick={() => handleURL(item)}>
-                    {item.nombre}
-                  </a>
-                ))
+                data.map((item) =>
+                <a key={item.id}
+                  id={item.id}
+                  ref={reference}
+                  onClick={() => handleURL(item)}>
+                  {item.nombre}
+                </a>
+                )
               }
               </nav>
-            </a>
+            </div>
               : null
           }
-          <a className={style.link_proyects} onClick={() => handleLogOut()}>
+          <a onClick={() => handleLogOut()}>
             <span>Cerrar sesión</span>
           </a>
         </nav>
@@ -141,7 +138,6 @@ const Nav = ({ setNavState, navState }) => {
       return (
         <nav>
           <Link
-            className={style.link_proyects}
             to="/login"
             onClick={() => setNavState(false)}
             style={{ textDecoration: 'none' }}
@@ -154,12 +150,13 @@ const Nav = ({ setNavState, navState }) => {
   };
   return (
     <div
-      className={navState ? style.navigation : style.navigation_colapse}
+      className={navState ? "navigation" : "navigationCollapse"}
       id="navigation"
       data-nav="navigation"
       ref={menuRef}
     >
-      <a className={style.closeNav}></a>
+      <a className="closeNav" onClick={() => setNavState(false)}>
+      </a>
       {handleMenu()}
     </div>
   );

@@ -5,13 +5,9 @@ import { shallow } from 'zustand/shallow';
 import { storeRemainingTank } from '@Store/global';
 
 // Components
-import { LinkRouter } from '@Components/UtilsComponents/Button';
-
-// Icons
-import { FaRegTimesCircle } from 'react-icons/fa';
+import Button from '@Components/Button';
 
 // Images
-import _Astronaut from '@Assets/images/astronauta.png';
 
 // Styles
 import styles from '@Sass/components/navtank.module.scss';
@@ -36,14 +32,15 @@ const NavTank = ({ setNavTankState, navTankState }) => {
   };
 
   return (
-    <nav className={navTankState ? styles.NavTank : styles.NavTank_colapse} id="navTanks">
-      <div className={styles.closeNav}>
-        <FaRegTimesCircle className={styles.iconClose} onClick={() => setNavTankState(false)} />
-      </div>
+    <nav className={navTankState ? "navigation" : "navigationCollapse"} id="navTanks">
+      <a className="closeNav" onClick={() => setNavTankState(false)}></a>
       <div className={styles.NavTankContent}>
-        <h2>TE QUEDAN <span>{valueTank} TANQUES</span></h2>
-        <img src={_Astronaut} alt="astronaut" className={styles.NavTank_Img} />
-        <button onClick={() => handleLink()} className="buttonPlanet">RECARGAR</button>
+        <figure className="tankFigure"></figure>
+        <div className="tankWrap">
+          <h2>Te quedan <strong>12 tanques</strong></h2>
+          <Button text="RECARGAR" isCentered={true} onClick={() => handleLink()} />
+
+        </div>
       </div>
     </nav>
   );

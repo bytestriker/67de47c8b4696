@@ -85,9 +85,7 @@ const Header = () => {
           }
           {
             !formItems.includes(currentPathName)
-            ? <div className="icon_item">
-                <img src={_menu} alt="menu" onClick={() => setNavState(true)} />
-              </div>
+            ? <div className="iconMenu" onClick={() => setNavState(true)}></div>
             : null
           }
 
