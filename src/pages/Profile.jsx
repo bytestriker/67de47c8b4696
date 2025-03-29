@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FaCamera, FaCheck, FaTimes } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
-
+import { useHistory } from 'react-router-dom';
 // Context
 import useAuth from '@Auth/userAuth';
 
@@ -28,6 +28,7 @@ import luna from '@Sass/pages/luna.module.scss';
 import { FaRegTimesCircle, FaInfoCircle } from 'react-icons/fa';
 
 const Profile = () => {
+  const history = useHistory();
   const { setLoading } = useAuth();
   const { user, refetch } = useFetchUser();
   const [isOpen, setIsOpen] = useState(false);
