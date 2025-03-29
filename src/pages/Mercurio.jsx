@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 import { useForm } from 'react-hook-form';
-
+import { useHistory } from 'react-router-dom';
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { QuestionH4, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ButtonClose, SaberMas } from '@Components/Atomos/Buttons';
 import { ModalSuccesProject } from '@Components/Atomos/Alerts';
 import { ModalMercurio } from '@Components/Atomos/Modals';
+import ButtonGoHome from '@Components/ButtonGoHome';
 
 // Store
 import { mercurioStore } from '@Store/mercurio';
@@ -21,8 +22,10 @@ import { MercurioWPText } from '@Hooks/useFetchWP';
 import Mercurio from '@Assets/images/mercurio.png';
 
 // Styles
-import general from '@Sass/pages/general.module.scss';
-import style from '@Sass/pages/mercurio.module.scss';
+import '@Sass/pages/planet.scss';
+
+// import general from '@Sass/pages/general.module.scss';
+// import style from '@Sass/pages/mercurio.module.scss';
 
 const MercurioMain = () => {
   const { mercurioGetProjectById } = useEventsMercurio();
@@ -45,6 +48,8 @@ const MercurioMain = () => {
     }),
     shallow
   );
+
+  const history = useHistory();
 
   const { getLuna } = lunaStore(
     (state) => ({
@@ -100,59 +105,69 @@ const MercurioMain = () => {
   };
 
   return (
-    <section className={general.planetWrap}>
-      {modalSalir ? (
-        <ModalMercurio
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
-          setModalSalir={setModalSalir}
-          data={dataMercurio}
-        />
-      ) : null}
+    <>
+      <section className="planetWrap">
+        <ButtonGoHome
+          className="planetBackToTheHomePage"
+          onClick={() => { history.push('/')}}
+          />
+      </section>
+      <section className={general.planetWrap}>
+        {modalSalir ? (
+          <ModalMercurio
+            title="Estás a punto de salir"
+            message="¿Deseas guardar tu información?"
+            setModalSalir={setModalSalir}
+            data={dataMercurio}
+          />
+        ) : null}
 
-      {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
+        {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
 
-      <ScrollToTop />
+        <ScrollToTop />
 
-      <div className={general.planetContainer}>
-        <div className={general.planetContent}>
-          <div className={general.pageContainer}>
-            <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
-            <div className={style.Mercurio}>
-              {page === 1 ? (
-                <MercurioQ1
-                  setPage={setPage}
-                  setStateMercurio={setStateMercurio}
-                  dataMercurio={dataMercurio}
-                  setTitlePage={setTitlePage}
-                  texts={texts}
-                />
-              ) : null}
-              {page === 2 ? (
-                <MercurioQ2
-                  setAlert={setAlert}
-                  setPage={setPage}
-                  setStateMercurio={setStateMercurio}
-                  dataMercurio={dataMercurio}
-                  setTitlePage={setTitlePage}
-                  texts={texts2}
-                />
-              ) : null}
-              {page === 3 ? (
-                <MercurioQ3
-                  setAlert={setAlert}
-                  setPage={setPage}
-                  setStateMercurio={setStateMercurio}
-                  dataMercurio={dataMercurio}
-                  setTitlePage={setTitlePage}
-                  texts={texts3}
-                />
-              ) : null}
+        <div className={general.planetContainer}>
+          <div className={general.planetContent}>
+            <div className={general.pageContainer}>
+              <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
+              <div className={style.Mercurio}>
+                {page === 1 ? (
+                  <MercurioQ1
+                    setPage={setPage}
+                    setStateMercurio={setStateMercurio}
+                    dataMercurio={dataMercurio}
+                    setTitlePage={setTitlePage}
+                    texts={texts}
+                  />
+                ) : null}
+                {page === 2 ? (
+                  <MercurioQ2
+                    setAlert={setAlert}
+                    setPage={setPage}
+                    setStateMercurio={setStateMercurio}
+                    dataMercurio={dataMercurio}
+                    setTitlePage={setTitlePage}
+                    texts={texts2}
+                  />
+                ) : null}
+                {page === 3 ? (
+                  <MercurioQ3
+                    setAlert={setAlert}
+                    setPage={setPage}
+                    setStateMercurio={setStateMercurio}
+                    dataMercurio={dataMercurio}
+                    setTitlePage={setTitlePage}
+                    texts={texts3}
+                  />
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
+
+
   );
 };
 
