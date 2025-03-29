@@ -7,7 +7,7 @@ const Button = (
     onClick = () => { },
     type = "button",
     isCentered,
-    isAlt = false,
+    isAlt = false
   }) => {
   return (
     <div className={isCentered ? `${style.centerButton}` : ""}>

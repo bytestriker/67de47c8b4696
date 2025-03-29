@@ -117,13 +117,12 @@
   .planetHelper {
     position: relative;
     padding: 0 3vw;
-    width: calc(100% - 6vw);
-    max-width: 320px;
+    width: 100%;
     @include largeDevices {
       position: sticky;
       top: 132px;
       padding: 0;
-      width: 100%;
+      max-width: 320px;
     }
     .planetHelperBorder {
       align-items: center;

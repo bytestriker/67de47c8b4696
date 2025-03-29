@@ -8,17 +8,6 @@
   display: none;
 }
 
-.rocketImage {
-  position: absolute;
-  top: 49%;
-  mix-blend-mode: plus-lighter;
-  left: -21%;
-  width: 40vw;
-  @include largeDevices {
-    top: 40%;
-  }
-}
-
 .video {
   background-image: url("../../assets/images/bg-earth.jpg");
   background-position: bottom;
@@ -35,6 +24,16 @@
     background-size: cover;
     height: 68.125vw;
     font-size: 18px;
+  }
+  .rocketImage {
+    position: absolute;
+    top: 49%;
+    mix-blend-mode: plus-lighter;
+    left: -21%;
+    width: 40vw;
+    @include largeDevices {
+      top: 40%;
+    }
   }
   .video-container {
     margin: 120px 3rem 3rem;
@@ -270,6 +269,7 @@
   left: 110%;
   width: 55%;
   @include largeDevices {
+    position: absolute;
     top: 50%;
     width: 36%;
   }

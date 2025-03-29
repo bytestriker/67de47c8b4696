@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link as Href } from 'react-router-dom';
+import { Link as Href, useLocation } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 import { FaBars } from 'react-icons/fa';
 
@@ -12,18 +12,26 @@ import { lunaStore } from '@Store/luna';
 // components
 import Nav from '../Nav/Nav';
 import NavTank from '../NavTank/NavTank';
+import Button from '@Components/Button';
 
 // images
-import _logo from '../../assets/images/icon_rocketnow.png';
+import _logo from '../../assets/images/RocketNow.png';
 import _astro from '../../assets/images/icon_astronaut.png';
 import _earth from '../../assets/images/icon_earth.png';
 import _tank from '../../assets/images/tanque.png';
 import _menu from '../../assets/images/menu.png';
 
 // styles
-import styles from '@Sass/components/header.module.scss';
+import '@Sass/components/header.scss';
 
 const Header = () => {
+  const location = useLocation();
+  const currentPathName = location.pathname.split('/').pop();
+
+  const formItems = ["login", "repassword", "signup"];
+
+  console.log(formItems.includes(currentPathName));
+  
   const { contextValue} = useAuth();
   const { getLuna, dataLuna } = lunaStore(
     (state) => ({
@@ -45,35 +53,44 @@ const Header = () => {
   }, [dataLuna]);
 
   return (
-    <header className={styles.Header}>
-      <div className={styles.header_content}>
-        <div className={styles.logo_content}>
-          <Href to="/">
-            <img src={_logo} alt="logo" className={styles.logo} />
-          </Href>
-        </div>
-        <div className={styles.list_items}>
-        {contextValue.isLogged() ? (
-            <Href to="/perfil" className={styles.icon_item_profile} title="Mi Perfil">
-              <img src={_astro} alt="astro" />
-            </Href>
-          ) : null}
-          {contextValue.isLogged() ? (
-            <div className={styles.icon_item}>{nameProject ? <h4>{nameProject}</h4> : null}</div>
-          ) : null}
-
-          {contextValue.isLogged() ? (
-            <div className={styles.icon_item_world} title="Mis Tanques">
-              <img src={_tank} alt="tank" id="iconTank" onClick={() => setNavTankState(true)} />
+    <header>
+      <div className="header_content">
+        <Href to="/" className="logo_content">
+          <img src={_logo} alt="logo" className="logo" />
+        </Href>
+        <div className="list_items">
+          {
+            contextValue.isLogged()
+            ? <Button
+              text="Mi perfil"
+              onClick={() => history.push({ pathname: '/launch', from: location })} />
+            : null
+          }
+          {
+            contextValue.isLogged() && nameProject
+            ? <span>{nameProject}</span>
+            : null
+          }
+          {
+            contextValue.isLogged()
+              ? <div className="iconTank" title="Mis Tanques" onClick={() => setNavTankState(true)}>
+                <figure></figure>
+                <span>x3</span>
             </div>
-          ) : null}
+            : null}
+          {
+            !formItems.includes(currentPathName)
+            ? <Href to="/social-hub" className="iconSpinningGlobe" title="Social"></Href>
+            : null
+          }
+          {
+            !formItems.includes(currentPathName)
+            ? <div className="icon_item">
+                <img src={_menu} alt="menu" onClick={() => setNavState(true)} />
+              </div>
+            : null
+          }
 
-          <Href to="/social-hub" className={styles.icon_item_world} title="Social">
-            <img src={_earth} alt="earth" />
-          </Href>
-          <div className={styles.icon_item}>
-            <img src={_menu} alt="menu" onClick={() => setNavState(true)} />
-          </div>
         </div>
       </div>
       <Nav navState={navState} setNavState={setNavState} />

@@ -54,7 +54,7 @@ export const Luna = ({ lunaInfo }) => {
   }, [lunaInfo]);
 
   return (
-    <div id="launch-moon" className="lunaWrapper">
+    <div id="launch-moon" className="lunaWrap">
       <div className="lunaFigure">
         <img src={luna} className="lunaImage" alt="luna" />
         <img src={rocket} className="rocketImage" alt="rocket" />

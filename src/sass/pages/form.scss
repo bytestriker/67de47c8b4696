@@ -3,54 +3,60 @@
 @import '@Sass/components/extends.scss';
 
 main {
-  box-sizing: border-box;
-  overflow: auto;
-  width: 100%;
-  height: 100vh;
   &.login,
-  &.repassword {
+  &.repassword,
+  &.signup {
     background-image: url('../../assets/images/bg-form.jpg');
     background-position: 20% center;
     background-size: cover;
   }
 }
 
-.formAuthPageMain {
-  display: flex;
+.formWrap {
+  display: grid;
+  grid-template-rows: 90px auto 36px;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  position: relative;
+  flex-grow: 1;
+  /*display: grid;
+  align-items: center;
+  width: 100%;*/
   @include largeDevices {
-    align-items: normal;
-    justify-content: flex-end;
+    grid-template-columns: 1fr 700px 4vw;
+    grid-template-rows: unset;
+    align-items: stretch;
   }
-  .formAuthContainer {
+  .formContainer {
     background-color: rgba(77, 84, 47, 0.45);
-    padding: 64px 2.5vw 0;
-    position: relative;
+    grid-row: 2;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 640px;
     width: 100%;
     @include largeDevices {
-      padding: 150px 5vw 0;
-      right: 7.5vw;
-      width: 47%;
-      max-width: 720px;
+      grid-column: 2;
+      grid-row: 1;
+      
     }
     .formContent {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-bottom: 2rem;
+      padding: 72px 4vw 2rem;
       position: relative;
-      @include mediumDevicesMax {
-        display: block;
+      @include largeDevices {
+        padding-top: 120px;
       }
-    
+
+      
       h2, p {
         text-align: center;
       }
     }
+
+  }
+  .formAuthContainer {
+    
     .contentInfo {
       display: flex;
       flex-direction: column;
@@ -119,4 +125,49 @@ main {
     width: 24px;
     height: 24px;
   }
+}
+
+.satelite {
+  animation: floatingSatellite 16s ease-in-out infinite;
+  position: fixed;
+  top: 48px;
+  right: 72px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.space-man {
+  animation: floatingSpaceman 6s ease-in-out infinite;
+  position: fixed;
+  top: 56%;
+  left: 110%;
+  width: 55%;
+  @include largeDevices {
+    top: 50%;
+    width: 36%;
+  }
+}
+
+@keyframes floatingSatellite {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+@keyframes floatingSpaceman {
+	0% {
+		transform: translate(-80%, 0px);
+	}
+	50% {
+		transform: translate(-80%, -20px);
+	}
+	100% {
+		transform: translate(-80%, 0px);
+	}
 }

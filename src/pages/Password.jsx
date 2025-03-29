@@ -23,30 +23,25 @@ const RePassword = () => {
   const [page, setPage] = useState(1);
 
   return (
-    <section className="formAuthPageMain">
+    <section className="formWrap">
       <ScrollToTop />
-      <div className="formAuthContainer">
-        <div className="pageContainer">
-
-          <div className="formContent">
-            {
-              page === 1 &&
-              <RestartEmail setPage={setPage} setLoading={setLoading} />
-            }
-            {
-              page === 2 &&
-              <EmailConfirm setPage={setPage} />
-            }
-            {
-              page === 3 &&
-              <RestartPasswordConfirm setPage={setPage} setLoading={setLoading} />
-            }
-            {
-              page === 4 &&
-              <RestartConfirm setPage={setPage} />
-            }
-          </div>
-        </div>
+      <div className="formContainer">
+      {
+        page === 1 &&
+        <RestartEmail setPage={setPage} setLoading={setLoading} />
+      }
+      {
+        page === 2 &&
+        <EmailConfirm setPage={setPage} />
+      }
+      {
+        page === 3 &&
+        <RestartPasswordConfirm setPage={setPage} setLoading={setLoading} />
+      }
+      {
+        page === 4 &&
+        <RestartConfirm setPage={setPage} />
+      }
       </div>
     </section>
   );
@@ -87,38 +82,33 @@ export const RestartEmail = ({ setPage, setLoading }) => {
   };
 
   return (
-    <div className="passwordContent">
-      <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-        <div className="loginContent">
-          <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
-          <h2>Restablece tu contraseña</h2>
-          <p>Ingresa tu correo electrónico para enviar
-          un link de recuperación.</p>
-          <fieldset>
-            <label htmlFor="email">Dirección de correo electrónico*</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              className="account_input"
-              placeholder="ejemplo@codeup.com"
-              {...register('email', {
-                required: true,
-                pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-              })}
-            />
-            <span>{message ? <ErrorAlert message={message} /> : null}</span>
-              {errors.email && <ErrorAlert message="Ingrese su correo" />}
-          </fieldset>
-          <Button
-            text="Enviar código"
-            onClick={() => history.push({ pathname: '/launch', from: location })}
-            isCentered={true}
-            isSubmit={true}
-            />
-        </div>
-      </form>
-    </div>
+    <form method="POST"  className="formContent" onSubmit={handleSubmit(onSubmit)}>
+      <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
+      <h2>Restablece tu contraseña</h2>
+      <p>Ingresa tu correo electrónico para enviar
+      un link de recuperación.</p>
+      <fieldset>
+        <label htmlFor="email">Dirección de correo electrónico*</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          className="account_input"
+          placeholder="ejemplo@codeup.com"
+          {...register('email', {
+            required: true,
+            pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+          })}
+        />
+        <span>{message ? <ErrorAlert message={message} /> : null}</span>
+          {errors.email && <ErrorAlert message="Ingrese su correo" />}
+      </fieldset>
+      <Button
+        text="Enviar código"
+        isCentered={true}
+        type="submit"
+        />
+    </form>
   );
 };
 
@@ -131,22 +121,19 @@ export const EmailConfirm = ({ setPage }) => {
   };
 
   return (
-    <div className="passwordContent">
-      <form method="POST">
-        <h2>¡Revisa tu correo!</h2>
-        <div className="formGroup">
-          <label htmlFor="info" className="label_account">
-            Hemos enviado un mensaje al correo electrónico que registraste para verificar tu cuenta.
-          </label>
-          <Button
-            text="Okay"
-            onClick={() => handleSubmit()}
-            isCentered={true}
-            isSubmit={true}
-            />
-        </div>
-      </form>
-    </div>
+    <form method="POST" className="formContent">
+      <h2>¡Revisa tu correo!</h2>
+      <fieldset>
+        <label htmlFor="info">
+          Hemos enviado un mensaje al correo electrónico que registraste para verificar tu cuenta.
+        </label>
+        <Button
+          text="OKAY"
+          onClick={() => handleSubmit()}
+          isCentered={true}
+          />
+      </fieldset>
+    </form>
   );
 };
 
@@ -190,78 +177,70 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
   };
 
   return (
-    <div className="passwordContent">
-      <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-        <h2>Restablece tu contraseña</h2>
-        <div className="formGroup">
-          <input
-            type="text"
-            name="password"
-            id="password"
-            className="account_input"
-            placeholder="Nueva contraseña*"
-            required={true}
-            {...register('password', {
-              required: 'Ingrese nuevamente la contraseña',
-              pattern: {
-                value: /^\w{11,}$/,
-                message: 'La contraseña debe ser mayor a 10 caracteres',
-              },
-            })}
-          />
-          {errors.password && <ErrorAlert message={errors.password.message} />}
-        </div>
-        <div className="formGroup">
-          <input
-            type="password"
-            name="repassword"
-            id="repassword"
-            className="account_input"
-            placeholder="Repite la contraseña*"
-            required={true}
-            {...register('repassword', {
-              required: 'Ingrese nuevamente la contraseña',
-              pattern: {
-                value: /^\w{11,}$/,
-                message: 'La contraseña debe ser mayor a 10 caracteres',
-              },
-            })}
-            />
-        </div>
-        {errors.repassword && <ErrorAlert message={errors.repassword.message} />}
-        <Button
-          text="Guardar contraseña"
-          onClick={() => history.push({ pathname: '/launch', from: location })}
-          isCentered={true}
-          isSubmit={true}
+    <form method="POST" className="formContent" onSubmit={handleSubmit(onSubmit)}>
+      <h2>Restablece tu contraseña</h2>
+      <fieldset>
+        <input
+          type="text"
+          name="password"
+          id="password"
+          placeholder="Nueva contraseña*"
+          required={true}
+          {...register('password', {
+            required: 'Ingrese nuevamente la contraseña',
+            pattern: {
+              value: /^\w{11,}$/,
+              message: 'La contraseña debe ser mayor a 10 caracteres',
+            },
+          })}
         />
-        <div className="contentinfo">
-          <div className="messageInfo">{message}</div>
-        </div>
-      </form>
-    </div>
+        {errors.password && <ErrorAlert message={errors.password.message} />}
+      </fieldset>
+      <fieldset>
+        <input
+          type="password"
+          name="repassword"
+          id="repassword"
+          placeholder="Repite la contraseña*"
+          required={true}
+          {...register('repassword', {
+            required: 'Ingrese nuevamente la contraseña',
+            pattern: {
+              value: /^\w{11,}$/,
+              message: 'La contraseña debe ser mayor a 10 caracteres',
+            },
+          })}
+          />
+      </fieldset>
+      {errors.repassword && <ErrorAlert message={errors.repassword.message} />}
+      <Button
+        text="Guardar contraseña"
+        isCentered={true}
+        type="submit"
+      />
+      <div className="contentinfo">
+        <div className="messageInfo">{message}</div>
+      </div>
+    </form>
   );
 };
 
 export const RestartConfirm = () => {
   const history = useHistory();
   return (
-    <div className="passwordContent">
-      <form method="POST">
-        <h2>Yaaay!</h2>
-        <div className="formGroup">
-          <label htmlFor="info" className="label_account">
-            ¡Tu contraseña ha sido restablecida! Prueba iniciar sesión con tu nueva contraseña.
-          </label>
-          <Button
-            text="Iniciar sesión"
-            onClick={() => history.push('/login')}
-            isCentered={true}
-            isSubmit={true}
-            />
-        </div>
-      </form>
-    </div>
+    <form method="POST" className="formContent">
+      <h2>Yaaay!</h2>
+      <div className="formGroup">
+        <label htmlFor="info" className="label_account">
+          ¡Tu contraseña ha sido restablecida! Prueba iniciar sesión con tu nueva contraseña.
+        </label>
+        <Button
+          text="Iniciar sesión"
+          onClick={() => history.push('/login')}
+          isCentered={true}
+          />
+      </div>
+    </form>
   );
 };
 

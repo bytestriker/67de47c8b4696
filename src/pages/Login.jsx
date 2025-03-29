@@ -54,65 +54,63 @@ const Login = () => {
   };
 
   return (
-    <section className="formAuthPageMain">
+    <section className="formWrap">
       <ScrollToTop />
-      <div className="formAuthContainer">
-        <form method="POST" className="px-lg" onSubmit={handleSubmit(onSubmit)}>
-          <div className="formContent">
-            <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
-            <h2>Iniciar sesión</h2>
-            <fieldset>
-              <label htmlFor="email">Dirección de correo electrónico *</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="ejemplo@rocketnow.mx"
-                {...register('email', {
-                  required: true,
-                  pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-                })}
-              />
-              {errors.email && <ErrorAlert message="Ingrese su correo" />}
-            </fieldset>
-            <fieldset>
-              <label htmlFor="password">Contraseña *</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="* * * * * *"
-                {...register('password', { required: true })}
-              />
-            </fieldset>
-            {errors.password && <ErrorAlert message="Ingrese su password" />}
-            {
-              message &&
-              <div className="contentinfo">
-                <div className="messageInfo">{message}</div>
-              </div>
-            }
-            <fieldset>
-              <Button
-                text="INICIAR SESIÓN"
-                type="submit"
-                isCentered={true}
-              />
-            </fieldset>
-            <fieldset className="text-right">
-              <Link to="/repassword">
-                ¿Olvidaste tu contraseña?
-              </Link>
-            </fieldset>
-            <fieldset className="text-center">
-              <label>O inicia con:</label>
-              <button className="buttonFacebook" type="button">
-                <FaFacebookF className="buttonFacebookIcon" />
-                <span>FACEBOOK</span>
-              </button>
-            </fieldset>
-            <p className="haveAccount">¿Tienes una cuenta? <a className="loginLink" onClick={() => handleLogin()}>Ingresa aquí</a></p>
-          </div>
+      <div className="formContainer">
+        <form method="POST" className="formContent" onSubmit={handleSubmit(onSubmit)}>
+          <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
+          <h2>Iniciar sesión</h2>
+          <fieldset>
+            <label htmlFor="email">Dirección de correo electrónico *</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="ejemplo@rocketnow.mx"
+              {...register('email', {
+                required: true,
+                pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+              })}
+            />
+            {errors.email && <ErrorAlert message="Ingrese su correo" />}
+          </fieldset>
+          <fieldset>
+            <label htmlFor="password">Contraseña *</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="* * * * * *"
+              {...register('password', { required: true })}
+            />
+          </fieldset>
+          {errors.password && <ErrorAlert message="Ingrese su password" />}
+          {
+            message &&
+            <div className="contentinfo">
+              <div className="messageInfo">{message}</div>
+            </div>
+          }
+          <fieldset>
+            <Button
+              text="INICIAR SESIÓN"
+              type="submit"
+              isCentered={true}
+            />
+          </fieldset>
+          <fieldset className="text-right">
+            <Link to="/repassword">
+              ¿Olvidaste tu contraseña?
+            </Link>
+          </fieldset>
+          <fieldset className="text-center">
+            <label>O inicia con:</label>
+            <button className="buttonFacebook" type="button">
+              <FaFacebookF className="buttonFacebookIcon" />
+              <span>FACEBOOK</span>
+            </button>
+          </fieldset>
+          <p className="haveAccount">¿Tienes una cuenta? <a className="loginLink" onClick={() => handleLogin()}>Ingresa aquí</a></p>
         </form>
       </div>
     </section>

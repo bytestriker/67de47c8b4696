@@ -22,6 +22,8 @@ import {
   FaFolderOpen,
 } from 'react-icons/fa';
 
+import { ButtonClose } from '@Components/Atomos/Buttons';
+
 // Styles
 import style from '@Components/Nav/navigation.module.scss';
 
@@ -137,14 +139,16 @@ const Nav = ({ setNavState, navState }) => {
       );
     } else {
       return (
-        <Link
-          className={style.link_proyects}
-          to="/login"
-          onClick={() => setNavState(false)}
-          style={{ textDecoration: 'none' }}
-        >
-          <span>Iniciar sesión</span>
-        </Link>
+        <nav>
+          <Link
+            className={style.link_proyects}
+            to="/login"
+            onClick={() => setNavState(false)}
+            style={{ textDecoration: 'none' }}
+          >
+            <span>Iniciar sesión</span>
+          </Link>
+        </nav> 
       );
     }
   };
@@ -155,9 +159,7 @@ const Nav = ({ setNavState, navState }) => {
       data-nav="navigation"
       ref={menuRef}
     >
-      <a className={style.closeNav}>
-        <FaRegTimesCircle className={style.iconClose} onClick={() => setNavState(false)} />
-      </a>
+      <a className={style.closeNav}></a>
       {handleMenu()}
     </div>
   );
