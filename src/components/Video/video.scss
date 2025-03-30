@@ -211,8 +211,12 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 50%;
+    top: 100vw;
     animation: floatingButton 3s ease-in-out infinite;
+    @include largeDevices {
+      top: 50%;
+    }
+
     h2 {
       color: $--colorGreen;
       text-align: center;
