@@ -111,27 +111,11 @@ const MercurioMain = () => {
           className="planetBackToTheHomePage"
           onClick={() => { history.push('/')}}
           />
-      </section>
-      <section className={general.planetWrap}>
-        {modalSalir ? (
-          <ModalMercurio
-            title="Estás a punto de salir"
-            message="¿Deseas guardar tu información?"
-            setModalSalir={setModalSalir}
-            data={dataMercurio}
-          />
-        ) : null}
 
-        {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
-
-        <ScrollToTop />
-
-        <div className={general.planetContainer}>
-          <div className={general.planetContent}>
-            <div className={general.pageContainer}>
-              <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
-              <div className={style.Mercurio}>
-                {page === 1 ? (
+          <div className="planetContainer">
+            <div className="planetContent">
+              <div className="py-lg">
+              {page === 1 ? (
                   <MercurioQ1
                     setPage={setPage}
                     setStateMercurio={setStateMercurio}
@@ -160,6 +144,32 @@ const MercurioMain = () => {
                     texts={texts3}
                   />
                 ) : null}
+              </div>
+            </div>
+          </div>
+
+      </section>
+      
+      {modalSalir ? (
+        <ModalMercurio
+          title="Estás a punto de salir"
+          message="¿Deseas guardar tu información?"
+          setModalSalir={setModalSalir}
+          data={dataMercurio}
+        />
+      ) : null}
+
+      {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
+      <section className={general.planetWrap}>
+
+        <ScrollToTop />
+
+        <div className={general.planetContainer}>
+          <div className={general.planetContent}>
+            <div className={general.pageContainer}>
+              <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
+              <div className={style.Mercurio}>
+                
               </div>
             </div>
           </div>
