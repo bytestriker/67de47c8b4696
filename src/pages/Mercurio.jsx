@@ -3,12 +3,11 @@ import { shallow } from 'zustand/shallow';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 // Components
-import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
-import { QuestionH4, ParagraphPlanet } from '@Components/Atomos/Titles';
-import { ButtonClose, SaberMas } from '@Components/Atomos/Buttons';
+import { SaberMas } from '@Components/Atomos/Buttons';
 import { ModalSuccesProject } from '@Components/Atomos/Alerts';
 import { ModalMercurio } from '@Components/Atomos/Modals';
 import ButtonGoHome from '@Components/ButtonGoHome';
+import Button from '@Components/Button';
 
 // Store
 import { mercurioStore } from '@Store/mercurio';
@@ -18,14 +17,11 @@ import { lunaStore } from '@Store/luna';
 import { useEventsMercurio } from '@Hooks/useEventsMercurio';
 import { MercurioWPText } from '@Hooks/useFetchWP';
 
-// Images
-import Mercurio from '@Assets/images/mercurio.png';
+import satelite from '@Assets/images/satelite.png';
 
 // Styles
 import '@Sass/pages/planet.scss';
 
-// import general from '@Sass/pages/general.module.scss';
-// import style from '@Sass/pages/mercurio.module.scss';
 
 const MercurioMain = () => {
   const { mercurioGetProjectById } = useEventsMercurio();
@@ -84,6 +80,7 @@ const MercurioMain = () => {
   // validamos si existe un proyecto y actualizamos estado
   const handleValidateProject = async () => {
     const lunaProject = getLuna();
+
     await mercurioGetProjectById(lunaProject?.id);
     if (getMercurio()) {
       const mercurio = getMercurio();
@@ -105,51 +102,50 @@ const MercurioMain = () => {
   };
 
   return (
-    <>
-      <section className="planetWrap">
-        <ButtonGoHome
-          className="planetBackToTheHomePage"
-          onClick={() => { history.push('/')}}
-          />
+    <section className="planetWrap">
+      <img src={satelite} alt="Satelite" className="satelite" />
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
 
-          <div className="planetContainer">
-            <div className="planetContent">
-              <div className="py-lg">
-              {page === 1 ? (
-                  <MercurioQ1
-                    setPage={setPage}
-                    setStateMercurio={setStateMercurio}
-                    dataMercurio={dataMercurio}
-                    setTitlePage={setTitlePage}
-                    texts={texts}
-                  />
-                ) : null}
-                {page === 2 ? (
-                  <MercurioQ2
-                    setAlert={setAlert}
-                    setPage={setPage}
-                    setStateMercurio={setStateMercurio}
-                    dataMercurio={dataMercurio}
-                    setTitlePage={setTitlePage}
-                    texts={texts2}
-                  />
-                ) : null}
-                {page === 3 ? (
-                  <MercurioQ3
-                    setAlert={setAlert}
-                    setPage={setPage}
-                    setStateMercurio={setStateMercurio}
-                    dataMercurio={dataMercurio}
-                    setTitlePage={setTitlePage}
-                    texts={texts3}
-                  />
-                ) : null}
-              </div>
-            </div>
+      <div className="planetContainer">
+        <div className="planetContent">
+          <div className="py-lg">
+            {page === 1 ? (
+              <MercurioQ1
+                setPage={setPage}
+                setStateMercurio={setStateMercurio}
+                dataMercurio={dataMercurio}
+                setTitlePage={setTitlePage}
+                texts={texts}
+              />
+            ) : null}
+            {page === 2 ? (
+              <MercurioQ2
+                setAlert={setAlert}
+                setPage={setPage}
+                setStateMercurio={setStateMercurio}
+                dataMercurio={dataMercurio}
+                setTitlePage={setTitlePage}
+                texts={texts2}
+              />
+            ) : null}
+            {page === 3 ? (
+              <MercurioQ3
+                setAlert={setAlert}
+                setPage={setPage}
+                setStateMercurio={setStateMercurio}
+                dataMercurio={dataMercurio}
+                setTitlePage={setTitlePage}
+                texts={texts3}
+              />
+            ) : null}
           </div>
 
-      </section>
-      
       {modalSalir ? (
         <ModalMercurio
           title="Estás a punto de salir"
@@ -160,24 +156,9 @@ const MercurioMain = () => {
       ) : null}
 
       {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
-      <section className={general.planetWrap}>
-
-        <ScrollToTop />
-
-        <div className={general.planetContainer}>
-          <div className={general.planetContent}>
-            <div className={general.pageContainer}>
-              <ButtonClose setModalSalir={setModalSalir} titlePage={titlePage} />
-              <div className={style.Mercurio}>
-                
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-    </>
-
-
+      </div>
+    </section>
   );
 };
 
@@ -193,19 +174,15 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
   }, [texts]);
 
   return (
-    <div>
-      <div className={style.MercurioInfo}>
-        <QuestionH4 questiontext={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-        {/* <SaberMas data={texts} /> */}
-      </div>
-      <br></br>
-      <form className={style.MercurioQS} method="POST">
-        <div className={style.labelContent}>
-          <label htmlFor="launchQ1" className={style.labelPage}>
-            1/3
-          </label>
-        </div>
+    <div className="questionWrap">
+      <form className="px-lg" method="POST">
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}>{}</h2>
+        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+
+        <label htmlFor="launchQ1" className="text-right">
+          1/3
+        </label>
+
         {/* <textarea
           className={style.inputProjectName}
           name="mercurioQ1"
@@ -217,8 +194,8 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
           value={dataMercurio.que_resuelve}
           onChange={(e) => handleQ1Mercurio(e)}
         ></textarea> */}
-        <div className={style.buttonsContent}>
-          {/* <button
+        {/* <div className={style.buttonsContent}> */}
+        {/* <button
             className={
               dataMercurio.que_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
             }
@@ -228,10 +205,13 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
           >
             SIGUIENTE
           </button> */}
-          <button className={style.btnPlanet} type="button" onClick={() => setPage(2)}>
+
+        {/* <button className={style.btnPlanet} type="button" onClick={() => setPage(2)}>
             SIGUIENTE
-          </button>
-        </div>
+          </button> */}
+
+        {/* </div> */}
+        <Button text="SIGUIENTE" isCentered={true} onClick={() => setPage(2)} />
       </form>
     </div>
   );
@@ -274,32 +254,43 @@ export const MercurioQ2 = ({
   }, [texts]);
 
   return (
-    <div>
-      <div className={style.MercurioInfo}>
-        <QuestionH4 questiontext={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
+    <div className="questionWrap">
+      <form className="px-lg" method="POST">
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
-      </div>
-      <br></br>
-      <form className={style.MercurioQS} method="POST">
-        <div className={style.labelContent}>
-          <label htmlFor="launchQ2" className={style.labelPage}>
-            2/3
-          </label>
+        <label className="text-right">2/3</label>
+        <fieldset>
+          <textarea
+            // className={style.inputProjectName}
+            name="mercurioQ2"
+            id="mercurioQ2"
+            placeholder="Escribe aquí tu idea"
+            {...register('mercurioQ2', { required: true, minLength: 16 })}
+            cols="30"
+            rows="10"
+            value={dataMercurio.a_quien_resuelve}
+            onChange={(e) => handleQ2Mercurio(e)}
+          ></textarea>
+        </fieldset>
+        <div className="flexButtons">
+          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(1)} />
+          <Button
+            text="SIGUIENTE"
+            // className={
+            //   dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
+            // }
+            className={
+              dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''
+            }
+            type="button"
+            disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
+            onClick={() => setPage(3)}
+          />
         </div>
-        <textarea
-          className={style.inputProjectName}
-          name="mercurioQ2"
-          id="mercurioQ2"
-          placeholder="Escribe aquí tu idea"
-          {...register('mercurioQ2', { required: true, minLength: 16 })}
-          cols="30"
-          rows="10"
-          value={dataMercurio.a_quien_resuelve}
-          onChange={(e) => handleQ2Mercurio(e)}
-        ></textarea>
-        <div className={style.buttonsContent}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
+
+        {/* <div className="d-none"> */}
+          {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
             ANTERIOR
           </button>
           <button
@@ -312,6 +303,7 @@ export const MercurioQ2 = ({
           >
             SIGUIENTE
           </button>
+           */}
           {/* <button
             className={
               dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
@@ -322,7 +314,7 @@ export const MercurioQ2 = ({
           >
             GUARDAR
           </button> */}
-        </div>
+        {/* </div> */}
       </form>
     </div>
   );
@@ -365,32 +357,38 @@ export const MercurioQ3 = ({
   }, [texts]);
 
   return (
-    <div>
-      <div className={style.MercurioInfo}>
-        <QuestionH4 questiontext={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
+    <div className="questionWrap">
+      <form className="px-lg" method="POST">
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
-      </div>
-      <br></br>
-      <form className={style.MercurioQS} method="POST">
-        <div className={style.labelContent}>
-          <label htmlFor="launchQ3" className={style.labelPage}>
+          <label className="text-right">
             3/3
           </label>
-        </div>
-        <textarea
-          className={style.inputProjectName}
-          name="mercurioQ3"
-          id="mercurioQ3"
-          placeholder="Escribe aquí tu idea"
-          {...register('mercurioQ3', { required: true, minLength: 16 })}
-          cols="30"
-          rows="10"
-          value={dataMercurio.a_quien_resuelve_new}
-          onChange={(e) => handleQ3Mercurio(e)}
-        ></textarea>
-        <div className={style.buttonsContent}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(2)}>
+        <fieldset>
+          <textarea
+            name="mercurioQ3"
+            id="mercurioQ3"
+            placeholder="Escribe aquí tu idea"
+            {...register('mercurioQ3', { required: true, minLength: 16 })}
+            cols="30"
+            rows="10"
+            value={dataMercurio.a_quien_resuelve_new}
+            onChange={(e) => handleQ3Mercurio(e)}
+          ></textarea>
+        </fieldset>
+        <div className="flexButtons">
+        <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(2)} />
+          <Button
+            text="SIGUIENTE"
+            className={
+              dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}
+            type="button"
+            disabled={dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}
+            onClick={() => saveProject()}
+          />
+          {/* <button type="button" className={
+          btnPlanet} onClick={() => setPage(2)}>
             ANTERIOR
           </button>
           <button
@@ -402,9 +400,10 @@ export const MercurioQ3 = ({
             onClick={() => saveProject()}
           >
             GUARDAR
-          </button>
+          </button> */}
         </div>
       </form>
+
     </div>
   );
 };

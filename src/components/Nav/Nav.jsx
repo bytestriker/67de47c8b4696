@@ -58,6 +58,7 @@ const Nav = ({ setNavState, navState }) => {
   const handleURL = async (item) => {
     if (item.id) {
       ProcessProjects(item.id);
+      console.log("pasa por aquí y luego al home")
       history.push('/');
     } else {
       setLoading(false);

@@ -35,10 +35,12 @@ export const useGetProjects = () => {
   const GetProjectMain = async (id) => {
     try {
       if (contextValue.isLogged()) {
+        console.log("Here with the project id ", id)
         const main = await getProjectById(id)
           .then((res) => {
             handleSelectLink(id);
             const data = res.data.data;
+            console.log("project ",id ,"data ", data)
             const { completado } = data;
             if (completado) {
               manageProject(data, 1, statusPlanet.COMPLETADO, false);

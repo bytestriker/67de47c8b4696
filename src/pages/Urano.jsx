@@ -32,8 +32,10 @@ import upload from '@Assets/images/upload.png';
 import download from '@Assets/images/icons/arrow-circle-up.svg';
 
 // Styles
-import style from '@Sass/pages/general.module.scss';
-import urano from '@Sass/pages/urano.module.scss';
+// import style from '@Sass/pages/general.module.scss';
+// import urano from '@Sass/pages/urano.module.scss';
+
+import '@Sass/pages/planet.scss';
 
 const Urano = () => {
   const { uranoGetProjectById } = useEventsUrano();
@@ -44,7 +46,7 @@ const Urano = () => {
     }),
     shallow
   );
-  
+
   const [page, setPage] = useState(1);
   const [modalSalir, setModalSalir] = useState(false);
   const [title, setTitle] = useState();
@@ -78,8 +80,6 @@ const Urano = () => {
       setCategoriasQ2(uranoQ2Categorias);
     }
   }, [uranoQ2Categorias]);
-
-  
 
   return (
     <section className={style.planetContainer}>
@@ -136,17 +136,15 @@ export const Logo = ({ setPage, setTitle, texts }) => {
     }),
     shallow
   );
-  
+
   const { uranoGetProjectById } = useEventsUrano();
   const [getPrototipo, setPrototipo] = useState({});
   const { register } = useForm();
   useEffect(() => {
-    
     setTitle(texts.titulo_de_la_vista);
   }, [texts]);
 
   useEffect(() => {
-
     handleProjectById();
   }, []);
 
@@ -198,9 +196,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
   ];
 
   const handlePrototipo = () => {
-    
-      saveprototipo(getPrototipo);
-    
+    saveprototipo(getPrototipo);
   };
 
   const saveprototipo = (getPrototipo) => {
@@ -210,12 +206,10 @@ export const Logo = ({ setPage, setTitle, texts }) => {
         .then(() => {
           setLoading(false);
           setPage(2);
-          
         })
         .catch((error) => {
           console.error('Error al hacer submit:', error);
           setLoading(false);
-          
         });
     } else {
       console.error('No hay valor de prototipo.');
@@ -231,28 +225,29 @@ export const Logo = ({ setPage, setTitle, texts }) => {
         <SaberMas data={texts} />
       </div>
       <textarea
-          className={urano.inputProjectName}
-          name="uranoQ1"
-          id="uranoQ1"
-          placeholder="Escribe aquí las diferentes ideas que tengas, para hacer un prototipo de tu proyecto."
-          {...register('uranoQ1', { required: true, minLength: 16 })}
-          cols="30"
-          rows="10"
-          value={getPrototipo}
-          onChange={(e) => setPrototipo(e.target.value)}
-        ></textarea>
+        className={urano.inputProjectName}
+        name="uranoQ1"
+        id="uranoQ1"
+        placeholder="Escribe aquí las diferentes ideas que tengas, para hacer un prototipo de tu proyecto."
+        {...register('uranoQ1', { required: true, minLength: 16 })}
+        cols="30"
+        rows="10"
+        value={getPrototipo}
+        onChange={(e) => setPrototipo(e.target.value)}
+      ></textarea>
       <br></br>
       <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" 
+        <div className={style.flexButtons}>
+          <button
+            type="button"
             className={getPrototipo.length <= 10 ? urano.btnPlanetOff : urano.btnPlanet}
             disabled={getPrototipo.length <= 10 ? 'disabled' : ''}
             onClick={handlePrototipo}
-            >
-              SIGUIENTE
-            </button>
-          </div>
+          >
+            SIGUIENTE
+          </button>
         </div>
+      </div>
     </section>
   );
 };
@@ -273,7 +268,7 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
     }),
     shallow
   );
-  
+
   useEffect(() => {
     setTitle(texts.subtitulo_1);
   }, [texts]);
@@ -356,11 +351,9 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
     }
   };
 
-
   return (
     <section className={urano.jupiterLogo}>
       <form>
-        
         {/*        <div className={urano.checkText}>
           <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
           <p>Subir después</p>
@@ -380,15 +373,15 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
       </form>
       <br></br>
       <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(1)}>
-              ANTERIOR
-            </button>
-            <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
-              SIGUIENTE
-            </button>
-          </div>
+        <div className={style.flexButtons}>
+          <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(1)}>
+            ANTERIOR
+          </button>
+          <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
+            SIGUIENTE
+          </button>
         </div>
+      </div>
     </section>
   );
 };

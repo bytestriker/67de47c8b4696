@@ -43,10 +43,13 @@ export const Mercurio = ({ mercurioInfo }) => {
   useEffect(() => {
     if (mercurioInfo.titulo) {
       setSkills(mercurioInfo.skills);
-      setDescription(mercurioInfo.descripcion);
+      setDescription(mercurioInfo.descripcion); 
       setTitle(mercurioInfo.titulo);
     }
   }, [mercurioInfo]);
+
+
+  console.log(getMercurio())
 
   return (
     <div className="planetGridItem">

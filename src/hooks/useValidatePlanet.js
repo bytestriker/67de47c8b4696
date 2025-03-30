@@ -55,6 +55,7 @@ export const valPackage = () => {
   // valida si el usuario tiene sesion y proyecto seleccionado para poder continuar
   const validateProject = (rute, tanques) => {
     const param = getLuna();
+    console.log("validateProject get Luna ", param)
     if (contextValue.isLogged() && param.id) {
       handleplanet(rute, tanques);
       return;
