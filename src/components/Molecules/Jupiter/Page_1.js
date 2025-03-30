@@ -51,23 +51,20 @@ export const Intro = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <section className={style.marteQuestions}>
+    <section className="questionWrap">
       <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-        <SaberMas data={texts} />
-      </div>
-        <br></br>
-        <div className={style.contentButtons}>
-          <button
-            type="button"
-            onClick={() => setPage(2)}
-            className={jupiter.btnPlanet }
-          >
-            SIGUIENTE
-          </button>
-        </div>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <SaberMas data={texts} />
+      <fieldset>
+        <button
+          type="button"
+          onClick={() => setPage(2)}
+          className={jupiter.btnPlanet }
+        >
+          SIGUIENTE
+        </button>
+      </fieldset>
     </section>
   );
 };

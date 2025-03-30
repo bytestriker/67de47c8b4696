@@ -210,7 +210,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
+    top: 50%;
     animation: floatingButton 3s ease-in-out infinite;
     h2 {
       color: $--colorGreen;

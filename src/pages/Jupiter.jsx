@@ -22,10 +22,13 @@ import {
   Calificativos,
   BuyerInfo,
 } from '@Components/Molecules/Jupiter/';
+import ButtonGoHome from '@Components/ButtonGoHome';
+
 import { ModalJupiter, ModalSalirJupiter } from '@Components/Atomos/Modals';
 import { ButtonClose } from '@Components/Atomos/Buttons';
 
 // Styles
+import '@Sass/pages/planet.scss';
 import style from '@Sass/pages/general.module.scss';
 import jupiter from '@Sass/pages/jupiter.module.scss';
 
@@ -174,7 +177,14 @@ const Jupiter = () => {
   };
 
   return (
-    <section className={style.planetContainer}>
+    <section className="planetWrap">
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
       {modalSalir ? (
         <ModalSalirJupiter
           title="Estás a punto de salir"
@@ -185,24 +195,20 @@ const Jupiter = () => {
           page={page}
         />
       ) : null}
-
       {modal ? (
         <ModalJupiter
           title="¡FELICIDADES!"
-          message={`Haz completado <strong>
-             Jupiter</strong> de tu proyecto
-           <strong>${getLuna().nombre}</strong>`}
+          message={`Haz completado <strong> Jupiter</strong> de tu proyecto<strong>${getLuna().nombre}</strong>`}
           buttonName="INICIO"
           setPage={setPage}
           setModal={setModal}
           page={page}
         />
       ) : null}
-
-      <div>
+      <div className="planetContainer">
         <ButtonClose setModalSalir={setModalSalir} titlePage={title} />
-        <div className={style.pageContainer}>
-          <div className={jupiter.Jupiter}>
+        <div className="planetContent">
+          <div className="py-lg">
             {page === 1 ? (
               <Intro
                 setPage={setPage}

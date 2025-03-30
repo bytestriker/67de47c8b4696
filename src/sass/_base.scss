@@ -80,6 +80,8 @@ a {
   color: #E0FF4E;
 }
 
+
+
 fieldset {
   border: 0;
   margin: 0 0 20px;
@@ -87,10 +89,23 @@ fieldset {
   label {
     display: block;
     padding: 9px 20px;
+    p {
+      background-color: rgba(0,0,0,0.5);
+  border: 1px solid #E0FF4E;
+  box-sizing: border-box;
+  color: #E0FF4E;
+  display: block;
+  padding: 12px 20px;
+  width: 100%;
+  height: 50px;
+  font-family: 'Fahkwang';
+  font-size: 18px;
+
+    }
   }
 }
 
-input, textarea {
+input:not([type=file]), textarea, .input {
   background-color: rgba(0,0,0,0.5);
   border: 1px solid #E0FF4E;
   box-sizing: border-box;

@@ -51,7 +51,7 @@ export const Caracteristicas = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <section className={style.marteQuestions}>
+    <section className="questionWrap">
       <ScrollToTop />
       <div>
         <ParagraphPlanet text={texts.descripcion} />

@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link as Href, useLocation } from 'react-router-dom';
+import { Link as Href, useLocation, useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
-import { FaBars } from 'react-icons/fa';
-import { useHistory } from 'react-router-dom';
 
 // context
 import useAuth from '@Auth/userAuth';
@@ -28,6 +26,7 @@ import '@Sass/components/header.scss';
 const Header = () => {
   const history = useHistory();
   const location = useLocation();
+
   const currentPathName = location.pathname.split('/').pop();
 
   const formItems = ['login', 'repassword', 'signup'];

@@ -36,13 +36,13 @@ export const ValueCaracteristicas = ({
   }, [dataJupiter]);
 
   return (
-    <>
-      {getValueCaracteristica.map((elemento, indice) => (
+    <fieldset>
+      {
+        getValueCaracteristica.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`caracteristicas-${indice}`}
-          className={style.inputMedium}
           placeholder="Escribe una característica"
           required
           value={elemento}
@@ -55,7 +55,7 @@ export const ValueCaracteristicas = ({
           <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
         </span>
       )}
-    </>
+    </fieldset>
   );
 };
 
@@ -83,13 +83,12 @@ export const ValueCalificativos = ({ getValueAdjetivos, setValueAdjetivos, textD
   }, [dataJupiter]);
 
   return (
-    <>
+    <fieldset>
       {getValueAdjetivos.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`calificativos-${indice}`}
-          className={style.inputMedium}
           placeholder="Escribe un adjetivo"
           required
           value={elemento}
@@ -102,7 +101,7 @@ export const ValueCalificativos = ({ getValueAdjetivos, setValueAdjetivos, textD
           <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
         </span>
       )}
-    </>
+    </fieldset>
   );
 };
 
@@ -157,7 +156,7 @@ export const ValueSignificativos = ({
   getValueSignificados,
   setValueSignificados,
   textDisabled,
-}) => {
+  }) => {
   const { dataJupiter } = jupiterStore(
     (state) => ({
       dataJupiter: state.dataJupiter,
