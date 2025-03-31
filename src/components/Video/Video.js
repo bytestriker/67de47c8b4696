@@ -77,7 +77,7 @@ const Index = () => {
       <div className="buttonReady2Launch">
         <img src={_IconDown} alt="icondown" onClick={scrollingToanimate} />
       </div>
-      <img src={astronauta} alt="Space Man" className="space-man" />
+      <img src={astronauta} alt="Space Man" className="spacemanVideo" />
     </div>
   );
 };
