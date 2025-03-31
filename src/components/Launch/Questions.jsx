@@ -209,10 +209,9 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
           ></textarea>
         </fieldset>
         <div className="flexButtons">
-          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(2)} />
+          <Button text="REGRESAR" isAlt onClick={() => setPageLuna(2)} />
           <Button
             text="SIGUIENTE"
-            isSubmit={false}
             disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
             onClick={() => handleNextPage(4)}
             className={

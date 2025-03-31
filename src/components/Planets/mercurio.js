@@ -18,7 +18,6 @@ import empieza from '@Assets/images/planets/empieza.svg';
 
 // Styles
 import buttons from '@Sass/components/buttons.module.scss';
-import lines from '@Components/Planets/lines.module.scss';
 
 export const Mercurio = ({ mercurioInfo }) => {
   const [skills, setSkills] = useState([

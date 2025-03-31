@@ -8,10 +8,6 @@ import { uranoStore } from '@Store/urano';
 // Hook
 import { valPackage } from '@Hooks/useValidatePlanet';
 
-// Styles
-import buttons from '@Sass/components/buttons.module.scss';
-import lines from '@Components/Planets/lines.module.scss';
-
 // Images
 import tank from '@Assets/images/planet-tank.svg';
 import lock from '@Assets/images/lock.svg';
@@ -21,7 +17,9 @@ import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 import urano from '@Assets/images/planets/urano.png';
 
+
 export const Urano = ({ uranoInfo }) => {
+  const history = useHistory()
   const [skills, setSkills] = useState([
     {
       skill: '',

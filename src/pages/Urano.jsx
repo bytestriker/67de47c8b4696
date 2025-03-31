@@ -10,6 +10,7 @@ import useAuth from '@Auth/userAuth';
 // Hooks
 import { UranoWPText } from '@Hooks/useFetchWP';
 import { useEventsUrano } from '@Hooks/useEventsUrano';
+import Button from '@Components/Button';
 
 // Store
 import { lunaStore } from '@Store/luna';
@@ -26,16 +27,17 @@ import { Title2, ParagraphPlanet, Title } from '@Components/Atomos/Titles';
 import { ButtonGoBack, SaberMas } from '@Components/Atomos/Buttons';
 import { MarketingCard } from '@Components/Atomos/Cards';
 import Carrusel from '@Components/Atomos/Slider';
+import ButtonGoHome from '@Components/ButtonGoHome';
 
 // Images
 import upload from '@Assets/images/upload.png';
 import download from '@Assets/images/icons/arrow-circle-up.svg';
 
+import '@Sass/pages/planet.scss';
+
 // Styles
 // import style from '@Sass/pages/general.module.scss';
-// import urano from '@Sass/pages/urano.module.scss';
-
-import '@Sass/pages/planet.scss';
+import urano from '@Sass/pages/urano.module.scss';
 
 const Urano = () => {
   const { uranoGetProjectById } = useEventsUrano();
@@ -82,47 +84,61 @@ const Urano = () => {
   }, [uranoQ2Categorias]);
 
   return (
-    <section className={style.planetContainer}>
+    <section className="planetWrap">
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="planetContainer">
+        <div className="planetContent">
+          {/* {page === 3 ? (
+            // <ButtonGoBack titlePage={title} setPage={setPage} page={2} />
+            <ButtonGoHome
+              className="planetBackToTheHomepage"
+              onClick={() => {
+                history.push('/');
+              }}
+              text="Volver al Inicio"
+            />
+          ) : (
+            <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
+          )} */}
+            <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
+            {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
+          {page === 2 ? <Pretotipo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
+          {page === 3 ? (
+            <Prototipo
+              setPage={setPage}
+              setTitle={setTitle}
+              texts={texts2}
+              categorias={categoriasQ2}
+              setParams={setParams}
+            />
+          ) : null}
+          {page === 4 ? (
+            <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
+          ) : null}
+        </div>
+      </div>
+
+
       {modalSalir ? <ModalMain setModalSalir={setModalSalir} /> : null}
 
       {modal ? (
         <ModalUrano
           title="¡FELICIDADES!"
-          message={`Haz completado <strong>
-           Urano</strong> de tu proyecto
-         <strong>${getLuna().nombre}</strong>`}
+          message={`Haz completado <strong>Urano</strong> de tu proyecto <strong>${
+            getLuna().nombre
+          }</strong>`}
           buttonName="CONTINUAR"
           setPage={setPage}
           setModal={setModal}
           page={4}
         />
       ) : null}
-
-      <div className={style.planetContentUrano}>
-        {page === 3 ? (
-          <ButtonGoBack titlePage={title} setPage={setPage} page={2} />
-        ) : (
-          <Title title={title} />
-        )}
-        <div className={style.pageContainer}>
-          <div className={urano.Urano}>
-            {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
-            {page === 2 ? <Pretotipo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
-            {page === 3 ? (
-              <Prototipo
-                setPage={setPage}
-                setTitle={setTitle}
-                texts={texts2}
-                categorias={categoriasQ2}
-                setParams={setParams}
-              />
-            ) : null}
-            {page === 4 ? (
-              <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
-            ) : null}
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
@@ -217,36 +233,38 @@ export const Logo = ({ setPage, setTitle, texts }) => {
   };
 
   return (
-    <section className={urano.jupiterLogo}>
-      <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
+    <section className="questionWrap">
+        <ScrollToTop />
+
+      <div className="px-lg">
+        <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+        <p  dangerouslySetInnerHTML={{ __html: texts.description }}></p>
         <SaberMas data={texts} />
-      </div>
-      <textarea
-        className={urano.inputProjectName}
-        name="uranoQ1"
-        id="uranoQ1"
-        placeholder="Escribe aquí las diferentes ideas que tengas, para hacer un prototipo de tu proyecto."
-        {...register('uranoQ1', { required: true, minLength: 16 })}
-        cols="30"
-        rows="10"
-        value={getPrototipo}
-        onChange={(e) => setPrototipo(e.target.value)}
-      ></textarea>
-      <br></br>
-      <div className={style.contentButtons}>
-        <div className={style.flexButtons}>
-          <button
+
+        <fieldset>
+          <textarea
+            className={urano.inputProjectName}
+            name="uranoQ1"
+            id="uranoQ1"
+            placeholder="Escribe aquí las diferentes ideas que tengas, para hacer un prototipo de tu proyecto."
+            {...register('uranoQ1', { required: true, minLength: 16 })}
+            cols="30"
+            rows="10"
+            value={getPrototipo}
+            onChange={(e) => setPrototipo(e.target.value)}
+          ></textarea>
+        </fieldset>
+
+        <div className="flexButtons">
+          <Button
+            isCentered={true}
             type="button"
-            className={getPrototipo.length <= 10 ? urano.btnPlanetOff : urano.btnPlanet}
-            disabled={getPrototipo.length <= 10 ? 'disabled' : ''}
-            onClick={handlePrototipo}
-          >
-            SIGUIENTE
-          </button>
+            text="SIGUIENTE"
+            className={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
+            disabled={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
+          />
         </div>
+
       </div>
     </section>
   );
