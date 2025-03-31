@@ -106,7 +106,6 @@ const Urano = () => {
           ) : (
             <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
           )} */}
-            <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
             {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
           {page === 2 ? <Pretotipo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
           {page === 3 ? (
@@ -231,14 +230,14 @@ export const Logo = ({ setPage, setTitle, texts }) => {
       console.error('No hay valor de prototipo.');
     }
   };
-
+  console.log(texts)
   return (
     <section className="questionWrap">
         <ScrollToTop />
+        <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
+        <p  dangerouslySetInnerHTML={{ __html: texts.description }}></p>
 
       <div className="px-lg">
-        <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
-        <p  dangerouslySetInnerHTML={{ __html: texts.description }}></p>
         <SaberMas data={texts} />
 
         <fieldset>
