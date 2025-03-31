@@ -3,56 +3,69 @@
 @import '@Sass/components/extends.scss';
 @import '@Sass/utils';
 
-.LaunchQuestion {
+main.bienvenido {
   display: flex;
-  margin-top: 4.4rem;
-  margin-bottom: 2rem;
-  .welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.noticeWrap {
+  position: relative;
+  max-width: 640px;
+  width: 90%;
+  .noticeHeader {
+    display: grid;
+    grid-template-columns: 126px 1fr;
+    grid-template-rows: 72px;
+    height: 72px;
+    &::before,
+    &::after {
+      background-image: url(../../assets/images/notice-header.svg);
+      display: block;
+      content: '';
+      width: 100%;
+    }
+    &::before {
+      background-position: left;
+    }
+    &::after {
+      background-position: right;
+    }
     h2 {
-      font-size: 2rem;
-      font-weight: 900;
-      color: $--colorAzul;
+      font-weight: bold;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: 0;
       text-align: center;
-      position: relative;
-      margin: 0 auto;
-      margin-bottom: 1rem;
+      line-height: 72px;
     }
-    h4 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: $--colorWhite;
-      text-align: center;
-      position: relative;
-      margin: 0 auto;
-      margin-bottom: 1rem;
-    }
-    .astronautImg {
-      width: 180px;
-      height: auto;
-    }
-    .astronautEffect {
-      animation: astronaut 5s ease-in-out infinite alternate;
-      transform-origin: center;
-      transform-box: fill-box;
-    }
-    .btnPlanet {
-      @extend %buttonOn;
-      height: 50px;
-      margin-top: 1rem;
-      @include mediumDevicesMax {
-        width: 100%;
-        height: 46px;
-        margin: 12px 2px 8px 2px;
-      }
-      @include smallDevices {
-        height: 42px;
+  }
+  .noticeContainer {
+    background-image: url(../../assets/images/notice-body.svg);
+    background-position: right bottom;
+    border-left: 1px solid #E6F85A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    position: relative;
+    min-height: 320px;
+    .noticeContent {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 24px 36px;
+      figure {
+        border-radius: 100%;
+        margin: 0;
+        padding: 0;
+        width: 180px;
+        height: 180px;
       }
     }
+
+
+    
   }
 }

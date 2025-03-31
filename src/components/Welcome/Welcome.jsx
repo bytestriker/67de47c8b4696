@@ -8,6 +8,7 @@ import _Astronaut from '@Assets/images/astronauta.png';
 
 // STYLES
 import '@Components/Welcome/Welcome.scss';
+import Button from '@Components/Button';
 
 const Welcome = () => {
   // Store de luna
@@ -19,18 +20,18 @@ const Welcome = () => {
   };
 
   return (
-    <div className="container">
-      <div className="LaunchQuestion">
-        <div className="welcome">
-          <h2>BIENVENIDO</h2>
-          <h4>Estamos listos para continuar la aventura</h4>
-          <button className="btnPlanet" onClick={() => handleFinish()}>
-            CONTINUAR
-          </button>
-          <img src={_Astronaut} alt="astronuat" className="astronautImg astronautEffect" />
+    <section className="noticeWrap">
+      <div className="noticeHeader">
+        <h2>¡Bienvenido!</h2>
+      </div>
+      <div className="noticeContainer">
+        <div className="noticeContent">
+          <figure></figure>
+          <p>Estamos listos para continuar la aventura.</p>
+          <Button text="CONTINUAR" isCentered={true} onClick={() => handleFinish()} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
