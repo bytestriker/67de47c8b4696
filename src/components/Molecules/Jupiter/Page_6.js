@@ -13,6 +13,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ValueIdeasNombre } from '@Components/Atomos/Inputs/jupiter';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -67,36 +68,19 @@ export const IdeasNombre = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <section className={style.marteQuestions}>
+    <form method="POST">
       <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
+      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <ValueIdeasNombre
+        getValueIdeasNombre={getValueIdeasNombre}
+        setValueIdeasNombre={setValueIdeasNombre}
+        textDisabled={buttonNext}
+      />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(5)} />
+        <Button text="SIGUIENTE" isSub  mit={true} onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
-      <br></br>
-      <form method="POST">
-        <ValueIdeasNombre
-          getValueIdeasNombre={getValueIdeasNombre}
-          setValueIdeasNombre={setValueIdeasNombre}
-          textDisabled={buttonNext}
-        />
-        <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(5)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              onClick={() =>  handleSubmit()}
-              className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+    </form>
   );
 };

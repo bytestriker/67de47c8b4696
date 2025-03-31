@@ -10,6 +10,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ValueCalificativos } from '@Components/Atomos/Inputs/jupiter';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -53,37 +54,19 @@ export const Calificativos = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <section className={style.marteQuestions}>
+    <form method="POST">
       <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-      </div>
-      <br></br>
-      <form method="POST">
-        <ValueCalificativos
-          getValueAdjetivos={getValueAdjetivos}
-          setValueAdjetivos={setValueAdjetivos}
-          textDisabled={buttonNext}
+      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <ValueCalificativos
+        getValueAdjetivos={getValueAdjetivos}
+        setValueAdjetivos={setValueAdjetivos}
+        textDisabled={buttonNext}
         />
-        <br></br>
-
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(2)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              onClick={() => setPage(4)}
-              className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(2)} />
+        <Button text="SIGUIENTE" isSubmit={true} onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'}/>
+      </div>
+    </form>
   );
 };

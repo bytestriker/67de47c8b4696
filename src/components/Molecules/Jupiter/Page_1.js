@@ -9,6 +9,8 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ValueCaracteristicas } from '@Components/Atomos/Inputs/jupiter';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
+
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -51,20 +53,17 @@ export const Intro = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <section className="questionWrap">
+    <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
       <fieldset>
-        <button
-          type="button"
+        <Button
+          text="SIGUIENTE"
           onClick={() => setPage(2)}
-          className={jupiter.btnPlanet }
-        >
-          SIGUIENTE
-        </button>
+        />
       </fieldset>
-    </section>
+    </div>
   );
 };

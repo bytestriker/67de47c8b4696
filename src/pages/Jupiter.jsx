@@ -206,9 +206,9 @@ const Jupiter = () => {
         />
       ) : null}
       <div className="planetContainer">
-        <ButtonClose setModalSalir={setModalSalir} titlePage={title} />
+        {/* <ButtonClose setModalSalir={setModalSalir} titlePage={title} /> */}
         <div className="planetContent">
-          <div className="py-lg">
+          <div className="px-lg py-lg">
             {page === 1 ? (
               <Intro
                 setPage={setPage}

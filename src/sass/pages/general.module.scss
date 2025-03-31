@@ -174,33 +174,22 @@
 
 /* Boton agregas mas */
 .add {
-  cursor: pointer;
   display: flex;
   align-items: center;
-  width: 146px;
-  margin-top: 1rem;
+  gap: 8px;
+  cursor: pointer;
+  &::before {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBmaWxsPSIjRTBGRjRFIiBkPSJNOCAwYTggOCAwIDEgMSAwIDE2QTggOCAwIDAgMSA4IDBtMS4wNjIgNC4zMTJhMSAxIDAgMSAwLTIgMHYyLjc1aC0yLjc1YTEgMSAwIDAgMCAwIDJoMi43NXYyLjc1YTEgMSAwIDEgMCAyIDB2LTIuNzVoMi43NWExIDEgMCAxIDAgMC0yaC0yLjc1WiIvPjwvc3ZnPg==");
+    background-size: cover;
+    display: block;
+    content: '';
+    width: 24px;
+    height: 24px;
+  }
   &:hover {
-    .icon {
-      color: $--colorPurple;
+    &::before {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBmaWxsPSIjRTBGRjRFIiBkPSJNOCAwYTggOCAwIDEgMSAwIDE2QTggOCAwIDAgMSA4IDBNMS41IDhhNi41IDYuNSAwIDEgMCAxMyAwYTYuNSA2LjUgMCAwIDAtMTMgMG03LjI1LTMuMjV2Mi41aDIuNWEuNzUuNzUgMCAwIDEgMCAxLjVoLTIuNXYyLjVhLjc1Ljc1IDAgMCAxLTEuNSAwdi0yLjVoLTIuNWEuNzUuNzUgMCAwIDEgMC0xLjVoMi41di0yLjVhLjc1Ljc1IDAgMCAxIDEuNSAwIi8+PC9zdmc+");
     }
-    b {
-      color: $--colorPurple;
-    }
-  }
-  .icon {
-    color: $--colorAzul;
-    font-size: 1.6rem;
-  }
-  b {
-    font-family: $MontserratRegular;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    text-decoration-line: underline;
-    color: $--colorAzul;
-    left: 8px;
-    position: relative;
   }
 }
 

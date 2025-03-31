@@ -258,76 +258,74 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
   }, [texts4]);
 
   return (
-    <>
+    <div className="questionWrap">
       <ScrollToTop />
-      <div className="questionWrap">
-        <div className="px-lg">
-          <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
-          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
-          <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
-          <SaberMas data={texts4} />
-          <fieldset>
-            <label htmlFor="launchQ1" className="text-right">3/3</label>
-            <textarea
-              ref={Q3}
-              className="text-area-sm"
-              name="how"
-              id="launchQ1"
-              cols="30"
-              rows="10"
-              placeholder="Escribe tu primer punto"
-              value={getLuna().como1}
-              onChange={(e) => handleQuestion31(e)}
-            ></textarea>
-          </fieldset>
-          <fieldset>
+      <div className="px-lg">
+        <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
+        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
+        <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
+        <SaberMas data={texts4} />
+        <fieldset>
+          <label htmlFor="launchQ1" className="text-right">3/3</label>
+          <textarea
+            ref={Q3}
+            className="text-area-sm"
+            name="how"
+            id="launchQ1"
+            cols="30"
+            rows="10"
+            placeholder="Escribe tu primer punto"
+            value={getLuna().como1}
+            onChange={(e) => handleQuestion31(e)}
+          ></textarea>
+        </fieldset>
+        <fieldset>
 
-            <textarea
-              ref={Q3}
-              className="text-area-sm"
-              name="how"
-              id="launchQ1"
-              cols="30"
-              rows="10"
-              placeholder="Escribe tu segundo punto"
-              value={getLuna().como2}
-              onChange={(e) => handleQuestion32(e)}
-            ></textarea>
-          </fieldset>
-          <fieldset>
-            <textarea
-              ref={Q3}
-              className="text-area-sm"
-              name="how"
-              id="launchQ1"
-              cols="30"
-              rows="10"
-              placeholder="Escribe tu tercer punto"
-              value={getLuna().como3}
-              onChange={(e) => handleQuestion33(e)}
-            ></textarea>
-          </fieldset>
-          <div className="flexButtons">
-            <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
-            {contextValue.isLogged() ? (
-              <Button
-                text="SIGUIENTE"
-                isAlt={false}
-                isSubmit={false}
-                onClick={() => handleNextPage(6)}
-              />
-            ) : (
-              <Button
-                text="SIGUIENTE"
-                isAlt={false}
-                isSubmit={false}
-                onClick={() => handleNextPage(5)}
-              />
-            )}
-            </div>
-        </div>
+          <textarea
+            ref={Q3}
+            className="text-area-sm"
+            name="how"
+            id="launchQ1"
+            cols="30"
+            rows="10"
+            placeholder="Escribe tu segundo punto"
+            value={getLuna().como2}
+            onChange={(e) => handleQuestion32(e)}
+          ></textarea>
+        </fieldset>
+        <fieldset>
+          <textarea
+            ref={Q3}
+            className="text-area-sm"
+            name="how"
+            id="launchQ1"
+            cols="30"
+            rows="10"
+            placeholder="Escribe tu tercer punto"
+            value={getLuna().como3}
+            onChange={(e) => handleQuestion33(e)}
+          ></textarea>
+        </fieldset>
+        <div className="flexButtons">
+          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
+          {contextValue.isLogged() ? (
+            <Button
+              text="SIGUIENTE"
+              isAlt={false}
+              isSubmit={false}
+              onClick={() => handleNextPage(6)}
+            />
+          ) : (
+            <Button
+              text="SIGUIENTE"
+              isAlt={false}
+              isSubmit={false}
+              onClick={() => handleNextPage(5)}
+            />
+          )}
+          </div>
       </div>
-    </>
+    </div>
   );
 };
 

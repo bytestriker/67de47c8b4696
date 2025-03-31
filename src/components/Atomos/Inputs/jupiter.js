@@ -12,7 +12,7 @@ export const ValueCaracteristicas = ({
   getValueCaracteristica,
   setValueCaracteristica,
   textDisabled,
-}) => {
+  }) => {
   const { dataJupiter } = jupiterStore(
     (state) => ({
       dataJupiter: state.dataJupiter,
@@ -37,8 +37,7 @@ export const ValueCaracteristicas = ({
 
   return (
     <fieldset>
-      {
-        getValueCaracteristica.map((elemento, indice) => (
+      {getValueCaracteristica.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
@@ -49,12 +48,14 @@ export const ValueCaracteristicas = ({
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.minimo}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueCaracteristica.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getValueCaracteristica.length === 6 ? null : (
+          <a className={style.add} onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
     </fieldset>
   );
 };
@@ -95,12 +96,14 @@ export const ValueCalificativos = ({ getValueAdjetivos, setValueAdjetivos, textD
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.minimo}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueAdjetivos.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getValueAdjetivos.length === 6 ? null : (
+          <a className={style.add} onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
     </fieldset>
   );
 };
@@ -129,26 +132,27 @@ export const ValueNombre = ({ getValueObjetivos, setValueObjetivos, textDisabled
   }, [dataJupiter]);
 
   return (
-    <>
+    <fieldset>
       {getValueObjetivos.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`nombre-${indice}`}
-          className={style.inputMedium}
           placeholder="Escribe un objetivo"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.minimo}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueObjetivos.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getValueObjetivos.length === 6 ? null : (
+          <a className={style.add} onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -180,13 +184,13 @@ export const ValueSignificativos = ({
   }, [dataJupiter]);
 
   return (
-    <>
+    <fieldset>
       {getValueSignificados.map((elemento, indice) => (
         <textarea
           key={indice}
           type="text"
           name={`significado-${indice}`}
-          className={style.TextArea}
+          className='text-area-sm'
           placeholder="Escribe un significado de tu marca"
           required
           rows={10}
@@ -194,13 +198,16 @@ export const ValueSignificativos = ({
           onChange={(event) => handleInputChange(event, indice)}
         ></textarea>
       ))}
-      <p className={style.minimo}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueSignificados.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {
+          getValueSignificados.length === 6 ? null : (
+          <a className={style.add} onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -228,26 +235,28 @@ export const ValueIdeasNombre = ({ getValueIdeasNombre, setValueIdeasNombre, tex
   }, [dataJupiter]);
 
   return (
-    <>
+    <fieldset>
       {getValueIdeasNombre.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`ideas-nombre-${indice}`}
-          className={style.inputMedium}
           placeholder="Escribe un nombre"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.minimo}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueIdeasNombre.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {
+          getValueIdeasNombre.length === 6 ? null : (
+          <a className={style.add} onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 export const TextAreaMarca = ({ getDescripcionMarca, setDescripcionMarca, textDisabled }) => {
@@ -260,25 +269,20 @@ export const TextAreaMarca = ({ getDescripcionMarca, setDescripcionMarca, textDi
   
 
   useEffect(() => {
-    
-      setDescripcionMarca(dataJupiter.descripcion_marca);
-    
+    setDescripcionMarca(dataJupiter.descripcion_marca);
   }, [dataJupiter]);
 
   return (
-  
-        <textarea
-          className={style.TextArea}
-          name="descripcion_marca"
-          id="descripcion_marca"
-          cols="30"
-          rows="10"
-          required
-          onChange={(e) => setDescripcionMarca(e.target.value)}
-          placeholder="Describe la personalidad de tu marca"
-          value={getDescripcionMarca}
-        ></textarea>
-
+    <textarea
+      name="descripcion_marca"
+      id="descripcion_marca"
+      cols="30"
+      rows="10"
+      required
+      onChange={(e) => setDescripcionMarca(e.target.value)}
+      placeholder="Describe la personalidad de tu marca"
+      value={getDescripcionMarca}
+    ></textarea>
   );
 };
 
@@ -306,25 +310,27 @@ export const ValueMarca = ({ getValueAdjetivos, setValueAdjetivos, textDisabled 
   }, [dataJupiter]);
 
   return (
-    <>
+    <fieldset>
       {getValueAdjetivos.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`adjetivo-${indice}`}
-          className={style.inputMedium}
           placeholder="Escribe un adjetivo"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.minimo}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueAdjetivos.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {
+          getValueAdjetivos.length === 6 ? null : (
+          <a className={style.add} onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
