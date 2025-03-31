@@ -30,34 +30,35 @@ export const PaintPoints = ({ dataPoints, setDataPoints, setPainPoints }) => {
   }, [dataPoints]);
 
   return (
-    <>
+    <fieldset>
       {dataPoints.map((elemento, indice) => (
-        <div className={style.inputContainer} key={indice}>
-          <input
-            type="text"
-            name={`pain-point-${indice}`}
-            className={style.input}
-            placeholder="Pain point"
-            value={elemento.pain_point}
-            onChange={(event) => handleInputChange(event, indice, 'pain_point')}
-          />
-          <input
-            type="text"
-            name={`pain-relievers-${indice}`}
-            className={style.input}
-            placeholder="Pain relievers"
-            value={elemento.pain_reliever}
-            onChange={(event) => handleInputChange(event, indice, 'pain_reliever')}
-          />
+        <div key={indice}>
+          <fieldset>
+            <input
+              type="text"
+              name={`pain-point-${indice}`}
+              placeholder="Pain point"
+              value={elemento.pain_point}
+              onChange={(event) => handleInputChange(event, indice, 'pain_point')}
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              type="text"
+              name={`pain-relievers-${indice}`}
+              placeholder="Pain relievers"
+              value={elemento.pain_reliever}
+              onChange={(event) => handleInputChange(event, indice, 'pain_reliever')}
+            />
+          </fieldset>
         </div>
       ))}
-
       {button ? (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
+        <a className="buttonAdd" onClick={() => handleClick()}>
+          <span>Agregar más</span>
+        </a>
       ) : null}
-    </>
+    </fieldset>
   );
 };
 
@@ -91,13 +92,12 @@ export const ValueFortalezas = ({ valueFortaleza, setValueFortaleza, setFortalez
   }, [valueFortaleza]);
 
   return (
-    <>
+    <fieldset>
       {valueFortaleza.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`fortalezas-${indice}`}
-          className={style.input}
           placeholder="Escribe tus fortalezas"
           required
           value={elemento}
@@ -106,11 +106,11 @@ export const ValueFortalezas = ({ valueFortaleza, setValueFortaleza, setFortalez
       ))}
       <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
       {valueFortaleza.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
+        <a className="buttonAdd" onClick={() => handleClick()}>
+          <span>Agregar más</span>
+        </a>
       )}
-    </>
+    </fieldset>
   );
 };
 
@@ -143,7 +143,7 @@ export const ValueOportunidades = ({ valueOportunidad, setValueOportunidad, setO
   }, [valueOportunidad]);
 
   return (
-    <>
+    <fieldset>
       {valueOportunidad.map((elemento, indice) => (
         <input
           key={indice}
@@ -158,11 +158,11 @@ export const ValueOportunidades = ({ valueOportunidad, setValueOportunidad, setO
       ))}
       <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
       {valueOportunidad.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
+        <a className="buttonAdd" onClick={() => handleClick()}>
+          <spaspan>Agregar más</spaspan>
+        </a>
       )}
-    </>
+    </fieldset>
   );
 };
 
@@ -210,7 +210,7 @@ export const ValueDebilidades = ({ valueDebilidad, setValueDebilidad, setDebilid
       ))}
       <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
       {valueDebilidad.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
+        <span className="buttonAdd" onClick={() => handleClick()}>
           <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
         </span>
       )}
@@ -262,9 +262,9 @@ export const ValueAmenazas = ({ valueAmenaza, setValueAmenaza, setAmenazas }) =>
       ))}
       <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
       {valueAmenaza.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
+        <a className="buttonAdd" onClick={() => handleClick()}>
+          <span>Agregar más</span>
+        </a>
       )}
     </>
   );

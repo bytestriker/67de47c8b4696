@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
 // Store
@@ -55,6 +56,7 @@ const Jupiter = () => {
   const [modalSalir, setModalSalir] = useState(false);
   const [title, setTitle] = useState();
   const [modal, setModal] = useState(false);
+  const history = useHistory();
 
   // texts states
   const [texts1, setTexts1] = useState({});
@@ -185,26 +187,6 @@ const Jupiter = () => {
         }}
         text="Volver al Inicio"
       />
-      {modalSalir ? (
-        <ModalSalirJupiter
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
-          setModalSalir={setModalSalir}
-          dataJupiter={dataJupiter}
-          proyectID={getLuna().id}
-          page={page}
-        />
-      ) : null}
-      {modal ? (
-        <ModalJupiter
-          title="¡FELICIDADES!"
-          message={`Haz completado <strong> Jupiter</strong> de tu proyecto<strong>${getLuna().nombre}</strong>`}
-          buttonName="INICIO"
-          setPage={setPage}
-          setModal={setModal}
-          page={page}
-        />
-      ) : null}
       <div className="planetContainer">
         {/* <ButtonClose setModalSalir={setModalSalir} titlePage={title} /> */}
         <div className="planetContent">
@@ -281,6 +263,26 @@ const Jupiter = () => {
           </div>
         </div>
       </div>
+      {modalSalir ? (
+        <ModalSalirJupiter
+          title="Estás a punto de salir"
+          message="¿Deseas guardar tu información?"
+          setModalSalir={setModalSalir}
+          dataJupiter={dataJupiter}
+          proyectID={getLuna().id}
+          page={page}
+        />
+      ) : null}
+      {modal ? (
+        <ModalJupiter
+          title="¡FELICIDADES!"
+          message={`Haz completado <strong> Jupiter</strong> de tu proyecto<strong>${getLuna().nombre}</strong>`}
+          buttonName="INICIO"
+          setPage={setPage}
+          setModal={setModal}
+          page={page}
+        />
+      ) : null}
     </section>
   );
 };

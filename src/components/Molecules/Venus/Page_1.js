@@ -10,6 +10,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import { PaintPoints } from '@Components/Atomos/Inputs/venus';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/venus.module.scss';
@@ -56,24 +57,18 @@ export const VenusQ1Target = ({ setPage, setTitle, texts, dataVenus }) => {
   }, [painpoints]);
 
   return (
-    <section className={style.venusQuestions}>
+    <div className="questionWrap">
       <ScrollToTop />
-
-      <div>
-        <Title2 text={texts?.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-        <SaberMas data={texts} />
-      </div>
-
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <SaberMas data={texts} />
       <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-        <p className={style.identify}>{texts.instruccion}</p>
-
+        {texts.instruccion}
         <PaintPoints
           dataPoints={dataPoints}
           setDataPoints={setDataPoints}
           setPainPoints={setPainPoints}
         />
-        <br></br>
         {/* <button
           className={!button ? style.btnPlanetOff : style.btnPlanet}
           disabled={!button ? 'disabled' : ''}
@@ -81,20 +76,11 @@ export const VenusQ1Target = ({ setPage, setTitle, texts, dataVenus }) => {
         >
           SIGUIENTE
         </button> */}
-        <br></br>
-        <div className={style.buttonsContent}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(0)}>
-            ANTERIOR
-          </button>
-          <button
-          className={!button ? style.btnPlanetOff : style.btnPlanet}
-          disabled={!button ? 'disabled' : ''}
-          type="submit"
-        >
-          SIGUIENTE
-        </button>
+        <div className="fieldsets">
+          <Button text="ANTERIOR" onClick={() => setPage(0)} />
+          <Button text="SIGUIENTE" disabled={!button ? 'disabled' : ''} type="submit" />
         </div>
       </form>
-    </section>
+    </div>
   );
 };

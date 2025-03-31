@@ -249,8 +249,7 @@ export const ValueIdeasNombre = ({ getValueIdeasNombre, setValueIdeasNombre, tex
       ))}
       <div className="fieldsets">
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-        {
-          getValueIdeasNombre.length === 6 ? null : (
+        {getValueIdeasNombre.length === 6 ? null : (
           <a className={style.add} onClick={() => handleClick()}>
             <span>Agregar más</span>
           </a>

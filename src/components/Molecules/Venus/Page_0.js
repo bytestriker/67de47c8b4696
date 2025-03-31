@@ -10,9 +10,10 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import { PaintPoints } from '@Components/Atomos/Inputs/venus';
+import Button from '@Components/Button';
 
 // Styles
-import style from '@Sass/pages/venus.module.scss';
+import style from '@Sass/pages/general.module.scss';
 
 /** VENUS TARGET
  * page 1
@@ -57,24 +58,17 @@ export const VenusQ0Target = ({ setPage, setTitle, texts, dataVenus }) => {
 
 
   return (
-    <section className={style.venusQuestions}>
+    <div className="questionWrap">
       <ScrollToTop />
-      <div>
-        <Title2 text={texts?.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-        <SaberMas data={texts} />
-      </div>
-
-      {/* <form method="POST" onSubmit={handleSubmit(onSubmit)}> */}
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <form method="POST" >
         <p className={style.identify}>{texts.instruccion}</p>
-
         {/* <PaintPoints
           dataPoints={dataPoints}
           setDataPoints={setDataPoints}
           setPainPoints={setPainPoints}
         /> */}
-        <br></br>
         {/* <button
           className={ style.btnPlanet}
           // className={!button ? style.btnPlanetOff : style.btnPlanet}
@@ -82,12 +76,8 @@ export const VenusQ0Target = ({ setPage, setTitle, texts, dataVenus }) => {
         >
           SIGUIENTE
         </button> */}
-
-        <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
-        SIGUIENTE
-          </button>
-        <br></br>
+        <Button text="SIGUIENTE" isCentered={true} onClick={() => setPage(1)} />
       </form>
-    </section>
+    </div>
   );
 };

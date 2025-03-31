@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
 // Store
@@ -25,8 +26,10 @@ import {
 } from '@Components/Molecules/Venus';
 import { ModalVenus, ModalSalirVenus } from '@Components/Atomos/Modals';
 import { ButtonClose } from '@Components/Atomos/Buttons';
+import ButtonGoHome from '@Components/ButtonGoHome';
 
 // Styles
+import '@Sass/pages/planet.scss';
 import style from '@Sass/pages/venus.module.scss';
 import base from '@Sass/pages/general.module.scss';
 
@@ -45,9 +48,16 @@ const Venus = () => {
     shallow
   );
 
-  const { venusGetProjectById, venusConclusionFO, venusConclusionDA, venusConclusionFA, venusConclusionDEAM, venusGetBuyerPersona } =
-    useEventsVenus();
-  const { venusQ0, venusQ1, venusQ2, venusQ3, venusQ3od, venusQ3fa, venusQ3deam, venusQ4 } = VenusWPText();
+  const {
+    venusGetProjectById,
+    venusConclusionFO,
+    venusConclusionDA,
+    venusConclusionFA,
+    venusConclusionDEAM,
+    venusGetBuyerPersona,
+  } = useEventsVenus();
+  const { venusQ0, venusQ1, venusQ2, venusQ3, venusQ3od, venusQ3fa, venusQ3deam, venusQ4 } =
+    VenusWPText();
   const [page, setPage] = useState(0);
   const [modal, setModal] = useState(false);
   const [texts0, setTexts0] = useState({});
@@ -74,7 +84,8 @@ const Venus = () => {
     goals: '',
     motivations: '',
     frustrations: '',
-});
+  });
+  const history = useHistory();
 
   useEffect(() => {
     if (venusQ0) {
@@ -94,7 +105,7 @@ const Venus = () => {
     }
   }, [venusQ2]);
 
-  //Cruce Fo-Op 
+  //Cruce Fo-Op
   useEffect(() => {
     if (venusQ3) {
       setTexts3(venusQ3);
@@ -108,14 +119,14 @@ const Venus = () => {
     }
   }, [venusQ3od]);
 
-  //Cruce Fo-Am  
+  //Cruce Fo-Am
   useEffect(() => {
     if (venusQ3fa) {
       setTexts3fa(venusQ3fa);
     }
   }, [venusQ3fa]);
 
-  //Cruce De-Am  
+  //Cruce De-Am
   useEffect(() => {
     if (venusQ3deam) {
       setTexts3deam(venusQ3deam);
@@ -143,7 +154,7 @@ const Venus = () => {
       setBuyerall(buyer_result.data);
       setBuyer(buyer_result.data[0]);
     }
-  }
+  };
 
   // validamos si existe un proyecto y actualizamos estado
   const handleProjectById = async () => {
@@ -218,7 +229,118 @@ const Venus = () => {
     }
   };
   return (
-    <section className={base.planetContainer}>
+    <div className="planetWrap">
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="planetContainer">
+        {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
+        <div className="px-lg py-lg">
+          {page === 0 ? (
+            <VenusQ0Target
+              setPage={setPage}
+              setTitle={setTitle}
+              texts={texts0}
+              dataVenus={dataVenus}
+            />
+          ) : null}
+          {page === 1 ? (
+            <VenusQ1Target
+              setPage={setPage}
+              setTitle={setTitle}
+              texts={texts}
+              dataVenus={dataVenus}
+            />
+          ) : null}
+          {page === 2 ? <VenusQ1Foda setPage={setPage} setTitle={setTitle} texts={texts2} /> : null}
+          {page === 3 ? (
+            <VenusQ2Foda
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts2}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 4 ? (
+            <VenusQ1Conclusion
+              dataVenus={dataVenus}
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts3}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 5 ? (
+            <VenusQ2Conclusion
+              dataVenus={dataVenus}
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts3od}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 6 ? (
+            <VenusQ3Conclusion
+              dataVenus={dataVenus}
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts3fa}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 7 ? (
+            <VenusQ4Conclusion
+              dataVenus={dataVenus}
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts3deam}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 8 ? (
+            <BuyerInfo
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts4}
+              buyerall={buyerall}
+              setBuyer={setBuyer}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 9 ? (
+            <Buyer
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts4}
+              buyer={buyer}
+              setBuyer={setBuyer}
+              setMessage={setMessage}
+            />
+          ) : null}
+          {page === 10 ? (
+            <BuyerAdd
+              setPage={setPage}
+              setModal={setModal}
+              setTitle={setTitle}
+              texts={texts4}
+              buyer={buyer}
+              setBuyer={setBuyer}
+              setMessage={setMessage}
+            />
+          ) : null}
+        </div>
+      </div>
       {modalSalir ? (
         <ModalSalirVenus
           title="Estás a punto de salir"
@@ -240,118 +362,7 @@ const Venus = () => {
           page={page}
         />
       ) : null}
-
-      <div>
-        <ButtonClose setModalSalir={setModalSalir} titlePage={title} />
-        <div className={style.Venus}>
-          <div className={base.pageContainer}>
-            <div className={style.venusContainer}>
-              {page === 0 ? (
-                <VenusQ0Target
-                  setPage={setPage}
-                  setTitle={setTitle}
-                  texts={texts0}
-                  dataVenus={dataVenus}
-                />
-              ) : null}
-              {page === 1 ? (
-                <VenusQ1Target
-                  setPage={setPage}
-                  setTitle={setTitle}
-                  texts={texts}
-                  dataVenus={dataVenus}
-                />
-              ) : null}
-              {page === 2 ? (
-                <VenusQ1Foda setPage={setPage} setTitle={setTitle} texts={texts2} />
-              ) : null}
-              {page === 3 ? (
-                <VenusQ2Foda
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts2}
-                  setMessage={setMessage}
-                />
-              ) : null}
-              {page === 4 ? (
-                <VenusQ1Conclusion
-                  dataVenus={dataVenus}
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts3}
-                  setMessage={setMessage}
-                />
-              ) : null}
-              {page === 5 ? (
-                <VenusQ2Conclusion
-                  dataVenus={dataVenus}
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts3od}
-                  setMessage={setMessage}
-                />
-              ) : null}
-              {page === 6 ? (
-                <VenusQ3Conclusion
-                  dataVenus={dataVenus}
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts3fa}
-                  setMessage={setMessage}
-                />
-              ) : null}
-              {page === 7 ? (
-                <VenusQ4Conclusion
-                  dataVenus={dataVenus}
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts3deam}
-                  setMessage={setMessage}
-                />
-              ) : null}
-              {page === 8 ? (
-              <BuyerInfo 
-                setPage={setPage}
-                setModal={setModal} 
-                setTitle={setTitle}
-                texts={texts4}
-                buyerall={buyerall}
-                setBuyer={setBuyer}
-                setMessage={setMessage}
-               />
-               ) : null}
-              {page === 9 ? (
-                <Buyer
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts4} 
-                  buyer={buyer}
-                  setBuyer={setBuyer}
-                  setMessage={setMessage}
-                />
-              ) : null}
-              {page === 10 ? (
-                <BuyerAdd
-                  setPage={setPage}
-                  setModal={setModal}
-                  setTitle={setTitle}
-                  texts={texts4}
-                  buyer={buyer}
-                  setBuyer={setBuyer}
-                  setMessage={setMessage}
-                />
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
   );
 };
 export default Venus;

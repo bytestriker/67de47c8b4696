@@ -293,7 +293,12 @@
     text-align: center;
   }
   h2, p {
-    margin: 0 0 24px;
+    margin: 0 0 20px;
+    p {
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
+    }
   }
 }
 
@@ -309,6 +314,9 @@
     &:last-child {
       margin-left: 20px;
     }
+  }
+  input {
+    margin: 0 !important;
   }
   
 }

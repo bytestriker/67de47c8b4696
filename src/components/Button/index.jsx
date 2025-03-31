@@ -1,16 +1,21 @@
 import style from '@Components/Button/button.module.scss';
 
-const Button = ({
+const Button = (
+  
+  {
   text = 'Click me',
   onClick = () => {},
   type = 'button',
-  isCentered,
+  isCentered = false,
   isAlt = false,
   isAstronaut = false,
-}) => {
+  disabled = false
+  }
+
+) => {
   return (
     <div className={isCentered ? `${style.centerButton}` : ''}>
-      <button className={`${style.buttonPrimary}`} type={type} onClick={onClick}>
+      <button className={`${style.buttonPrimary}`} type={type} onClick={onClick} disabled={disabled}>
         {isAlt ? (
           <svg
             width="242"
