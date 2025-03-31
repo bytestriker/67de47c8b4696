@@ -13,6 +13,8 @@ import empieza from '@Assets/images/planets/empieza.svg';
 import neptuno from '@Assets/images/planets/neptuno.png';
 import { valPackage } from '@Hooks/useValidatePlanet';
 
+import '@Sass/pages/planet.scss';
+
 export const Neptuno = ({ neptunoInfo }) => {
   const [skills, setSkills] = useState([
     {

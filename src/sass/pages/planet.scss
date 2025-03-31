@@ -59,6 +59,10 @@
     z-index: -1;
     pointer-events: none;
   }
+  .mainContainer{
+    
+
+  }
   .planetContainer,
   .profileContainer {
     position: relative;
@@ -80,6 +84,7 @@
         padding: 24px 0;
       }
     }
+    
   }
   .planetContainer  {
     background-color: rgba(77, 84, 47, 0.45);

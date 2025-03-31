@@ -79,17 +79,17 @@ export const Jupiter = ({ jupiterInfo }) => {
       {getJupiter().id ? (
         <button
           className={`${
-            dataMercurio.complete === 1
+            dataJupiter.complete === 1
               ? buttons.buttonPlanetCompleted
-              : dataMercurio.complete === 2
+              : dataJupiter.complete === 2
               ? buttons.buttonPlanetIncomplete
-              : dataMercurio.complete === 0
+              : dataJupiter.complete === 0
               ? buttons.buttonPlanet
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('jupiter', 1)}
         >
-          {dataMercurio.label}
+          {dataJupiter.label}
         </button>
       ) : (
         <img src={empieza} alt="empieza" />
