@@ -261,6 +261,8 @@ export const Logo = ({ setPage, setTitle, texts }) => {
             text="SIGUIENTE"
             className={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
             disabled={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
+            onClick={handlePrototipo}
+
           />
         </div>
 
@@ -369,37 +371,46 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
   };
 
   return (
-    <section className={urano.jupiterLogo}>
-      <form>
+    <div className="questionWrap">
+      <ScrollToTop />
+      <form className='px-lg'>
         {/*        <div className={urano.checkText}>
           <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
           <p>Subir después</p>
         </div>
         <br></br> */}
-        <ParagraphPlanet text={texts.descripcion_general_de_las_plataformas_recomendadas} />
-        <div className={urano.upload}>
+        <p dangerouslySetInnerHTML={{__html: texts.descripcion_general_de_las_plataformas_recomendadas}} />
+        <fieldset className="uranoUpload">
           <img src={upload} alt="upload" />
           <input
             type="file"
             name="fileInput"
             id="fileInput"
             onChange={handleImageDoc}
-            className={urano.fileInput}
+            className="uranoFileInput"
           />
-        </div>
-      </form>
-      <br></br>
-      <div className={style.contentButtons}>
-        <div className={style.flexButtons}>
+        <div className="flexButtons">
+        <Button
+            className=""
+            text="REGRESAR"
+            onClick={() => setPage(1)}
+            isAlt
+          />
+          <Button
+            text="SIGIUIENTE"
+            onClick={() => setPage(3)}
+          />
+          {/*
           <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(1)}>
             ANTERIOR
           </button>
           <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
             SIGUIENTE
-          </button>
+          </button> */}
         </div>
-      </div>
-    </section>
+        </fieldset>
+      </form>
+    </div>
   );
 };
 
@@ -429,24 +440,22 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
   };
 
   return (
-    <section>
+    <div className='questionWrap'>
       <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
+      <div className='px-lg'>
+        <h2 dangerouslySetInnerHTML={{__html: texts.pregunta}} ></h2>
+        <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
 
-        <div className={urano.input_search}>
+        <fieldset className="urano-input-search">
           <input
             type="search"
             placeholder="Busca alguna categoría"
-            className={urano.search}
+            className="urano-search"
             value={searchTerm}
             onChange={handleInputChange}
           />
           <FaSearch className={urano.icon} />
-        </div>
-      </div>
-      <div>
+        </fieldset>
         <div className={urano.cardContent}>
           {filteredData.length > 0 ? (
             filteredData.map((items, index) => (
@@ -461,25 +470,41 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
             <></>
           )}
         </div>
+        <div className="flexButtons">
+          {/* 
+          <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(2)}>
+            ANTERIOR
+          </button>
+          <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(4)}>
+            SIGUIENTE
+          </button> 
+          */}
+          <Button
+            text="REGRESAR"
+            onClick={() => setPage(2)}
+            isAlt
+          />
+          <Button
+            text="SIGUIENTE"
+            onClick={() => setPage(4)}
+          />
 
-        {/*         <div className={urano.content}>
+        </div>
+      </div>
+      <div>
+
+        {/*
+        <div className={urano.content}>
           <a className={`${urano.vermas}`} onClick={() => setItems(true)}>
             VER MÁS
           </a>
-        </div> */}
-
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(2)}>
-              ANTERIOR
-            </button>
-            <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(4)}>
-              SIGUIENTE
-            </button>
-          </div>
+        </div> 
+        <div className="{style.contentButtons}">
         </div>
+        */}
+
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -499,12 +524,11 @@ export const Marketing = ({ setTitle, texts, params }) => {
   }, [params]);
 
   return (
-    <section>
+    <div className="questionWrap">
       <ScrollToTop />
-      <div>
-        <Title2 text={market.categoria} />
-        <ParagraphPlanet text={market.descripcion_de_categoria} />
-      </div>
+      <div className="px-lg">
+        <h2 dangerouslySetInnerHTML={{__html:market.categoria}}></h2>
+        <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria}}></p>
 
       <div className={urano.cardMarketing}>
         {proveedores.length > 0 ? (
@@ -529,7 +553,9 @@ export const Marketing = ({ setTitle, texts, params }) => {
           />
         )}
       </div>
-    </section>
+
+      </div>
+    </div>
   );
 };
 
@@ -601,18 +627,16 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
   };
 
   return (
-    <section className={urano.jupiterLogo}>
+    <section className="questionWrap">
       <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
+      <form className="px-lg">
+        <h2 dangerouslySetInnerHTML={{__html:texts.descargarTxt}}></h2>
+        <p dangerouslySetInnerHTML={{__html:texts.descripcion}}></p>
         <a href={texts.adjuntar_formato_para_descargar} className={urano.downloadContent}>
           <p className={urano.descargarTxt}>Descargar formato</p>
           <img src={download} alt="download" className={urano.downloadIcon} />
         </a>
-      </div>
-      <form>
-        <div className={urano.upload}>
+        <fieldset>
           <img src={upload} alt="upload" />
           <input
             type="file"
@@ -621,12 +645,41 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
             onChange={handleImageDoc}
             className={urano.fileInput}
           />
+        </fieldset>
+        <div className="flexButtons">
+          {/* 
+            <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
+              ANTERIOR
+            </button>
+            <button
+              type="button"
+              className={`${urano.btnPlanet}`}
+              onClick={() => handleValidateProject()}
+            >
+              SIGUIENTE
+            </button>
+          */}
+          <Button
+            
+            text="ANTERIOR"
+            onClick={() => setPage(3)}
+            isAlt
+          />
+          <Button
+            text="SIGUIENTE"
+            onClick={() => handleValidateProject()}
+          />
+
         </div>
-        {/*       <p className={urano.subir}>Subir archivo</p>
+        {/*
+        <p className={urano.subir}>Subir archivo</p>
         <div className={urano.checkText}>
           <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
           <p>Subir después</p>
-        </div> */}
+        </div>
+        */}
+
+        {/*
         <div className={style.contentButtons}>
           <div className={style.flexButtons}>
             <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
@@ -640,7 +693,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
               SIGUIENTE
             </button>
           </div>
-        </div>
+        </div> */}
       </form>
     </section>
   );
