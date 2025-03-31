@@ -13,6 +13,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { TextAreaMarca } from '@Components/Atomos/Inputs/jupiter';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -75,22 +76,18 @@ export const Marca = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <section className={style.marteQuestions}>
+    <div className="questionWrap">
       <ScrollToTop />
-      <div>
-        <ParagraphPlanet text={texts.descripcion} />
-      </div>
-      <br></br>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <form method="POST">
         <TextAreaMarca
           getDescripcionMarca={getDescripcionMarca}
           setDescripcionMarca={setDescripcionMarca}
           textDisabled={buttonNext}
         />
-        <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(7)}>
+        <div className="fieldsets">
+          {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(7)}>
               ANTERIOR
             </button>
             <button
@@ -100,10 +97,12 @@ export const Marca = ({ setPage, setTitle, texts, dataJupiter }) => {
               disabled={buttonNext ? '' : 'disabled'}
             >
               SIGUIENTE
-            </button>
-          </div>
+            </button>*/}
+          <Button text="ANTERIOR" onClick={() => setPage(7)} />
+          <Button text="SIGUIENTE" onClick={() => setPage(9)} />
+
         </div>
       </form>
-    </section>
+    </div>
   );
 };

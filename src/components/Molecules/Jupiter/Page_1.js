@@ -56,14 +56,13 @@ export const Intro = ({ setPage, setTitle, texts, dataJupiter }) => {
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
-      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
-      <fieldset>
-        <Button
-          text="SIGUIENTE"
-          onClick={() => setPage(2)}
-        />
-      </fieldset>
+      <Button
+        text="SIGUIENTE"
+        isCentered={true}
+        onClick={() => setPage(2)}
+      />
     </div>
   );
 };

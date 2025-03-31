@@ -692,17 +692,11 @@ const Profile = () => {
                   )}
                 </fieldset>
               </div>
-              <fieldset>
-                <button className={style.compra} type="submit">
-                  GUARDAR
-              </button>
-              
               <Button
                 text="GUARDAR"
                 isCentered={true}
                 type="submit"
               />
-              </fieldset>
             </form>
           )
         }

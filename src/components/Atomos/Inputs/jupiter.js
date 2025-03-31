@@ -51,7 +51,7 @@ export const ValueCaracteristicas = ({
       <div className="fieldsets">
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getValueCaracteristica.length === 6 ? null : (
-          <a className={style.add} onClick={() => handleClick()}>
+          <a className="buttonAdd" onClick={() => handleClick()}>
             <span>Agregar más</span>
           </a>
         )}
@@ -99,7 +99,7 @@ export const ValueCalificativos = ({ getValueAdjetivos, setValueAdjetivos, textD
       <div className="fieldsets">
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getValueAdjetivos.length === 6 ? null : (
-          <a className={style.add} onClick={() => handleClick()}>
+          <a className="buttonAdd" onClick={() => handleClick()}>
             <span>Agregar más</span>
           </a>
         )}
@@ -147,9 +147,9 @@ export const ValueNombre = ({ getValueObjetivos, setValueObjetivos, textDisabled
       <div className="fieldsets">
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getValueObjetivos.length === 6 ? null : (
-          <a className={style.add} onClick={() => handleClick()}>
-            <span>Agregar más</span>
-          </a>
+        <a className="buttonAdd" onClick={() => handleClick()}>
+          <span>Agregar más</span>
+        </a>
         )}
       </div>
     </fieldset>
@@ -202,7 +202,7 @@ export const ValueSignificativos = ({
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {
           getValueSignificados.length === 6 ? null : (
-          <a className={style.add} onClick={() => handleClick()}>
+          <a className="buttonAdd" onClick={() => handleClick()}>
             <span>Agregar más</span>
           </a>
         )}
@@ -250,7 +250,7 @@ export const ValueIdeasNombre = ({ getValueIdeasNombre, setValueIdeasNombre, tex
       <div className="fieldsets">
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getValueIdeasNombre.length === 6 ? null : (
-          <a className={style.add} onClick={() => handleClick()}>
+          <a className="buttonAdd" onClick={() => handleClick()}>
             <span>Agregar más</span>
           </a>
         )}
@@ -272,16 +272,17 @@ export const TextAreaMarca = ({ getDescripcionMarca, setDescripcionMarca, textDi
   }, [dataJupiter]);
 
   return (
-    <textarea
-      name="descripcion_marca"
-      id="descripcion_marca"
-      cols="30"
-      rows="10"
-      required
-      onChange={(e) => setDescripcionMarca(e.target.value)}
-      placeholder="Describe la personalidad de tu marca"
-      value={getDescripcionMarca}
-    ></textarea>
+    <fieldset>
+
+      <textarea
+        name="descripcion_marca"
+        id="descripcion_marca"
+        required
+        onChange={(e) => setDescripcionMarca(e.target.value)}
+        placeholder="Describe la personalidad de tu marca"
+        value={getDescripcionMarca}
+      ></textarea>
+    </fieldset>
   );
 };
 
@@ -325,7 +326,7 @@ export const ValueMarca = ({ getValueAdjetivos, setValueAdjetivos, textDisabled 
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {
           getValueAdjetivos.length === 6 ? null : (
-          <a className={style.add} onClick={() => handleClick()}>
+          <a className="buttonAdd" onClick={() => handleClick()}>
             <span>Agregar más</span>
           </a>
         )}

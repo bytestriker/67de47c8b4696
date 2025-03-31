@@ -16,6 +16,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import Carrusel from '@Components/Atomos/Slider';
+import Button from '@Components/Button';
 
 // Images
 import upload from '@Assets/images/upload.png';
@@ -125,12 +126,10 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
   );
 
   return (
-    <section className={jupiter.jupiterLogo}>
+    <section className="questionWrap">
       <ScrollToTop />
-      <div>
-        <ParagraphPlanet text={texts.descripcion} />
-      </div>
-      <br></br>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <form>
         <div className={jupiter.upload}>
           <img src={upload} alt="upload" />
@@ -146,18 +145,17 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
           <input type="checkbox" name="checkInput" id="checkInput" className={jupiter.checkInput} />
           <p>Subir después</p>
         </div> */}
-        <br></br>
-        <ParagraphPlanet text={texts.descripcion_general_de_las_plataformas_recomendadas} />
+        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion_general_de_las_plataformas_recomendadas }}></p>
         <div className={jupiter.carrusel}>{componentSlider}</div>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(8)}>
+        <div className="fieldsets">
+          {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(8)}>
               ANTERIOR
             </button>
             <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setModal(true)}>
               SIGUIENTE
-            </button>
-          </div>
+            </button>*/}
+          <Button text="ANTERIOR" onClick={() => setPage(8)} />
+          <Button text="SIGUIENTE" onClick={() => setModal(true)} />
         </div>
       </form>
     </section>

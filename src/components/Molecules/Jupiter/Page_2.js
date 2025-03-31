@@ -61,8 +61,8 @@ export const Caracteristicas = ({ setPage, setTitle, texts, dataJupiter }) => {
         textDisabled={buttonNext}
       />
       <div className="fieldsets">
-        <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(1)} />
-        <Button text="SIGUIENTE" isSubmit={true} onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
+        <Button text="ANTERIOR" onClick={() => setPage(1)} />
+        <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
     </form>
   );

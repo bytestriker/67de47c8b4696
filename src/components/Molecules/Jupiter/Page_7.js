@@ -21,6 +21,7 @@ import {
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -210,14 +211,10 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
   };
 
   return (
-    <section className={style.marteQuestions}>
+    <div className="quesionWrap">
       <ScrollToTop />
-
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-      </div>
-      <br></br>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <form method="POST">
         <div className={jupiter.selectContainer}>
           <label>Opción 1</label>
@@ -243,7 +240,6 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
             </div>
           )}
         </div>
-
         <div className={jupiter.selectContainer}>
           <label>Opción 2</label>
           <div className={jupiter.selectHeader} onClick={toggleSelectOpcion2}>
@@ -268,7 +264,6 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
             </div>
           )}
         </div>
-
         <div className={jupiter.selectContainer}>
           <label>Opción 3</label>
           <div className={jupiter.selectHeader} onClick={toggleSelectOpcion3}>
@@ -293,32 +288,27 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
             </div>
           )}
         </div>
-
-        <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(6)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-              onClick={() => handleSubmit('save')}
-            >
-              GUARDAR
-            </button>
-          </div>
+        <div className="fieldsets">
+          <Button text="ANTERIOR" onClick={() => setPage(6)} />
           <button
+            type="button"
+            className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
+            disabled={buttonNext ? '' : 'disabled'}
+            onClick={() => handleSubmit('save')}
+          >
+            GUARDAR
+          </button>
+          {/*<button
             type="button"
             className={buttonNext ? jupiter.btnStepDos : jupiter.btnStepDosOff}
             disabled={buttonNext ? '' : 'disabled'}
             onClick={() => handleSubmit('next')}
           >
             SIGUIENTE
-          </button>
+          </button>*/}
+          <Button text="SIGUIENTE" onClick={() => setPage(8)} />
         </div>
       </form>
-    </section>
+    </div>
   );
 };
