@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
 // COMPONETS
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import ButtonGoHome from '@Components/ButtonGoHome';
-
-import { useHistory } from 'react-router-dom';
-import { Title, Paragraph } from '@Components/Atomos/Titles';
 
 // Hook
 import { useFetchLegales } from '@Hooks/useFetchLegales';
@@ -24,12 +21,7 @@ const Privacy = () => {
     }
   }, [legales]);
 
-  if (!isSuccess)
-    return (
-      <div className="planetContainer">
-        <div className="planetContent"></div>
-      </div>
-    );
+  if (!isSuccess) return (<div className="planetContainer"><div className="planetContent"></div></div>);
 
   return (
     <section className='planetWrap'>
