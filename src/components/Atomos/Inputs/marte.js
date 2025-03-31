@@ -37,26 +37,27 @@ export const ValueProposition = ({ dataMarte, getValueProposition, setValuePropo
   };
 
   return (
-    <>
+    <fieldset>
       {getValueProposition.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`value-proposition-${indice}`}
-          className={style.input}
           placeholder="Escribe tu propuesta de valor"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getValueProposition.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getValueProposition.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -98,7 +99,6 @@ export const KeyActivities = ({ dataMarte, getKeyActivities, setKeyActivities })
           key={indice}
           type="text"
           name={`key-activities-${indice}`}
-          className={style.input}
           placeholder="Escribe tus actividades"
           required
           value={elemento}
@@ -106,9 +106,9 @@ export const KeyActivities = ({ dataMarte, getKeyActivities, setKeyActivities })
         />
       ))}
 
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+      <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
       {getKeyActivities.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
+        <span className="buttonAdd" onClick={() => handleClick()}>
           <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
         </span>
       )}
@@ -148,26 +148,28 @@ export const RevenueStreams = ({ dataMarte, getRevenueStreams, setRevenueStreams
   };
 
   return (
-    <>
+    <fieldset>
       {getRevenueStreams.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`revenue-streams-${indice}`}
-          className={style.input}
           placeholder="Escribe tus fuentes"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getRevenueStreams.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getRevenueStreams.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -208,26 +210,27 @@ export const CustomerRelationships = ({
   };
 
   return (
-    <>
+    <fieldset>
       {getCustomerRelationships.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`customer-relationships-${indice}`}
-          className={style.input}
           placeholder="Escribe tus relaciones"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getCustomerRelationships.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getCustomerRelationships.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -264,27 +267,27 @@ export const Channels = ({ dataMarte, getChannels, setChannels }) => {
   };
 
   return (
-    <>
+    <fieldset>
       {getChannels.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`channels-${indice}`}
-          className={style.input}
           placeholder="Escribe tus canales"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getChannels.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getChannels.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -321,26 +324,27 @@ export const KeyPartners = ({ dataMarte, getKeyPartners, setKeyPartners }) => {
   };
 
   return (
-    <>
+    <fieldset>
       {getKeyPartners.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`key-partners-${indice}`}
-          className={style.input}
           placeholder="Escribe tus alianzas"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getKeyPartners.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getKeyPartners.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -376,26 +380,27 @@ export const CostStructure = ({ dataMarte, getCostStructure, setCostStructure })
   };
 
   return (
-    <>
+    <fieldset>
       {getCostStructure.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`cost-structure-${indice}`}
-          className={style.input}
           placeholder="Escribe aquí tu estructura"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getCostStructure.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getCostStructure.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -431,26 +436,28 @@ export const CustomerSegments = ({ dataMarte, getCustomerSegments, setCustomerSe
   };
 
   return (
-    <>
+    <fieldset>
       {getCustomerSegments.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`customer-segments-${indice}`}
-          className={style.input}
           placeholder="Escribe aquí tus segmentos"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getCustomerSegments.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getCustomerSegments.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -486,25 +493,26 @@ export const KeyResources = ({ dataMarte, getKeyResources, setKeyResources }) =>
   };
 
   return (
-    <>
+    <fieldset>
       {getKeyResources.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`key-resources-${indice}`}
-          className={style.input}
           placeholder="Escribe aquí tus principales recursos"
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.info}>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getKeyResources.length === 5 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {getKeyResources.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };

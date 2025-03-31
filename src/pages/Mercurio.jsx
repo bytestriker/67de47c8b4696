@@ -22,7 +22,6 @@ import satelite from '@Assets/images/satelite.png';
 // Styles
 import '@Sass/pages/planet.scss';
 
-
 const MercurioMain = () => {
   const { mercurioGetProjectById } = useEventsMercurio();
   const { mercurioQ1, mercurioQ2, mercurioQ3 } = MercurioWPText();
@@ -107,53 +106,49 @@ const MercurioMain = () => {
       <ButtonGoHome
         className="planetBackToTheHomepage"
         onClick={() => history.push('/')}
-          text="Volver al Inicio"
-        />
+        text="Volver al Inicio"
+      />
       <div className="planetContainer">
         <div className="planetContent">
-          <div className="py-lg">
-            {page === 1 ? (
-              <MercurioQ1
-                setPage={setPage}
-                setStateMercurio={setStateMercurio}
-                dataMercurio={dataMercurio}
-                setTitlePage={setTitlePage}
-                texts={texts}
-              />
-            ) : null}
-            {page === 2 ? (
-              <MercurioQ2
-                setAlert={setAlert}
-                setPage={setPage}
-                setStateMercurio={setStateMercurio}
-                dataMercurio={dataMercurio}
-                setTitlePage={setTitlePage}
-                texts={texts2}
-              />
-            ) : null}
-            {page === 3 ? (
-              <MercurioQ3
-                setAlert={setAlert}
-                setPage={setPage}
-                setStateMercurio={setStateMercurio}
-                dataMercurio={dataMercurio}
-                setTitlePage={setTitlePage}
-                texts={texts3}
-              />
-            ) : null}
-          </div>
-
-      {modalSalir ? (
-        <ModalMercurio
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
-          setModalSalir={setModalSalir}
-          data={dataMercurio}
-        />
-      ) : null}
-
-      {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
+          {page === 1 ? (
+            <MercurioQ1
+              setPage={setPage}
+              setStateMercurio={setStateMercurio}
+              dataMercurio={dataMercurio}
+              setTitlePage={setTitlePage}
+              texts={texts}
+            />
+          ) : null}
+          {page === 2 ? (
+            <MercurioQ2
+              setAlert={setAlert}
+              setPage={setPage}
+              setStateMercurio={setStateMercurio}
+              dataMercurio={dataMercurio}
+              setTitlePage={setTitlePage}
+              texts={texts2}
+            />
+          ) : null}
+          {page === 3 ? (
+            <MercurioQ3
+              setAlert={setAlert}
+              setPage={setPage}
+              setStateMercurio={setStateMercurio}
+              dataMercurio={dataMercurio}
+              setTitlePage={setTitlePage}
+              texts={texts3}
+            />
+          ) : null}
         </div>
+        {modalSalir ? (
+          <ModalMercurio
+            title="Estás a punto de salir"
+            message="¿Deseas guardar tu información?"
+            setModalSalir={setModalSalir}
+            data={dataMercurio}
+          />
+        ) : null}
+        {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
       </div>
     </section>
   );
@@ -176,10 +171,10 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}>{}</h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <fieldset>
-
-          <label htmlFor="launchQ1" className="text-right">1/3</label>
+          <label htmlFor="launchQ1" className="text-right">
+            1/3
+          </label>
         </fieldset>
-
 
         {/* <textarea
           className={style.inputProjectName}
@@ -276,9 +271,9 @@ export const MercurioQ2 = ({
             disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
             onClick={() => setPage(3)}
           />
-        </div> 
+        </div>
         {/* <div className="d-none"> */}
-          {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
+        {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
             ANTERIOR
           </button>
           <button
@@ -292,7 +287,7 @@ export const MercurioQ2 = ({
             SIGUIENTE
           </button>
            */}
-          {/* <button
+        {/* <button
             className={
               dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
             }
@@ -386,7 +381,6 @@ export const MercurioQ3 = ({
           </button> */}
         </div>
       </form>
-
     </div>
   );
 };

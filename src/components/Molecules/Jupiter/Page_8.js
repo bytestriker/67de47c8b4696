@@ -76,33 +76,31 @@ export const Marca = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <div className="questionWrap">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <form method="POST">
-        <TextAreaMarca
-          getDescripcionMarca={getDescripcionMarca}
-          setDescripcionMarca={setDescripcionMarca}
-          textDisabled={buttonNext}
-        />
-        <div className="fieldsets">
-          {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(7)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSubmmit(9)}
-              className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-            >
-              SIGUIENTE
-            </button>*/}
-          <Button text="ANTERIOR" onClick={() => setPage(7)} />
-          <Button text="SIGUIENTE" onClick={() => setPage(9)} />
+      <TextAreaMarca
+        getDescripcionMarca={getDescripcionMarca}
+        setDescripcionMarca={setDescripcionMarca}
+        textDisabled={buttonNext}
+      />
+      <div className="fieldsets">
+        {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(7)}>
+            ANTERIOR
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSubmmit(9)}
+            className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
+            disabled={buttonNext ? '' : 'disabled'}
+          >
+            SIGUIENTE
+          </button>*/}
+        <Button text="ANTERIOR" onClick={() => setPage(7)} />
+        <Button text="SIGUIENTE" onClick={() => setPage(9)} />
 
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };

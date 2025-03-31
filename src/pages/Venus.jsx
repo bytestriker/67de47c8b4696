@@ -239,7 +239,7 @@ const Venus = () => {
       />
       <div className="planetContainer">
         {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
-        <div className="px-lg py-lg">
+        <div className="planetContent">
           {page === 0 ? (
             <VenusQ0Target
               setPage={setPage}

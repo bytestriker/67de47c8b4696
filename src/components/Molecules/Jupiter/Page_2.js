@@ -52,7 +52,7 @@ export const Caracteristicas = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
       <ValueCaracteristicas

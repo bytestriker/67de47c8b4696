@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 
@@ -27,6 +28,8 @@ import {
   CustomerSegments,
   KeyResources,
 } from '@Components/Atomos/Inputs/marte';
+import ButtonGoHome from '@Components/ButtonGoHome';
+import Button from '@Components/Button';
 
 // Images
 import galaxia from '@Assets/images/galaxia.png';
@@ -45,7 +48,7 @@ const Marte = () => {
   const [texts, setTexts] = useState({});
   const [texts2, setTexts2] = useState({});
   const [texts3, setTexts3] = useState({});
-
+  const history = useHistory();
   // Stores
   const { dataMarte, setMarte, getMarte, setStateBussines } = marteStore(
     (state) => ({
@@ -136,72 +139,59 @@ const Marte = () => {
   }, [marteQ3]);
 
   return (
-    <section className={base.planetContainer}>
-      {modalSalir ? (
-        <ModalSalirMarte
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
-          setModalSalir={setModalSalir}
-          data={dataMarte}
-          page={page}
-        />
-      ) : null}
+    <section className="planetWrap">
       <ScrollToTop />
-
-      <div>
-        <ButtonClose setModalSalir={setModalSalir} titlePage={title} />
-        <div className={style.Marte}>
-          <div className={base.pageContainer}>
-            {page === 1 ? (
-              <MarteQ1Valor
-                setPage={setPage}
-                getMarte={getMarte}
-                setMarte={setMarte}
-                dataMarte={dataMarte}
-                setTitle={setTitle}
-                texts={texts}
-              />
-            ) : (
-              <></>
-            )}
-            {page === 2 ? (
-              <MarteQ1Canvas
-                setPage={setPage}
-                setModal={setModal}
-                modal={modal}
-                setTitle={setTitle}
-                texts={texts2}
-              />
-            ) : (
-              <></>
-            )}
-            {page === 3 ? (
-              <MarteQ2Canvas
-                setPage={setPage}
-                setModal={setModal}
-                modal={modal}
-                setTitle={setTitle}
-                texts={texts2}
-              />
-            ) : (
-              <></>
-            )}
-            {page === 4 ? (
-              <MarteNegocios
-                setPage={setPage}
-                setModal={setModal}
-                modal={modal}
-                dataMarte={dataMarte}
-                getMarte={getMarte}
-                setTitle={setTitle}
-                setStateBussines={setStateBussines}
-                getLuna={getLuna}
-                texts={texts3}
-              />
-            ) : (
-              <></>
-            )}
-          </div>
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="planetContainer">
+        {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
+        <div className="planetContent">
+          {page === 1 ? (
+            <MarteQ1Valor
+              setPage={setPage}
+              getMarte={getMarte}
+              setMarte={setMarte}
+              dataMarte={dataMarte}
+              setTitle={setTitle}
+              texts={texts}
+            />
+          ) : null}
+          {page === 2 ? (
+            <MarteQ1Canvas
+              setPage={setPage}
+              setModal={setModal}
+              modal={modal}
+              setTitle={setTitle}
+              texts={texts2}
+            />
+          ) : null}
+          {page === 3 ? (
+            <MarteQ2Canvas
+              setPage={setPage}
+              setModal={setModal}
+              modal={modal}
+              setTitle={setTitle}
+              texts={texts2}
+            />
+          ) : null}
+          {page === 4 ? (
+            <MarteNegocios
+              setPage={setPage}
+              setModal={setModal}
+              modal={modal}
+              dataMarte={dataMarte}
+              getMarte={getMarte}
+              setTitle={setTitle}
+              setStateBussines={setStateBussines}
+              getLuna={getLuna}
+              texts={texts3}
+            />
+          ) : null}
         </div>
       </div>
     </section>
@@ -214,35 +204,22 @@ const Marte = () => {
 export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle, texts }) => {
   const projectValor = useRef(null);
 
-  
-
   const handleSubmit = () => {
     setPage(2);
   };
 
   useEffect(() => {
-  
     setTitle(texts.titulo_de_la_vista);
   }, [texts]);
 
   return (
-    <div className={style.marteQuestions}>
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <div>
-        <h3 className={style.valor}>{texts.pregunta}</h3>
-        <ParagraphPlanet text={texts.descripcion} />
-        <SaberMas data={texts} />
-      </div>
-      <form method="POST">
-        <button
-          type="button"
-          className={style.btnPlanet}
-          onClick={() => handleSubmit()}
-        >
-          SIGUIENTE
-        </button>
-      </form>
-    </div>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <SaberMas data={texts} />
+      <Button text="SIGUIENTE" isCentered={true} onClick={() => handleSubmit()} />
+    </form>
   );
 };
 
@@ -322,74 +299,55 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
 
   return (
     <div className={`${style.MarteHeight}`}>
-      <div className={style.marteQuestions}>
+      <form className="questionWrap">
         <ScrollToTop />
-
-        <div>
-          <h3 className={style.valor}>{texts.pregunta}</h3>
-          <ParagraphPlanet text={texts.descripcion} />
-          {// <SaberMas data={texts} /> 
-          }
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+        <fieldset>
+          <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
+          <ValueProposition
+            dataMarte={dataMarte}
+            getValueProposition={getValueProposition}
+            setValueProposition={setValueProposition}
+          />
+        </fieldset>
+        <fieldset>
+          <ToolTip text="Actividades Clave" tool={texts.instruccion_2} />
+          <KeyActivities
+            dataMarte={dataMarte}
+            getKeyActivities={getKeyActivities}
+            setKeyActivities={setKeyActivities}
+          />
+        </fieldset>
+        <fieldset>
+          <ToolTip text="Fuentes de Ingreso" tool={texts.instruccion_3} />
+          <RevenueStreams
+            dataMarte={dataMarte}
+            getRevenueStreams={getRevenueStreams}
+            setRevenueStreams={setRevenueStreams}
+          />
+        </fieldset>
+        <fieldset>
+          <ToolTip text="Relaciones con Clientes" tool={texts.instruccion_4} />
+          <CustomerRelationships
+            dataMarte={dataMarte}
+            getCustomerRelationships={getCustomerRelationships}
+            setCustomerRelationships={setCustomerRelationships}
+          />
+        </fieldset>
+        <fieldset>
+          <ToolTip text="Canales" tool={texts.instruccion_5} />
+          <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
+        </fieldset>
+        <div className="fieldsets">
+          <Button text="ANTERIOR" onClick={() => setPage(1)} />
+          <Button
+            text="SIGUIENTE"
+            onClick={() => handleSubmit()}
+            disabled={buttonNext ? '' : 'disabled'}
+          />
         </div>
-
-        <form method="POST">
-          <div className={style.inputContainer}>
-            <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
-            <ValueProposition
-              dataMarte={dataMarte}
-              getValueProposition={getValueProposition}
-              setValueProposition={setValueProposition}
-            />
-          </div>
-
-          <div className={style.inputContainer}>
-            <ToolTip text="Actividades Clave" tool={texts.instruccion_2} />
-            <KeyActivities
-              dataMarte={dataMarte}
-              getKeyActivities={getKeyActivities}
-              setKeyActivities={setKeyActivities}
-            />
-          </div>
-
-          <div className={style.inputContainer}>
-            <ToolTip text="Fuentes de Ingreso" tool={texts.instruccion_3} />
-            <RevenueStreams
-              dataMarte={dataMarte}
-              getRevenueStreams={getRevenueStreams}
-              setRevenueStreams={setRevenueStreams}
-            />
-          </div>
-
-          <div className={style.inputContainer}>
-            <ToolTip text="Relaciones con Clientes" tool={texts.instruccion_4} />
-            <CustomerRelationships
-              dataMarte={dataMarte}
-              getCustomerRelationships={getCustomerRelationships}
-              setCustomerRelationships={setCustomerRelationships}
-            />
-          </div>
-
-          <div className={style.inputContainer}>
-            <ToolTip text="Canales" tool={texts.instruccion_5} />
-            <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
-          </div>
-          <br></br>
-
-          <div className={style.contentButtons}>
-            <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-              onClick={() => handleSubmit()}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </form>
-      </div>
+      </form>
     </div>
   );
 };
@@ -522,7 +480,59 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
   };
 
   return (
-    <div className={style.marteQuestions}>
+    <form method="POST" className="questionWrap">
+      <ScrollToTop />
+      <fieldset>
+        <ToolTip text="Alianzas Clave" tool={texts.instruccion_6} />
+        <KeyPartners
+          dataMarte={dataMarte}
+          getKeyPartners={getKeyPartners}
+          setKeyPartners={setKeyPartners}
+        />
+      </fieldset>
+      <fieldset>
+        <ToolTip text="Estructura de Costos" tool={texts.instruccion_7} />
+        <CostStructure
+          dataMarte={dataMarte}
+          getCostStructure={getCostStructure}
+          setCostStructure={setCostStructure}
+        />
+      </fieldset>
+      <fieldset>
+        <ToolTip text="Segmentos de Clientes" tool={texts.instruccion_8} />
+        <CustomerSegments
+          dataMarte={dataMarte}
+          getCustomerSegments={getCustomerSegments}
+          setCustomerSegments={setCustomerSegments}
+        />
+      </fieldset>
+
+      <fieldset>
+        <ToolTip text="Recursos Clave" tool={texts.instruccion_9} />
+        <KeyResources
+          dataMarte={dataMarte}
+          getKeyResources={getKeyResources}
+          setKeyResources={setKeyResources}
+        />
+      </fieldset>
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isCentered={true} onClick={() => setPage(2)} />
+        <button
+          type="button"
+          className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
+          disabled={buttonNext ? '' : 'disabled'}
+          onClick={() => handleSubmit('SAVE')}
+        >
+          GUARDAR
+        </button>
+        <Button
+          text="SIGUENTE"
+          isCentered={true}
+          onClick={() => setPage(4)}
+          /*onClick={() => handleSubmit('NEXTPAGE')}*/
+          disabled={buttonNext ? '' : 'disabled'}
+        />
+      </div>
       {modal ? (
         <ModalMarte
           title=""
@@ -533,70 +543,7 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           page={3}
         />
       ) : null}
-      <ScrollToTop />
-      <br></br>
-      <br></br>
-      <form method="POST">
-        <div className={style.inputContainer}>
-          <ToolTip text="Alianzas Clave" tool={texts.instruccion_6} />
-          <KeyPartners
-            dataMarte={dataMarte}
-            getKeyPartners={getKeyPartners}
-            setKeyPartners={setKeyPartners}
-          />
-        </div>
-
-        <div className={style.inputContainer}>
-          <ToolTip text="Estructura de Costos" tool={texts.instruccion_7} />
-          <CostStructure
-            dataMarte={dataMarte}
-            getCostStructure={getCostStructure}
-            setCostStructure={setCostStructure}
-          />
-        </div>
-
-        <div className={style.inputContainer}>
-          <ToolTip text="Segmentos de Clientes" tool={texts.instruccion_8} />
-          <CustomerSegments
-            dataMarte={dataMarte}
-            getCustomerSegments={getCustomerSegments}
-            setCustomerSegments={setCustomerSegments}
-          />
-        </div>
-
-        <div className={style.inputContainer}>
-          <ToolTip text="Recursos Clave" tool={texts.instruccion_9} />
-          <KeyResources
-            dataMarte={dataMarte}
-            getKeyResources={getKeyResources}
-            setKeyResources={setKeyResources}
-          />
-        </div>
-
-        <br></br>
-        <div className={style.contentButtons}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(2)}>
-            ANTERIOR
-          </button>
-          <button
-            type="button"
-            className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
-            disabled={buttonNext ? '' : 'disabled'}
-            onClick={() => handleSubmit('SAVE')}
-          >
-            GUARDAR
-          </button>
-        </div>
-        <button
-          type="button"
-          className={buttonNext ? style.btnStepDos : style.btnStepDosOff}
-          disabled={buttonNext ? '' : 'disabled'}
-          onClick={() => handleSubmit('NEXTPAGE')}
-        >
-          PASO 2
-        </button>
-      </form>
-    </div>
+    </form>
   );
 };
 
@@ -695,27 +642,12 @@ export const MarteNegocios = ({
   }, [selectedPropsition, selectedRevenue, getBussinesDesc]);
 
   return (
-    <div className={style.marteQuestions}>
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      {modal ? (
-        <ModalMarte
-          title="¡FELICIDADES!"
-          message={`Haz completado <strong>Marte</strong> de tu proyecto <strong>${
-            getLuna().nombre
-          }</strong>`}
-          buttonName="INICIO"
-          setPage={setPage}
-          setModal={setModal}
-          page={5}
-        />
-      ) : null}
-      <ParagraphPlanet text={texts.descripcion} />
-      <br></br>
-      <br></br>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <div className={style.infoGalaxiaCruce}>
-      <h5>
-          Cruce entre
-      </h5>
+        <h5>Cruce entre</h5>
       </div>
       <div className={style.infoGalaxia}>
         <h5>
@@ -726,92 +658,88 @@ export const MarteNegocios = ({
           Fuentes de <br></br>Ingreso
         </h5>
       </div>
-      <form method="POST">
-        <div className={style.selectContainer}>
-          {//<ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
-          }
-          <h4>Propuesta de Valor</h4>
-          <div>
-            <div className={style.selectHeader} onClick={toggleSelectProposition}>
-              <span className={style.selectSpanText}>
-                {selectedPropsition || 'Selecciona una opción'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {isOpenProposition ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
-            </div>
-            {isOpenProposition && (
-              <div className={style.selectOptions}>
-                {dataMarte?.value_proposition.map((option, index) => (
-                  <div
-                    key={index}
-                    className={style.option}
-                    onClick={() => handlePropositionClick(option)}
-                  >
-                    {option}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className={style.selectContainer}>
-          {//<ToolTip text="Fuentes de Ingreso" tool={texts.instruccion_2} />
-          }
-          <h4>Fuentes de Ingreso</h4>
-          <div>
-            <div className={style.selectHeader} onClick={toggleSelectRevenue}>
-              <span className={style.selectSpanText}>
-                {selectedRevenue || 'Selecciona una opción'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {isOpenRevenue ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
-            </div>
-            {isOpenRevenue && (
-              <div className={style.selectOptions}>
-                {dataMarte?.revenue_streams.map((option, index) => (
-                  <div
-                    key={index}
-                    className={style.option}
-                    onClick={() => handleRevenueClick(option)}
-                  >
-                    {option}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {//<SaberMas data={texts} />
+      <div className={style.selectContainer}>
+        {
+          //<ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
         }
-        <textarea
-          ref={inputBussines}
-          className={style.response}
-          name="negocio"
-          id="negocio"
-          rows="10"
-          onChange={(e) => setBussinesDesc(e.target.value)}
-          placeholder="Escribe aquí tu modelo de negocio"
-          defaultValue={getBussinesDesc}
-        ></textarea>
-        <div className={style.contentButtons}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(3)}>
-            ANTERIOR
-          </button>
-          <button
-            type="button"
-            className={getBussinesDesc.length <= 12 ? style.btnPlanetOff : style.btnPlanet}
-            disabled={getBussinesDesc.length <= 12 ? 'disabled' : ''}
-            onClick={() => handleSubmit()}
-          >
-            SIGUIENTE
-          </button>
+        <h4>Propuesta de Valor</h4>
+        <div>
+          <div className={style.selectHeader} onClick={toggleSelectProposition}>
+            <span className={style.selectSpanText}>
+              {selectedPropsition || 'Selecciona una opción'}
+            </span>
+            <span className={style.selectSpanArrow}>
+              {isOpenProposition ? <FaCaretUp /> : <FaCaretDown />}
+            </span>
+          </div>
+          {isOpenProposition && (
+            <div className={style.selectOptions}>
+              {dataMarte?.value_proposition.map((option, index) => (
+                <div
+                  key={index}
+                  className={style.option}
+                  onClick={() => handlePropositionClick(option)}
+                >
+                  {option}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      </form>
-    </div>
+      </div>
+      <div className={style.selectContainer}>
+        {
+          //<ToolTip text="Fuentes de Ingreso" tool={texts.instruccion_2} />
+        }
+        <h4>Fuentes de Ingreso</h4>
+        <div>
+          <div className={style.selectHeader} onClick={toggleSelectRevenue}>
+            <span className={style.selectSpanText}>
+              {selectedRevenue || 'Selecciona una opción'}
+            </span>
+            <span className={style.selectSpanArrow}>
+              {isOpenRevenue ? <FaCaretUp /> : <FaCaretDown />}
+            </span>
+          </div>
+          {isOpenRevenue && (
+            <div className={style.selectOptions}>
+              {dataMarte?.revenue_streams.map((option, index) => (
+                <div
+                  key={index}
+                  className={style.option}
+                  onClick={() => handleRevenueClick(option)}
+                >
+                  {option}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      {
+        //<SaberMas data={texts} />
+      }
+      <textarea
+        ref={inputBussines}
+        name="negocio"
+        id="negocio"
+        onChange={(e) => setBussinesDesc(e.target.value)}
+        placeholder="Escribe aquí tu modelo de negocio"
+        defaultValue={getBussinesDesc}
+      ></textarea>
+      <div className="fieldsets">
+        <Button
+          text="ANTERIOR"
+          onClick={() => setPage(3)}
+        />
+        <Button
+          text="SIGUIENTE"
+          isCentered={true}
+          onClick={() => handleSubmit(3)}
+          disabled={getBussinesDesc.length <= 12 ? 'disabled' : ''}
+        />
+      </div>
+    </form>
   );
 };
 

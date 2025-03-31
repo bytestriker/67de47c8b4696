@@ -68,7 +68,7 @@ export const IdeasNombre = ({ setPage, setTitle, texts, dataJupiter }) => {
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>

@@ -20,8 +20,10 @@ import {
   ValuePurchase,
   ValueRetention,
 } from '@Components/Atomos/Inputs/saturno';
+import Button from '@Components/Button';
 
 // Styles
+import '@Sass/pages/planet.scss';
 import style from '@Sass/pages/general.module.scss';
 import saturno from '@Sass/pages/saturno.module.scss';
 
@@ -111,35 +113,11 @@ const Saturno = () => {
   }, [saturnoQ4]);
 
   return (
-    <section className={style.planetContainer}>
-      {modalSalir ? (
-        <ModalSalirSaturno
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
-          setModalSalir={setModalSalir}
-          data={dataSaturno}
-          proyect={getLuna().id}
-          page={page}
-        />
-      ) : null}
-
-      {modal ? (
-        <ModalSaturno
-          title="¡FELICIDADES!"
-          message={`Haz completado <strong> Saturno</strong> de tu proyecto <strong>${
-            getLuna().nombre
-          }</strong>`}
-          buttonName="INICIO"
-          setPage={setPage}
-          setModal={setModal}
-          page={5}
-        />
-      ) : null}
-
+    <section className="planetWrap">
       <div>
-        <ButtonClose setModalSalir={setModalSalir} titlePage={title} />
-        <div className={saturno.Saturno}>
-          <div className={style.pageContainer}>
+        <div className="planetContainer">
+          {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
+          <div className="planetContent">
             {page === 1 ? (
               <Awareness
                 setPage={setPage}
@@ -150,12 +128,12 @@ const Saturno = () => {
             ) : null}
             {page === 2 ? (
               <Awarenesss
-              setPage={setPage}
-              dataSaturno={dataSaturno}
-              texts={texts}
-              setTitle={setTitle}
-            />
-          ) : null}
+                setPage={setPage}
+                dataSaturno={dataSaturno}
+                texts={texts}
+                setTitle={setTitle}
+              />
+            ) : null}
             {page === 3 ? (
               <Consideration
                 setPage={setPage}
@@ -184,6 +162,29 @@ const Saturno = () => {
           </div>
         </div>
       </div>
+      {modalSalir ? (
+        <ModalSalirSaturno
+          title="Estás a punto de salir"
+          message="¿Deseas guardar tu información?"
+          setModalSalir={setModalSalir}
+          data={dataSaturno}
+          proyect={getLuna().id}
+          page={page}
+        />
+      ) : null}
+
+      {modal ? (
+        <ModalSaturno
+          title="¡FELICIDADES!"
+          message={`Haz completado <strong> Saturno</strong> de tu proyecto <strong>${
+            getLuna().nombre
+          }</strong>`}
+          buttonName="INICIO"
+          setPage={setPage}
+          setModal={setModal}
+          page={5}
+        />
+      ) : null}
     </section>
   );
 };
@@ -224,26 +225,13 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <section>
+    <div className="questionWrap">
       <ScrollToTop />
-      <div>
-        <Title2 text={texts.pregunta} />
-        <ParagraphPlanet text={texts.descripcion} />
-        <SaberMas data={texts} />
-      </div>
-      <br></br>
-      <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button
-              type="button"
-              onClick={() => setPage(2)}
-              className={saturno.btnPlanet}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-    </section>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <SaberMas data={texts} />
+      <Button text="SIGUIENTE" onClick={() => setPage(2)} />
+    </div>
   );
 };
 
@@ -283,41 +271,25 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <section>
+    <form method="POST">
       <ScrollToTop />
       <div className={saturno.card}>
         <img src={texts?.icono ? texts.icono : megaphone} alt="megaphone" />
         <p>{texts.descripcion_1}</p>
       </div>
-      <form method="POST">
-        <br></br>
-        <ValueAwareness
-          dataSaturno={dataSaturno}
-          getValueAwareness={getValueAwareness}
-          setValueAwareness={setValueAwareness}
-          textDisabled={buttonNext}
-        />
-        <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${saturno.btnPlanet}`} onClick={() => setPage(1)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={buttonNext ? saturno.btnPlanet : saturno.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-              onClick={() => setPage(3)}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+      <ValueAwareness
+        dataSaturno={dataSaturno}
+        getValueAwareness={getValueAwareness}
+        setValueAwareness={setValueAwareness}
+        textDisabled={buttonNext}
+      />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" onClick={() => setPage(1)} />
+        <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
+      </div>
+    </form>
   );
 };
-
 
 /** Page 3 */
 export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
@@ -354,14 +326,12 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <section>
+    <form method="POST">
       <ScrollToTop />
       <div className={saturno.card}>
         <img src={texts?.icono ? texts?.icono : idea} alt="idea" />
         <p>{texts.descripcion_1}</p>
       </div>
-      <form method="POST">
-        <br></br>
         <ValueConsideration
           dataSaturno={dataSaturno}
           getValueConsideration={getValueConsideration}
@@ -369,23 +339,12 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
           textDisabled={buttonNext}
         />
         <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${saturno.btnPlanet}`} onClick={() => setPage(2)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={buttonNext ? saturno.btnPlanet : saturno.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-              onClick={() => setPage(4)}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+      <br></br>
+      <div className="fieldsets">
+        <Button text="ANTERIOR" onClick={() => setPage(2)} />
+        <Button text="SUPERIOR" onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'} />
+      </div>
+    </form>
   );
 };
 
@@ -423,38 +382,23 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <section>
+    <form method="POST">
       <ScrollToTop />
       <div className={saturno.card}>
         <img src={texts?.icono ? texts?.icono : buy} alt="buy" />
         <p>{texts.descripcion_1}</p>
       </div>
-      <form method="POST">
-        <br></br>
-        <ValuePurchase
-          dataSaturno={dataSaturno}
-          getValuePurchase={getValuePurchase}
-          setValuePurchase={setValuePurchase}
-          textDisabled={buttonNext}
-        />
-        <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${saturno.btnPlanet}`} onClick={() => setPage(3)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={buttonNext ? saturno.btnPlanet : saturno.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-              onClick={() => setPage(5)}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+      <ValuePurchase
+        dataSaturno={dataSaturno}
+        getValuePurchase={getValuePurchase}
+        setValuePurchase={setValuePurchase}
+        textDisabled={buttonNext}
+      />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" onClick={() => setPage(3)} />
+        <Button text="SUPERIOR" onClick={() => setPage(5)} disabled={buttonNext ? '' : 'disabled'} />
+      </div>
+    </form>
   );
 };
 
@@ -515,13 +459,12 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
   };
 
   return (
-    <section>
+    <form method="POST">
       <ScrollToTop />
       <div className={saturno.card}>
         <img src={texts?.icono ? texts?.icono : magnet} alt="magnet" />
         <p>{texts.descripcion_1}</p>
       </div>
-      <form method="POST">
         <br></br>
         <ValueRetention
           dataSaturno={dataSaturno}
@@ -529,24 +472,12 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
           setValueRetention={setValueRetention}
           textDisabled={buttonNext}
         />
-        <br></br>
-        <div className={style.contentButtons}>
-          <div className={style.flexButtons}>
-            <button type="button" className={`${saturno.btnPlanet}`} onClick={() => setPage(4)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={buttonNext ? saturno.btnPlanet : saturno.btnPlanetOff}
-              disabled={buttonNext ? '' : 'disabled'}
-              onClick={() => handleSubmit()}
-            >
-              SIGUIENTE
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
+      <br></br>
+      <div className="fieldsets">
+        <Button text="ANTERIOR" onClick={() => setPage(4)} />
+        <Button text="SUPERIOR" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />
+      </div>
+    </form>
   );
 };
 

@@ -11,7 +11,6 @@ import useAuth from '@Auth/userAuth';
 // Hooks
 import { UranoWPText } from '@Hooks/useFetchWP';
 import { useEventsUrano } from '@Hooks/useEventsUrano';
-import Button from '@Components/Button';
 
 // Store
 import { lunaStore } from '@Store/luna';
@@ -29,6 +28,7 @@ import { ButtonGoBack, SaberMas } from '@Components/Atomos/Buttons';
 import { MarketingCard } from '@Components/Atomos/Cards';
 import Carrusel from '@Components/Atomos/Slider';
 import ButtonGoHome from '@Components/ButtonGoHome';
+import Button from '@Components/Button';
 
 // Images
 import upload from '@Assets/images/upload.png';
@@ -108,7 +108,7 @@ const Urano = () => {
           ) : (
             <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
           )} */}
-            {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
+          {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
           {page === 2 ? <Pretotipo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
           {page === 3 ? (
             <Prototipo
@@ -235,42 +235,31 @@ export const Logo = ({ setPage, setTitle, texts }) => {
   };
 
   return (
-    <section className="questionWrap">
-        <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
-        <p  dangerouslySetInnerHTML={{ __html: texts.description }}></p>
-
-      <div className="px-lg">
-        <SaberMas data={texts} />
-
-        <fieldset>
-          <textarea
-            className={urano.inputProjectName}
-            name="uranoQ1"
-            id="uranoQ1"
-            placeholder="Escribe aquí las diferentes ideas que tengas, para hacer un prototipo de tu proyecto."
-            {...register('uranoQ1', { required: true, minLength: 16 })}
-            cols="30"
-            rows="10"
-            value={getPrototipo}
-            onChange={(e) => setPrototipo(e.target.value)}
-          ></textarea>
-        </fieldset>
-
-        <div className="fieldsets">
-          <Button
-            isCentered={true}
-            type="button"
-            text="SIGUIENTE"
-            className={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
-            disabled={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
-            onClick={handlePrototipo}
-
-          />
-        </div>
-
+    <div className="questionWrap">
+      <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.description }}></p>
+      <SaberMas data={texts} />
+      <fieldset>
+        <textarea
+          name="uranoQ1"
+          id="uranoQ1"
+          placeholder="Escribe aquí las diferentes ideas que tengas, para hacer un prototipo de tu proyecto."
+          {...register('uranoQ1', { required: true, minLength: 16 })}
+          value={getPrototipo}
+          onChange={(e) => setPrototipo(e.target.value)}
+        ></textarea>
+      </fieldset>
+      <div className="fieldsets">
+        <Button
+          isCentered={true}
+          text="SIGUIENTE"
+          className={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
+          disabled={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
+          onClick={handlePrototipo}
+        />
       </div>
-    </section>
+    </div>
   );
 };
 

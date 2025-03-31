@@ -11,7 +11,6 @@ import { ValueCaracteristicas } from '@Components/Atomos/Inputs/jupiter';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
-
 // Styles
 import style from '@Sass/pages/general.module.scss';
 import jupiter from '@Sass/pages/jupiter.module.scss';

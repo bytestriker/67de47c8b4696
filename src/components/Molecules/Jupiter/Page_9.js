@@ -126,38 +126,36 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
   );
 
   return (
-    <section className="questionWrap">
+    <form className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <form>
-        <div className={jupiter.upload}>
-          <img src={upload} alt="upload" />
-          <input
-            type="file"
-            name="fileInput"
-            id="fileInput"
-            onChange={handleImageDoc}
-            className={jupiter.fileInput}
-          />
-        </div>
-        {/*  <div className={jupiter.checkText}>
-          <input type="checkbox" name="checkInput" id="checkInput" className={jupiter.checkInput} />
-          <p>Subir después</p>
-        </div> */}
-        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion_general_de_las_plataformas_recomendadas }}></p>
-        <div className={jupiter.carrusel}>{componentSlider}</div>
-        <div className="fieldsets">
-          {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(8)}>
-              ANTERIOR
-            </button>
-            <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setModal(true)}>
-              SIGUIENTE
-            </button>*/}
-          <Button text="ANTERIOR" onClick={() => setPage(8)} />
-          <Button text="SIGUIENTE" onClick={() => setModal(true)} />
-        </div>
-      </form>
-    </section>
+      <div className={jupiter.upload}>
+        <img src={upload} alt="upload" />
+        <input
+          type="file"
+          name="fileInput"
+          id="fileInput"
+          onChange={handleImageDoc}
+          className={jupiter.fileInput}
+        />
+      </div>
+      {/*  <div className={jupiter.checkText}>
+        <input type="checkbox" name="checkInput" id="checkInput" className={jupiter.checkInput} />
+        <p>Subir después</p>
+      </div> */}
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion_general_de_las_plataformas_recomendadas }}></p>
+      <div className={jupiter.carrusel}>{componentSlider}</div>
+      <div className="fieldsets">
+        {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(8)}>
+            ANTERIOR
+          </button>
+          <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setModal(true)}>
+            SIGUIENTE
+          </button>*/}
+        <Button text="ANTERIOR" onClick={() => setPage(8)} />
+        <Button text="SIGUIENTE" onClick={() => setModal(true)} />
+      </div>
+    </form>
   );
 };
