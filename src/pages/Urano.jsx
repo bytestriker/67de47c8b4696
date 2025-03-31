@@ -254,7 +254,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
           ></textarea>
         </fieldset>
 
-        <div className="flexButtons">
+        <div className="fieldsets">
           <Button
             isCentered={true}
             type="button"
@@ -389,7 +389,7 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
             onChange={handleImageDoc}
             className="uranoFileInput"
           />
-        <div className="flexButtons">
+        <div className="fieldsets">
         <Button
             className=""
             text="REGRESAR"
@@ -470,7 +470,7 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
             <></>
           )}
         </div>
-        <div className="flexButtons">
+        <div className="fieldsets">
           {/* 
           <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(2)}>
             ANTERIOR
@@ -646,7 +646,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
             className={urano.fileInput}
           />
         </fieldset>
-        <div className="flexButtons">
+        <div className="fieldsets">
           {/* 
             <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
               ANTERIOR

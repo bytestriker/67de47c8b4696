@@ -208,7 +208,7 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
             onChange={(e) => handleQuestion2(e)}
           ></textarea>
         </fieldset>
-        <div className="flexButtons">
+        <div className="fieldsets">
           <Button text="REGRESAR" isAlt onClick={() => setPageLuna(2)} />
           <Button
             text="SIGUIENTE"
@@ -305,7 +305,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
             onChange={(e) => handleQuestion33(e)}
           ></textarea>
         </fieldset>
-        <div className="flexButtons">
+        <div className="fieldsets">
           <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
           {contextValue.isLogged() ? (
             <Button

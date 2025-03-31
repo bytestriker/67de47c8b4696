@@ -106,12 +106,9 @@ const MercurioMain = () => {
       <img src={satelite} alt="Satelite" className="satelite" />
       <ButtonGoHome
         className="planetBackToTheHomepage"
-        onClick={() => {
-          history.push('/');
-        }}
-        text="Volver al Inicio"
-      />
-
+        onClick={() => history.push('/')}
+          text="Volver al Inicio"
+        />
       <div className="planetContainer">
         <div className="planetContent">
           <div className="py-lg">
@@ -178,10 +175,11 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
       <form className="px-lg" method="POST">
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}>{}</h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+        <fieldset>
 
-        <label htmlFor="launchQ1" className="text-right">
-          1/3
-        </label>
+          <label htmlFor="launchQ1" className="text-right">1/3</label>
+        </fieldset>
+
 
         {/* <textarea
           className={style.inputProjectName}
@@ -259,36 +257,26 @@ export const MercurioQ2 = ({
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
-        <label className="text-right">2/3</label>
         <fieldset>
+          <label className="text-right">2/3</label>
           <textarea
             // className={style.inputProjectName}
             name="mercurioQ2"
             id="mercurioQ2"
             placeholder="Escribe aquí tu idea"
             {...register('mercurioQ2', { required: true, minLength: 16 })}
-            cols="30"
-            rows="10"
             value={dataMercurio.a_quien_resuelve}
             onChange={(e) => handleQ2Mercurio(e)}
           ></textarea>
         </fieldset>
-        <div className="flexButtons">
+        <div className="fieldsets">
           <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(1)} />
           <Button
             text="SIGUIENTE"
-            // className={
-            //   dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
-            // }
-            className={
-              dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''
-            }
-            type="button"
             disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
             onClick={() => setPage(3)}
           />
-        </div>
-
+        </div> 
         {/* <div className="d-none"> */}
           {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
             ANTERIOR
@@ -362,10 +350,8 @@ export const MercurioQ3 = ({
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
-          <label className="text-right">
-            3/3
-          </label>
         <fieldset>
+          <label className="text-right">3/3</label>
           <textarea
             name="mercurioQ3"
             id="mercurioQ3"
@@ -377,13 +363,10 @@ export const MercurioQ3 = ({
             onChange={(e) => handleQ3Mercurio(e)}
           ></textarea>
         </fieldset>
-        <div className="flexButtons">
-        <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(2)} />
+        <div className="fieldsets">
+          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(2)} />
           <Button
             text="SIGUIENTE"
-            className={
-              dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}
-            type="button"
             disabled={dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}
             onClick={() => saveProject()}
           />
