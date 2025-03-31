@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import { shallow } from 'zustand/shallow';
 import { FaSearch } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
@@ -48,6 +49,7 @@ const Urano = () => {
     }),
     shallow
   );
+  const history = useHistory();
 
   const [page, setPage] = useState(1);
   const [modalSalir, setModalSalir] = useState(false);
@@ -170,6 +172,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
       setPrototipo(res.data.prototipo);
     }
   };
+  const history = useHistory();
 
   const items = [
     <a
@@ -230,7 +233,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
       console.error('No hay valor de prototipo.');
     }
   };
-  console.log(texts)
+
   return (
     <section className="questionWrap">
         <ScrollToTop />
@@ -280,6 +283,8 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
     }),
     shallow
   );
+  const history = useHistory();
+
   const { setAlert, setMessage } = globalStore(
     (state) => ({
       setAlert: state.setAlert,
