@@ -276,6 +276,15 @@
   justify-content: center;
   margin: 0;
   padding: 24px 32px;
+  .gridIconText {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
   .flexButtons {
     display: flex;
     flex-direction: column;

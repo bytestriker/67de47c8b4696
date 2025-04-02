@@ -21,6 +21,7 @@ import {
   ValueRetention,
 } from '@Components/Atomos/Inputs/saturno';
 import Button from '@Components/Button';
+import ButtonGoHome from '@Components/ButtonGoHome';
 
 // Styles
 import '@Sass/pages/planet.scss';
@@ -114,52 +115,57 @@ const Saturno = () => {
 
   return (
     <section className="planetWrap">
-      <div>
-        <div className="planetContainer">
-          {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
-          <div className="planetContent">
-            {page === 1 ? (
-              <Awareness
-                setPage={setPage}
-                dataSaturno={dataSaturno}
-                texts={texts}
-                setTitle={setTitle}
-              />
-            ) : null}
-            {page === 2 ? (
-              <Awarenesss
-                setPage={setPage}
-                dataSaturno={dataSaturno}
-                texts={texts}
-                setTitle={setTitle}
-              />
-            ) : null}
-            {page === 3 ? (
-              <Consideration
-                setPage={setPage}
-                dataSaturno={dataSaturno}
-                texts={texts2}
-                setTitle={setTitle}
-              />
-            ) : null}
-            {page === 4 ? (
-              <Purchase
-                setPage={setPage}
-                dataSaturno={dataSaturno}
-                texts={texts3}
-                setTitle={setTitle}
-              />
-            ) : null}
-            {page === 5 ? (
-              <Retention
-                setPage={setPage}
-                setModal={setModal}
-                dataSaturno={dataSaturno}
-                texts={texts4}
-                setTitle={setTitle}
-              />
-            ) : null}
-          </div>
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="planetContainer">
+        {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
+        <div className="planetContent">
+          {page === 1 ? (
+            <Awareness
+              setPage={setPage}
+              dataSaturno={dataSaturno}
+              texts={texts}
+              setTitle={setTitle}
+            />
+          ) : null}
+          {page === 2 ? (
+            <Awarenesss
+              setPage={setPage}
+              dataSaturno={dataSaturno}
+              texts={texts}
+              setTitle={setTitle}
+            />
+          ) : null}
+          {page === 3 ? (
+            <Consideration
+              setPage={setPage}
+              dataSaturno={dataSaturno}
+              texts={texts2}
+              setTitle={setTitle}
+            />
+          ) : null}
+          {page === 4 ? (
+            <Purchase
+              setPage={setPage}
+              dataSaturno={dataSaturno}
+              texts={texts3}
+              setTitle={setTitle}
+            />
+          ) : null}
+          {page === 5 ? (
+            <Retention
+              setPage={setPage}
+              setModal={setModal}
+              dataSaturno={dataSaturno}
+              texts={texts4}
+              setTitle={setTitle}
+            />
+          ) : null}
         </div>
       </div>
       {modalSalir ? (
@@ -230,7 +236,7 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
       <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
-      <Button text="SIGUIENTE" onClick={() => setPage(2)} />
+      <Button text="SIGUIENTE" isCentered onClick={() => setPage(2)} />
     </div>
   );
 };
@@ -271,9 +277,9 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <div className={saturno.card}>
+      <div className="gridIconText">
         <img src={texts?.icono ? texts.icono : megaphone} alt="megaphone" />
         <p>{texts.descripcion_1}</p>
       </div>
@@ -326,20 +332,18 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <div className={saturno.card}>
+      <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : idea} alt="idea" />
         <p>{texts.descripcion_1}</p>
       </div>
-        <ValueConsideration
-          dataSaturno={dataSaturno}
-          getValueConsideration={getValueConsideration}
-          setValueConsideration={setValueConsideration}
-          textDisabled={buttonNext}
-        />
-        <br></br>
-      <br></br>
+      <ValueConsideration
+        dataSaturno={dataSaturno}
+        getValueConsideration={getValueConsideration}
+        setValueConsideration={setValueConsideration}
+        textDisabled={buttonNext}
+      />
       <div className="fieldsets">
         <Button text="ANTERIOR" onClick={() => setPage(2)} />
         <Button text="SUPERIOR" onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'} />
@@ -382,9 +386,9 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <div className={saturno.card}>
+      <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : buy} alt="buy" />
         <p>{texts.descripcion_1}</p>
       </div>
@@ -459,20 +463,18 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
   };
 
   return (
-    <form method="POST">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <div className={saturno.card}>
+      <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : magnet} alt="magnet" />
         <p>{texts.descripcion_1}</p>
       </div>
-        <br></br>
-        <ValueRetention
-          dataSaturno={dataSaturno}
-          getValueRetention={getValueRetention}
-          setValueRetention={setValueRetention}
-          textDisabled={buttonNext}
-        />
-      <br></br>
+      <ValueRetention
+        dataSaturno={dataSaturno}
+        getValueRetention={getValueRetention}
+        setValueRetention={setValueRetention}
+        textDisabled={buttonNext}
+      />
       <div className="fieldsets">
         <Button text="ANTERIOR" onClick={() => setPage(4)} />
         <Button text="SUPERIOR" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />

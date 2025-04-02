@@ -53,7 +53,7 @@ export const ValueProposition = ({ dataMarte, getValueProposition, setValuePropo
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getValueProposition.length === 5 ? null : (
           <a className="buttonAdd" onClick={() => handleClick()}>
-            <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
+            <span>Agregar más</span>
           </a>
         )}
       </div>
@@ -109,7 +109,7 @@ export const KeyActivities = ({ dataMarte, getKeyActivities, setKeyActivities })
       <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
       {getKeyActivities.length === 5 ? null : (
         <span className="buttonAdd" onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
+          <span>Agregar más</span>
         </span>
       )}
     </>

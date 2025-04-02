@@ -28,26 +28,27 @@ export const ValueAwareness = ({
   }, [dataSaturno]);
 
   return (
-    <>
+    <fieldset>
       {getValueAwareness.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`Awareness-${indice}`}
-          className={style.inputMedium}
           placeholder={`Paso ${indice + 1}`}
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={saturno.info}>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
-      {getValueAwareness.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
+        {getValueAwareness.length === 6 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -74,26 +75,27 @@ export const ValueConsideration = ({
   }, []);
 
   return (
-    <>
+    <fieldset>
       {getValueConsideration.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`Consideration-${indice}`}
-          className={style.inputMedium}
           placeholder={`Paso ${indice + 1}`}
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={saturno.info}>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
-      {getValueConsideration.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
+        {getValueConsideration.length === 6 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -119,26 +121,27 @@ export const ValuePurchase = ({
     }
   }, []);
   return (
-    <>
+    <fieldset>
       {getValuePurchase.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`Purchase-${indice}`}
-          className={style.inputMedium}
           placeholder={`Paso ${indice + 1}`}
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={saturno.info}>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
-      {getValuePurchase.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
+        {getValuePurchase.length === 6 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -165,25 +168,26 @@ export const ValueRetention = ({
   }, []);
 
   return (
-    <>
+    <fieldset>
       {getValueRetention.map((elemento, indice) => (
         <input
           key={indice}
           type="text"
           name={`Retention-${indice}`}
-          className={style.inputMedium}
           placeholder={`Paso ${indice + 1}`}
           required
           value={elemento}
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={saturno.info}>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
-      {getValueRetention.length === 6 ? null : (
-        <span className={style.add} onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 4 opciones.'}</p>
+        {getValueRetention.length === 6 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
