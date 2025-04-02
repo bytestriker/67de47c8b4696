@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 // COMPONETS
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import ButtonGoHome from '@Components/ButtonGoHome';
+import Footer from '@Components/Footer';
 
 // Hook
 import { useFetchLegales } from '@Hooks/useFetchLegales';
@@ -38,20 +39,21 @@ const AboutUs = () => {
   */}
 
   return (
-    <section className='planetWrap'>
-      <ButtonGoHome
-        className="planetBackToTheHomepage"
-        onClick={() => {
-          history.push('/');
-        }}
-        text="Volver al Inicio"
-      />
-      <div className="mainContainer">
-        <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{__html:data?.title?.rendered || "ACERCA DE NOSOTROS"}}></h2>
-        <p dangerouslySetInnerHTML={{__html:data?.content?.rendered || ""}}></p>
-      </div>
-    </section>    
+    <>
+      <section className="planetWrap">
+        <ButtonGoHome
+          className="planetBackToTheHomepage"
+          onClick={() => history.push('/')}
+          text="Volver al Inicio"
+        />
+        <div className="mainContainer">
+          <ScrollToTop />
+          <h2 dangerouslySetInnerHTML={{__html:data?.title?.rendered || "ACERCA DE NOSOTROS"}}></h2>
+          <p dangerouslySetInnerHTML={{__html:data?.content?.rendered || ""}}></p>
+        </div>
+      </section>
+      <Footer />
+    </>
   );
 };
 

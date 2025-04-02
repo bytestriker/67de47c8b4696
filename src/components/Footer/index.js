@@ -40,7 +40,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className={styles.linksFooter}>
-            <Link to="/acercade" className={styles.linkFooter}>
+            <Link to="/acerca-de-nosotros" className={styles.linkFooter}>
               ACERCA DE NOSOTROS |
             </Link>
             <Link to="/privacidad" className={styles.linkFooter}>

@@ -73,23 +73,21 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
         />
       }
       </figure>
-      <div className="px-lg">
-        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-        <h2>¿Cómo se va a llamar?</h2>
-        <fieldset>
-          <label htmlFor="email">Nombre de tu proyecto</label>
-          <input
-            ref={projectName}
-            type="text"
-            name="projectName"
-            id="projectName"
-            placeholder="NOMBRE"
-            value={getLuna().nombre}
-            onChange={(e) => handleNameProject(e)}
-          />
-        </fieldset>
-        <Button text="SIGUIENTE" isSubmit={true} onClick={() => handleNextPage(2)} />
-      </div>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <h2>¿Cómo se va a llamar?</h2>
+      <fieldset>
+        <label htmlFor="email">Nombre de tu proyecto</label>
+        <input
+          ref={projectName}
+          type="text"
+          name="projectName"
+          id="projectName"
+          placeholder="NOMBRE"
+          value={getLuna().nombre}
+          onChange={(e) => handleNameProject(e)}
+        />
+      </fieldset>
+      <Button text="SIGUIENTE" isSubmit={true} onClick={() => handleNextPage(2)} />
     </div>
   );
 };
@@ -124,7 +122,6 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <div className="px-lg">
         <h2 dangerouslySetInnerHTML={{ __html: texts2?.titulo_de_la_vista }}></h2>
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
         <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
@@ -156,7 +153,6 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
             onClick={() => handleNextPage(3)}
           />
         </div>
-      </div>
     </div>
   );
 };
@@ -187,38 +183,35 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
 
   return (
     <div className="questionWrap">
-      <div className="px-lg">
-
-        <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
-        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
-        <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
-        <SaberMas data={texts3} />
-        <fieldset>
-          <label htmlFor="launchQ1" className="text-right">2/3</label>
-          <textarea
-            ref={Q2}
-            className={lunaStyle.response}
-            name="why"
-            id="launchQ1"
-            cols="30"
-            rows="10"
-            placeholder="Desarrolla tu idea"
-            value={getLuna().porque}
-            onChange={(e) => handleQuestion2(e)}
-          ></textarea>
-        </fieldset>
-        <div className="fieldsets">
-          <Button text="REGRESAR" isAlt onClick={() => setPageLuna(2)} />
-          <Button
-            text="SIGUIENTE"
-            disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
-            onClick={() => handleNextPage(4)}
-            className={
-              getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
-            }
-          />
-        </div>
+      <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts3?.titulo_de_la_vista }}></h2>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
+      <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
+      <SaberMas data={texts3} />
+      <fieldset>
+        <label htmlFor="launchQ1" className="text-right">2/3</label>
+        <textarea
+          ref={Q2}
+          className={lunaStyle.response}
+          name="why"
+          id="launchQ1"
+          cols="30"
+          rows="10"
+          placeholder="Desarrolla tu idea"
+          value={getLuna().porque}
+          onChange={(e) => handleQuestion2(e)}
+        ></textarea>
+      </fieldset>
+      <div className="fieldsets">
+        <Button text="REGRESAR" isAlt onClick={() => setPageLuna(2)} />
+        <Button
+          text="SIGUIENTE"
+          disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
+          onClick={() => handleNextPage(4)}
+          className={
+            getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
+          }
+        />
       </div>
     </div>
   );
@@ -257,73 +250,70 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
   }, [texts4]);
 
   return (
-    <div className="questionWrap">
+    <div className="qestionWrap">
       <ScrollToTop />
-      <div className="px-lg">
-        <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
-        <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
-        <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
-        <SaberMas data={texts4} />
-        <fieldset>
-          <label htmlFor="launchQ1" className="text-right">3/3</label>
-          <textarea
-            ref={Q3}
-            className="text-area-sm"
-            name="how"
-            id="launchQ1"
-            cols="30"
-            rows="10"
-            placeholder="Escribe tu primer punto"
-            value={getLuna().como1}
-            onChange={(e) => handleQuestion31(e)}
+      <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
+      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
+      <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
+      <SaberMas data={texts4} />
+      <fieldset>
+        <label htmlFor="launchQ1" className="text-right">3/3</label>
+        <textarea
+          ref={Q3}
+          className="text-area-sm"
+          name="how"
+          id="launchQ1"
+          cols="30"
+          rows="10"
+          placeholder="Escribe tu primer punto"
+          value={getLuna().como1}
+          onChange={(e) => handleQuestion31(e)}
+        ></textarea>
+      </fieldset>
+      <fieldset>
+        <textarea
+          ref={Q3}
+          className="text-area-sm"
+          name="how"
+          id="launchQ1"
+          cols="30"
+          rows="10"
+          placeholder="Escribe tu segundo punto"
+          value={getLuna().como2}
+          onChange={(e) => handleQuestion32(e)}
+        ></textarea>
+      </fieldset>
+      <fieldset>
+        <textarea
+          ref={Q3}
+          className="text-area-sm"
+          name="how"
+          id="launchQ1"
+          cols="30"
+          rows="10"
+          placeholder="Escribe tu tercer punto"
+          value={getLuna().como3}
+          onChange={(e) => handleQuestion33(e)}
           ></textarea>
-        </fieldset>
-        <fieldset>
-
-          <textarea
-            ref={Q3}
-            className="text-area-sm"
-            name="how"
-            id="launchQ1"
-            cols="30"
-            rows="10"
-            placeholder="Escribe tu segundo punto"
-            value={getLuna().como2}
-            onChange={(e) => handleQuestion32(e)}
-          ></textarea>
-        </fieldset>
-        <fieldset>
-          <textarea
-            ref={Q3}
-            className="text-area-sm"
-            name="how"
-            id="launchQ1"
-            cols="30"
-            rows="10"
-            placeholder="Escribe tu tercer punto"
-            value={getLuna().como3}
-            onChange={(e) => handleQuestion33(e)}
-          ></textarea>
-        </fieldset>
-        <div className="fieldsets">
-          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
-          {contextValue.isLogged() ? (
-            <Button
-              text="SIGUIENTE"
-              isAlt={false}
-              isSubmit={false}
-              onClick={() => handleNextPage(6)}
-            />
-          ) : (
-            <Button
-              text="SIGUIENTE"
-              isAlt={false}
-              isSubmit={false}
-              onClick={() => handleNextPage(5)}
-            />
-          )}
-          </div>
-      </div>
+      </fieldset>
+      <div className="fieldsets">
+        <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
+        {contextValue.isLogged() ? (
+          <Button
+            text="SIGUIENTE"
+            isAlt={false}
+            isSubmit={false}
+            onClick={() => handleNextPage(6)}
+          />
+        ) : (
+          <Button
+            text="SIGUIENTE"
+            isAlt={false}
+            isSubmit={false}
+            onClick={() => handleNextPage(5)}
+          />
+        )}
+        </div>
     </div>
   );
 };
@@ -331,116 +321,109 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
 // Video pre-registro
 export const QuestionsLaunch5 = ({ handleNextPage, texts5, setTitlePage }) => {
 
-  const history = useHistory();
+const history = useHistory();
 
-  const { dataLuna, setStateLuna, getLuna } = lunaStore(
-    (state) => ({
-      dataLuna: state.dataLuna,
-      setStateLuna: state.setLuna,
-      getLuna: state.getLuna,
-    }),
-    shallow
-  );
+const { dataLuna, setStateLuna, getLuna } = lunaStore(
+  (state) => ({
+    dataLuna: state.dataLuna,
+    setStateLuna: state.setLuna,
+    getLuna: state.getLuna,
+  }),
+  shallow
+);
 
-  useEffect(() => {
-    setTitlePage(texts5.titulo_de_la_vista);
-  }, [texts5]);
+useEffect(() => {
+  setTitlePage(texts5.titulo_de_la_vista);
+}, [texts5]);
 
 
-  const [copied, setCopied] = useState(false);
+const [copied, setCopied] = useState(false);
 
-  const handleCopy = async (text) => { 
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true)
-      setTimeout(() => { setCopied(false)}, 1500)
-    } catch (error) {
-      
-    }
+const handleCopy = async (text) => { 
+  try {
+    await navigator.clipboard.writeText(text);
+    setCopied(true)
+    setTimeout(() => { setCopied(false)}, 1500)
+  } catch (error) {
+    
   }
+}
 
 
-  return (
-    <>
-      <div className="questionWrap">
-        <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
-        <figure className={lunaStyle.LaunchQuestionVideo}>
-          {texts5?.video && (
-              <WatchLunaVideos
-                params={[
-                  {
-                    playvideo: video, 
-                    alt:"play video",
-                    url: texts5?.link_video,
-                    // You can add additional video params here if needed
-                  }
-                ]} 
-              />
-            )}
-        </figure>
-        <div className="px-lg">
-          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
-          <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
-          <fieldset id="promo-code-section">
-            <label htmlFor="promo_code">Código Promocional</label>
-            <div
-              id="promo-code"
-              style={{
-                margin: '0 auto', // Centers the container horizontally
-                height: '50px',
-                marginTop: '3px',
-                display: 'flex',
-                width: '75%',
-                position: 'relative',
-                alignItems: 'center',
-                justifyContent: 'center', // Centers the child elements
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex', // Ensures content aligns inside the div
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '50px',
-                  width: '75%',
-                  border: '1px solid #E0FF4E',
-                  textAlign: 'center',
-                  fontSize: '2rem',
-                }}
-              >
-                <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
-              </div>
-              <div
-                style={{
-                  display: 'flex', // Ensures content aligns inside the div
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '50px',
-                  width: '25%',
-                  border: '1px solid yellow',
-                  fontSize: '1rem',
-                  textAlign: 'center',
-                  backgroundColor: '#E0FF4E',
-                  color: '#000'
-                }}
-                onClick={()=>handleCopy('R0cketN0w')}
-              >
-              { 
-              !copied ? 
-                <img src={boton_copiar} alt="Botón Copiar"/>
-              :
-                <img src={successIcon} alt="Copiado"/>
+return (
+  <div className="questionWrap">
+    <ScrollToTop />
+    <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
+    <figure className={lunaStyle.LaunchQuestionVideo}>
+      {texts5?.video && (
+          <WatchLunaVideos
+            params={[
+              {
+                playvideo: video, 
+                alt:"play video",
+                url: texts5?.link_video,
+                // You can add additional video params here if needed
               }
-              </div>
-            </div>
-          </fieldset>
-
-          <div className={`${lunaStyle.nameProjectContent}`}>
-            <Button text="SIGUIENTE" isAlt={false} onClick={()=>{history.push('/signup')}}/>
-          </div>
+            ]} 
+          />
+        )}
+    </figure>
+    <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
+    <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
+    <fieldset id="promo-code-section">
+      <label htmlFor="promo_code">Código Promocional</label>
+      <div
+        id="promo-code"
+        style={{
+          margin: '0 auto', // Centers the container horizontally
+          height: '50px',
+          marginTop: '3px',
+          display: 'flex',
+          width: '75%',
+          position: 'relative',
+          alignItems: 'center',
+          justifyContent: 'center', // Centers the child elements
+        }}
+      >
+        <div
+          style={{
+            display: 'flex', // Ensures content aligns inside the div
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '50px',
+            width: '75%',
+            border: '1px solid #E0FF4E',
+            textAlign: 'center',
+            fontSize: '2rem',
+          }}
+        >
+          <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
+        </div>
+        <div
+          style={{
+            display: 'flex', // Ensures content aligns inside the div
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '50px',
+            width: '25%',
+            border: '1px solid yellow',
+            fontSize: '1rem',
+            textAlign: 'center',
+            backgroundColor: '#E0FF4E',
+            color: '#000'
+          }}
+          onClick={()=>handleCopy('R0cketN0w')}
+        >
+        { 
+        !copied ? 
+          <img src={boton_copiar} alt="Botón Copiar"/>
+        :
+          <img src={successIcon} alt="Copiado"/>
+        }
         </div>
       </div>
-    </>
+    </fieldset>
+    <Button text="SIGUIENTE" isAlt={false} onClick={()=>{history.push('/signup')}}/>
+  </div>
   );
 };

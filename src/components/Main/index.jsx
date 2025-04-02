@@ -90,7 +90,7 @@ const Main = () => {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" render={() => (contextValue.isLogged() ? <Redirect to="/" /> : <Login />)} />
             <Route exact path="/terminos" component={Tycos} />
-            <Route exact path="/acercade" component={AboutUs} />
+            <Route exact path="/acerca-de-nosotros" component={AboutUs} />
             <Route exact path="/asesoria" component={Index} />
             <Route exact path="/paquetes" component={Packs} />
             <Route exact path="/signup" component={SignUp} />

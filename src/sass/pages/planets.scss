@@ -4,11 +4,52 @@
 @import '@Sass/utils';
 
 main {
-  background-image: url("../../assets/images/bg-stars.png");
   background-position: center;
   background-size: contain;
   background-repeat: repeat-y;
   flex-direction: column;
+  &.launch {
+    background-image: url("../../assets/images/planets/luna-radar.svg"), url("../../assets/images/planets/luna-bg.png");
+    background-position: bottom 9vw left 50px, bottom left;
+    background-size: 40vw, 80vw;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  &.mercurio,
+  &.urano,
+  &.tierra,
+  &.marte,
+  &.saturno,
+  &.jupiter,
+  &.venus {
+    background-size: cover, 90vw;
+    background-repeat: no-repeat;
+    background-attachment: fixed, none;
+    background-position: center, center 50vh;
+  }
+  &.mercurio {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-mercurio.png");
+  }
+  &.urano {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-urano.png");
+    background-size: cover, 166vw;
+    background-position: center, center 36vh;
+  }
+  &.tierra {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-tierra.png");
+  }
+  &.marte {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-marte.png");
+  }
+  &.saturno {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-saturno.png");
+  }
+  &.jupiter {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-jupiter.png");
+  }
+  &.venus {
+    background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-venus.png");
+  }
 }
 .lunaWrap {
   display: flex;
