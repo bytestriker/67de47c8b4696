@@ -190,6 +190,7 @@ const Jupiter = () => {
       <div className="planetContainer">
         {/* <ButtonClose setModalSalir={setModalSalir} titlePage={title} /> */}
         <div className="planetContent">
+          <div className="cpBorderTop"></div>
           {page === 1 ? (
             <Intro
               setPage={setPage}

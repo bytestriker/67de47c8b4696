@@ -298,57 +298,55 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
   };
 
   return (
-    <div className={`${style.MarteHeight}`}>
-      <form className="questionWrap">
-        <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
-        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-        <fieldset>
-          <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
-          <ValueProposition
-            dataMarte={dataMarte}
-            getValueProposition={getValueProposition}
-            setValueProposition={setValueProposition}
-          />
-        </fieldset>
-        <fieldset>
-          <ToolTip text="Actividades Clave" tool={texts.instruccion_2} />
-          <KeyActivities
-            dataMarte={dataMarte}
-            getKeyActivities={getKeyActivities}
-            setKeyActivities={setKeyActivities}
-          />
-        </fieldset>
-        <fieldset>
-          <ToolTip text="Fuentes de Ingreso" tool={texts.instruccion_3} />
-          <RevenueStreams
-            dataMarte={dataMarte}
-            getRevenueStreams={getRevenueStreams}
-            setRevenueStreams={setRevenueStreams}
-          />
-        </fieldset>
-        <fieldset>
-          <ToolTip text="Relaciones con Clientes" tool={texts.instruccion_4} />
-          <CustomerRelationships
-            dataMarte={dataMarte}
-            getCustomerRelationships={getCustomerRelationships}
-            setCustomerRelationships={setCustomerRelationships}
-          />
-        </fieldset>
-        <fieldset>
-          <ToolTip text="Canales" tool={texts.instruccion_5} />
-          <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
-        </fieldset>
-        <div className="fieldsets">
-          <Button text="ANTERIOR" onClick={() => setPage(1)} />
-          <Button
-            text="SIGUIENTE"
-            onClick={() => handleSubmit()}
-            disabled={buttonNext ? '' : 'disabled'}
-          />
-        </div>
-      </form>
-    </div>
+    <form className="questionWrap">
+      <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      <fieldset>
+        <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
+        <ValueProposition
+          dataMarte={dataMarte}
+          getValueProposition={getValueProposition}
+          setValueProposition={setValueProposition}
+        />
+      </fieldset>
+      <fieldset>
+        <ToolTip text="Actividades Clave" tool={texts.instruccion_2} />
+        <KeyActivities
+          dataMarte={dataMarte}
+          getKeyActivities={getKeyActivities}
+          setKeyActivities={setKeyActivities}
+        />
+      </fieldset>
+      <fieldset>
+        <ToolTip text="Fuentes de Ingreso" tool={texts.instruccion_3} />
+        <RevenueStreams
+          dataMarte={dataMarte}
+          getRevenueStreams={getRevenueStreams}
+          setRevenueStreams={setRevenueStreams}
+        />
+      </fieldset>
+      <fieldset>
+        <ToolTip text="Relaciones con Clientes" tool={texts.instruccion_4} />
+        <CustomerRelationships
+          dataMarte={dataMarte}
+          getCustomerRelationships={getCustomerRelationships}
+          setCustomerRelationships={setCustomerRelationships}
+        />
+      </fieldset>
+      <fieldset>
+        <ToolTip text="Canales" tool={texts.instruccion_5} />
+        <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
+      </fieldset>
+      <div className="fieldsets">
+        <Button text="ANTERIOR" onClick={() => setPage(1)} />
+        <Button
+          text="SIGUIENTE"
+          onClick={() => handleSubmit()}
+          disabled={buttonNext ? '' : 'disabled'}
+        />
+      </div>
+    </form>
   );
 };
 

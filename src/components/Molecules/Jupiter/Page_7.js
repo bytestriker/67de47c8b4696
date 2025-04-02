@@ -215,7 +215,7 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <div className={jupiter.selectContainer}>
+      {/*<div className={jupiter.selectContainer}>
         <label>Opción 1</label>
         <div className={jupiter.selectHeader} onClick={toggleSelectOpcion1}>
           <span className={jupiter.selectSpanText}>
@@ -286,7 +286,37 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
             ))}
           </div>
         )}
-      </div>
+      </div>*/}
+      <fieldset>
+        <label htmlFor="">Opcion 1</label>
+        <div className="select">
+          <select name="" id="">
+            <option value="">Opcion 1</option>
+            <option value="">Opcion 2</option>
+            <option value="">Opcion 3</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset>
+        <label htmlFor="">Opcion 2</label>
+        <div className="select">
+          <select name="" id="">
+            <option value="">Opcion 1</option>
+            <option value="">Opcion 2</option>
+            <option value="">Opcion 3</option>
+          </select>
+        </div>
+      </fieldset><fieldset>
+        <label htmlFor="">Opcion 3</label>
+        <div className="select">
+          <select name="" id="">
+            <option value="">Opcion 1</option>
+            <option value="">Opcion 2</option>
+            <option value="">Opcion 3</option>
+          </select>
+        </div>
+      </fieldset>
+      
       <div className="fieldsets">
         <Button text="ANTERIOR" onClick={() => setPage(6)} />
         <button

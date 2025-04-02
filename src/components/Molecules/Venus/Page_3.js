@@ -12,6 +12,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import { ValueAmenazas, ValueDebilidades } from '@Components/Atomos/Inputs/venus';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/venus.module.scss';
@@ -111,11 +112,12 @@ export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) 
             />
           </div>
         </div>
+        <div className="fieldsets">
+
+        </div>
 
         <div className={style.buttonsContent}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(2)}>
-            ANTERIOR
-          </button>
+          <Button type="button" onClick={() => setPage(2)} isAlt />
           <button
             type="button"
             className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
@@ -125,14 +127,11 @@ export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) 
             GUARDAR
           </button>
         </div>
-        <button
-          type="button"
+        <Button
+          text="PASO 2"
           className={buttonNext ? style.btnStepDos : style.btnStepDosOff}
           disabled={buttonNext ? '' : 'disabled'}
-          onClick={() => handleSubmit('next')}
-        >
-          PASO 2
-        </button>
+          onClick={() => handleSubmit('next')} />
       </form>
     </section>
   );
