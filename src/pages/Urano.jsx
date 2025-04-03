@@ -373,16 +373,19 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
           <p>Subir después</p>
         </div>
         <br></br> */}
-        <p dangerouslySetInnerHTML={{__html: texts.descripcion_general_de_las_plataformas_recomendadas}} />
-        <fieldset className="uranoUpload">
-          <img src={upload} alt="upload" />
-          <input
-            type="file"
-            name="fileInput"
-            id="fileInput"
-            onChange={handleImageDoc}
-            className="uranoFileInput"
-          />
+        <p dangerouslySetInnerHTML={{ __html: texts.descripcion_general_de_las_plataformas_recomendadas }} />
+        <fieldset>
+          <div className="customFileUpload">
+            <input
+              type="file"
+              name="fileInput"
+              id="fileInput"
+              onChange={handleImageDoc}
+              className="uranoFileInput"
+            />
+          </div>
+        </fieldset>
+        
         <div className="fieldsets">
         <Button
             className=""
@@ -402,7 +405,6 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
             SIGUIENTE
           </button> */}
         </div>
-        </fieldset>
       </form>
     </div>
   );
@@ -513,10 +515,9 @@ export const Marketing = ({ setTitle, texts, params }) => {
 
   return (
     <div className="questionWrap">
-        <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{__html:market.categoria}}></h2>
-        <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria}}></p>
-
+      <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{__html:market.categoria}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria}}></p>
       <div className={urano.cardMarketing}>
         {proveedores.length > 0 ? (
           proveedores.map((items, index) => (

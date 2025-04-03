@@ -72,9 +72,8 @@ const Index = () => {
   };
 
   return (
-    <div className="video" id="bio">
+    <div className="heroSection" id="bio">
       {previewVideo(sliderInfo)}
-
       <div className="buttonReady2Launch">
         <img src={_IconDown} alt="icondown" onClick={scrollingToanimate} />
       </div>
