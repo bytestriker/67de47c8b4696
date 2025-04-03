@@ -1,6 +1,5 @@
 // Components
 import {
-  Luna,
   Mercurio,
   Venus,
   Tierra,
@@ -16,7 +15,6 @@ import { ServiceWPHome } from '@Hooks/useFetchWP';
 
 const PlanetsItems = () => {
   const {
-    lunaInfo,
     mercurioInfo,
     venusInfo,
     marteInfo,

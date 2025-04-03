@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 // STYLES
 import lines from '@Components/Planets/lines.module.scss';
 
@@ -13,6 +14,7 @@ import empieza from '@Assets/images/planets/empieza.svg';
 import tierra from '@Assets/images/planets/tierra.svg';
 import { valPackage } from '@Hooks/useValidatePlanet';
 
+import { ComingSoon } from '@Components/Notice/Notice';
 export const Tierra = ({ tierraInfo }) => {
   const [skills, setSkills] = useState([
     {
@@ -27,6 +29,18 @@ export const Tierra = ({ tierraInfo }) => {
   ]);
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('Tierra');
+
+  const [modalVideo, setModalVideo] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
+
+  const openModalVideo = () => {
+    setModalVideo(!modalVideo);
+  };
+
+  const spinner = () => {
+    setVideoLoading(!videoLoading);
+  };
+
 
   const { popup } = valPackage();
 
@@ -62,7 +76,8 @@ export const Tierra = ({ tierraInfo }) => {
         <span className="planetUnderline"></span>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
-      <img src={empieza} alt="empieza" />
+      {/* <img src={empieza} alt="empieza" onClick={() => popup()}/>  */}
+      <ComingSoon planet="earth"/>
     </div>
   );
 };

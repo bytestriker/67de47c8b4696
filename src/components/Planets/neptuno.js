@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 // STYLES
 import lines from '@Components/Planets/lines.module.scss';
+import { ComingSoon } from '@Components/Notice/Notice';
 
 // IMAGES
 import tank from '@Assets/images/planet-tank.svg';
@@ -61,7 +62,7 @@ export const Neptuno = ({ neptunoInfo }) => {
         <span className="planetUnderline"></span>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
-      <img src={empieza} alt="empieza" />
+      <ComingSoon planet="neptune"/>
     </div>
   );
 };
