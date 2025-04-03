@@ -30,6 +30,7 @@
 
 .lunaFigure {
   position: relative;
+  pointer-events: none;
   @include largeDevices {
     transform: translateX(-5%);
   }

@@ -25,56 +25,69 @@
 }
 
 .Modal {
-  margin: 0 auto;
-  padding: 0;
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 99999;
   overflow: hidden;
+  z-index: 99999;
 
   .ModalContent {
-    background: $--colorWhite;
+    background-color: rgba(77, 84, 47, 0.45);
+    color: $--colorWhite;
     max-width: 420px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    padding: 2rem 2rem 0.2rem 2rem;
+    padding: 36px 36px 24px;
     position: relative;
     margin: 0 auto;
+    &::before {
+      border-top: 1px solid #E6F85A;
+      background: rgba(77, 84, 47, 0.45);
+      display: block;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -5px;
+      width: 100%;
+      height: 4px;
+      @include largeDevices {
+        left: 10%;
+        right: 10%;
+        width: 80%;
+      }
+    }
+    &::after {
+      background-image: url("../../assets/images/corner-left.svg"), url("../../assets/images/corner-right.svg");
+      background-position: left, right;
+      background-repeat: no-repeat;
+      background-size: auto 16px;
+      display: block;
+      content: "";
+      width: auto;
+      height: 16px;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      width: calc(100% + 35px);
+      transform: translateX(-50%);
+    }
     @include mediumDevicesMax {
       max-width: 100%;
       padding: 2rem;
     }
-    p {
-      color: $--colorGris;
-      font-weight: 400;
-      font-size: 1rem;
-      text-align: center;
-      margin: 0;
-      font-family: $MontserratRegular;
-      strong {
-        font-style: italic;
-      }
-    }
     h3 {
       margin: 0 0 8px 0;
-      font-style: normal;
-      color: $--colorGris;
-      font-family: $MontserratBold;
     }
     h4 {
       margin: 0;
-      color: $--colorGris;
-      font-family: $MontserratBold;
     }
     .ButtonContent {
       .buttonContinue {

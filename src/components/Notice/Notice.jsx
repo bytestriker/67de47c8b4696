@@ -52,72 +52,37 @@ export const ComingSoon = ({ planet }) => {
     <>
       <img src={empieza} alt="empieza" onClick={openModal}/>
       {modal && (
-        <section
-          id={`modal-notice-coming-soon-${planet}}`}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.9)',
-            zIndex: 9999,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              alignContent: 'center',
-              width: '100%',
-              margin: '20px',
-            }}
-          >
-            <button
-              className="closeNav"
-              text=""
-              aria-label="Cerrar Ventana"
-              onClick={() => {setModal(false);}}
-            />
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-              }}
-            >
-              <div
-                style={{
-                  width: '100%',
-                  width: '100%',
-                }}
-              >
-                <section className="noticeWrap">
-                  <div className="noticeHeader">
-                    <h2>¡Bienvenido!</h2>
-                  </div>
-                  
-                  <div className="noticeContainer">
-                    <div className="noticeContent">
-                      <h3>¡Próximamente!</h3>
-                      <figure>
-                        { planetName === 'earth' && <img src={tierra} className="img-fluid" />}
-                        { planetName === 'neptune' && <img src={neptuno} className="img-fluid" />}
-                        <img src={grid} alt="lock" />
-                        <img src={lock} alt="lock" /> 
-                      </figure>
-                      <p>Muy pronto tendremos nuevos servicios increíbles</p>
-                      <div className="fieldsets">
-                        <Button text="Ok" isCentered={true} onClick={()=>{setModal(false)}}/>
-                      </div>
-                    </div>
-                  </div>
-                </section>
+      <div className="modalBackdrop">
+        <button
+          className="closeNav"
+          text=""
+          aria-label="Cerrar Ventana"
+          onClick={() => {setModal(false);}} />
+        <div className="noticeWrap">
+          <div className="noticeHeader">
+            <h2>¡Bienvenido!</h2>
+          </div>
+          
+          <div className="noticeContainer">
+            <div className="noticeContent">
+              <h3>¡Próximamente!</h3>
+              <div className="planetFigure">
+                { planetName === 'earth' && <img src={tierra} className="img-fluid" />}
+                { planetName === 'neptune' && <img src={neptuno} className="img-fluid" />}
+                <div className="lockedPlanet">
+                  <img src={grid} alt="lock" />
+                  <img src={lock} alt="lock" />
+                </div>
+              </div>
                 
+              <p>Muy pronto tendremos nuevos servicios increíbles</p>
+              <div className="fieldsets">
+                <Button text="Ok" isCentered onClick={()=>{setModal(false)}}/>
               </div>
             </div>
           </div>
-        </section>
+        </div>  
+      </div>
       )}
     </>
   );

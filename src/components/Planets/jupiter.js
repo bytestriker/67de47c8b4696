@@ -66,7 +66,6 @@ export const Jupiter = ({ jupiterInfo }) => {
           <span>x3</span>
         </div>
       </div>
-
       <div className="planetInfo">
         <h2>
           <span dangerouslySetInnerHTML={{ __html: title }}></span>

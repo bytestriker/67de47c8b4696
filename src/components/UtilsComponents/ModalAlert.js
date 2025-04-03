@@ -60,24 +60,22 @@ export const ModalAlert = ({ data, title, message, setModalSalir, getPageLuna })
   }, []);
 
   return (
-    <>
-      <div className="modalAlert">
-        <div className="container">
-          <div className="modalContent" ref={modal} id="modalLuna" data-modal="modalLuna">
-            <p>{title}</p>
-            <strong>{message}</strong>
-            <br></br>
-            <div className="ButtonContent">
-              <button className="btnModal-cancel" onClick={() => handleAlert('CANCELAR', data)}>
-                No
-              </button>
-              <button className="btnModal-ok" onClick={() => handleAlert('OK', data)}>
-                Si
-              </button>
-            </div>
+    <div className="modalAlert">
+      <div className="container">
+        <div className="modalContent" ref={modal} id="modalLuna" data-modal="modalLuna">
+          <p>{title}</p>
+          <strong>{message}</strong>
+          <br></br>
+          <div className="ButtonContent">
+            <button className="btnModal-cancel" onClick={() => handleAlert('CANCELAR', data)}>
+              No
+            </button>
+            <button className="btnModal-ok" onClick={() => handleAlert('OK', data)}>
+              Si
+            </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
