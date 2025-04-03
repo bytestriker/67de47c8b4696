@@ -10,7 +10,7 @@ import '@Sass/pages/planets.scss';
 const Home = () => {
   return (
     <>
-      <Video/>
+      <Video controls/>
       <Element name="bio">
         <Planets />
       </Element>

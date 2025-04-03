@@ -1,12 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { scroller } from 'react-scroll';
+import playvideo from '@Assets/images/playvideo.svg';
 
 // Images
 import astronauta from '@Assets/images/astronauta.png';
 import rocket from '@Assets/images/rocket-tail.png';
 import _IconDown from '@Assets/images/ScrollDown.svg';
 
-import { WatchHomeVideo } from '@Components/Atomos/Buttons';
+import { WatchSelfHostedVideo } from '@Components/Atomos/Buttons';
 
 // Styles
 import '@Components/Video/video.scss';
@@ -64,7 +65,7 @@ const Index = () => {
             conquistar el sistema solar.
           </p>
         </div>
-          <WatchHomeVideo params={params}/>
+        <WatchSelfHostedVideo img_src={playvideo} alt_img="Play Video"/>
       </div>
     );
 
