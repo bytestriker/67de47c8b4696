@@ -285,6 +285,26 @@
       width: 100%;
     }
   }
+  .grid3Columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    div {
+      display: flex;
+      align-items: stretch;
+      flex-direction: column;
+      figure {
+        margin: 0;
+        img {
+          display: block;
+          width: 83px;
+        }
+      }
+      p {
+        padding: 0;
+      }
+    }
+  }
   .flexButtons {
     display: flex;
     flex-direction: column;
@@ -317,6 +337,8 @@
     }
   }
 }
+
+
 
 .fieldsets {
   display: flex;

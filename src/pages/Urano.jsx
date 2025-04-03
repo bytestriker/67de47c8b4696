@@ -367,7 +367,7 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <form className='px-lg'>
+      <form>
         {/*        <div className={urano.checkText}>
           <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
           <p>Subir después</p>
@@ -436,56 +436,51 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
   return (
     <div className='questionWrap'>
       <ScrollToTop />
-      <div className='px-lg'>
-        <h2 dangerouslySetInnerHTML={{__html: texts.pregunta}} ></h2>
-        <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
-
-        <fieldset className="urano-input-search">
-          <input
-            type="search"
-            placeholder="Busca alguna categoría"
-            className="urano-search"
-            value={searchTerm}
-            onChange={handleInputChange}
-          />
-          <FaSearch className={urano.icon} />
-        </fieldset>
-        <div className={urano.cardContent}>
-          {filteredData.length > 0 ? (
-            filteredData.map((items, index) => (
-              <div className={urano.card} key={index}>
-                <div className={urano.item} onClick={() => handleProvider(items)}>
-                  <img src={items.icono_de_categoria} alt="card" />
-                </div>
-                <p>{items.categoria}</p>
-              </div>
-            ))
-          ) : (
-            <></>
-          )}
-        </div>
-        <div className="fieldsets">
-          {/* 
-          <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(2)}>
-            ANTERIOR
-          </button>
-          <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(4)}>
-            SIGUIENTE
-          </button> 
-          */}
-          <Button
-            text="REGRESAR"
-            onClick={() => setPage(2)}
-            isAlt
-          />
-          <Button
-            text="SIGUIENTE"
-            onClick={() => setPage(4)}
-          />
-
-        </div>
+      <h2 dangerouslySetInnerHTML={{__html: texts.pregunta}} ></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <fieldset className="urano-input-search">
+        <input
+          type="search"
+          placeholder="Busca alguna categoría"
+          className="urano-search"
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+        <FaSearch className={urano.icon} />
+      </fieldset>
+      <div className="grid3Columns">
+        {
+          filteredData.length > 0
+          ? filteredData.map((items, index) => (
+            <div key={index}>
+              <figure onClick={() => handleProvider(items)}>
+                <img src={items.icono_de_categoria} alt="card" />
+              </figure>
+              <p>{items.categoria}</p>
+            </div>
+          ))
+          : null
+        }
       </div>
-      <div>
+      <div className="fieldsets">
+        {/* 
+        <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(2)}>
+          ANTERIOR
+        </button>
+        <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(4)}>
+          SIGUIENTE
+        </button> 
+        */}
+        <Button
+          text="REGRESAR"
+          onClick={() => setPage(2)}
+          isAlt
+        />
+        <Button
+          text="SIGUIENTE"
+          onClick={() => setPage(4)}
+        />
+      </div>
 
         {/*
         <div className={urano.content}>
@@ -498,7 +493,6 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
         */}
 
       </div>
-    </div>
   );
 };
 
@@ -519,8 +513,7 @@ export const Marketing = ({ setTitle, texts, params }) => {
 
   return (
     <div className="questionWrap">
-      <ScrollToTop />
-      <div className="px-lg">
+        <ScrollToTop />
         <h2 dangerouslySetInnerHTML={{__html:market.categoria}}></h2>
         <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria}}></p>
 
@@ -549,7 +542,6 @@ export const Marketing = ({ setTitle, texts, params }) => {
       </div>
 
       </div>
-    </div>
   );
 };
 
@@ -621,57 +613,56 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
   };
 
   return (
-    <section className="questionWrap">
+    <form className="questionWrap">
       <ScrollToTop />
-      <form className="px-lg">
-        <h2 dangerouslySetInnerHTML={{__html:texts.descargarTxt}}></h2>
-        <p dangerouslySetInnerHTML={{__html:texts.descripcion}}></p>
-        <a href={texts.adjuntar_formato_para_descargar} className={urano.downloadContent}>
-          <p className={urano.descargarTxt}>Descargar formato</p>
-          <img src={download} alt="download" className={urano.downloadIcon} />
-        </a>
-        <fieldset>
-          <img src={upload} alt="upload" />
-          <input
-            type="file"
-            name="fileInput"
-            id="fileInput"
-            onChange={handleImageDoc}
-            className={urano.fileInput}
-          />
-        </fieldset>
-        <div className="fieldsets">
-          {/* 
-            <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
-              ANTERIOR
-            </button>
-            <button
-              type="button"
-              className={`${urano.btnPlanet}`}
-              onClick={() => handleValidateProject()}
-            >
-              SIGUIENTE
-            </button>
-          */}
-          <Button
-            
-            text="ANTERIOR"
-            onClick={() => setPage(3)}
-            isAlt
-          />
-          <Button
-            text="SIGUIENTE"
+      <h2 dangerouslySetInnerHTML={{__html:texts.descargarTxt}}></h2>
+      <p dangerouslySetInnerHTML={{__html:texts.descripcion}}></p>
+      <a href={texts.adjuntar_formato_para_descargar} className={urano.downloadContent}>
+        <p className={urano.descargarTxt}>Descargar formato</p>
+        <img src={download} alt="download" className={urano.downloadIcon} />
+      </a>
+      <fieldset>
+        <img src={upload} alt="upload" />
+        <input
+          type="file"
+          name="fileInput"
+          id="fileInput"
+          onChange={handleImageDoc}
+          className={urano.fileInput}
+        />
+      </fieldset>
+      <div className="fieldsets">
+        {/* 
+          <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
+            ANTERIOR
+          </button>
+          <button
+            type="button"
+            className={`${urano.btnPlanet}`}
             onClick={() => handleValidateProject()}
-          />
-
-        </div>
-        {/*
-        <p className={urano.subir}>Subir archivo</p>
-        <div className={urano.checkText}>
-          <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
-          <p>Subir después</p>
-        </div>
+          >
+            SIGUIENTE
+          </button>
         */}
+        <Button
+          
+          text="ANTERIOR"
+          onClick={() => setPage(3)}
+          isAlt
+        />
+        <Button
+          text="SIGUIENTE"
+          onClick={() => handleValidateProject()}
+        />
+
+      </div>
+      {/*
+      <p className={urano.subir}>Subir archivo</p>
+      <div className={urano.checkText}>
+        <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
+        <p>Subir después</p>
+      </div>
+      */}
 
         {/*
         <div className={style.contentButtons}>
@@ -688,8 +679,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
             </button>
           </div>
         </div> */}
-      </form>
-    </section>
+    </form>
   );
 };
 
