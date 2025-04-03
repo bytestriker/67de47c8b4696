@@ -75,6 +75,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
       </figure>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <h2>¿Cómo se va a llamar?</h2>
+
       <fieldset>
         <label htmlFor="email">Nombre de tu proyecto</label>
         <input
@@ -87,7 +88,10 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
           onChange={(e) => handleNameProject(e)}
         />
       </fieldset>
-      <Button text="SIGUIENTE" isSubmit={true} onClick={() => handleNextPage(2)} />
+      <div className="fieldsets">
+        
+      <Button text="SIGUIENTE" isCentered isSubmit={true} onClick={() => handleNextPage(2)} />
+      </div>
     </div>
   );
 };
@@ -250,7 +254,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
   }, [texts4]);
 
   return (
-    <div className="qestionWrap">
+    <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts4.titulo_de_la_vista }}></h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>

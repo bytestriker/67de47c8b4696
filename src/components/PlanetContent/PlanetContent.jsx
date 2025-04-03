@@ -1,14 +1,6 @@
 // COMPONENTS
 import {
-  Luna,
-  Mercurio,
-  Venus,
-  Tierra,
-  Marte,
-  Jupiter,
-  Saturno,
-  Urano,
-  Neptuno,
+  Luna, 
 } from '@Components/Planets';
 import PlanetsItem from '@Components/Planets/PlanetsItems';
 

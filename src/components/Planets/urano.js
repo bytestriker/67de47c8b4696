@@ -91,7 +91,7 @@ export const Urano = ({ uranoInfo }) => {
           {dataUrano.label}
         </button>
       ) : (
-        <button className={style.moon_launchBtn} onClick={() => validateProject('urano', 3)}>
+        <button onClick={() => validateProject('urano', 3)}>
           ACCEDER
         </button>
       )}

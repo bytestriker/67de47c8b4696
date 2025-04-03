@@ -127,14 +127,12 @@ const Nav = ({ setNavState, navState }) => {
                 : null}
             </ul>
               {/* 
-              <nav className="content">
 
+              <nav>
               {
                 data.map((item) =>
-
                 <a 
                 key={item.id}
-                className='content_li'
                   id={item.id}
                   ref={reference}
                   onClick={() => handleURL(item)}>
@@ -142,7 +140,9 @@ const Nav = ({ setNavState, navState }) => {
                 </a>
                 )
               }
-              </nav> */}
+              </nav> 
+              */}
+
             </div>
               : null
           }

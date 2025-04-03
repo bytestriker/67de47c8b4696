@@ -65,7 +65,6 @@ export const ButtonOut = (props) => {
 };
 
 export const SaberMas = ({ data }) => {
-
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
 
@@ -84,14 +83,11 @@ export const SaberMas = ({ data }) => {
       const videoId = urlObject.searchParams.get('v');
       return (
         <iframe
-          className={style.modal__video__style}
           onLoad={spinner}
           loading="lazy"
-          width="1200"
-          height="500"
+          style={{ width: '100%', height: '100%' }}
           src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`}
           title="YouTube video player"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
@@ -104,22 +100,61 @@ export const SaberMas = ({ data }) => {
       <a href="#" onClick={openModalVideo}>
         {data?.secciondeapoyo ? data?.secciondeapoyo : 'Saber más'}
         {modalVideo ? (
-          <section className={style.modal__bg}>
-            <div className={style.modal__align}>
-              <div className={style.modal__content} modalVideo={modalVideo}>
-                <IoCloseOutline
-                  className={style.modal__close}
-                  arial-label="Close modal"
-                  onClick={setModalVideo}
-                />
-                <div className={style.modal__video__align}>
-                  {videoLoading ? (
-                    <div className={style.modal__spinner}>
-                      <BiLoaderAlt className={style.modal__spinner__style} fadeIn="none" />
-                    </div>
-                  ) : null}
-                  {handleVideo()}
-                </div>
+          
+          <section
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(0,0,0,0.9)',
+              zIndex: 9999,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ width: '100%', maxWidth: '75%', position: 'relative' }}>
+              <IoCloseOutline
+                style={{
+                  position: 'absolute',
+                  top: '-40px',
+                  right: '0',
+                  color: 'white',
+                  fontSize: '2rem',
+                  cursor: 'pointer',
+                }}
+                aria-label="Cerrar Ventana"
+                onClick={() => {
+                  setModalVideo(false);
+                  setVideoLoading(true);
+                }}
+              />
+              <div style={{ width: '100%', aspectRatio: '16/9' }}>
+                {videoLoading && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <BiLoaderAlt
+                      style={{
+                        fontSize: '3rem',
+                        color: 'white',
+                        animation: 'spin 1s linear infinite',
+                      }}
+                    />
+                  </div>
+                )}
+                {handleVideo()}
               </div>
             </div>
           </section>
@@ -128,8 +163,6 @@ export const SaberMas = ({ data }) => {
     </p>
   );
 };
-
-
 
 export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   const [modalVideo, setModalVideo] = useState(false);
@@ -186,8 +219,8 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
           <div
             style={{
               width: '100%',
-              maxWidth: '1200px',
-              padding: '20px',
+              maxWidth: '90%',
+              margin: '20px',
             }}
           >
             <div
@@ -245,9 +278,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   );
 };
 
-
 import playvideo from '@Assets/images/playvideo.svg';
-
 
 export const WatchHomeVideo = ({ params }) => {
   const [modalVideo, setModalVideo] = useState(false);
@@ -271,7 +302,7 @@ export const WatchHomeVideo = ({ params }) => {
 
   const renderVideo = () => {
     if (!link_video) return null;
-    
+
     try {
       const urlObject = new URL(link_video);
       const videoId = urlObject.searchParams.get('v');
@@ -279,20 +310,18 @@ export const WatchHomeVideo = ({ params }) => {
 
       return (
         <iframe
-          className={style.modal__video__style}
           onLoad={spinner}
           loading="lazy"
-          width="1200"
-          height="500"
+          width="100%"
+          height="100%"
           src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`}
           title="YouTube video player"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
       );
     } catch (e) {
-      console.error("Invalid YouTube URL", e);
+      console.error('Invalid YouTube URL', e);
       return null;
     }
   };
@@ -300,13 +329,14 @@ export const WatchHomeVideo = ({ params }) => {
   return (
     <>
       <button onClick={openModalVideo}>
-      <img src={playvideo} alt={"Play Video"} />
+        <img src={playvideo} alt={'Play Video'} />
         Reproducir Video
       </button>
-      
+
       {modalVideo && (
         <section
           className={style.modal__bg}
+          id="modal-watch-home-video"
           style={{
             position: 'fixed',
             top: 0,
@@ -322,32 +352,27 @@ export const WatchHomeVideo = ({ params }) => {
         >
           <div
             style={{
-              width: '100%',
-              maxWidth: '1200px',
-              padding: '20px',
+              width: '75%',
+              maxWidth: '75%',
+              margin: '20px',
             }}
           >
+            <button
+              className="closeNav"
+              text=""
+              aria-label="Cerrar Ventana"
+              onClick={() => {
+                setModalVideo(false);
+                setVideoLoading(true);
+              }}
+            />
             <div
               style={{
                 position: 'relative',
+                alignItems: 'end',
                 width: '100%',
               }}
             >
-              <IoCloseOutline
-                style={{
-                  position: 'absolute',
-                  top: '-40px',
-                  right: '0',
-                  color: 'white',
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                }}
-                aria-label="Cerrar Ventana"
-                onClick={() => {
-                  setModalVideo(false);
-                  setVideoLoading(true);
-                }}
-              />
               <div
                 style={{
                   width: '100%',
@@ -382,76 +407,40 @@ export const WatchHomeVideo = ({ params }) => {
   );
 };
 
-
+////
 
 export const WatchLunaVideos = ({ params }) => {
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
 
-  // Handle params more safely
-  const link_video = params?.length > 0 ? params[0]?.url : null;
-  console.log("params ", params)
-  
-  const openModalVideo = () => {
-    setModalVideo(!modalVideo);
-  };
+  const link_video = params?.[0]?.url || null;
+  const playVideoImage = params?.[0]?.playvideo || '';
 
-  
-  
-  const spinner = () => {
-    setVideoLoading(!videoLoading);
-  };
+  const toggleModal = () => setModalVideo(!modalVideo);
+  const handleVideoLoad = () => setVideoLoading(false);
 
-  const renderVideo = () => {
-    if (!link_video) return null;
-    
+  const getYouTubeEmbedUrl = (url) => {
     try {
-      const urlObject = new URL(link_video);
-      let videoId = urlObject.searchParams.get('v');
-      let src_video = null;
-      if (videoId) {
-        src_video = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`
-      }
-
-      if (!videoId ) {
-        videoId = urlObject.pathname
-        src_video = `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`
-        
-      }
-      
-      if (!videoId) return null;
-      if (!src_video) return null;
-      
-      return (
-        <iframe
-          className={style.modal__video__style}
-          onLoad={spinner}
-          loading="lazy"
-          width="1200"
-          height="500"
-          src={src_video}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      );
-    } catch (e) {
-      console.error("Invalid YouTube URL", e);
+      const urlObject = new URL(url);
+      const videoId = urlObject.searchParams.get('v') || urlObject.pathname.slice(1);
+      return videoId
+        ? `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&controls=1&mute=0&listType=playlist&rel=0`
+        : null;
+    } catch {
+      console.error('Invalid YouTube URL');
       return null;
     }
   };
 
+  const videoSrc = link_video ? getYouTubeEmbedUrl(link_video) : null;
+
   return (
     <>
-      
-      <a href="#" onClick={openModalVideo}>
-
-        <img src={params[0]?.playvideo} alt="video" />
+      <a href="#" onClick={toggleModal}>
+        <img src={playVideoImage} alt="video" />
       </a>
-
-      {modalVideo && (
+      {modalVideo && videoSrc && (
         <section
-          className={style.modal__bg}
           style={{
             position: 'fixed',
             top: 0,
@@ -465,60 +454,54 @@ export const WatchLunaVideos = ({ params }) => {
             alignItems: 'center',
           }}
         >
-          <div
-            style={{
-              width: '100%',
-              maxWidth: '1200px',
-              padding: '20px',
-            }}
-          >
-            <div
+          <div style={{ width: '100%', maxWidth: '75%', position: 'relative' }}>
+            <IoCloseOutline
               style={{
-                position: 'relative',
-                width: '100%',
+                position: 'absolute',
+                top: '-40px',
+                right: '0',
+                color: 'white',
+                fontSize: '2rem',
+                cursor: 'pointer',
               }}
-            >
-              <IoCloseOutline
-                style={{
-                  position: 'absolute',
-                  top: '-40px',
-                  right: '0',
-                  color: 'white',
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                }}
-                aria-label="Cerrar Ventana"
-                onClick={() => {
-                  setModalVideo(false);
-                  setVideoLoading(true);
-                }}
+              aria-label="Cerrar Ventana"
+              onClick={() => {
+                setModalVideo(false);
+                setVideoLoading(true);
+              }}
+            />
+            <div style={{ width: '100%', aspectRatio: '16/9' }}>
+              <iframe
+                style={{ width: '100%', height: '100%' }}
+                onLoad={handleVideoLoad}
+                loading="lazy"
+                src={videoSrc}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
-              <div
-                style={{
-                  width: '100%',
-                  aspectRatio: '16/9',
-                }}
-              >
-                {renderVideo()}
-                {videoLoading && (
-                  <div
+              {videoLoading && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <BiLoaderAlt
                     style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      height: '100%',
+                      fontSize: '3rem',
+                      color: 'white',
+                      animation: 'spin 1s linear infinite',
                     }}
-                  >
-                    <BiLoaderAlt
-                      style={{
-                        fontSize: '3rem',
-                        color: 'white',
-                        animation: 'spin 1s linear infinite',
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
