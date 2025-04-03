@@ -169,6 +169,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   const [videoLoading, setVideoLoading] = useState(true);
 
   const openModalVideo = () => {
+    console.log("opening video self hosted ")
     setModalVideo(!modalVideo);
   };
 
@@ -197,8 +198,8 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   };
 
   return (
-    <button onClick={openModalVideo}>
-      <img src={img_src} alt={img_alt} />
+    <div onClick={openModalVideo}>
+      <img src={img_src} alt={img_alt} onClick={openModalVideo}/>
       Reproducir Video
       {modalVideo && (
         <section
@@ -219,7 +220,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
           <div
             style={{
               width: '100%',
-              maxWidth: '90%',
+              maxWidth: '75%',
               margin: '20px',
             }}
           >
@@ -274,7 +275,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
           </div>
         </section>
       )}
-    </button>
+    </div>
   );
 };
 
