@@ -515,20 +515,19 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
       </fieldset>
       <div className="fieldsets">
         <Button text="ANTERIOR" isCentered={true} onClick={() => setPage(2)} />
-        <button
+        {/* <button
           type="button"
           className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
           disabled={buttonNext ? '' : 'disabled'}
           onClick={() => handleSubmit('SAVE')}
         >
           GUARDAR
-        </button>
+        </button> */}
         <Button
           text="SIGUENTE"
           isCentered={true}
-          onClick={() => setPage(4)}
-          /*onClick={() => handleSubmit('NEXTPAGE')}*/
           disabled={buttonNext ? '' : 'disabled'}
+          onClick={() => handleSubmit('SAVE')}
         />
       </div>
       {modal ? (

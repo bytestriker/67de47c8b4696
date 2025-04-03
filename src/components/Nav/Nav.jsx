@@ -115,10 +115,26 @@ const Nav = ({ setNavState, navState }) => {
             data && data.length > 0
             ? <div >
               <span>Ver Proyectos</span>
-              <nav>
+              <ul className="content">
+              {data && data.length > 0
+                ? data.map((item) => (
+                    <li key={item.id} className={`content_li`}>
+                      <strong className="" onClick={() => handleURL(item)} id={item.id} ref={reference}>
+                        {item.nombre}
+                      </strong>
+                    </li>
+                  ))
+                : null}
+            </ul>
+              {/* 
+              <nav className="content">
+
               {
                 data.map((item) =>
-                <a key={item.id}
+
+                <a 
+                key={item.id}
+                className='content_li'
                   id={item.id}
                   ref={reference}
                   onClick={() => handleURL(item)}>
@@ -126,7 +142,7 @@ const Nav = ({ setNavState, navState }) => {
                 </a>
                 )
               }
-              </nav>
+              </nav> */}
             </div>
               : null
           }

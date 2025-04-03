@@ -47,9 +47,6 @@ export const Mercurio = ({ mercurioInfo }) => {
     }
   }, [mercurioInfo]);
 
-
-  console.log(getMercurio())
-
   return (
     <div className="planetGridItem">
       <div className="planetFigure">
@@ -90,7 +87,7 @@ export const Mercurio = ({ mercurioInfo }) => {
           {dataMercurio.label}
         </button>
       ) : (
-        <img src={empieza} alt="empieza"  />
+        <img src={empieza} alt="empieza" onClick={() => validateProject('mercurio', 1)} />
       )}
     </div>
   );

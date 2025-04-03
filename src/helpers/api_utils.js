@@ -1,5 +1,6 @@
 // Subraya el proyecto seleccionado
 export const handleSelectLink = (id) => {
+  console.log("Clicking on id ", id);
     const ul = document.querySelector('.content');
     const li = ul.querySelectorAll('.content_li');
     const str = String(id);

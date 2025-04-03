@@ -18,7 +18,14 @@
 
 /* class para pintar el texto del proyecto seleccionado */
 .activeLink {
-  border-bottom: 3px solid $--colorPurple;
-  color: $--colorPurple;
+  border-bottom: 3px solid $--colorYellow;
+  color: $--colorYellow;
 }
 
+
+
+ul.content{
+  text-align: end;
+  list-style: none;
+  text-decoration: none;
+}

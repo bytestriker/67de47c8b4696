@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
+import buttons from '@Sass/components/buttons.module.scss';
 
 // Store
 import { uranoStore } from '@Store/urano';
@@ -17,9 +18,8 @@ import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 import urano from '@Assets/images/planets/urano.png';
 
-
 export const Urano = ({ uranoInfo }) => {
-  const history = useHistory()
+  const history = useHistory();
   const [skills, setSkills] = useState([
     {
       skill: '',
@@ -57,14 +57,12 @@ export const Urano = ({ uranoInfo }) => {
     <div className="planetGridItem planetGridItemUrano">
       <div className="planetFigure">
         <img src={urano} alt="planet" className="planetImage urano" />
-        {
-          getUrano().lockedPlanet !== 'desbloqueado' && (
+        {getUrano().lockedPlanet !== 'desbloqueado' && (
           <div className="lockedPlanet">
             <img src={grid} alt="lock" />
             <img src={lock} alt="lock" />
           </div>
-          )
-        }
+        )}
         <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>
@@ -77,7 +75,26 @@ export const Urano = ({ uranoInfo }) => {
         </h2>
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
-      <img src={empieza} alt="empieza" />
+      {getUrano().id ? (
+        <button
+          className={`${
+            dataUrano.complete === 1
+              ? buttons.buttonPlanetCompleted
+              : dataUrano.complete === 2
+              ? buttons.buttonPlanetIncomplete
+              : dataUrano.complete === 0
+              ? buttons.buttonPlanet
+              : buttons.buttonPlanet
+          }`}
+          onClick={() => validateProject('urano', 3)}
+        >
+          {dataUrano.label}
+        </button>
+      ) : (
+        <button className={style.moon_launchBtn} onClick={() => validateProject('urano', 3)}>
+          ACCEDER
+        </button>
+      )}
     </div>
   );
 };

@@ -79,20 +79,20 @@ export const Venus = ({ venusInfo }) => {
       {getVenus().id ? (
         <button
           className={`${
-            dataMercurio.complete === 1
+            dataVenus.complete === 1
               ? buttons.buttonPlanetCompleted
-              : dataMercurio.complete === 2
+              : dataVenus.complete === 2
               ? buttons.buttonPlanetIncomplete
-              : dataMercurio.complete === 0
+              : dataVenus.complete === 0
               ? buttons.buttonPlanet
               : buttons.buttonPlanet
           }`}
-          onClick={() => validateProject('mercurio', 1)}
+          onClick={() => validateProject('venus', 1)}
         >
-          {dataMercurio.label}
+          {dataVenus.label}
         </button>
       ) : (
-        <img src={empieza} alt="empieza" />
+        <img src={empieza} alt="empieza" onClick={() => validateProject('venus', 1)}/>
       )}
     </div>
   );

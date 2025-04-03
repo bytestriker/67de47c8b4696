@@ -92,7 +92,7 @@ export const Jupiter = ({ jupiterInfo }) => {
           {dataJupiter.label}
         </button>
       ) : (
-        <img src={empieza} alt="empieza" />
+        <img src={empieza} alt="empieza" onClick={() => validateProject('jupiter', 1)}/>
       )}
     </div>
   );
