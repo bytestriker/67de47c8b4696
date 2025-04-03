@@ -91,9 +91,7 @@ export const Urano = ({ uranoInfo }) => {
           {dataUrano.label}
         </button>
       ) : (
-        <button onClick={() => validateProject('urano', 3)}>
-          ACCEDER
-        </button>
+        <img src={empieza} alt="empieza" onClick={() => validateProject('urano', 3)}/>
       )}
     </div>
   );

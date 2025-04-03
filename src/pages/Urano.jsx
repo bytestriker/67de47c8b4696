@@ -85,6 +85,7 @@ const Urano = () => {
     }
   }, [uranoQ2Categorias]);
 
+  console.log("urano texts ", texts)
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -109,19 +110,19 @@ const Urano = () => {
             <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
           )} */}
           {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
-          {page === 2 ? <Pretotipo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
-          {page === 3 ? (
-            <Prototipo
-              setPage={setPage}
-              setTitle={setTitle}
-              texts={texts2}
-              categorias={categoriasQ2}
-              setParams={setParams}
-            />
-          ) : null}
-          {page === 4 ? (
-            <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
-          ) : null}
+          {page === 2 ? (
+              <Prototipo
+                setPage={setPage}
+                setTitle={setTitle}
+                texts={texts2}
+                categorias={categoriasQ2}
+                setParams={setParams}
+              />
+            ) : null}
+            {page === 3 ? <Marketing setTitle={setTitle} texts={texts2} params={params} /> : null}
+            {page === 4 ? (
+              <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
+            ) : null}
         </div>
       </div>
 
@@ -238,7 +239,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
-      <p dangerouslySetInnerHTML={{ __html: texts.description }}></p>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
       <SaberMas data={texts} />
       <fieldset>
         <textarea
@@ -498,7 +499,7 @@ export const Marketing = ({ setTitle, texts, params }) => {
       setProveedores(params.proveedores);
     }
   }, [params]);
-
+console.log("urano market texts: ", market)
   return (
     <div className="questionWrap">
       <ScrollToTop />
@@ -609,16 +610,17 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
         <span>Descargar formato</span>
       </a>
       <fieldset>
-        <div className="inputFileUpload">
-          <input
-            type="file"
-            name="fileInput"
-            id="fileInput"
-            onChange={handleImageDoc}
-            className={urano.fileInput}
-          />
-        </div>
-      </fieldset>
+          <div className="customFileUpload">
+            <input
+              type="file"
+              name="fileInput"
+              id="fileInput"
+              onChange={handleImageDoc}
+              className="uranoFileInput"
+            />
+          </div>
+        </fieldset>
+        
       <div className="fieldsets">
         {/* 
           <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>

@@ -98,7 +98,7 @@ export const SaberMas = ({ data }) => {
   return (
     <p className={style.saberMas}>
       <a href="#" onClick={openModalVideo}>
-        {data?.secciondeapoyo ? data?.secciondeapoyo : 'Saber más'}
+        {data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}
         {modalVideo ? (
           
           <section

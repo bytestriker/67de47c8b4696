@@ -215,7 +215,7 @@ export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle,
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
       <Button text="SIGUIENTE" isCentered={true} onClick={() => handleSubmit()} />
@@ -300,7 +300,7 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <fieldset>
         <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
@@ -524,12 +524,21 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
         >
           GUARDAR
         </button> */}
+
         <Button
-          text="SIGUENTE"
+          text="GUARDAR"
           isCentered={true}
           disabled={buttonNext ? '' : 'disabled'}
           onClick={() => setPage(4)}
           //onClick={() => handleSubmit('SAVE')}
+        />
+
+        <Button
+          text="PASO 2"
+          isCentered={true}
+          disabled={buttonNext ? '' : 'disabled'}
+          onClick={() => handleSubmit('NEXTPAGE')}
+
         />
       </div>
       {modal ? (
