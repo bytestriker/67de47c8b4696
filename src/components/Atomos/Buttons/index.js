@@ -198,7 +198,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   };
 
   return (
-    <div onClick={openModalVideo}>
+    <button onClick={openModalVideo}>
       <img src={img_src} alt={img_alt} onClick={openModalVideo}/>
       Reproducir Video
       {modalVideo && (
@@ -275,7 +275,7 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
           </div>
         </section>
       )}
-    </div>
+    </button>
   );
 };
 
