@@ -1,4 +1,5 @@
-import { useEffect, useState, useHistory } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { FaCamera, FaCheck, FaTimes } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 
