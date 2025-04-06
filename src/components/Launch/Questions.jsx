@@ -10,7 +10,7 @@ import { lunaStore } from '@Store/luna';
 // COMPONENTS
 import { ScrollToTop } from '../UtilsComponents/ScrollTop';
 
-import { SaberMas, WatchLunaVideos } from '@Components/Atomos/Buttons';
+import { SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
@@ -61,7 +61,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
       <figure>
       {
         texts?.video &&
-        <WatchLunaVideos
+        <WatchPlanetVideo
           params={[
             {
               playvideo: video, 
@@ -360,7 +360,7 @@ return (
     <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
     <figure className={lunaStyle.LaunchQuestionVideo}>
       {texts5?.video && (
-          <WatchLunaVideos
+          <WatchPlanetVideo
             params={[
               {
                 playvideo: video, 

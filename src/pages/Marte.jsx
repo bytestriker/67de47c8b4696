@@ -16,7 +16,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ModalMarte, ModalSalirMarte } from '@Components/Atomos/Modals';
 import { ToolTip } from '@Components/Atomos/Tooltips';
-import { SaberMas, ButtonClose } from '@Components/Atomos/Buttons';
+import { SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import {
   ValueProposition,
   KeyActivities,
@@ -204,6 +204,8 @@ const Marte = () => {
 /** MARTE VALOR
  * page 1
  */
+import previewVideoMarte from '@Assets/images/preview-video-marte.png';
+
 export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle, texts }) => {
   const projectValor = useRef(null);
 
@@ -214,16 +216,29 @@ export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle,
   useEffect(() => {
     setTitle(texts.titulo_de_la_vista);
   }, [texts]);
-
+console.log("texts ", texts)
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <SaberMas data={texts} />
+      <figure>
+      {
+        texts?.link_video &&
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: previewVideoMarte, 
+              alt:"play video",
+              url: texts?.link_video,
+            }
+          ]} 
+        />
+      }
+      </figure>
       <Button text="SIGUIENTE" isCentered={true} onClick={() => handleSubmit()} />
-
       <HelperCard />
+      
     </form>
   );
 };
@@ -353,6 +368,7 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
         />
       </div>
       <HelperCard />
+      
     </form>
   );
 };
@@ -775,6 +791,7 @@ export const MarteNegocios = ({
           disabled={getBussinesDesc.length <= 12 ? 'disabled' : ''}
         />
       </div>
+      
       <HelperCard />
 
     </form>

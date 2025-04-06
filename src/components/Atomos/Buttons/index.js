@@ -409,8 +409,9 @@ export const WatchHomeVideo = ({ params }) => {
 };
 
 ////
+import video from '@Assets/images/video.svg';
 
-export const WatchLunaVideos = ({ params }) => {
+export const WatchPlanetVideo = ({ params }) => {
   const [modalVideo, setModalVideo] = useState(false);
   const [videoLoading, setVideoLoading] = useState(true);
 
@@ -438,7 +439,9 @@ export const WatchLunaVideos = ({ params }) => {
   return (
     <>
       <a href="#" onClick={toggleModal}>
+        {params.link_text}
         <img src={playVideoImage} alt="video" />
+
       </a>
       {modalVideo && videoSrc && (
         <section
