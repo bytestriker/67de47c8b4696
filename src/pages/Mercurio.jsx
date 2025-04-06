@@ -99,6 +99,7 @@ const MercurioMain = () => {
       }
     }
   };
+  
 
   return (
     <section className="planetWrap">
@@ -168,7 +169,7 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
   return (
     <div className="questionWrap">
       <form method="POST">
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}>{}</h2>
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}>{}</h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <fieldset>
           <label htmlFor="launchQ1" className="text-right">
@@ -249,7 +250,7 @@ export const MercurioQ2 = ({
   return (
     <div className="questionWrap">
       <form method="POST">
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}>{}</h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
         <fieldset>
@@ -339,10 +340,11 @@ export const MercurioQ3 = ({
     setTitlePage(texts.titulo_de_la_vista);
   }, [texts]);
 
+
   return (
     <div className="questionWrap">
       <form method="POST">
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
         <fieldset>
