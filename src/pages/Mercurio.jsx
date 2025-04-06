@@ -21,6 +21,7 @@ import satelite from '@Assets/images/satelite.png';
 
 // Styles
 import '@Sass/pages/planet.scss';
+import { HelperCard } from '@Components/Atomos/HelperCard';
 
 const MercurioMain = () => {
   const { mercurioGetProjectById } = useEventsMercurio();
@@ -300,6 +301,8 @@ export const MercurioQ2 = ({
           </button> */}
         {/* </div> */}
       </form>
+      <HelperCard />
+
     </div>
   );
 };
@@ -383,6 +386,7 @@ export const MercurioQ3 = ({
           </button> */}
         </div>
       </form>
+      <HelperCard />
     </div>
   );
 };

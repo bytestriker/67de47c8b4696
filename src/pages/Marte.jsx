@@ -37,6 +37,8 @@ import galaxia from '@Assets/images/galaxia.png';
 // Styles
 import style from '@Sass/pages/marte.module.scss';
 import base from '@Sass/pages/general.module.scss';
+import { HelperCard } from '@Components/Atomos/HelperCard';
+
 
 const Marte = () => {
   const { marteGetProjectById, getModelBussines } = useEventsMarte();
@@ -194,6 +196,7 @@ const Marte = () => {
           ) : null}
         </div>
       </div>
+      
     </section>
   );
 };
@@ -219,6 +222,8 @@ export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle,
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
       <Button text="SIGUIENTE" isCentered={true} onClick={() => handleSubmit()} />
+
+      <HelperCard />
     </form>
   );
 };
@@ -347,6 +352,7 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
           disabled={buttonNext ? '' : 'disabled'}
         />
       </div>
+      <HelperCard />
     </form>
   );
 };
@@ -769,6 +775,8 @@ export const MarteNegocios = ({
           disabled={getBussinesDesc.length <= 12 ? 'disabled' : ''}
         />
       </div>
+      <HelperCard />
+
     </form>
   );
 };
