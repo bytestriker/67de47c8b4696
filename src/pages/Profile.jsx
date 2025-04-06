@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useHistory } from 'react';
 import { FaCamera, FaCheck, FaTimes } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 
@@ -32,6 +32,7 @@ import general from '@Sass/pages/general.module.scss';
 import { FaRegTimesCircle, FaInfoCircle } from 'react-icons/fa';
 
 const Profile = () => {
+  const history = useHistory();
   const { setLoading } = useAuth();
   const { user, refetch } = useFetchUser();
   const [isOpen, setIsOpen] = useState(false);
