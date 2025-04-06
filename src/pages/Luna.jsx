@@ -12,6 +12,9 @@ import { lunaStore } from '@Store/luna';
 import { useEventsLuna } from '@Hooks/useEventsLuna';
 import { LunaWPText } from '@Hooks/useFetchWP';
 
+// Components
+import { HelperCard } from '@Components/Atomos/HelperCard';
+
 import astronauta from '@Assets/images/astronauta.png';
 import satelite from '@Assets/images/satelite.png';
 import moretools from '@Assets/images/icon-mas-herramientas.svg';
@@ -188,7 +191,7 @@ const Luna = () => {
           ) : null}
         </div>
       </div>
-      <div className="planetHelper">
+      {/*<div className="planetHelper">
         <span className="planetHelperBorder planetHelperBorderTop"></span>
         <div className="planetHelperContainer">
           <div className="planetHelperTitle">
@@ -206,7 +209,8 @@ const Luna = () => {
           </div>
         </div>
         <span className="planetHelperBorder planetHelperBorderBottom"></span>
-      </div>
+      </div> */}
+      <HelperCard />
       <img src={astronauta} alt="Space Man" className="space-man" />
     </section>
   );

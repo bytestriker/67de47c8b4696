@@ -289,7 +289,7 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValueAwareness={setValueAwareness}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(1)} />
         <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
@@ -344,7 +344,7 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValueConsideration={setValueConsideration}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(2)} />
         <Button text="SUPERIOR" onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'} />
       </div>
@@ -398,7 +398,7 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValuePurchase={setValuePurchase}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(3)} />
         <Button text="SUPERIOR" onClick={() => setPage(5)} disabled={buttonNext ? '' : 'disabled'} />
       </div>
@@ -475,7 +475,7 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
         setValueRetention={setValueRetention}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(4)} />
         <Button text="SUPERIOR" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />
       </div>

@@ -60,7 +60,7 @@ export const Caracteristicas = ({ setPage, setTitle, texts, dataJupiter }) => {
         setValueCaracteristica={setValueCaracteristica}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(1)} />
         <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>

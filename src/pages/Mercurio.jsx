@@ -167,7 +167,7 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
 
   return (
     <div className="questionWrap">
-      <form className="px-lg" method="POST">
+      <form method="POST">
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}>{}</h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <fieldset>
@@ -248,7 +248,7 @@ export const MercurioQ2 = ({
 
   return (
     <div className="questionWrap">
-      <form className="px-lg" method="POST">
+      <form method="POST">
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
@@ -264,7 +264,7 @@ export const MercurioQ2 = ({
             onChange={(e) => handleQ2Mercurio(e)}
           ></textarea>
         </fieldset>
-        <div className="fieldsets">
+        <div className="buttons">
           <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(1)} />
           <Button
             text="SIGUIENTE"
@@ -341,7 +341,7 @@ export const MercurioQ3 = ({
 
   return (
     <div className="questionWrap">
-      <form className="px-lg" method="POST">
+      <form method="POST">
         <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <SaberMas data={texts} />
@@ -358,7 +358,7 @@ export const MercurioQ3 = ({
             onChange={(e) => handleQ3Mercurio(e)}
           ></textarea>
         </fieldset>
-        <div className="fieldsets">
+        <div className="buttons">
           <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(2)} />
           <Button
             text="SIGUIENTE"

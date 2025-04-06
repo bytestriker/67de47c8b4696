@@ -20,6 +20,7 @@ import { serviceUploadImage } from '@Service/entries';
 
 // Images
 import _Visa from '@Assets/images/visa.png';
+import defaultAvatar from '@Assets/images/default-profile-picture.svg';
 
 // Styles
 import '@Sass/pages/planet.scss';
@@ -196,16 +197,14 @@ const Profile = () => {
           */}
           <div className="avatar">
             <figure>
-              
-              <img src={user.imagen} />
-              <label>
-            </label>
-            <input
-                type="file"
-                name="fileInput"
-                id="fileInput"
-                onChange={handleImageChange}
-              />
+              {user.imagen && <img src={user.imagen} />}
+              <input
+                  type="file"
+                  name="fileInput"
+                  id="fileInput"
+                  onChange={handleImageChange}
+                />
+              <label></label>
             </figure>
             <div>
               {check ? (

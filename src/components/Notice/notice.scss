@@ -78,6 +78,9 @@ main.bienvenido {
       h3 {
         margin: 0;
       }
+      p {
+        margin: 0;
+      }
     }
     .planetFigure {
       display: flex;
@@ -88,11 +91,8 @@ main.bienvenido {
       position: relative;
       @include largeDevices {
         margin-bottom: 0.5vw;
-
         width: 100%;
       }
-      
-
       .planetImage {
         position: absolute;
         width: auto;

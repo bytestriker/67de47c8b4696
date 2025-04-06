@@ -250,7 +250,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
           onChange={(e) => setPrototipo(e.target.value)}
         ></textarea>
       </fieldset>
-      <div className="fieldsets">
+      <div className="buttons">
         <Button
           isCentered={true}
           text="SIGUIENTE"
@@ -367,45 +367,33 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <form>
-        {/*        <div className={urano.checkText}>
-          <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
-          <p>Subir después</p>
+      {/*        <div className={urano.checkText}>
+        <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
+        <p>Subir después</p>
+      </div>
+      <br></br> */}
+      <div dangerouslySetInnerHTML={{ __html: texts.descripcion_general_de_las_plataformas_recomendadas }}></div>
+      <fieldset>
+        <div className="inputFileUpload">
+          <input
+            type="file"
+            name="fileInput"
+            id="fileInput"
+            onChange={handleImageDoc}
+          />
         </div>
-        <br></br> */}
-        <p dangerouslySetInnerHTML={{ __html: texts.descripcion_general_de_las_plataformas_recomendadas }} />
-        <fieldset>
-          <div className="customFileUpload">
-            <input
-              type="file"
-              name="fileInput"
-              id="fileInput"
-              onChange={handleImageDoc}
-              className="uranoFileInput"
-            />
-          </div>
-        </fieldset>
-        
-        <div className="fieldsets">
+      </fieldset>
+      <div className="buttons">
         <Button
-            className=""
-            text="REGRESAR"
-            onClick={() => setPage(1)}
-            isAlt
+          text="REGRESAR"
+          onClick={() => setPage(1)}
+          isAlt
           />
-          <Button
-            text="SIGIUIENTE"
-            onClick={() => setPage(3)}
+        <Button
+          text="SIGIUIENTE"
+          onClick={() => setPage(3)}
           />
-          {/*
-          <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(1)}>
-            ANTERIOR
-          </button>
-          <button type="button" className={`${urano.btnPlanet}`} onClick={() => setPage(3)}>
-            SIGUIENTE
-          </button> */}
         </div>
-      </form>
     </div>
   );
 };
@@ -440,15 +428,13 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html: texts.pregunta}} ></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
-      <fieldset className="urano-input-search">
+      <fieldset className="inputSearch">
         <input
           type="search"
           placeholder="Busca alguna categoría"
-          className="urano-search"
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <FaSearch className={urano.icon} />
       </fieldset>
       <div className="grid3Columns">
         {
@@ -464,7 +450,7 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
           : null
         }
       </div>
-      <div className="fieldsets">
+      <div className="buttons">
         {/* 
         <button type="button" className="{`${urano.btnPlanet}`}" onClick={() => setPage(2)}>
           ANTERIOR
@@ -517,7 +503,8 @@ export const Marketing = ({ setTitle, texts, params }) => {
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:market.categoria}}></h2>
-      <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria}}></p>
+      
+      {market.descripcion_de_categoria}
       <div className={urano.cardMarketing}>
         {proveedores.length > 0 ? (
           proveedores.map((items, index) => (
@@ -617,20 +604,20 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
     <form className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts.descargarTxt}}></h2>
-      <p dangerouslySetInnerHTML={{__html:texts.descripcion}}></p>
-      <a href={texts.adjuntar_formato_para_descargar} className={urano.downloadContent}>
-        <p className={urano.descargarTxt}>Descargar formato</p>
-        <img src={download} alt="download" className={urano.downloadIcon} />
+      <div dangerouslySetInnerHTML={{__html:texts.descripcion}}></div>
+      <a href={texts.adjuntar_formato_para_descargar} className="anchorDownload">
+        <span>Descargar formato</span>
       </a>
       <fieldset>
-        <img src={upload} alt="upload" />
-        <input
-          type="file"
-          name="fileInput"
-          id="fileInput"
-          onChange={handleImageDoc}
-          className={urano.fileInput}
-        />
+        <div className="inputFileUpload">
+          <input
+            type="file"
+            name="fileInput"
+            id="fileInput"
+            onChange={handleImageDoc}
+            className={urano.fileInput}
+          />
+        </div>
       </fieldset>
       <div className="fieldsets">
         {/* 

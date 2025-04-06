@@ -60,7 +60,7 @@ export const Significativos = ({ setPage, setTitle, texts, dataJupiter }) => {
         setValueSignificados={setValueSignificados}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(4)} />
         <Button text="SIGUIENTE" isSubmit={true} onClick={() => setPage(6)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>

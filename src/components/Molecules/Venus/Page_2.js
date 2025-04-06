@@ -69,7 +69,7 @@ export const VenusQ1Foda = ({ setPage, setTitle, texts }) => {
           setValueOportunidad={setValueOportunidad}
           setOportunidades={setOportunidades}
         />
-        <div className="fieldsets">
+        <div className="buttons">
           <Button text="ANTERIOR" onClick={() => setPage(1)} />
           <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
         </div>

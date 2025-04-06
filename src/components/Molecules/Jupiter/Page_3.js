@@ -63,7 +63,7 @@ export const Calificativos = ({ setPage, setTitle, texts, dataJupiter }) => {
         setValueAdjetivos={setValueAdjetivos}
         textDisabled={buttonNext}
         />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(2)} />
         <Button text="SIGUIENTE" isSubmit={true} onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>

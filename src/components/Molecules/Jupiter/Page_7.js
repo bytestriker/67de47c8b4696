@@ -317,7 +317,7 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
         </div>
       </fieldset>
       
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(6)} />
         <button
           type="button"

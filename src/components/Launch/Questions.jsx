@@ -206,7 +206,7 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
           onChange={(e) => handleQuestion2(e)}
         ></textarea>
       </fieldset>
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="REGRESAR" isAlt onClick={() => setPageLuna(2)} />
         <Button
           text="SIGUIENTE"
@@ -300,7 +300,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
           onChange={(e) => handleQuestion33(e)}
           ></textarea>
       </fieldset>
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
         {contextValue.isLogged() ? (
           <Button
@@ -378,53 +378,16 @@ return (
       <label htmlFor="promo_code">Código Promocional</label>
       <div
         id="promo-code"
-        style={{
-          margin: '0 auto', // Centers the container horizontally
-          height: '50px',
-          marginTop: '3px',
-          display: 'flex',
-          width: '75%',
-          position: 'relative',
-          alignItems: 'center',
-          justifyContent: 'center', // Centers the child elements
-        }}
-      >
-        <div
-          style={{
-            display: 'flex', // Ensures content aligns inside the div
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '50px',
-            width: '75%',
-            border: '1px solid #E0FF4E',
-            textAlign: 'center',
-            fontSize: '2rem',
-          }}
-        >
-          <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
-        </div>
-        <div
-          style={{
-            display: 'flex', // Ensures content aligns inside the div
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '50px',
-            width: '25%',
-            border: '1px solid yellow',
-            fontSize: '1rem',
-            textAlign: 'center',
-            backgroundColor: '#E0FF4E',
-            color: '#000'
-          }}
-          onClick={()=>handleCopy('R0cketN0w')}
-        >
+        className="fieldsets">
+        <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
+        <a onClick={()=>handleCopy('R0cketN0w')}>
         { 
         !copied ? 
           <img src={boton_copiar} alt="Botón Copiar"/>
         :
           <img src={successIcon} alt="Copiado"/>
         }
-        </div>
+        </a>
       </div>
     </fieldset>
     <Button text="SIGUIENTE" isAlt={false} onClick={()=>{history.push('/signup')}}/>

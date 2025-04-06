@@ -338,10 +338,11 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
         <ToolTip text="Canales" tool={texts.instruccion_5} />
         <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
       </fieldset>
-      <div className="fieldsets">
-        <Button text="ANTERIOR" onClick={() => setPage(1)} />
-        <Button
-          text="SIGUIENTE"
+      <div className="buttons">
+        <Button text="ANTERIOR"
+          isAlt
+          onClick={() => setPage(1)} />
+        <Button text="SIGUIENTE"
           onClick={() => handleSubmit()}
           disabled={buttonNext ? '' : 'disabled'}
         />
@@ -513,8 +514,8 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           setKeyResources={setKeyResources}
         />
       </fieldset>
-      <div className="fieldsets">
-        <Button text="ANTERIOR" isCentered={true} onClick={() => setPage(2)} />
+      <div className="buttons">
+        <Button text="ANTERIOR" isAlt onClick={() => setPage(2)} />
         {/* <button
           type="button"
           className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
@@ -527,7 +528,8 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           text="SIGUENTE"
           isCentered={true}
           disabled={buttonNext ? '' : 'disabled'}
-          onClick={() => handleSubmit('SAVE')}
+          onClick={() => setPage(4)}
+          //onClick={() => handleSubmit('SAVE')}
         />
       </div>
       {modal ? (
@@ -643,18 +645,38 @@ export const MarteNegocios = ({
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <div className={style.infoGalaxiaCruce}>
-        <h5>Cruce entre</h5>
+      <div className="infoMarte">
+        <div>
+          <span>Propuesta de Valor</span>
+        </div>
+        <div>
+          <span>Cruce entre:</span>
+        </div>
+        <div>
+          <span>Fuentes de Ingreso</span>
+        </div>
       </div>
-      <div className={style.infoGalaxia}>
-        <h5>
-          Propuesta de <br></br>Valor
-        </h5>
-        <img src={galaxia} alt="galaxia" />
-        <h5>
-          Fuentes de <br></br>Ingreso
-        </h5>
-      </div>
+      <fieldset>
+        <label htmlFor="">Propuesta de Valor</label>
+        <div className="select">
+          <select name="" id="">
+            <option value="">Opcion 1</option>
+            <option value="">Opcion 2</option>
+            <option value="">Opcion 3</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset>
+        <label htmlFor="">Fuentes de Ingreso</label>
+        <div className="select">
+          <select name="" id="">
+            <option value="">Opcion 1</option>
+            <option value="">Opcion 2</option>
+            <option value="">Opcion 3</option>
+          </select>
+        </div>
+      </fieldset>
+      {/*
       <div className={style.selectContainer}>
         {
           //<ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
@@ -712,26 +734,28 @@ export const MarteNegocios = ({
             </div>
           )}
         </div>
-      </div>
+      </div>*/}
       {
         //<SaberMas data={texts} />
       }
-      <textarea
-        ref={inputBussines}
-        name="negocio"
-        id="negocio"
-        onChange={(e) => setBussinesDesc(e.target.value)}
-        placeholder="Escribe aquí tu modelo de negocio"
-        defaultValue={getBussinesDesc}
-      ></textarea>
-      <div className="fieldsets">
+      <fieldset>
+        <textarea
+          ref={inputBussines}
+          name="negocio"
+          id="negocio"
+          onChange={(e) => setBussinesDesc(e.target.value)}
+          placeholder="Escribe aquí tu modelo de negocio"
+          defaultValue={getBussinesDesc}
+        ></textarea>
+      </fieldset>
+      <div className="buttons">
         <Button
+          isAlt
           text="ANTERIOR"
           onClick={() => setPage(3)}
         />
         <Button
           text="SIGUIENTE"
-          isCentered={true}
           onClick={() => handleSubmit(3)}
           disabled={getBussinesDesc.length <= 12 ? 'disabled' : ''}
         />

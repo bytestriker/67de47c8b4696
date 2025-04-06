@@ -10,8 +10,8 @@ import '@Sass/pages/planets.scss';
 const Home = () => {
   return (
     <>
-      <Video controls/>
       <Element name="bio">
+        <Video controls/>
         <Planets />
       </Element>
       <Footer />

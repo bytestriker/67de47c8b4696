@@ -14,7 +14,7 @@ const Button = (
 
 ) => {
   return (
-    <div className={isCentered ? `${style.centerButton}` : ''}>
+    <div className={isCentered ? `${style.centerButton}` : null}>
       <button className={`${style.buttonPrimary}`} type={type} onClick={onClick} disabled={disabled}>
         {isAlt ? (
           <svg
