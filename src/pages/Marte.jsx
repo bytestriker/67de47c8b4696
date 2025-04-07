@@ -13,6 +13,7 @@ import { MarteWPText } from '@Hooks/useFetchWP';
 
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
+import previewVideoMarte from '@Assets/images/preview-video-marte.png';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ModalMarte, ModalSalirMarte } from '@Components/Atomos/Modals';
 import { ToolTip } from '@Components/Atomos/Tooltips';
@@ -204,7 +205,6 @@ const Marte = () => {
 /** MARTE VALOR
  * page 1
  */
-import previewVideoMarte from '@Assets/images/preview-video-marte.png';
 
 export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle, texts }) => {
   const projectValor = useRef(null);
