@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { shallow } from 'zustand/shallow';
-import { FaSearch } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 
 // Context
@@ -429,7 +428,7 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html: texts.pregunta}} ></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
-      <fieldset className="inputSearch">
+      <fieldset className="inputSearch" id="fieldset-search">
         <input
           type="search"
           placeholder="Busca alguna categoría"
@@ -604,7 +603,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts.descargarTxt}}></h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts.titulo_de_la_vista}}></h2>
       <div dangerouslySetInnerHTML={{__html:texts.descripcion}}></div>
       <a href={texts.adjuntar_formato_para_descargar} className="anchorDownload">
         <span>Descargar formato</span>
