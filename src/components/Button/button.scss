@@ -34,8 +34,9 @@
       }
     }
     &:last-of-type {
-      filter: drop-shadow(0 0 6px #E0FF4E);
+      stroke-width: 2px;
       path {
+        filter: drop-shadow(0 0 4px #E0FF4E);
         stroke: #E0FF4E;
       }
     }
@@ -45,7 +46,26 @@
     position: relative;
   }
   &.buttonPlanetCompleted {
+    svg {
+      &:first-of-type {
 
+        opacity: 0.5;
+      }
+      &:last-of-type {
+        path {
+          filter: drop-shadow(0 0 5px #FB6C2B);
+          stroke: #FB6C2B;
+        }
+      }
+    }
+    &::after {
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNCAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xLjc1IDMuNjY2NjdMMCA1LjVMNS4yNSAxMUwxNCAxLjgzMzMzTDEyLjI1IDBMNS4yNSA3LjMzMzMzTDEuNzUgMy42NjY2N1oiIGZpbGw9IiNFNkY4NUEiLz4KPC9zdmc+');
+      display: block;
+      content: '';
+      width: 14px;
+      height: 12px;
+      position: relative;
+    }
   }
   &:hover {
     svg {

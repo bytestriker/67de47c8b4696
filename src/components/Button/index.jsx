@@ -1,9 +1,9 @@
-import style from '@Components/Button/button.module.scss';
+import '@Components/Button/button.scss';
 
 const Button = ({
-  text = 'Click me',
-  type = 'button',
-  className = '',
+  text = "Click me",
+  type = "button",
+  className = "",
   onClick = () => {},
   isCompleted = false,
   isCentered = false,
@@ -11,9 +11,10 @@ const Button = ({
   isAstronaut = false,
   disabled = false
   }) => {
+    console.log({text})
   return (
-    <div className={isCentered ? `${style.centerButton}` : null}>
-      <button className={`${style.buttonPrimary} ${className}`} type={type} onClick={onClick} disabled={disabled}>
+    <div className={isCentered ? "centerButton" : null}>
+      <button className={className ? className : "buttonPrimary"} type={type} onClick={onClick} disabled={disabled}>
         {isAlt ? (
           <svg
             width="242"
@@ -24,7 +25,6 @@ const Button = ({
           >
             <path
               d="M241 41L219 1H31.8771L21.8629 11.4348H5.17258L1 20.1304L11.0142 41H241Z"
-              fill="#FB6C2B"
             />
           </svg>
         ) : (
@@ -37,7 +37,6 @@ const Button = ({
           >
             <path
               d="M23.5319 41L1 1H210.123L220.137 11.4348H236.827L241 20.1304L230.986 41H23.5319Z"
-              fill="#FB6C2B"
             />
           </svg>
         )}
@@ -51,7 +50,6 @@ const Button = ({
           >
             <path
               d="M241 41L219 1H31.8771L21.8629 11.4348H5.17258L1 20.1304L11.0142 41H241Z"
-              stroke="#E0FF4E"
             />
           </svg>
         ) : (
@@ -64,7 +62,6 @@ const Button = ({
           >
             <path
               d="M23.5319 41L1 1H210.123L220.137 11.4348H236.827L241 20.1304L230.986 41H23.5319Z"
-              stroke="#E0FF4E"
             />
           </svg>
         )}

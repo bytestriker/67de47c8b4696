@@ -75,20 +75,20 @@ export const Mercurio = ({ mercurioInfo }) => {
       {getMercurio().id ? (
         <Button
         text={dataMercurio.label}
-          className={`${
+          className={`buttonPrimary ${
             dataMercurio.complete === 1
               ? 'buttonPlanetCompleted'
               : dataMercurio.complete === 2
               ? 'buttonPlanetIncomplete'
               : dataMercurio.complete === 0
-              ? 'buttonPlanet'
-              : 'buttonPlanet'
+              ? ''
+              : ''
           }`}
           
           onClick={() => validateProject('mercurio', 1)}
         />
       ) : (
-        <img src={empieza} alt="empieza" onClick={() => validateProject('mercurio', 1)} />
+        <Button text="EMPIEZA AQUÍ" onClick={() => validateProject('mercurio', 1)} />
       )}
     </div>
   );
