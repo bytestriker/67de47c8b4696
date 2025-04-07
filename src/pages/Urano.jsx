@@ -85,7 +85,6 @@ const Urano = () => {
     }
   }, [uranoQ2Categorias]);
 
-  console.log('urano texts ', texts);
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -109,8 +108,8 @@ const Urano = () => {
           ) : (
             <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
           )} */}
-          {page === 1 ? <Logo setPage={setPage} setTitle={setTitle} texts={texts} /> : null}
-          {page === 2 ? (
+          {page === 1 && <Logo setPage={setPage} setTitle={setTitle} texts={texts} />}
+          {page === 2 && (
             <Prototipo
               setPage={setPage}
               setTitle={setTitle}
@@ -118,17 +117,17 @@ const Urano = () => {
               categorias={categoriasQ2}
               setParams={setParams}
             />
-          ) : null}
-          {page === 3 ? <Marketing setTitle={setTitle} texts={texts2} params={params} /> : null}
-          {page === 4 ? (
+          )}
+          {page === 3 && <Marketing setTitle={setTitle} texts={texts2} params={params} />}
+          {page === 4 && (
             <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
-          ) : null}
+          )}
         </div>
       </div>
 
-      {modalSalir ? <ModalMain setModalSalir={setModalSalir} /> : null}
+      {modalSalir && <ModalMain setModalSalir={setModalSalir} />}
 
-      {modal ? (
+      {modal && (
         <ModalUrano
           title="¡FELICIDADES!"
           message={`Haz completado <strong>Urano</strong> de tu proyecto <strong>${
@@ -139,7 +138,7 @@ const Urano = () => {
           setModal={setModal}
           page={4}
         />
-      ) : null}
+      )}
     </section>
   );
 };
@@ -463,7 +462,7 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
           SIGUIENTE
         </button> 
         */}
-        <Button text="REGRESAR" onClick={() => setPage(2)} isAlt />
+        <Button text="REGRESAR" onClick={() => setPage(1)} isAlt />
         <Button text="SIGUIENTE" onClick={() => setPage(4)} />
       </div>
 
@@ -494,13 +493,13 @@ export const Marketing = ({ setTitle, texts, params }) => {
       setProveedores(params.proveedores);
     }
   }, [params]);
-  console.log('urano market texts: ', market);
+
   return (
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: market.categoria }}></h2>
 
-      {market.descripcion_de_categoria}
+      <p dangerouslySetInnerHTML={{__html: market.descripcion_de_categoria }}></p>
       <div className={urano.cardMarketing}>
         {proveedores.length > 0 ? (
           proveedores.map((items, index) => (
@@ -594,15 +593,20 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
       history.push('/');
     }
   };
+  console.log("PL texts ", texts)
 
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
-      <div dangerouslySetInnerHTML={{ __html: texts.descripcion }}></div>
+      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+
+      <SaberMas data={texts} />
+
+      {/* 
       <a href={texts.adjuntar_formato_para_descargar} className="anchorDownload">
         <span>Descargar formato</span>
-      </a>
+      </a> */}
       <fieldset>
         <div className="customFileUpload">
           <input
