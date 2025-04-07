@@ -22,7 +22,7 @@
   font-size: 3.2vw;
   @include largeDevices {
     background-size: cover;
-    height: 90vw;
+    height: 65vw;
     font-size: 18px;
   }
   .rocketImage {
@@ -275,7 +275,7 @@
   width: 55%;
   @include largeDevices {
     position: absolute;
-    top: 50%;
+    top: 20%;
     width: 36%;
   }
 }
