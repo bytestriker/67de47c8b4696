@@ -152,6 +152,8 @@ const MercurioMain = () => {
         ) : null}
         {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
       </div>
+      {page === 2 && <HelperCard/>}
+      {page === 3 && <HelperCard/>}
     </section>
   );
 };
@@ -301,8 +303,6 @@ export const MercurioQ2 = ({
           </button> */}
         {/* </div> */}
       </form>
-      <HelperCard />
-
     </div>
   );
 };
