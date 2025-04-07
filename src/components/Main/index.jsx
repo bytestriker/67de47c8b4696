@@ -47,7 +47,9 @@ import style from '@Sass/pages/general.module.scss';
 const Main = () => {
   const { contextValue, getLoading } = useAuth();
   const location = useLocation();
-  const currentPathName = location.pathname.toLowerCase().split('/').pop();
+  const currentPathName = location.pathname !== '/' ? location.pathname.toLowerCase().split('/').pop() : "home";
+
+  console.log({ location });
   // Store global
   const { warningData, setAlert } = globalStore(
     (state) => ({

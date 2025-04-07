@@ -1,6 +1,12 @@
 @import "@Sass/variables";
 @import "@Sass/fonts";
 
+main.home {
+  background-image: url("../../assets/images/bg-earth.jpg"), url('../../assets/images/bg-stars.png');
+  background-position: top, center;
+  background-repeat: no-repeat, repeat-y;
+}
+
 .vista-mobile {
   display: block;
 }
@@ -9,10 +15,6 @@
 }
 
 .heroSection {
-  background-image: url("../../assets/images/bg-earth.jpg");
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: 220%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,7 +24,7 @@
   font-size: 3.2vw;
   @include largeDevices {
     background-size: cover;
-    height: 65vw;
+    height: 60vw;
     font-size: 18px;
   }
   .rocketImage {
@@ -275,7 +277,11 @@
   width: 55%;
   @include largeDevices {
     position: absolute;
+<<<<<<< Updated upstream
     top: 40%;
+=======
+    top: 35vw;
+>>>>>>> Stashed changes
     width: 36%;
   }
 }
