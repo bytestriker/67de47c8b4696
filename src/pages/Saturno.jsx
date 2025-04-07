@@ -115,7 +115,9 @@ const Saturno = () => {
       setTexts4(saturnoQ4);
     }
   }, [saturnoQ4]);
-
+  console.log("texts ", texts)
+  console.log("texts2 ", texts2)
+  console.log("texts3 ", texts3)
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -241,7 +243,7 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista && ' Placeholder Awareness' }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || ' Placeholder Awareness' }}></h2>
       {/* <SaberMas data={texts} /> */}
       <figure>
       {
@@ -302,7 +304,7 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista && ' Placeholder Awareness' }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Placeholder Awareness' }}></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts.icono : megaphone} alt="megaphone" />
         <p dangerouslySetInnerHTML={{__html:texts.descripcion_1}}></p>
@@ -313,8 +315,8 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValueAwareness={setValueAwareness}
         textDisabled={buttonNext}
       />
-      <div className="buttons">
-        <Button text="ANTERIOR" onClick={() => setPage(1)} />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(1)} />
         <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
     </form>
@@ -358,7 +360,7 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.subtitulo || 'Consideration Heading Placeholder'}}></h2>
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Consideration Heading Placeholder'}}></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : idea} alt="idea" /> 
         <p dangerouslySetInnerHTML={{__html: texts.descripcion_1 || 'Text content placeholder for saturno considerations'}}></p>
@@ -371,9 +373,9 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValueConsideration={setValueConsideration}
         textDisabled={buttonNext}
       />
-      <div className="buttons">
-        <Button text="ANTERIOR" onClick={() => setPage(2)} />
-        <Button text="SUPERIOR" onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'} />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(2)} />
+        <Button text="SIGUIENTE" onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'} />
       </div>
     </form>
   );
@@ -415,7 +417,7 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.subtitulo || 'Purchase Heading Placeholder'}}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Purchase Heading Placeholder'}}></h2>
 
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : buy} alt="buy" />
@@ -427,8 +429,8 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValuePurchase={setValuePurchase}
         textDisabled={buttonNext}
       />
-      <div className="buttons">
-        <Button text="ANTERIOR" onClick={() => setPage(3)} />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(3)} />
         <Button text="SUPERIOR" onClick={() => setPage(5)} disabled={buttonNext ? '' : 'disabled'} />
       </div>
     </form>
@@ -494,7 +496,7 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.subtitulo || 'Retention Heading Placeholder'}}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Retention Heading Placeholder'}}></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : magnet} alt="magnet" />
         <p>{texts.descripcion_1}</p>
@@ -505,8 +507,8 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
         setValueRetention={setValueRetention}
         textDisabled={buttonNext}
       />
-      <div className="buttons">
-        <Button text="ANTERIOR" onClick={() => setPage(4)} />
+      <div className="fieldsets">
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(4)} />
         <Button text="SIGUIENTE" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />
       </div>
     </form>

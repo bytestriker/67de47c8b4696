@@ -16,6 +16,7 @@ import { lunaStore } from '@Store/luna';
 // Hooks
 import { useEventsMercurio } from '@Hooks/useEventsMercurio';
 import { MercurioWPText } from '@Hooks/useFetchWP';
+import playvideo from '@Assets/images/playvideo.svg';
 
 import satelite from '@Assets/images/satelite.png';
 
@@ -100,6 +101,10 @@ const MercurioMain = () => {
       }
     }
   };
+
+  console.log("texts ", texts)
+  console.log("texts2 ", texts2)
+  console.log("texts3 ", texts3)
 
   return (
     <section className="planetWrap">
@@ -253,7 +258,10 @@ export const MercurioQ2 = ({
 
   return (
     <form method="POST" className="questionWrap">
+        {/* <QuestionH4 questiontext={texts.pregunta} /> */}
+
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
+      <h4 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h4>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       {/* <SaberMas data={texts} /> */}
       <figure>
@@ -359,7 +367,8 @@ export const MercurioQ3 = ({
   return (
     <div className="questionWrap">
       <form method="POST">
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
+      <h4 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h4>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
         <figure>
         {texts?.link_video && (

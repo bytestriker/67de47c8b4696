@@ -56,7 +56,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}>{}</h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
       <figure>
       {
@@ -89,8 +89,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
         />
       </fieldset>
       <div className="fieldsets">
-        
-      <Button text="SIGUIENTE" isCentered isSubmit={true} onClick={() => handleNextPage(2)} />
+        <Button text="SIGUIENTE" isCentered={true} onClick={() => handleNextPage(2)} />
       </div>
     </div>
   );
@@ -144,7 +143,7 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
             onChange={(e) => handleQuestion1(e)}
           ></textarea>
         </fieldset>
-        <div className={general.flexButtons}>
+        <div className="buttons">
           <Button
             className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
             text="REGRESAR"

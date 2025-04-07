@@ -46,11 +46,17 @@ const Index = () => {
 
   
   const scrollingToanimate = () => {
-    scroller.scrollTo('bio', {
-      duration: 800,
-      delay: 100,
-      smooth: 'easeIn',
-    });
+
+    // scroller.scrollTo('bio', {
+    //   duration: 800,
+    //   delay: 100,
+    //   smooth: 'easeIn',
+    // });
+    console.log(" Scroll click here? !")
+    const el = document.getElementById('launch-moon');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const previewVideo = (params) => {

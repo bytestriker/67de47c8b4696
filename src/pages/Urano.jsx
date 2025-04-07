@@ -84,7 +84,9 @@ const Urano = () => {
       setCategoriasQ2(uranoQ2Categorias);
     }
   }, [uranoQ2Categorias]);
-
+  console.log("texts ", texts);
+  console.log("texts2 ", texts2);
+  console.log("texts3 ", texts3);
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -109,6 +111,7 @@ const Urano = () => {
             <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
           )} */}
           {page === 1 && <Logo setPage={setPage} setTitle={setTitle} texts={texts} />}
+          {/* Aquí debe mandar a llamar a Pretotipo */}
           {page === 2 && (
             <Prototipo
               setPage={setPage}
@@ -376,10 +379,13 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
       console.error('No se ha seleccionado ninguna imagen.');
     }
   };
-
+  
   return (
     <div className="questionWrap">
       <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+
       {/*        <div className={urano.checkText}>
         <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
         <p>Subir después</p>
@@ -517,8 +523,8 @@ export const Marketing = ({ setTitle, texts, params }) => {
 
       <p dangerouslySetInnerHTML={{__html: market.descripcion_de_categoria }}></p>
       <div className={urano.cardMarketing}>
-        {proveedores.length > 0 ? (
-          proveedores.map((items, index) => (
+        {proveedores?.length > 0 ? (
+          proveedores?.map((items, index) => (
             <MarketingCard
               key={index}
               company={items.nombre}
