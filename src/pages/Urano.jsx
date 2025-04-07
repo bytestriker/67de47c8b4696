@@ -390,9 +390,25 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
           __html: texts.descripcion_general_de_las_plataformas_recomendadas,
         }}
       ></div>
+
+      {/* 
+      
       <fieldset>
-        <div className="inputFileUpload">
-          <input type="file" name="fileInput" id="fileInput" onChange={handleImageDoc} />
+        <div className="customFileUpload">
+          <input
+            type="file"
+            name="fileInput"
+            id="fileInput"
+            onChange={handleImageDoc}
+            className="uranoFileInput"
+          />
+        </div>
+      </fieldset>
+
+*/}
+      <fieldset>
+        <div className="customFileUpload">
+          <input type="file" name="fileInput" id="fileInput" onChange={handleImageDoc} className="uranoFileInput"/>
         </div>
       </fieldset>
       <div className="buttons">
