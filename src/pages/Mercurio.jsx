@@ -362,7 +362,20 @@ export const MercurioQ3 = ({
       <form method="POST">
         <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-        <SaberMas data={texts} />
+        <figure>
+        {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                playvideo: playvideo,
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
+      </figure>
+
         <fieldset>
           <label className="text-right">3/3</label>
           <textarea
@@ -399,7 +412,7 @@ export const MercurioQ3 = ({
           </button> */}
         </div>
       </form>
-      <HelperCard />
+
     </div>
   );
 };

@@ -40,7 +40,6 @@ import style from '@Sass/pages/marte.module.scss';
 import base from '@Sass/pages/general.module.scss';
 import { HelperCard } from '@Components/Atomos/HelperCard';
 
-
 const Marte = () => {
   const { marteGetProjectById, getModelBussines } = useEventsMarte();
   const { marteQ1, marteQ2, marteQ3 } = MarteWPText();
@@ -182,7 +181,7 @@ const Marte = () => {
               texts={texts2}
             />
           ) : null}
-          {page === 4 ? (
+          {page === 4 && (
             <MarteNegocios
               setPage={setPage}
               setModal={setModal}
@@ -194,10 +193,13 @@ const Marte = () => {
               getLuna={getLuna}
               texts={texts3}
             />
-          ) : null}
+          ) }
         </div>
       </div>
-      
+
+      {page === 1 && <HelperCard />}
+      {page === 2 && <HelperCard />}
+      {page === 4 && <HelperCard />}
     </section>
   );
 };
@@ -216,29 +218,26 @@ export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle,
   useEffect(() => {
     setTitle(texts.titulo_de_la_vista);
   }, [texts]);
-console.log("texts ", texts)
+  console.log('texts ', texts);
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <figure>
-      {
-        texts?.link_video &&
-        <WatchPlanetVideo
-          params={[
-            {
-              playvideo: previewVideoMarte, 
-              alt:"play video",
-              url: texts?.link_video,
-            }
-          ]} 
-        />
-      }
+        {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                playvideo: previewVideoMarte,
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
       </figure>
       <Button text="SIGUIENTE" isCentered={true} onClick={() => handleSubmit()} />
-      <HelperCard />
-      
     </form>
   );
 };
@@ -359,16 +358,13 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
         <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR"
-          isAlt
-          onClick={() => setPage(1)} />
-        <Button text="SIGUIENTE"
+        <Button text="ANTERIOR" isAlt onClick={() => setPage(1)} />
+        <Button
+          text="SIGUIENTE"
           onClick={() => handleSubmit()}
           disabled={buttonNext ? '' : 'disabled'}
         />
       </div>
-      <HelperCard />
-      
     </form>
   );
 };
@@ -560,7 +556,6 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           isCentered={true}
           disabled={buttonNext ? '' : 'disabled'}
           onClick={() => handleSubmit('NEXTPAGE')}
-
         />
       </div>
       {modal ? (
@@ -674,7 +669,7 @@ export const MarteNegocios = ({
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <div className="infoMarte">
         <div>
@@ -690,20 +685,33 @@ export const MarteNegocios = ({
       <fieldset>
         <label htmlFor="">Propuesta de Valor</label>
         <div className="select">
-          <select name="" id="">
-            <option value="">Opcion 1</option>
-            <option value="">Opcion 2</option>
-            <option value="">Opcion 3</option>
+          <select name="" id="" onClick={() => handlePropositionClick()}>
+          {dataMarte?.value_proposition.map((option, index) => (
+                  <option
+                    key={index}
+                    className={style.option}
+                    
+                  >
+                    {option}
+                  </option>
+                ))}
+
           </select>
         </div>
       </fieldset>
       <fieldset>
         <label htmlFor="">Fuentes de Ingreso</label>
         <div className="select">
-          <select name="" id="">
-            <option value="">Opcion 1</option>
-            <option value="">Opcion 2</option>
-            <option value="">Opcion 3</option>
+          <select name="" id="" onChange={()=>handleRevenueClick()}>
+          {dataMarte?.revenue_streams.map((option, index) => (
+                  <option
+                    key={index}
+                    className={style.option}
+                    
+                  >
+                    {option}
+                  </option>
+                ))}
           </select>
         </div>
       </fieldset>
@@ -780,20 +788,13 @@ export const MarteNegocios = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button
-          isAlt
-          text="ANTERIOR"
-          onClick={() => setPage(3)}
-        />
+        <Button isAlt text="ANTERIOR" onClick={() => setPage(3)} />
         <Button
           text="SIGUIENTE"
-          onClick={() => handleSubmit(3)}
+          onClick={() => handleSubmit()}
           disabled={getBussinesDesc.length <= 12 ? 'disabled' : ''}
         />
       </div>
-      
-      <HelperCard />
-
     </form>
   );
 };
