@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { shallow } from 'zustand/shallow';
 
+import { useHistory } from 'react-router-dom';
 // Store
 import { saturnoStore } from '@Store/saturno';
 import { lunaStore } from '@Store/luna';
 
+import video from '@Assets/images/video.svg';
 // Hook
 import { useEventSaturno } from '@Hooks/useEventSaturno';
 import { SaturnoWPText } from '@Hooks/useFetchWP';
@@ -13,7 +15,7 @@ import { SaturnoWPText } from '@Hooks/useFetchWP';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ModalSalirSaturno, ModalSaturno } from '@Components/Atomos/Modals';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
-import { ButtonClose, SaberMas } from '@Components/Atomos/Buttons';
+import { ButtonClose, SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import {
   ValueAwareness,
   ValueConsideration,
@@ -35,6 +37,7 @@ import buy from '@Assets/images/buy.png';
 import magnet from '@Assets/images/magnet.png';
 
 const Saturno = () => {
+  const history = useHistory();
   const { dataSaturno } = saturnoStore(
     (state) => ({
       dataSaturno: state.dataSaturno,
@@ -125,39 +128,43 @@ const Saturno = () => {
       <div className="planetContainer">
         {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
         <div className="planetContent">
-          {page === 1 ? (
+          {page === 1 && (
             <Awareness
               setPage={setPage}
               dataSaturno={dataSaturno}
               texts={texts}
               setTitle={setTitle}
             />
-          ) : null}
-          {page === 2 ? (
+          )
+          }
+          {page === 2 && (
             <Awarenesss
               setPage={setPage}
               dataSaturno={dataSaturno}
               texts={texts}
               setTitle={setTitle}
             />
-          ) : null}
-          {page === 3 ? (
+          )
+          }
+          {page === 3 && (
             <Consideration
               setPage={setPage}
               dataSaturno={dataSaturno}
               texts={texts2}
               setTitle={setTitle}
             />
-          ) : null}
-          {page === 4 ? (
+          )
+          }
+          {page === 4 && (
             <Purchase
               setPage={setPage}
               dataSaturno={dataSaturno}
               texts={texts3}
               setTitle={setTitle}
             />
-          ) : null}
-          {page === 5 ? (
+          )
+          }
+          {page === 5 && (
             <Retention
               setPage={setPage}
               setModal={setModal}
@@ -165,10 +172,11 @@ const Saturno = () => {
               texts={texts4}
               setTitle={setTitle}
             />
-          ) : null}
+          )
+          }
         </div>
       </div>
-      {modalSalir ? (
+      {modalSalir && (
         <ModalSalirSaturno
           title="Estás a punto de salir"
           message="¿Deseas guardar tu información?"
@@ -177,9 +185,9 @@ const Saturno = () => {
           proyect={getLuna().id}
           page={page}
         />
-      ) : null}
+      )  }
 
-      {modal ? (
+      {modal && (
         <ModalSaturno
           title="¡FELICIDADES!"
           message={`Haz completado <strong> Saturno</strong> de tu proyecto <strong>${
@@ -190,7 +198,7 @@ const Saturno = () => {
           setModal={setModal}
           page={5}
         />
-      ) : null}
+      )  }
     </section>
   );
 };
@@ -229,13 +237,28 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
       setButtonNext(false);
     }
   };
-
+  
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista && ' Placeholder Awareness' }}></h2>
+      {/* <SaberMas data={texts} /> */}
+      <figure>
+      {
+        texts?.link_video &&
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: video, 
+              alt:"play video",
+              url: texts?.link_video,
+              // You can add additional video params here if needed
+            }
+          ]} 
+        />
+      }
+      </figure>      
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <SaberMas data={texts} />
       <Button text="SIGUIENTE" isCentered onClick={() => setPage(2)} />
     </div>
   );
@@ -279,9 +302,10 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista && ' Placeholder Awareness' }}></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts.icono : megaphone} alt="megaphone" />
-        <p>{texts.descripcion_1}</p>
+        <p dangerouslySetInnerHTML={{__html:texts.descripcion_1}}></p>
       </div>
       <ValueAwareness
         dataSaturno={dataSaturno}
@@ -334,9 +358,12 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.subtitulo || 'Consideration Heading Placeholder'}}></h2>
       <div className="gridIconText">
-        <img src={texts?.icono ? texts?.icono : idea} alt="idea" />
-        <p>{texts.descripcion_1}</p>
+        <img src={texts?.icono ? texts?.icono : idea} alt="idea" /> 
+        <p dangerouslySetInnerHTML={{__html: texts.descripcion_1 || 'Text content placeholder for saturno considerations'}}></p>
+        {/* 
+        */}
       </div>
       <ValueConsideration
         dataSaturno={dataSaturno}
@@ -388,6 +415,8 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.subtitulo || 'Purchase Heading Placeholder'}}></h2>
+
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : buy} alt="buy" />
         <p>{texts.descripcion_1}</p>
@@ -465,6 +494,7 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.subtitulo || 'Retention Heading Placeholder'}}></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : magnet} alt="magnet" />
         <p>{texts.descripcion_1}</p>
@@ -477,7 +507,7 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
       />
       <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(4)} />
-        <Button text="SUPERIOR" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />
+        <Button text="SIGUIENTE" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />
       </div>
     </form>
   );

@@ -606,7 +606,9 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
       {/* 
       <a href={texts.adjuntar_formato_para_descargar} className="anchorDownload">
         <span>Descargar formato</span>
-      </a> */}
+      </a> 
+      */}
+
       <fieldset>
         <div className="customFileUpload">
           <input
