@@ -81,16 +81,16 @@ export const Saturno = ({ saturnoInfo }) => {
       </div>
       {getSaturno().id ? (
         <Button
-          className={`${
-            dataSaturno.complete === 1
-              ? buttons.buttonPlanetCompleted
-              : dataSaturno.complete === 2
-              ? buttons.buttonPlanetIncomplete
-              : dataSaturno.complete === 0
-              ? buttons.buttonPlanet
-              : buttons.buttonPlanet
-          }`}
-          onClick={() => validateProject('saturno', 1)}
+        className={`buttonPrimary ${
+          dataSaturno.complete === 1
+            ? 'buttonPlanetCompleted'
+            : dataSaturno.complete === 2
+            ? 'buttonPlanetIncomplete'
+            : dataSaturno.complete === 0
+            ? ''
+            : ''
+        }`}
+        onClick={() => validateProject('saturno', 1)}
           text={dataSaturno.label}
         />
       ) : (

@@ -83,14 +83,14 @@ export const Venus = ({ venusInfo }) => {
       {getVenus().id ? (
         <Button
           text={dataVenus.label}
-          className={`${
+          className={`buttonPrimary ${
             dataVenus.complete === 1
-              ? buttons.buttonPlanetCompleted
+              ? 'buttonPlanetCompleted'
               : dataVenus.complete === 2
-              ? buttons.buttonPlanetIncomplete
+              ? 'buttonPlanetIncomplete'
               : dataVenus.complete === 0
-              ? buttons.buttonPlanet
-              : buttons.buttonPlanet
+              ? ''
+              : ''
           }`}
           onClick={() => validateProject('venus', 1)}
         />

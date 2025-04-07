@@ -87,16 +87,16 @@ export const Marte = ({ marteInfo }) => {
 
       {getMarte().id ? (
         <Button
-          className={`${
-            dataMarte.complete === 1
-              ? buttons.buttonPlanetCompleted
-              : dataMarte.complete === 2
-              ? buttons.buttonPlanetIncomplete
-              : dataMarte.complete === 0
-              ? buttons.buttonPlanet
-              : buttons.buttonPlanet
-          }`}
-          onClick={() => validateProject('marte', 1)}
+        className={`buttonPrimary ${
+          dataMarte.complete === 1
+            ? 'buttonPlanetCompleted'
+            : dataMarte.complete === 2
+            ? 'buttonPlanetIncomplete'
+            : dataMarte.complete === 0
+            ? ''
+            : ''
+        }`}
+        onClick={() => validateProject('marte', 1)}
           text={dataMarte.label}
         
         />

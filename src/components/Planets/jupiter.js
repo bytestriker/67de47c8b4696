@@ -78,16 +78,16 @@ export const Jupiter = ({ jupiterInfo }) => {
 
       {getJupiter().id ? (
         <Button
-          className={`${
-            dataJupiter.complete === 1
-              ? buttons.buttonPlanetCompleted
-              : dataJupiter.complete === 2
-              ? buttons.buttonPlanetIncomplete
-              : dataJupiter.complete === 0
-              ? buttons.buttonPlanet
-              : buttons.buttonPlanet
-          }`}
-          onClick={() => validateProject('jupiter', 1)}
+        className={`buttonPrimary ${
+          dataJupiter.complete === 1
+            ? 'buttonPlanetCompleted'
+            : dataJupiter.complete === 2
+            ? 'buttonPlanetIncomplete'
+            : dataJupiter.complete === 0
+            ? ''
+            : ''
+        }`}
+        onClick={() => validateProject('jupiter', 1)}
           text={dataJupiter.label}        
         />
       ) : (

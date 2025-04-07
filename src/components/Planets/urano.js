@@ -78,16 +78,16 @@ export const Urano = ({ uranoInfo }) => {
       </div>
       {getUrano().id ? (
         <Button
-          className={`${
-            dataUrano.complete === 1
-              ? buttons.buttonPlanetCompleted
-              : dataUrano.complete === 2
-              ? buttons.buttonPlanetIncomplete
-              : dataUrano.complete === 0
-              ? buttons.buttonPlanet
-              : buttons.buttonPlanet
-          }`}
-          onClick={() => validateProject('urano', 3)}
+        className={`buttonPrimary ${
+          dataUrano.complete === 1
+            ? 'buttonPlanetCompleted'
+            : dataUrano.complete === 2
+            ? 'buttonPlanetIncomplete'
+            : dataUrano.complete === 0
+            ? ''
+            : ''
+        }`}
+        onClick={() => validateProject('urano', 3)}
           text={dataUrano.label}
         />
       ) : (
