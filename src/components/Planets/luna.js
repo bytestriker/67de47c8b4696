@@ -78,7 +78,8 @@ export const Luna = ({ lunaInfo }) => {
         <p>{description}</p>
         <div className="planetButton_content">
           {getLuna().id ? (
-            <button
+            <Button
+            text={dataLuna?.label}
               className={`${
                 dataLuna?.complete === 1
                   ? buttons.buttonPlanetCompleted
@@ -89,9 +90,7 @@ export const Luna = ({ lunaInfo }) => {
                   : buttons.buttonPlanet
               }`}
               onClick={() => history.push({ pathname: '/launch', from: location })}
-            >
-              {dataLuna?.label}
-            </button>
+            />
           ) : (
             <Button
               text="EMPIEZA AQUI"

@@ -88,7 +88,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
           onChange={(e) => handleNameProject(e)}
         />
       </fieldset>
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="SIGUIENTE" isCentered={true} onClick={() => handleNextPage(2)} />
       </div>
     </div>

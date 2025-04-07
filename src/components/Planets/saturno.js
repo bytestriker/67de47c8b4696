@@ -19,6 +19,7 @@ import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 import saturno from '@Assets/images/planets/saturno.svg';
+import Button from '@Components/Button';
 
 export const Saturno = ({ saturnoInfo }) => {
   const [skills, setSkills] = useState([
@@ -79,7 +80,7 @@ export const Saturno = ({ saturnoInfo }) => {
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
       {getSaturno().id ? (
-        <button
+        <Button
           className={`${
             dataSaturno.complete === 1
               ? buttons.buttonPlanetCompleted
@@ -90,9 +91,8 @@ export const Saturno = ({ saturnoInfo }) => {
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('saturno', 1)}
-        >
-          {dataSaturno.label}
-        </button>
+          text={dataSaturno.label}
+        />
       ) : (
         <img src={empieza} alt="empieza" onClick={() => validateProject('saturno', 1)}/>
       )}

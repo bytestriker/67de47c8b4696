@@ -19,6 +19,7 @@ import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 import jupiter from '@Assets/images/planets/jupiter.svg';
+import Button from '@Components/Button';
 
 export const Jupiter = ({ jupiterInfo }) => {
   const [skills, setSkills] = useState([
@@ -76,7 +77,7 @@ export const Jupiter = ({ jupiterInfo }) => {
       </div>
 
       {getJupiter().id ? (
-        <button
+        <Button
           className={`${
             dataJupiter.complete === 1
               ? buttons.buttonPlanetCompleted
@@ -87,9 +88,8 @@ export const Jupiter = ({ jupiterInfo }) => {
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('jupiter', 1)}
-        >
-          {dataJupiter.label}
-        </button>
+          text={dataJupiter.label}        
+        />
       ) : (
         <img src={empieza} alt="empieza" onClick={() => validateProject('jupiter', 1)}/>
       )}

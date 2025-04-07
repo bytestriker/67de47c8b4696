@@ -20,6 +20,10 @@ import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 
+// Components
+import Button from '@Components/Button';
+
+
 export const Venus = ({ venusInfo }) => {
   const [skills, setSkills] = useState([
     {
@@ -77,7 +81,8 @@ export const Venus = ({ venusInfo }) => {
       </div>
 
       {getVenus().id ? (
-        <button
+        <Button
+          text={dataVenus.label}
           className={`${
             dataVenus.complete === 1
               ? buttons.buttonPlanetCompleted
@@ -88,9 +93,7 @@ export const Venus = ({ venusInfo }) => {
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('venus', 1)}
-        >
-          {dataVenus.label}
-        </button>
+        />
       ) : (
         <img src={empieza} alt="empieza" onClick={() => validateProject('venus', 1)}/>
       )}

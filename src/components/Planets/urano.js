@@ -17,6 +17,7 @@ import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 import urano from '@Assets/images/planets/urano.png';
+import Button from '@Components/Button';
 
 export const Urano = ({ uranoInfo }) => {
   const history = useHistory();
@@ -76,7 +77,7 @@ export const Urano = ({ uranoInfo }) => {
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
       {getUrano().id ? (
-        <button
+        <Button
           className={`${
             dataUrano.complete === 1
               ? buttons.buttonPlanetCompleted
@@ -87,9 +88,8 @@ export const Urano = ({ uranoInfo }) => {
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('urano', 3)}
-        >
-          {dataUrano.label}
-        </button>
+          text={dataUrano.label}
+        />
       ) : (
         <img src={empieza} alt="empieza" onClick={() => validateProject('urano', 3)}/>
       )}

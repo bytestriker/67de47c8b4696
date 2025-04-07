@@ -20,6 +20,10 @@ import _rayo from '@Assets/images/rayo.svg';
 import empieza from '@Assets/images/planets/empieza.svg';
 import marte from '@Assets/images/planets/marte.svg';
 
+// Components
+import Button from '@Components/Button';
+
+
 export const Marte = ({ marteInfo }) => {
   const [skills, setSkills] = useState([
     {
@@ -82,7 +86,7 @@ export const Marte = ({ marteInfo }) => {
       </div>
 
       {getMarte().id ? (
-        <button
+        <Button
           className={`${
             dataMarte.complete === 1
               ? buttons.buttonPlanetCompleted
@@ -93,9 +97,9 @@ export const Marte = ({ marteInfo }) => {
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('marte', 1)}
-        >
-          {dataMarte.label}
-        </button>
+          text={dataMarte.label}
+        
+        />
       ) : (
         <img src={empieza} alt="empieza" onClick={() => validateProject('marte', 1)}/>
       )}

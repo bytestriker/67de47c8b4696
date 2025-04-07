@@ -15,6 +15,9 @@ import tierra from '@Assets/images/planets/tierra.svg';
 import { valPackage } from '@Hooks/useValidatePlanet';
 
 import { ComingSoon } from '@Components/Notice/Notice';
+import Button from '@Components/Button';
+
+
 export const Tierra = ({ tierraInfo }) => {
   const [skills, setSkills] = useState([
     {

@@ -18,6 +18,7 @@ import empieza from '@Assets/images/planets/empieza.svg';
 
 // Styles
 import buttons from '@Sass/components/buttons.module.scss';
+import Button from '@Components/Button';
 
 export const Mercurio = ({ mercurioInfo }) => {
   const [skills, setSkills] = useState([
@@ -72,7 +73,8 @@ export const Mercurio = ({ mercurioInfo }) => {
         <p dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
       {getMercurio().id ? (
-        <button
+        <Button
+        text={dataMercurio.label}
           className={`${
             dataMercurio.complete === 1
               ? buttons.buttonPlanetCompleted
@@ -83,9 +85,7 @@ export const Mercurio = ({ mercurioInfo }) => {
               : buttons.buttonPlanet
           }`}
           onClick={() => validateProject('mercurio', 1)}
-        >
-          {dataMercurio.label}
-        </button>
+        />
       ) : (
         <img src={empieza} alt="empieza" onClick={() => validateProject('mercurio', 1)} />
       )}
