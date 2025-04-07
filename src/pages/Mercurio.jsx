@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 import { useForm } from 'react-hook-form';
-import playvideo from '@Assets/images/playvideo.svg';
 import { useHistory } from 'react-router-dom';
 // Components
 import { SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
@@ -262,7 +261,7 @@ export const MercurioQ2 = ({
           <WatchPlanetVideo
             params={[
               {
-                playvideo: playvideo,
+                link_text: texts?.seccion_de_apoyo || "Ver video",
                 alt: 'play video',
                 url: texts?.link_video,
               },

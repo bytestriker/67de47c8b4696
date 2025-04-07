@@ -416,6 +416,7 @@ export const WatchPlanetVideo = ({ params }) => {
   const [videoLoading, setVideoLoading] = useState(true);
 
   const link_video = params?.[0]?.url || null;
+  const link_text = params?.[0]?.link_text || null;
   const playVideoImage = params?.[0]?.playvideo || '';
 
   const toggleModal = () => setModalVideo(!modalVideo);
@@ -438,8 +439,11 @@ export const WatchPlanetVideo = ({ params }) => {
 
   return (
     <>
-      <a href="#" onClick={toggleModal} className="anchorVideo">
-        {params.link_text || 'Ver video'}
+      <a href="#" onClick={toggleModal} className={link_text ? 'anchorVideo' : null }>
+        {
+          link_text
+        }
+        {playVideoImage && <img src={playVideoImage} alt="video" />}
       </a>
       {modalVideo && videoSrc && (
         <section
