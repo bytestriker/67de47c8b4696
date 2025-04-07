@@ -438,9 +438,8 @@ export const WatchPlanetVideo = ({ params }) => {
 
   return (
     <>
-      <a href="#" onClick={toggleModal}>
-        {params.link_text}
-        <img src={playVideoImage} alt="video" />
+      <a href="#" onClick={toggleModal} className="anchorVideo">
+        {params.link_text || 'Ver video'}
       </a>
       {modalVideo && videoSrc && (
         <section
