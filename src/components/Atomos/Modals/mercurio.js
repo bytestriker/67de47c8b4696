@@ -2,6 +2,9 @@ import { useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
+// Components
+import Button from '@Components/Button';
+
 // Hooks
 import { useEventsMercurio } from '@Hooks/useEventsMercurio';
 
@@ -12,7 +15,7 @@ import { lunaStore } from '@Store/luna';
 import { statusPlanet } from '@Helpers/constants';
 
 // Styles
-import styles from '@Sass/components/modals.module.scss';
+import styles from '@Sass/components/alerts.module.scss';
 
 export const ModalMercurio = (props) => {
   const { mercurioCreateProject } = useEventsMercurio();
@@ -49,13 +52,9 @@ export const ModalMercurio = (props) => {
         <div className={styles.ModalContent} ref={modalMercurioRef}>
           <p>{props.title}</p>
           <strong>{props.message}</strong>
-          <div className={styles.ButtonContent}>
-            <button className="btnModal-cancel" onClick={() => handleAlert('CANCELAR', data)}>
-              No
-            </button>
-            <button className="btnModal-ok" onClick={() => handleAlert('OK', data)}>
-              Si
-            </button>
+          <div className="buttons">
+            <Button text="NO" isAlt onClick={() => handleAlert('CANCELAR', data)} />
+            <Button text="SI" onClick={() => handleAlert('OK', data)} />
           </div>
         </div>
       </div>

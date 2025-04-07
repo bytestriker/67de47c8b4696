@@ -366,7 +366,7 @@ export const MercurioQ3 = ({
           <WatchPlanetVideo
             params={[
               {
-                playvideo: playvideo,
+                link_text: texts?.seccion_de_apoyo || "Ver video",
                 alt: 'play video',
                 url: texts?.link_video,
               },

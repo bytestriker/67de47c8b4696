@@ -6,6 +6,8 @@ import lock from '@Assets/images/lock.svg';
 import grid from '@Assets/images/planet-grid.png';
 import tierra from '@Assets/images/planets/tierra.svg';
 import neptuno from '@Assets/images/planets/neptuno.svg';
+import tierraTitle from '@Assets/images/title-neptuno.svg';
+import neptunoTitle from '@Assets/images/title-neptuno.svg';
 // IMAGES
 import _Astronaut from '@Assets/images/astronauta.png';
 
@@ -69,6 +71,8 @@ export const ComingSoon = ({ planet }) => {
               <div className="planetFigure">
                 { planetName === 'earth' && <img src={tierra} className="img-fluid" />}
                 { planetName === 'neptune' && <img src={neptuno} className="img-fluid" />}
+                { planetName === 'earth' && <img src={tierraTitle} className="planetTitle" />}
+                { planetName === 'neptune' && <img src={neptunoTitle} className="planetTitle" />}
                 <div className="lockedPlanet">
                   <img src={grid} alt="lock" />
                   <img src={lock} alt="lock" />

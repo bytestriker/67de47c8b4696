@@ -104,12 +104,14 @@ export const ValueFortalezas = ({ valueFortaleza, setValueFortaleza, setFortalez
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
-      {valueFortaleza.length === 5 ? null : (
-        <a className="buttonAdd" onClick={() => handleClick()}>
-          <span>Agregar más</span>
-        </a>
-      )}
+      <div className="fieldsets">
+        <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
+        {valueFortaleza.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
     </fieldset>
   );
 };
@@ -156,10 +158,13 @@ export const ValueOportunidades = ({ valueOportunidad, setValueOportunidad, setO
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
+      <div className="fieldsets">
+
+      </div>
       <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
       {valueOportunidad.length === 5 ? null : (
         <a className="buttonAdd" onClick={() => handleClick()}>
-          <spaspan>Agregar más</spaspan>
+          <span>Agregar más</span>
         </a>
       )}
     </fieldset>
@@ -195,7 +200,7 @@ export const ValueDebilidades = ({ valueDebilidad, setValueDebilidad, setDebilid
   }, [valueDebilidad]);
 
   return (
-    <>
+    <fieldset>
       {valueDebilidad.map((elemento, indice) => (
         <input
           key={indice}
@@ -208,13 +213,15 @@ export const ValueDebilidades = ({ valueDebilidad, setValueDebilidad, setDebilid
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
-      {valueDebilidad.length === 5 ? null : (
-        <span className="buttonAdd" onClick={() => handleClick()}>
-          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-        </span>
-      )}
-    </>
+      <div className="fieldsets">
+        <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
+        {valueDebilidad.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };
 
@@ -247,7 +254,7 @@ export const ValueAmenazas = ({ valueAmenaza, setValueAmenaza, setAmenazas }) =>
   }, [valueAmenaza]);
 
   return (
-    <>
+    <fieldset>
       {valueAmenaza.map((elemento, indice) => (
         <input
           key={indice}
@@ -260,12 +267,14 @@ export const ValueAmenazas = ({ valueAmenaza, setValueAmenaza, setAmenazas }) =>
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-      <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
-      {valueAmenaza.length === 5 ? null : (
-        <a className="buttonAdd" onClick={() => handleClick()}>
-          <span>Agregar más</span>
-        </a>
-      )}
-    </>
+      <div className="fieldsets">
+        <p className={style.questions}>{textDisabled ? '*Escribe un mínimo de 3 opciones.' : ''}</p>
+        {valueAmenaza.length === 5 ? null : (
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        )}
+      </div>
+    </fieldset>
   );
 };

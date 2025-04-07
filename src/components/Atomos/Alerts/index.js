@@ -2,6 +2,9 @@ import { shallow } from 'zustand/shallow';
 import { useHistory } from 'react-router-dom';
 import { FaInfoCircle } from 'react-icons/fa';
 
+// Components
+import Button from '@Components/Button';
+
 // Store
 import { storeModalTank } from '@Store/global';
 import { lunaStore } from '@Store/luna';
@@ -46,16 +49,10 @@ export const ModalSuccesProject = (props) => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3>¡FELICIDADES!</h3>.
-          <p>
-            Haz completado <strong>Mercurio</strong> de tu proyecto
-          </p>
+          <h3>¡FELICIDADES!</h3>
+          <p>Haz completado <strong>Mercurio</strong> de tu proyecto</p>
           {nameProject()}
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleAlert()}>
-              INICIO
-            </button>
-          </div>
+          <Button text="INICIO" isCentered={true} onClick={() => handleAlert()} />
         </div>
       </div>
     </div>

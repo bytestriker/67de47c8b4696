@@ -80,13 +80,11 @@ export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) 
   }, [debilidad, amenaza]);
 
   return (
-    <section className={style.venusQuestions}>
+    <form className="questionWrap">
       <ScrollToTop />
-      <div>
-        <h3 className={style.paintpoint}>{texts.pregunta}</h3>
-        <ParagraphPlanet text={texts.descripcion} />
-        <SaberMas data={texts} />
-      </div>
+      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <SaberMas data={texts} />
 
       <form method="POST">
         <div>
@@ -133,6 +131,6 @@ export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) 
           disabled={buttonNext ? '' : 'disabled'}
           onClick={() => handleSubmit('next')} />
       </form>
-    </section>
+    </form>
   );
 };

@@ -9,6 +9,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import { ValueFortalezas, ValueOportunidades } from '@Components/Atomos/Inputs/venus';
+import Button from '@Components/Button';
 
 // Styles
 import style from '@Sass/pages/venus.module.scss';

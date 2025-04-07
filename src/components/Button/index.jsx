@@ -1,7 +1,6 @@
 import style from '@Components/Button/button.module.scss';
 
 const Button = (
-  
   {
   text = 'Click me',
   onClick = () => {},

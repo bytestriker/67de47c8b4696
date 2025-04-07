@@ -46,13 +46,12 @@ main.bienvenido {
     background-position: right bottom;
     border-left: 1px solid #E6F85A;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 20px 0;
     position: relative;
     min-height: 320px;
     .noticeContent {
       display: flex;
+      align-items: center;
       flex-direction: column;
       gap: 20px;
       padding: 24px 36px;
@@ -62,6 +61,9 @@ main.bienvenido {
         padding: 0;
         width: 180px;
         height: 180px;
+      }
+      h2, h3, p {
+        margin: 0;
       }
     }
 
