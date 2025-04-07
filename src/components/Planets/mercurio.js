@@ -77,13 +77,14 @@ export const Mercurio = ({ mercurioInfo }) => {
         text={dataMercurio.label}
           className={`${
             dataMercurio.complete === 1
-              ? buttons.buttonPlanetCompleted
+              ? 'buttonPlanetCompleted'
               : dataMercurio.complete === 2
-              ? buttons.buttonPlanetIncomplete
+              ? 'buttonPlanetIncomplete'
               : dataMercurio.complete === 0
-              ? buttons.buttonPlanet
-              : buttons.buttonPlanet
+              ? 'buttonPlanet'
+              : 'buttonPlanet'
           }`}
+          
           onClick={() => validateProject('mercurio', 1)}
         />
       ) : (
