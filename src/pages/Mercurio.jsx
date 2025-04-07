@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { shallow } from 'zustand/shallow';
 import { useForm } from 'react-hook-form';
+import playvideo from '@Assets/images/playvideo.svg';
 import { useHistory } from 'react-router-dom';
 // Components
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import { ModalSuccesProject } from '@Components/Atomos/Alerts';
 import { ModalMercurio } from '@Components/Atomos/Modals';
 import ButtonGoHome from '@Components/ButtonGoHome';
@@ -100,7 +101,6 @@ const MercurioMain = () => {
       }
     }
   };
-  
 
   return (
     <section className="planetWrap">
@@ -152,8 +152,8 @@ const MercurioMain = () => {
         ) : null}
         {alert ? <ModalSuccesProject setAlert={setAlert} /> : null}
       </div>
-      {page === 2 && <HelperCard/>}
-      {page === 3 && <HelperCard/>}
+      {page === 2 && <HelperCard />}
+      {page === 3 && <HelperCard />}
     </section>
   );
 };
@@ -250,34 +250,49 @@ export const MercurioQ2 = ({
     setTitlePage(texts.titulo_de_la_vista);
   }, [texts]);
 
+  console.log('texts ', texts);
+
   return (
-    <div className="questionWrap">
-      <form method="POST">
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}>{}</h2>
-        <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-        <SaberMas data={texts} />
-        <fieldset>
-          <label className="text-right">2/3</label>
-          <textarea
-            // className={style.inputProjectName}
-            name="mercurioQ2"
-            id="mercurioQ2"
-            placeholder="Escribe aquí tu idea"
-            {...register('mercurioQ2', { required: true, minLength: 16 })}
-            value={dataMercurio.a_quien_resuelve}
-            onChange={(e) => handleQ2Mercurio(e)}
-          ></textarea>
-        </fieldset>
-        <div className="buttons">
-          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(1)} />
-          <Button
-            text="SIGUIENTE"
-            disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
-            onClick={() => setPage(3)}
+    <form method="POST" className="questionWrap">
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      {/* <SaberMas data={texts} /> */}
+      <figure>
+        {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                playvideo: playvideo,
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
           />
-        </div>
-        {/* <div className="d-none"> */}
-        {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
+        )}
+      </figure>
+
+      <fieldset>
+        <label className="text-right">2/3</label>
+        <textarea
+          // className={style.inputProjectName}
+          name="mercurioQ2"
+          id="mercurioQ2"
+          placeholder="Escribe aquí tu idea"
+          {...register('mercurioQ2', { required: true, minLength: 16 })}
+          value={dataMercurio.a_quien_resuelve}
+          onChange={(e) => handleQ2Mercurio(e)}
+        ></textarea>
+      </fieldset>
+      <div className="buttons">
+        <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(1)} />
+        <Button
+          text="SIGUIENTE"
+          disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
+          onClick={() => setPage(3)}
+        />
+      </div>
+      {/* <div className="d-none"> */}
+      {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
             ANTERIOR
           </button>
           <button
@@ -291,7 +306,7 @@ export const MercurioQ2 = ({
             SIGUIENTE
           </button>
            */}
-        {/* <button
+      {/* <button
             className={
               dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
             }
@@ -301,9 +316,8 @@ export const MercurioQ2 = ({
           >
             GUARDAR
           </button> */}
-        {/* </div> */}
-      </form>
-    </div>
+      {/* </div> */}
+    </form>
   );
 };
 
@@ -342,7 +356,6 @@ export const MercurioQ3 = ({
   useEffect(() => {
     setTitlePage(texts.titulo_de_la_vista);
   }, [texts]);
-
 
   return (
     <div className="questionWrap">

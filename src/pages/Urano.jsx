@@ -407,7 +407,7 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
 
 */}
       <fieldset>
-        <div className="customFileUpload">
+        <div className="inputFileUpload">
           <input type="file" name="fileInput" id="fileInput" onChange={handleImageDoc} className="uranoFileInput"/>
         </div>
       </fieldset>
@@ -614,8 +614,8 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
-      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta || 'PL Heading Placeholder' }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion || 'PL Description Placeholder' }}></p>
 
       <SaberMas data={texts} />
 
@@ -626,7 +626,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
       */}
 
       <fieldset>
-        <div className="customFileUpload">
+        <div className="inputFileUpload">
           <input
             type="file"
             name="fileInput"
