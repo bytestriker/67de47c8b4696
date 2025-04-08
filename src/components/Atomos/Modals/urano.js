@@ -14,7 +14,6 @@ export const ModalUrano = ({ setModal, message, title, buttonName }) => {
     return <h4>{param?.nombre}</h4>;
   };
 
-
   const handleManageModal = () => {
     setModal(false);
     history.push('/');
@@ -27,10 +26,7 @@ export const ModalUrano = ({ setModal, message, title, buttonName }) => {
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           {nameProject()}
           <div className={styles.ButtonContent}>
-            <Button 
-            onClick={() => handleManageModal()}
-text={buttonName}
-            />
+            <Button onClick={() => handleManageModal()} text={buttonName} />
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@ import { useEventsTanks } from '@Hooks/useFetchTanques';
 
 // COMPONENTS
 import { LinkRouter } from '@Components/UtilsComponents/Button';
+import Button from '@Components/Button';
 import { Title } from '@Components/Atomos/Titles';
 
 // IMAGES
@@ -17,6 +18,7 @@ import cohete from '@Assets/images/cohete.png';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
+import styles from '@Sass/components/alerts.module.scss';
 import page from '@Components/ThankYouPage/thanks.module.scss';
 
 const Thanks = () => {
@@ -45,7 +47,7 @@ const Thanks = () => {
     exchangeTanks(storeTankModal.planet, dataLuna.id);
   };
 
-  const handleRute = (params) => {
+  const handleRouteFromParams = (params) => {
     const { from } = params;
     if (from?.pathname === '/checkout') {
       return (
@@ -74,17 +76,31 @@ const Thanks = () => {
   };
 
   return (
-    <section className={page.ThankYou}>
+/*     <section className={page.ThankYou}>
       <div className={style.planetContainer}>
         <div className={style.planetContent}>
           <div className={page.ThankYouContent}>
             <img src={cohete} alt="cohete" />
             <Title title="¡GRACIAS!" />
-            {handleRute(location)}
+            {handleRouteFromParams(location)}
           </div>
         </div>
       </div>
     </section>
+ */  
+    <div className={styles.Modal}>
+      <div className="container">
+        <div className={styles.ModalContent}>
+          <h3>¡GRACIAS!</h3>
+          {handleRouteFromParams(location)}
+          
+          {/* <div className={styles.ButtonContent}>
+            <Button onClick={() => handleManageModal()} text={'CERRAR'} />
+          </div> */}
+        </div>
+      </div>
+    </div>
+
   );
 };
 
