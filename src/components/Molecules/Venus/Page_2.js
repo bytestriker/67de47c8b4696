@@ -52,7 +52,7 @@ export const VenusQ1Foda = ({ setPage, setTitle, texts }) => {
   return (
     <section className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
       <form method="POST">

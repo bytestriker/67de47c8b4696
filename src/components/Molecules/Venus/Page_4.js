@@ -198,7 +198,7 @@ export const VenusQ1Conclusion = ({
       <ScrollToTop />
 
       <div>
-        <h3 className={style.paintpoint}>{texts.pregunta}</h3>
+        <h3 className={style.paintpoint}>{texts.titulo_de_la_vista}</h3>
         <ParagraphPlanet text={texts.descripcion} />
         {/* <SaberMas data={texts} /> */}
       </div>

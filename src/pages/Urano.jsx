@@ -624,21 +624,18 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
         dangerouslySetInnerHTML={{ __html: texts.descripcion || 'PL Description Placeholder' }}
       ></p>
 
-      <figure>
-        {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                playvideo: playvideo,
-                size:{"width": "50", "height": "50"},
-                alt: 'play video',
-                link_text: texts?.seccion_de_apoyo || '¡Ver video!',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
-      </figure>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              size:{"width": "50", "height": "50"},
+              alt: 'play video',
+              link_text: texts?.seccion_de_apoyo || '¡Ver video!',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
 
 
       {/* 

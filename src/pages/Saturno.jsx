@@ -245,7 +245,6 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || ' Placeholder Awareness' }}></h2>
       {/* <SaberMas data={texts} /> */}
-      <figure>
       {
         texts?.link_video &&
         <WatchPlanetVideo
@@ -259,7 +258,7 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
           ]} 
         />
       }
-      </figure>      
+
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <Button text="SIGUIENTE" isCentered onClick={() => setPage(2)} />
     </div>

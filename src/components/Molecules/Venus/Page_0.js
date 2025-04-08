@@ -60,7 +60,7 @@ export const VenusQ0Target = ({ setPage, setTitle, texts, dataVenus }) => {
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <form method="POST" >
         <p className={style.identify}>{texts.instruccion}</p>

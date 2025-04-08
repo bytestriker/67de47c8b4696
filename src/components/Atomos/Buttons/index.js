@@ -449,15 +449,16 @@ export const WatchPlanetVideo = ({ params }) => {
     if (size?.width) imgProps.style.width = `${size.width}px`;
     if (size?.height) imgProps.style.height = `${size.height}px`;
 
-    return <img {...imgProps} />;
+    return (<figure> <img {...imgProps} /></figure>);
   };
   
 
   return (
-    <>
+    <fieldset>
       <a href="#" onClick={toggleModal} className={link_text ? 'anchorVideo' : null }>
         {link_text || null}
-        {playVideoImage && <figure><img src={playVideoImage} alt="video" /></figure>}
+        {/* {playVideoImage && <figure><img src={playVideoImage} alt="video" /></figure>} */}
+        {renderImage()}
       </a>
       {modalVideo && videoSrc && (
         <section
@@ -526,6 +527,6 @@ export const WatchPlanetVideo = ({ params }) => {
           </div>
         </section>
       )}
-    </>
+    </fieldset>
   );
 };
