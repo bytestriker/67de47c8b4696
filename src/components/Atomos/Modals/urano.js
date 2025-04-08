@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import Button from '@Components/Button';
 
 import { LocalStoragePlanets } from '@Helpers/constants';
 // Styles
@@ -26,9 +27,10 @@ export const ModalUrano = ({ setModal, message, title, buttonName }) => {
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           {nameProject()}
           <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
-              {buttonName}
-            </button>
+            <Button 
+            onClick={() => handleManageModal()}
+text={buttonName}
+            />
           </div>
         </div>
       </div>

@@ -58,7 +58,6 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.slogan }}></p>
-      <figure>
       {
         texts?.video &&
         <WatchPlanetVideo
@@ -72,7 +71,6 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
           ]} 
         />
       }
-      </figure>
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <h2>¿Cómo se va a llamar?</h2>
 
