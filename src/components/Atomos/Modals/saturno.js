@@ -8,7 +8,8 @@ import { useEventSaturno } from '@Hooks/useEventSaturno';
 import { statusPlanet } from '@Helpers/constants';
 
 // Styles
-import styles from '@Sass/components/modals.module.scss';
+// import styles from '@Sass/components/modals.module.scss';
+import styles from '@Sass/components/alerts.module.scss';
 
 export const ModalSalirSaturno = ({ title, message, setModalSalir, data, proyect }) => {
   const { saturnoCreateProject}= useEventSaturno();

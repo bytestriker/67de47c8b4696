@@ -9,7 +9,8 @@ import { globalStore } from '@Store/global';
 import { useEventJupiter } from '@Hooks/useEventsJupiter';
 
 // Styles
-import styles from '@Sass/components/modals.module.scss';
+// import styles from '@Sass/components/modals.module.scss';
+import styles from '@Sass/components/alerts.module.scss';
 
 export const ModalJupiter = ({ setModal, setPage, message, title, buttonName, page }) => {
   const history = useHistory();

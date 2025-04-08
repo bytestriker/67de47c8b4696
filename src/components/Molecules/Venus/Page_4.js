@@ -198,65 +198,6 @@ export const VenusQ1Conclusion = ({
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-<<<<<<< Updated upstream
-
-      <div>
-        <h3 className={style.paintpoint}>{texts.titulo_de_la_vista}</h3>
-        <ParagraphPlanet text={texts.descripcion} />
-        {/* <SaberMas data={texts} /> */}
-      </div>
-      <br></br>
-      <form method="POST">
-        <span>
-          <label className={style.identify}>Fortalezas y Oportunidades</label>
-          <img src={cruce} className={style.imgcruce} alt="cruce" />
-        </span>
-        <div>
-          {elementos.map((elemento, index) => (
-            <div key={index} className={style.selectContainer}>
-              <div className={style.selectHeader} onClick={() => toggleSelectFortaleza(index)}>
-                <span className={style.selectSpanText}>
-                  {elemento.selectedFortaleza || 'Selecciona una fortaleza'}
-                </span>
-                <span className={style.selectSpanArrow}>
-                  {elemento.isOpenFortaleza ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-              </div>
-              {elemento.isOpenFortaleza && (
-                <div className={style.selectOptions}>
-                  {fortaleza.map((option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={style.option}
-                      onClick={() => handleFortalezaClick(index, option)}
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
-              <div className={style.selectHeader} onClick={() => toggleSelectOportunidad(index)}>
-                <span className={style.selectSpanText}>
-                  {elemento.selectedOportunidad || 'Selecciona una oportunidad'}
-                </span>
-                <span className={style.selectSpanArrow}>
-                  {elemento.isOpenOportunidad ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-              </div>
-              {elemento.isOpenOportunidad && (
-                <div className={style.selectOptions}>
-                  {oportunidad.map((option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={style.option}
-                      onClick={() => handleOportunidadClick(index, option)}
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
-=======
       <h3>{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
       <fieldset>
@@ -270,7 +211,6 @@ export const VenusQ1Conclusion = ({
               <span className={style.selectSpanArrow}>
                 {elemento.isOpenFortaleza ? <FaCaretUp /> : <FaCaretDown />}
               </span>
->>>>>>> Stashed changes
             </div>
             {elemento.isOpenFortaleza && (
               <div className={style.selectOptions}>
