@@ -102,10 +102,6 @@ const MercurioMain = () => {
     }
   };
 
-  console.log("texts ", texts)
-  console.log("texts2 ", texts2)
-  console.log("texts3 ", texts3)
-
   return (
     <section className="planetWrap">
       <img src={satelite} alt="Satelite" className="satelite" />

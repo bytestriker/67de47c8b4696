@@ -418,6 +418,7 @@ export const WatchPlanetVideo = ({ params }) => {
   const link_video = params?.[0]?.url || null;
   const link_text = params?.[0]?.link_text || null;
   const playVideoImage = params?.[0]?.playvideo || '';
+  const size = params?.[0]?.size || null;
 
   const toggleModal = () => setModalVideo(!modalVideo);
   const handleVideoLoad = () => setVideoLoading(false);
@@ -436,6 +437,21 @@ export const WatchPlanetVideo = ({ params }) => {
   };
 
   const videoSrc = link_video ? getYouTubeEmbedUrl(link_video) : null;
+
+  const renderImage = () => {
+    if (!playVideoImage) return null;
+  
+    const imgProps = {
+      src: playVideoImage,
+      alt: "video",
+      style: {}
+    };
+    if (size?.width) imgProps.style.width = `${size.width}px`;
+    if (size?.height) imgProps.style.height = `${size.height}px`;
+
+    return <img {...imgProps} />;
+  };
+  
 
   return (
     <>

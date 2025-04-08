@@ -33,6 +33,7 @@ import Button from '@Components/Button';
 import upload from '@Assets/images/upload.png';
 import download from '@Assets/images/icons/arrow-circle-up.svg';
 import previewVideoUrano from '@Assets/images/preview-video-urano.png';
+import playvideo from '@Assets/images/playvideo.svg';
 
 import '@Sass/pages/planet.scss';
 
@@ -84,9 +85,7 @@ const Urano = () => {
       setCategoriasQ2(uranoQ2Categorias);
     }
   }, [uranoQ2Categorias]);
-  console.log('texts ', texts);
-  console.log('texts2 ', texts2);
-  console.log('texts3 ', texts3);
+
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -118,10 +117,12 @@ const Urano = () => {
               setParams={setParams}
             />
           )}
-          {page === 4 && <Marketing setTitle={setTitle} texts={texts2} params={params} />}
-          {page === 5 && (
+          {/* {page === 4 && <Marketing setTitle={setTitle} texts={texts2} params={params} />} */}
+          {page === 4 && (
             <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
           )}
+
+
         </div>
       </div>
 
@@ -376,7 +377,6 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h1>pretotipo página 2 </h1>
       <h2 dangerouslySetInnerHTML={{ __html: texts.subtitulo_1 }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
 
@@ -615,17 +615,31 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
       history.push('/');
     }
   };
-  console.log('PL texts ', texts);
 
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta || 'PL Heading Placeholder' }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista || 'PL Heading Placeholder' }}></h2>
       <p
         dangerouslySetInnerHTML={{ __html: texts.descripcion || 'PL Description Placeholder' }}
       ></p>
 
-      <SaberMas data={texts} />
+      <figure>
+        {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                playvideo: playvideo,
+                size:{"width": "50", "height": "50"},
+                alt: 'play video',
+                link_text: texts?.seccion_de_apoyo || '¡Ver video!',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
+      </figure>
+
 
       {/* 
       <a href={texts.adjuntar_formato_para_descargar} className="anchorDownload">
