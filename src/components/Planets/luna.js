@@ -73,28 +73,28 @@ export const Luna = ({ lunaInfo }) => {
       <img src={bullets} alt="bullets" className="bullets" />
       <img src={punto} alt="punto" className="punto" /> */}
       <div className="lunaContent">
-        
         <h2>{title}</h2>
         <p>{description}</p>
         <div className="planetButton_content">
           {getLuna().id ? (
             <Button
-            text={dataLuna?.label}
-              className={`${
-                dataLuna?.complete === 1
-                  ? buttons.buttonPlanetCompleted
-                  : dataLuna?.complete === 2
-                  ? buttons.buttonPlanetIncomplete
-                  : dataLuna?.complete === 0
-                  ? buttons.buttonPlanet
-                  : buttons.buttonPlanet
+              text={dataLuna?.label}
+              className={`buttonPrimary ${
+                dataLuna.complete === 1
+                  ? 'buttonPlanetCompleted'
+                  : dataLuna.complete === 2
+                  ? 'buttonPlanetIncomplete'
+                  : dataLuna.complete === 0
+                  ? ''
+                  : ''
               }`}
               onClick={() => history.push({ pathname: '/launch', from: location })}
             />
           ) : (
             <Button
               text="EMPIEZA AQUI"
-              onClick={() => history.push({ pathname: '/launch', from: location })} />
+              onClick={() => history.push({ pathname: '/launch', from: location })}
+            />
           )}
         </div>
       </div>
