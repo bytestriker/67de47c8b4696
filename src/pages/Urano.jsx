@@ -84,9 +84,9 @@ const Urano = () => {
       setCategoriasQ2(uranoQ2Categorias);
     }
   }, [uranoQ2Categorias]);
-  console.log("texts ", texts);
-  console.log("texts2 ", texts2);
-  console.log("texts3 ", texts3);
+  console.log('texts ', texts);
+  console.log('texts2 ', texts2);
+  console.log('texts3 ', texts3);
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -98,21 +98,18 @@ const Urano = () => {
       />
       <div className="planetContainer">
         <div className="planetContent">
-          {/* {page === 3 ? (
-            // <ButtonGoBack titlePage={title} setPage={setPage} page={2} />
-            <ButtonGoHome
-              className="planetBackToTheHomepage"
-              onClick={() => {
-                history.push('/');
-              }}
-              text="Volver al Inicio"
-            />
-          ) : (
-            <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
-          )} */}
           {page === 1 && <Logo setPage={setPage} setTitle={setTitle} texts={texts} />}
           {/* Aquí debe mandar a llamar a Pretotipo */}
           {page === 2 && (
+            <Pretotipo
+              setPage={setPage}
+              setTitle={setTitle}
+              texts={texts}
+              categorias={categoriasQ2}
+              setParams={setParams}
+            />
+          )}
+          {page === 3 && (
             <Prototipo
               setPage={setPage}
               setTitle={setTitle}
@@ -121,8 +118,8 @@ const Urano = () => {
               setParams={setParams}
             />
           )}
-          {page === 3 && <Marketing setTitle={setTitle} texts={texts2} params={params} />}
-          {page === 4 && (
+          {page === 4 && <Marketing setTitle={setTitle} texts={texts2} params={params} />}
+          {page === 5 && (
             <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
           )}
         </div>
@@ -240,7 +237,6 @@ export const Logo = ({ setPage, setTitle, texts }) => {
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
-      {/* <SaberMas data={texts} /> */}
       <figure>
         {texts?.link_video && (
           <WatchPlanetVideo
@@ -379,11 +375,12 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
       console.error('No se ha seleccionado ninguna imagen.');
     }
   };
-  
+
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
+      <h1>pretotipo página 2 </h1>
+      <h2 dangerouslySetInnerHTML={{ __html: texts.subtitulo_1 }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
 
       {/*        <div className={urano.checkText}>
@@ -414,7 +411,13 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
 */}
       <fieldset>
         <div className="inputFileUpload">
-          <input type="file" name="fileInput" id="fileInput" onChange={handleImageDoc} className="uranoFileInput"/>
+          <input
+            type="file"
+            name="fileInput"
+            id="fileInput"
+            onChange={handleImageDoc}
+            className="uranoFileInput"
+          />
         </div>
       </fieldset>
       <div className="buttons">
@@ -484,7 +487,7 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
           SIGUIENTE
         </button> 
         */}
-        <Button text="REGRESAR" onClick={() => setPage(1)} isAlt />
+        <Button text="REGRESAR" onClick={() => setPage(2)} isAlt />
         <Button text="SIGUIENTE" onClick={() => setPage(4)} />
       </div>
 
@@ -521,7 +524,7 @@ export const Marketing = ({ setTitle, texts, params }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: market.categoria }}></h2>
 
-      <p dangerouslySetInnerHTML={{__html: market.descripcion_de_categoria }}></p>
+      <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria }}></p>
       <div className={urano.cardMarketing}>
         {proveedores?.length > 0 ? (
           proveedores?.map((items, index) => (
@@ -615,13 +618,15 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
       history.push('/');
     }
   };
-  console.log("PL texts ", texts)
+  console.log('PL texts ', texts);
 
   return (
     <form className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta || 'PL Heading Placeholder' }}></h2>
-      <p dangerouslySetInnerHTML={{ __html: texts.descripcion || 'PL Description Placeholder' }}></p>
+      <p
+        dangerouslySetInnerHTML={{ __html: texts.descripcion || 'PL Description Placeholder' }}
+      ></p>
 
       <SaberMas data={texts} />
 
@@ -656,7 +661,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
             SIGUIENTE
           </button>
         */}
-        <Button text="ANTERIOR" onClick={() => setPage(3)} isAlt />
+        <Button text="ANTERIOR" onClick={() => setPage(4)} isAlt />
         <Button text="SIGUIENTE" onClick={() => handleValidateProject()} />
       </div>
       {/*
