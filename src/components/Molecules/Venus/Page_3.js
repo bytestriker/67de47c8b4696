@@ -85,52 +85,40 @@ export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) 
       <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
       <SaberMas data={texts} />
-
-      <form method="POST">
-        <div>
-          <h5 className={style.fortalezas}>Debilidades</h5>
-          <p className={style.questions}>{texts.instruccion_de_debilidades}</p>
-          <div className={style.inputContainer}>
-            <ValueDebilidades
-              valueDebilidad={valueDebilidad}
-              setValueDebilidad={setValueDebilidad}
-              setDebilidades={setDebilidades}
-            />
-          </div>
-        </div>
-
-        <div>
-          <h5 className={style.fortalezas}>Amenazas</h5>
-          <p className={style.questions}>{texts.instruccion_de_amenazas}</p>
-          <div className={style.inputContainer}>
-            <ValueAmenazas
-              valueAmenaza={valueAmenaza}
-              setValueAmenaza={setValueAmenaza}
-              setAmenazas={setAmenazas}
-            />
-          </div>
-        </div>
-        <div className="fieldsets">
-
-        </div>
-
-        <div className={style.buttonsContent}>
-          <Button type="button" onClick={() => setPage(2)} isAlt />
-          <button
-            type="button"
-            className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
-            disabled={buttonNext ? '' : 'disabled'}
-            onClick={() => handleSubmit('save')}
-          >
-            GUARDAR
-          </button>
-        </div>
+      <h3 className={style.fortalezas}>Debilidades</h3>
+      <p className={style.questions}>{texts.instruccion_de_debilidades}</p>
+      <div className={style.inputContainer}>
+        <ValueDebilidades
+          valueDebilidad={valueDebilidad}
+          setValueDebilidad={setValueDebilidad}
+          setDebilidades={setDebilidades}
+        />
+      </div>
+      <h3 className={style.fortalezas}>Amenazas</h3>
+      <p className={style.questions}>{texts.instruccion_de_amenazas}</p>
+      <div className={style.inputContainer}>
+        <ValueAmenazas
+          valueAmenaza={valueAmenaza}
+          setValueAmenaza={setValueAmenaza}
+          setAmenazas={setAmenazas}
+        />
+      </div>
+      <div className="fieldsets">
+        <Button
+          text="ANTERIOR"
+          onClick={() => setPage(2)} />
+        <Button
+          text="GUARDAR"
+          onClick={() => handleSubmit('save')}
+          disabled={buttonNext ? '' : 'disabled'}
+          />
         <Button
           text="PASO 2"
-          className={buttonNext ? style.btnStepDos : style.btnStepDosOff}
+          onClick={() => setPage(4)}
+          //onClick={() => handleSubmit('next')}
           disabled={buttonNext ? '' : 'disabled'}
-          onClick={() => handleSubmit('next')} />
-      </form>
+          />
+      </div>
     </form>
   );
 };

@@ -28,4 +28,7 @@ ul.content{
   text-align: end;
   list-style: none;
   text-decoration: none;
+  li {
+    cursor: pointer;
+  }
 }

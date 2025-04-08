@@ -57,30 +57,28 @@ export const VenusQ1Target = ({ setPage, setTitle, texts, dataVenus }) => {
   }, [painpoints]);
 
   return (
-    <div className="questionWrap">
+    <form method="POST" onSubmit={handleSubmit(onSubmit)} className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
-      <form method="POST" onSubmit={handleSubmit(onSubmit)}>
-        {texts.instruccion}
-        <PaintPoints
-          dataPoints={dataPoints}
-          setDataPoints={setDataPoints}
-          setPainPoints={setPainPoints}
-        />
-        {/* <button
-          className={!button ? style.btnPlanetOff : style.btnPlanet}
-          disabled={!button ? 'disabled' : ''}
-          type="submit"
-        >
-          SIGUIENTE
-        </button> */}
-        <div className="buttons">
-          <Button text="ANTERIOR" isAlt onClick={() => setPage(0)} />
-          <Button text="SIGUIENTE" disabled={!button ? 'disabled' : ''} type="submit" />
-        </div>
-      </form>
-    </div>
+      {texts.instruccion}
+      <PaintPoints
+        dataPoints={dataPoints}
+        setDataPoints={setDataPoints}
+        setPainPoints={setPainPoints}
+      />
+      {/* <button
+        className={!button ? style.btnPlanetOff : style.btnPlanet}
+        disabled={!button ? 'disabled' : ''}
+        type="submit"
+      >
+        SIGUIENTE
+      </button> */}
+      <div className="buttons">
+        <Button text="ANTERIOR" isAlt onClick={() => setPage(0)} />
+        <Button text="SIGUIENTE" disabled={!button ? 'disabled' : ''} type="submit" />
+      </div>
+    </form>
   );
 };

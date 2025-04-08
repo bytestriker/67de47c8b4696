@@ -197,75 +197,64 @@ export const VenusQ4Conclusion = ({
   };
 
   return (
-    <section className={style.venusQuestions}>
+    <form method="POST" className={style.venusQuestions}>
       <ScrollToTop />
-      <div>
-        {/* <h3 className={style.paintpoint}>Cruce</h3> */}
-        <h3 className={style.paintpoint}>{texts.pregunta}</h3>
-        <ParagraphPlanet text={texts.descripcion} />
-        {/* <SaberMas data={texts} /> */}
-      </div>
-      <br></br>
-      <form method="POST">
+      <h3 className={style.paintpoint}>{texts.pregunta}</h3>
+      <ParagraphPlanet text={texts.descripcion} />
         <span>
           <label className={style.identify}>Debilidades y Amenazas</label>
           <img src={cruce} className={style.imgcruce} alt="cruce" />
         </span>
-        <div>
-          {elementos.map((elemento, index) => (
-            <div key={index} className={style.selectContainer}>
-              <div className={style.selectHeader} onClick={() => toggleSelectDebilidad(index)}>
-                <span className={style.selectSpanText}>
-                  {elemento.selectedDebilidad || 'Selecciona una debilidad'}
-                </span>
-                <span className={style.selectSpanArrow}>
-                  {elemento.isOpenDebilidad ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-              </div>
-              {elemento.isOpenDebilidad && (
-                <div className={style.selectOptions}>
-                  {debilidad.map((option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={style.option}
-                      onClick={() => handleDebilidadClick(index, option)}
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className={style.selectHeader} onClick={() => toggleSelectAmenaza(index)}>
-                <span className={style.selectSpanText}>
-                  {elemento.selectedAmenaza || 'Selecciona una amenaza'}
-                </span>
-                <span className={style.selectSpanArrow}>
-                  {elemento.isOpenAmenaza ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-              </div>
-              {elemento.isOpenAmenaza && (
-                <div className={style.selectOptions}>
-                  {amenaza.map((option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={style.option}
-                      onClick={() => handleAmenazaClick(index, option)}
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
+        {elementos.map((elemento, index) => (
+          <div key={index} className={style.selectContainer}>
+            <div className={style.selectHeader} onClick={() => toggleSelectDebilidad(index)}>
+              <span className={style.selectSpanText}>
+                {elemento.selectedDebilidad || 'Selecciona una debilidad'}
+              </span>
+              <span className={style.selectSpanArrow}>
+                {elemento.isOpenDebilidad ? <FaCaretUp /> : <FaCaretDown />}
+              </span>
             </div>
-          ))}
+            {elemento.isOpenDebilidad && (
+              <div className={style.selectOptions}>
+                {debilidad.map((option, optionIndex) => (
+                  <div
+                    key={optionIndex}
+                    className={style.option}
+                    onClick={() => handleDebilidadClick(index, option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
 
-          <span className={style.add} onClick={addElemento}>
-            <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-          </span>
-        </div>
-
-        <br></br>
+            <div className={style.selectHeader} onClick={() => toggleSelectAmenaza(index)}>
+              <span className={style.selectSpanText}>
+                {elemento.selectedAmenaza || 'Selecciona una amenaza'}
+              </span>
+              <span className={style.selectSpanArrow}>
+                {elemento.isOpenAmenaza ? <FaCaretUp /> : <FaCaretDown />}
+              </span>
+            </div>
+            {elemento.isOpenAmenaza && (
+              <div className={style.selectOptions}>
+                {amenaza.map((option, optionIndex) => (
+                  <div
+                    key={optionIndex}
+                    className={style.option}
+                    onClick={() => handleAmenazaClick(index, option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+        <span className={style.add} onClick={addElemento}>
+          <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
+        </span>
         <textarea
           ref={inputConclusion}
           className={style.conclusion}
@@ -297,8 +286,7 @@ export const VenusQ4Conclusion = ({
         >
           BUYER PERSONA
         </button>
-        <br></br>
-      </form>
-    </section>
+
+    </form>
   );
 };

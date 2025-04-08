@@ -13,6 +13,7 @@ import { useEventsVenus } from '@Hooks/useEventVenus';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
+import Button from '@Components/Button';
 
 import cruce from '@Assets/images/cruce.png';
 
@@ -197,78 +198,70 @@ export const VenusQ3Conclusion = ({
   };
 
   return (
-    <section className={style.venusQuestions}>
+    <form className={style.venusQuestions}>
       <ScrollToTop />
-      <div>
-        {/* <h3 className={style.paintpoint}>Cruce</h3> */}
-        <h3 className={style.paintpoint}>{texts.pregunta}</h3>
-        <ParagraphPlanet text={texts.descripcion} />
-        {/* <SaberMas data={texts} /> */}
-      </div>
-<br></br>
-      <form method="POST">
+      <h3 className={style.paintpoint}>{texts.pregunta}</h3>
+      <ParagraphPlanet text={texts.descripcion} />
         <span>
           <label className={style.identify}>Fortalezas y Amenazas</label>
           <img src={cruce} className={style.imgcruce} alt="cruce" />
-        </span>
-        <div>
-          {elementos.map((elemento, index) => (
-            <div key={index} className={style.selectContainer}>
-              <div className={style.selectHeader} onClick={() => toggleSelectFortaleza(index)}>
-                <span className={style.selectSpanText}>
-                  {elemento.selectedFortaleza || 'Selecciona una fortaleza'}
-                </span>
-                <span className={style.selectSpanArrow}>
-                  {elemento.isOpenFortaleza ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-              </div>
-              {elemento.isOpenFortaleza && (
-                <div className={style.selectOptions}>
-                  {fortaleza.map((option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={style.option}
-                      onClick={() => handleFortalezaClick(index, option)}
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
+      </span>
+      <fieldset>
 
-              <div className={style.selectHeader} onClick={() => toggleSelectAmenaza(index)}>
-                <span className={style.selectSpanText}>
-                  {elemento.selectedAmenaza || 'Selecciona una amenaza'}
-                </span>
-                <span className={style.selectSpanArrow}>
-                  {elemento.isOpenAmenaza ? <FaCaretUp /> : <FaCaretDown />}
-                </span>
-              </div>
-              {elemento.isOpenAmenaza && (
-                <div className={style.selectOptions}>
-                  {amenaza.map((option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={style.option}
-                      onClick={() => handleAmenazaClick(index, option)}
-                    >
-                      {option}
-                    </div>
-                  ))}
-                </div>
-              )}
+        {elementos.map((elemento, index) => (
+          <div key={index} className={style.selectContainer}>
+            <div className={style.selectHeader} onClick={() => toggleSelectFortaleza(index)}>
+              <span className={style.selectSpanText}>
+                {elemento.selectedFortaleza || 'Selecciona una fortaleza'}
+              </span>
+              <span className={style.selectSpanArrow}>
+                {elemento.isOpenFortaleza ? <FaCaretUp /> : <FaCaretDown />}
+              </span>
             </div>
-          ))}
+            {elemento.isOpenFortaleza && (
+              <div className={style.selectOptions}>
+                {fortaleza.map((option, optionIndex) => (
+                  <div
+                    key={optionIndex}
+                    className={style.option}
+                    onClick={() => handleFortalezaClick(index, option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
 
-          <span className={style.add} onClick={addElemento}>
-            <FaPlusCircle className={style.icon} /> <b>Agregar más</b>
-          </span>
-        </div>
-
-        <br></br>
+            <div className={style.selectHeader} onClick={() => toggleSelectAmenaza(index)}>
+              <span className={style.selectSpanText}>
+                {elemento.selectedAmenaza || 'Selecciona una amenaza'}
+              </span>
+              <span className={style.selectSpanArrow}>
+                {elemento.isOpenAmenaza ? <FaCaretUp /> : <FaCaretDown />}
+              </span>
+            </div>
+            {elemento.isOpenAmenaza && (
+              <div className={style.selectOptions}>
+                {amenaza.map((option, optionIndex) => (
+                  <div
+                    key={optionIndex}
+                    className={style.option}
+                    onClick={() => handleAmenazaClick(index, option)}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </fieldset>
+      <a className="buttonAdd" onClick={addElemento}>
+        <span>Agregar más</span>
+      </a>
+      <fieldset>
         <textarea
           ref={inputConclusion}
-          className={style.conclusion}
           name="conclusion"
           id="conclusion"
           rows="8"
@@ -276,29 +269,18 @@ export const VenusQ3Conclusion = ({
           placeholder="Cuéntanos a qué conclusiones llegaste"
           defaultValue={getDescription}
         ></textarea>
-        <div className={style.buttonsContent}>
-          <button type="button" className={style.btnPlanet} onClick={() => setPage(5)}>
-            ANTERIOR
-          </button>
-          <button
-            type="button"
-            className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
-            disabled={buttonNext ? '' : 'disabled'}
-            onClick={() => handleSubmit('save')}
-          >
-            GUARDAR
-          </button>
-        </div>
-        <button
-          type="button"
-          className={buttonNext ? style.btnStepDos : style.btnStepDosOff}
-          disabled={buttonNext ? '' : 'disabled'}
+      </fieldset>
+      <div className="buttons">
+        <Button text="button" className={style.btnPlanet} onClick={() => setPage(5)} />
+        <Button
+          text="GUARDAR"
+          onClick={() => handleSubmit('save')}
+          disabled={buttonNext ? '' : 'disabled'} />
+        <Button
+          text="SIGUIENTE"
           onClick={() => handleSubmit('next')}
-        >
-          SIGUIENTE
-        </button>
-        <br></br>
-      </form>
-    </section>
+          disabled={buttonNext ? '' : 'disabled'} />
+      </div>
+    </form>
   );
 };
