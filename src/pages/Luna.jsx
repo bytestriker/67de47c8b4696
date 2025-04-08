@@ -149,46 +149,46 @@ const Luna = () => {
       />
       <div className="planetContainer">
         <div className="planetContent">
-          {getPageLuna === 1 ? (
+          {getPageLuna === 1  && (
             <NameProject
               handleNextPage={handleNextPage}
               setPageLuna={setPageLuna}
               texts={texts}
               setTitlePage={setTitlePage}
-            />
-          ) : null}
-          {getPageLuna === 2 ? (
+            />)}
+
+          {getPageLuna === 2  && (
             <QuestionsLaunch1
               handleNextPage={handleNextPage}
               setPageLuna={setPageLuna}
               texts2={texts2}
               setTitlePage={setTitlePage}
-            />
-          ) : null}
-          {getPageLuna === 3 ? (
+            />)}
+
+          {getPageLuna === 3 && (
             <QuestionsLaunch2
               handleNextPage={handleNextPage}
               setPageLuna={setPageLuna}
               texts3={texts3}
               setTitlePage={setTitlePage}
-            />
-          ) : null}
-          {getPageLuna === 4 ? (
+            />)}
+
+          {getPageLuna === 4 && (
             <QuestionsLaunch3
               handleNextPage={handleNextPage}
               setPageLuna={setPageLuna}
               texts4={texts4}
               setTitlePage={setTitlePage}
-            />
-          ) : null}
-          {getPageLuna === 5 ? (
+            />)}
+
+          {getPageLuna === 5 && (
             <QuestionsLaunch5
               handleNextPage={handleNextPage}
               setPageLuna={setPageLuna}
               texts5={texts5}
               setTitlePage={setTitlePage}
-            />
-          ) : null}
+            />)}
+
         </div>
       </div>
       {/*<div className="planetHelper">
