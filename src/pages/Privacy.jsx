@@ -34,7 +34,7 @@ const Privacy = () => {
           }}
           text="Volver al Inicio"
         />
-        <div className="mainContainer">
+        <div className="mainContainerInternals">
           <ScrollToTop />
           <h2 dangerouslySetInnerHTML={{__html:data?.title?.rendered || "AVISO DE PRIVACIDAD"}}></h2>
           <p dangerouslySetInnerHTML={{__html:data?.content?.rendered || ""}}></p>

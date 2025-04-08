@@ -73,6 +73,19 @@
     padding: 24px 32px;
 
   }
+  /////
+  .mainContainerInternals{
+    margin: 0;
+    padding: 10px;
+    @include largeDevices {
+      order: initial;
+      margin: 0 auto;
+      max-width: 994px;
+      padding: 60px 42px;
+    }
+
+  }
+  /////
   .planetContainer,
   .profileContainer {
     position: relative;

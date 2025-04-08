@@ -46,7 +46,7 @@ const AboutUs = () => {
           onClick={() => history.push('/')}
           text="Volver al Inicio"
         />
-        <div className="mainContainer">
+        <div className="mainContainerInternals">
           <ScrollToTop />
           <h2 dangerouslySetInnerHTML={{__html:data?.title?.rendered || "ACERCA DE NOSOTROS"}}></h2>
           <p dangerouslySetInnerHTML={{__html:data?.content?.rendered || ""}}></p>
