@@ -5,13 +5,14 @@ import Button from 'src';
 // Style
 import style from '@Sass/components/cards.module.scss';
 
-export const HelperCard = (props) => {
+export const HelperCard = ({
+  useToolIcon = false
+}) => {
   return (
     <div className="planetHelper">
       <span className="planetHelperBorder planetHelperBorderTop"></span>
       <div className="planetHelperContainer">
-        <div className="planetHelperTitle">
-          
+        <div className={ `planetHelperTitle ${useToolIcon ? "toolsIcon" : "adviceIcon"}`}>
           <h2>Más herramientas</h2>
         </div>
         <div className="planetHelperContent">

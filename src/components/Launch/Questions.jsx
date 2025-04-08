@@ -374,22 +374,19 @@ return (
     <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
     <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
     <fieldset id="promo-code-section">
-      <label htmlFor="promo_code">Código Promocional</label>
-      <div
-        id="promo-code"
-        className="fieldsets">
+      <label htmlFor="promo_code" className="text-center">Código Promocional</label>
+      <div id="promo-code" className="promoCode">
         <span dangerouslySetInnerHTML={{ __html: texts5?.pregunta }}></span>
         <a onClick={()=>handleCopy('R0cketN0w')}>
         { 
-        !copied ? 
-          <img src={boton_copiar} alt="Botón Copiar"/>
-        :
-          <img src={successIcon} alt="Copiado"/>
+          copied
+          ? <img src={successIcon} alt="Copiado"/>
+          : <img src={boton_copiar} alt="Botón Copiar"/>
         }
         </a>
       </div>
     </fieldset>
-    <Button text="SIGUIENTE" isAlt={false} onClick={()=>{history.push('/signup')}}/>
+    <Button text="SIGUIENTE" isCentered onClick={()=>{history.push('/signup')}}/>
   </div>
   );
 };

@@ -237,21 +237,18 @@ export const Logo = ({ setPage, setTitle, texts }) => {
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
-      <figure>
-        {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                playvideo: previewVideoUrano,
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
-      </figure>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: previewVideoUrano,
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-
       <fieldset>
         <textarea
           name="uranoQ1"

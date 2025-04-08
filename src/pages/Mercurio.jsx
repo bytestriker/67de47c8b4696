@@ -258,26 +258,20 @@ export const MercurioQ2 = ({
 
   return (
     <form method="POST" className="questionWrap">
-        {/* <QuestionH4 questiontext={texts.pregunta} /> */}
-
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <h4 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h4>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      {/* <SaberMas data={texts} /> */}
-      <figure>
-        {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                link_text: texts?.seccion_de_apoyo || "Ver video",
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
-      </figure>
-
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              link_text: texts?.seccion_de_apoyo || "Ver video",
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <fieldset>
         <label className="text-right">2/3</label>
         <textarea
@@ -370,8 +364,8 @@ export const MercurioQ3 = ({
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <h4 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h4>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-        <figure>
-        {texts?.link_video && (
+        {
+          texts?.link_video && (
           <WatchPlanetVideo
             params={[
               {
@@ -381,9 +375,8 @@ export const MercurioQ3 = ({
               },
             ]}
           />
-        )}
-      </figure>
-
+          )
+        }
         <fieldset>
           <label className="text-right">3/3</label>
           <textarea

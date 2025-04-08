@@ -43,6 +43,8 @@ main {
   }
   &.saturno {
     background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-saturno.png");
+    background-size: cover, 180vw;
+    background-position: center, 46% 20vh;
   }
   &.jupiter {
     background-image: url("../../assets/images/bg-noizee.png"), url("../../assets/images/bg-jupiter.png");

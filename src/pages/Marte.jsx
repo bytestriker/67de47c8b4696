@@ -224,19 +224,18 @@ export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle,
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <figure>
-        {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                playvideo: previewVideoMarte,
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
-      </figure>
+      {
+        texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: previewVideoMarte,
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <Button text="SIGUIENTE" isCentered={true} onClick={() => handleSubmit()} />
     </form>
   );
