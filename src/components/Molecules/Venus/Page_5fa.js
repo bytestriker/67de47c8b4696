@@ -198,67 +198,40 @@ export const VenusQ3Conclusion = ({
   };
 
   return (
-    <form className={style.venusQuestions}>
+    <form className="questionWrap">
       <ScrollToTop />
-      <h3 className={style.paintpoint}>{texts.pregunta}</h3>
+      <h3 className="text-center">{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
-        <span>
-          <label className={style.identify}>Fortalezas y Amenazas</label>
-          <img src={cruce} className={style.imgcruce} alt="cruce" />
-      </span>
       <fieldset>
-
-        {elementos.map((elemento, index) => (
-          <div key={index} className={style.selectContainer}>
-            <div className={style.selectHeader} onClick={() => toggleSelectFortaleza(index)}>
-              <span className={style.selectSpanText}>
-                {elemento.selectedFortaleza || 'Selecciona una fortaleza'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {elemento.isOpenFortaleza ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
-            </div>
-            {elemento.isOpenFortaleza && (
-              <div className={style.selectOptions}>
+        {
+          elementos.map((elemento, index) => (
+          <div key={index}>
+            <div className="select">
+              <select name="" id="">
+                <option disabled selected>{elemento.selectedFortaleza || 'Selecciona una fortaleza'}</option>
                 {fortaleza.map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={style.option}
-                    onClick={() => handleFortalezaClick(index, option)}
-                  >
-                    {option}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <div className={style.selectHeader} onClick={() => toggleSelectAmenaza(index)}>
-              <span className={style.selectSpanText}>
-                {elemento.selectedAmenaza || 'Selecciona una amenaza'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {elemento.isOpenAmenaza ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
+                <option key={optionIndex} onClick={() => handleFortalezaClick(index, option)}>
+                  {option}
+                </option>
+              ))}
+              </select>
             </div>
-            {elemento.isOpenAmenaza && (
-              <div className={style.selectOptions}>
+            <div className="select">
+              <select name="" id="">
+                <option disabled selected>{elemento.selectedAmenaza || 'Selecciona una amenaza'}</option>
                 {amenaza.map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={style.option}
-                    onClick={() => handleAmenazaClick(index, option)}
-                  >
-                    {option}
-                  </div>
-                ))}
-              </div>
-            )}
+                <option key={optionIndex} onClick={() => handleAmenazaClick(index, option)}>
+                  {option}
+                </option>
+              ))}
+              </select>
+            </div>
           </div>
         ))}
+        <a className="buttonAdd" onClick={addElemento}>
+          <span>Agregar más</span>
+        </a>
       </fieldset>
-      <a className="buttonAdd" onClick={addElemento}>
-        <span>Agregar más</span>
-      </a>
       <fieldset>
         <textarea
           ref={inputConclusion}
@@ -271,7 +244,7 @@ export const VenusQ3Conclusion = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="button" className={style.btnPlanet} onClick={() => setPage(5)} />
+        <Button text="ANTERIOR" isAlt onClick={() => setPage(5)} />
         <Button
           text="GUARDAR"
           onClick={() => handleSubmit('save')}

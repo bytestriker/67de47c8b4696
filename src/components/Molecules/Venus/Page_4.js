@@ -198,57 +198,36 @@ export const VenusQ1Conclusion = ({
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h3>{texts.pregunta}</h3>
+      <h3 className="text-center">{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
       <fieldset>
         {
           elementos.map((elemento, index) =>
-          <div key={index} className={style.selectContainer}>
-            <div className={style.selectHeader} onClick={() => toggleSelectFortaleza(index)}>
-              <span className={style.selectSpanText}>
-                {elemento.selectedFortaleza || 'Selecciona una fortaleza'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {elemento.isOpenFortaleza ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
+          <div key={index}>
+            <div className="select">
+              <select name="" id="">
+                <option disabled selected>{elemento.selectedFortaleza || 'Selecciona una fortaleza'}</option>
+              {
+                fortaleza.map((option, idx) =>
+                <option key={idx} onClick={() => handleFortalezaClick(index, option)}>
+                  {option}
+                </option>)
+              }
+              </select>
             </div>
-            {elemento.isOpenFortaleza && (
-              <div className={style.selectOptions}>
-                {fortaleza.map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={style.option}
-                    onClick={() => handleFortalezaClick(index, option)}
-                  >
-                    {option}
-                  </div>
-                ))}
-              </div>
-            )}
-            <div className={style.selectHeader} onClick={() => toggleSelectOportunidad(index)}>
-              <span className={style.selectSpanText}>
-                {elemento.selectedOportunidad || 'Selecciona una oportunidad'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {elemento.isOpenOportunidad ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
+            <div className="select">
+              <select name="" id="">
+                <option disabled selected>{elemento.selectedOportunidad || 'Selecciona una oportunidad'}</option>
+              {
+                oportunidad.map((option, idx) =>
+                <option key={idx} className={style.option} onClick={() => handleFortalezaClick(index, option)}>
+                  {option}
+                </option>)
+              }
+              </select>
             </div>
-            {elemento.isOpenOportunidad && (
-              <div className={style.selectOptions}>
-                {oportunidad.map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={style.option}
-                    onClick={() => handleOportunidadClick(index, option)}
-                  >
-                    {option}
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         )}
-
         <a className="buttonAdd" onClick={addElemento}>
           <span>Agregar más</span>
         </a>
@@ -275,7 +254,6 @@ export const VenusQ1Conclusion = ({
           text="SIGUIENTE"
           onClick={() => setPage(5)}
           //onClick={() => handleSubmit('next')}
-          disabled={buttonNext ? '' : 'disabled'}
           />
       </div>
     </form>

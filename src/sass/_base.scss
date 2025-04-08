@@ -137,6 +137,7 @@ input:not([type=file]), textarea, .input, .select select {
 
 .select {
   position: relative;
+  margin-bottom: 16px;
   &::after {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNFMEZGNEUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJtNCA4bDggOGw4LTgiLz48L3N2Zz4=');
     background-size: cover;
@@ -144,9 +145,9 @@ input:not([type=file]), textarea, .input, .select select {
     display: block;
     width: 24px;
     height: 24px;
+    position: absolute;
     right: 24px;
     top: 50%;
-    position: absolute;
     transform: translateY(-50%);
   }
 }

@@ -198,61 +198,36 @@ export const VenusQ2Conclusion = ({
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h3>{texts.pregunta}</h3>
+      <h3 className="text-center">{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
-
-      <span>
-        <label className={style.identify}>Oportunidades y Debilidades</label>
-        <img src={cruce} className={style.imgcruce} alt="cruce" />
-      </span>
       <fieldset>
-        {elementos.map((elemento, index) => (
-          <div key={index} className={style.selectContainer}>
-            <div className={style.selectHeader} onClick={() => toggleSelectOportunidad(index)}>
-              <span className={style.selectSpanText}>
-                {elemento.selectedOportunidades || 'Selecciona una oportunidad'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {elemento.isOpenOportunidades ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
-            </div>
-            {elemento.isOpenOportunidades && (
-              <div className={style.selectOptions}>
-                {oportunidad.map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={style.option}
-                    onClick={() => handleOportunidadClick(index, option)}
-                  >
+        {
+          elementos.map((elemento, index) =>
+          <div key={index}>
+            <div className="select">
+              <select>
+                <option disabled selected>{elemento.selectedOportunidades || 'Selecciona una oportunidad'}</option>
+                {
+                  oportunidad.map((option, optionIndex) =>
+                  <option key={optionIndex} onClick={() => handleOportunidadClick(index, option)}>
                     {option}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <div className={style.selectHeader} onClick={() => toggleSelectDebilidad(index)}>
-              <span className={style.selectSpanText}>
-                {elemento.selectedDebilidades || 'Selecciona una debilidad'}
-              </span>
-              <span className={style.selectSpanArrow}>
-                {elemento.isOpenDebilidades ? <FaCaretUp /> : <FaCaretDown />}
-              </span>
+                  </option>)
+                }
+              </select>
             </div>
-            {elemento.isOpenDebilidades && (
-              <div className={style.selectOptions}>
-                {debilidades.map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={style.option}
-                    onClick={() => handleDebilidadClick(index, option)}
-                  >
+            <div className="select">
+              <select>
+                <option disabled selected>{elemento.selectedDebilidades || 'Selecciona una debilidad'}</option>
+                {
+                  debilidades.map((option, optionIndex) => (
+                  <option key={optionIndex} onClick={() => handleDebilidadClick(index, option)}>
                     {option}
-                  </div>
+                  </option>
                 ))}
-              </div>
-            )}
-          </div>
-        ))}
+              </select>
+            </div>
+          </div>)
+        }
         <a className="buttonAdd" onClick={addElemento}>
           <span>Agregar más</span>
         </a>
@@ -269,7 +244,7 @@ export const VenusQ2Conclusion = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR" className={style.btnPlanet} onClick={() => setPage(4)} />
+        <Button text="ANTERIOR" isAlt onClick={() => setPage(4)} />
         <Button
           text="GUARDAR"
           onClick={() => handleSubmit('save')}
@@ -277,8 +252,9 @@ export const VenusQ2Conclusion = ({
           />
         <Button
           text="SIGUIENTE"
-          onClick={() => handleSubmit('next')}
-          disabled={buttonNext ? '' : 'disabled'}
+          onClick={() => setPage(6)}
+          //onClick={() => handleSubmit('next')}
+          //disabled={buttonNext ? '' : 'disabled'}
           />
       </div>
     </form>
