@@ -9,7 +9,7 @@ import { useEventsMarte } from '@Hooks/useEventsMarte';
 import { statusPlanet } from '@Helpers/constants';
 
 // Styles
-import styles from '@Sass/components/modals.module.scss';
+import styles from '@Sass/components/alerts.module.scss';
 
 export const ModalSalirMarte = ({ title, message, setModalSalir, data, page }) => {
   const { marteCreateProject, marteCreateProjectBussines } = useEventsMarte();

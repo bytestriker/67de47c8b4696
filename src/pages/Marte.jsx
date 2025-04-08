@@ -667,6 +667,18 @@ export const MarteNegocios = ({
 
   return (
     <form method="POST" className="questionWrap">
+      {modal ? (
+        <ModalMarte
+          title="¡FELICIDADES!"
+          message={`Haz completado <strong>Marte</strong> de tu proyecto <strong>${
+            getLuna().nombre
+          }</strong>`}
+          buttonName="INICIO"
+          setPage={setPage}
+          setModal={setModal}
+          page={5}
+        />
+      ) : null}
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
