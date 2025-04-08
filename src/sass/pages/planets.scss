@@ -217,7 +217,13 @@ main {
 
         width: 100%;
       }
-      
+
+      .planetTitle {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+      }
 
       .planetImage {
         position: absolute;

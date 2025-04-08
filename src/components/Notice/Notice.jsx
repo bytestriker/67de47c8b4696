@@ -6,13 +6,13 @@ import lock from '@Assets/images/lock.svg';
 import grid from '@Assets/images/planet-grid.png';
 import tierra from '@Assets/images/planets/tierra.svg';
 import neptuno from '@Assets/images/planets/neptuno.svg';
-import tierraTitle from '@Assets/images/title-neptuno.svg';
+import tierraTitle from '@Assets/images/title-tierra.svg';
 import neptunoTitle from '@Assets/images/title-neptuno.svg';
 // IMAGES
 import _Astronaut from '@Assets/images/astronauta.png';
 
 // STYLES
-import '@Components/Notice/notice.scss';
+//import '@Components/Notice/notice.scss';
 import Button from '@Components/Button';
 
 // export const ComingSoon = ({ setPopup, planet = 'tierra' }) => {
@@ -70,8 +70,8 @@ export const ComingSoon = ({ planet }) => {
               <h3>¡Próximamente!</h3>
               <div className="planetFigure">
                 { planetName === 'earth' && <img src={tierra} className="img-fluid" />}
-                { planetName === 'neptune' && <img src={neptuno} className="img-fluid" />}
                 { planetName === 'earth' && <img src={tierraTitle} className="planetTitle" />}
+                { planetName === 'neptune' && <img src={neptuno} className="img-fluid" />}
                 { planetName === 'neptune' && <img src={neptunoTitle} className="planetTitle" />}
                 <div className="lockedPlanet">
                   <img src={grid} alt="lock" />
