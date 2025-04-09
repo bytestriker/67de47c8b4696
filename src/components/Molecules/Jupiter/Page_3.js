@@ -53,11 +53,24 @@ export const Calificativos = ({ setPage, setTitle, texts, dataJupiter }) => {
     }
   };
 
+  console.log("jupiter page 3 texts ", texts)
+
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
-      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )} 
+
       <ValueCalificativos
         getValueAdjetivos={getValueAdjetivos}
         setValueAdjetivos={setValueAdjetivos}

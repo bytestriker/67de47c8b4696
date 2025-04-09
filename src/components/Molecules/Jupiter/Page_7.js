@@ -20,7 +20,7 @@ import {
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
@@ -209,12 +209,24 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
       setLoading(false);
     }
   };
+  console.log("jupiter page 7 texts ", texts)
 
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )} 
+
       {/*<div className={jupiter.selectContainer}>
         <label>Opción 1</label>
         <div className={jupiter.selectHeader} onClick={toggleSelectOpcion1}>
@@ -318,15 +330,16 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
       </fieldset>
       
       <div className="buttons">
-        <Button text="ANTERIOR" onClick={() => setPage(6)} />
-        <button
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(6)} />
+          {/* disabled={buttonNext ? '' : 'disabled'} */}
+        <Button
           type="button"
-          className={buttonNext ? jupiter.btnPlanet : jupiter.btnPlanetOff}
-          disabled={buttonNext ? '' : 'disabled'}
+          text="GUARDAR"
+          
           onClick={() => handleSubmit('save')}
         >
           GUARDAR
-        </button>
+        </Button>
         {/*<button
           type="button"
           className={buttonNext ? jupiter.btnStepDos : jupiter.btnStepDosOff}
@@ -335,7 +348,7 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
         >
           SIGUIENTE
         </button>*/}
-        <Button text="SIGUIENTE" onClick={() => setPage(8)} />
+        {/* <Button text="SIGUIENTE" onClick={() => setPage(8)} /> */}
       </div>
     </form>
   );

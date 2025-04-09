@@ -9,7 +9,7 @@ import { jupiterStore } from '@Store/jupiter';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ValueNombre } from '@Components/Atomos/Inputs/jupiter';
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
@@ -48,12 +48,23 @@ export const Nombre = ({ setPage, setTitle, texts, dataJupiter }) => {
       setButtonNext(false);
     }
   };
-  
+  console.log("molecules juipiter page 4 texts ", texts)
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )} 
+
       <ValueNombre
         getValueObjetivos={getValueObjetivos}
         setValueObjetivos={setValueObjetivos}
