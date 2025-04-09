@@ -9,7 +9,7 @@ import { jupiterStore } from '@Store/jupiter';
 // Hooks
 import { JupiterWPText } from '@Hooks/useFetchWP';
 import { useEventJupiter } from '@Hooks/useEventsJupiter';
-
+import { HelperCard } from '@Components/Atomos/HelperCard';
 // Components
 import {
   Intro,
@@ -222,54 +222,54 @@ const Jupiter = () => {
         {/* <ButtonClose setModalSalir={setModalSalir} titlePage={title} /> */}
         <div className="planetContent">
           <div className="cpBorderTop"></div>
-          {page === 1 ? (
+          {page === 1 && (
             <Intro setPage={setPage} setTitle={setTitle} texts={texts1} dataJupiter={dataJupiter} />
-          ) : null}
-          {page === 2 ? (
+          ) }
+          {page === 2 && (
             <Caracteristicas
               setPage={setPage}
               setTitle={setTitle}
               texts={texts2}
               dataJupiter={dataJupiter}
             />
-          ) : null}
-          {page === 3 ? (
+          ) }
+          {page === 3 && (
             <Calificativos
               setPage={setPage}
               setTitle={setTitle}
               texts={texts3}
               dataJupiter={dataJupiter}
             />
-          ) : null}
-          {page === 4 ? (
+          ) }
+          {page === 4 && (
             <Nombre
               setPage={setPage}
               setTitle={setTitle}
               texts={texts4}
               dataJupiter={dataJupiter}
             />
-          ) : null}
-          {page === 5 ? (
+          ) }
+          {page === 5 && (
             <Significativos
               setPage={setPage}
               setTitle={setTitle}
               texts={texts5}
               dataJupiter={dataJupiter}
             />
-          ) : null}
-          {page === 6 ? (
+          ) }
+          {page === 6 && (
             <IdeasNombre
               setPage={setPage}
               setTitle={setTitle}
               texts={texts6}
               dataJupiter={dataJupiter}
             />
-          ) : null}
-          {page === 7 ? <Nombres setPage={setPage} setTitle={setTitle} texts={texts7} /> : null}
-          {page === 8 ? (
+          ) }
+          {page === 7 && <Nombres setPage={setPage} setTitle={setTitle} texts={texts7} /> }
+          {page === 8 && (
             <Marca setPage={setPage} setTitle={setTitle} texts={texts8} dataJupiter={dataJupiter} />
-          ) : null}
-          {page === 9 ? (
+          ) }
+          {page === 9 && (
             <Logo
               setPage={setPage}
               setTitle={setTitle}
@@ -278,7 +278,7 @@ const Jupiter = () => {
               texts={texts9}
               dataJupiter={dataJupiter}
             />
-          ) : null}
+          ) }
         </div>
       </div>
       {modalSalir && (
@@ -303,6 +303,10 @@ const Jupiter = () => {
           page={page}
         />
       ) }
+
+      {page <= 8 && <HelperCard />}
+
+
     </section>
   );
 };

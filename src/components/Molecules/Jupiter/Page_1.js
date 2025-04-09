@@ -6,10 +6,10 @@ import { jupiterStore } from '@Store/jupiter';
 
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
-import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ValueCaracteristicas } from '@Components/Atomos/Inputs/jupiter';
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
+import previewVideoJupiter from '@Assets/images/preview-video-jupiter.png';
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -50,13 +50,24 @@ export const Intro = ({ setPage, setTitle, texts, dataJupiter }) => {
       setButtonNext(false);
     }
   };
+  console.log("jupiter page 1 texts ", texts)
 
   return (
     <div className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <SaberMas data={texts} />
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: previewVideoJupiter,
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )} 
       <Button
         text="SIGUIENTE"
         isCentered={true}

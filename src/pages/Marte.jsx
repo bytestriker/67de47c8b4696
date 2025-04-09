@@ -142,7 +142,7 @@ const Marte = () => {
 
   return (
     <section className="planetWrap">
-      {1 && (
+      {modalSalir && (
         <ModalSalirMarte
           title="Paso 2"
           message="<p>Haz completado tu Business Model Canvas. Ahora haremos el cruce de cada concepto.</p><br/><p>¿Qué deseas hacer?</p>"

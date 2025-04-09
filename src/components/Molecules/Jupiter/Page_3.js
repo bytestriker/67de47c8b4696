@@ -9,7 +9,7 @@ import { jupiterStore } from '@Store/jupiter';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { ValueCalificativos } from '@Components/Atomos/Inputs/jupiter';
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles

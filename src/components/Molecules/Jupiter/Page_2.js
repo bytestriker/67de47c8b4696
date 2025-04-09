@@ -56,6 +56,18 @@ export const Caracteristicas = ({ setPage, setTitle, texts, dataJupiter }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: previewVideoJupiter,
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )} 
+
       <ValueCaracteristicas
         getValueCaracteristica={getValueCaracteristica}
         setValueCaracteristica={setValueCaracteristica}

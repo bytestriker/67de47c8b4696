@@ -1,9 +1,3 @@
-// Images
-import email from '@Assets/images/icons/email.png';
-import earth from '@Assets/images/icons/earth.png';
-import Button from 'src';
-// Style
-import style from '@Sass/components/cards.module.scss';
 
 export const HelperCard = ({
   useToolIcon = false
