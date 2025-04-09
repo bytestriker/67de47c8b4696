@@ -33,6 +33,7 @@ const Privacy = () => {
             history.push('/');
           }}
           text="Volver al Inicio"
+
         />
         <div className="mainContainerInternals">
           <ScrollToTop />
