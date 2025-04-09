@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 // Hooks
 import { useEventsMarte } from '@Hooks/useEventsMarte';
 
+import Button from '@Components/Button';
+
 // Constants
 import { statusPlanet } from '@Helpers/constants';
 
@@ -34,7 +36,7 @@ export const ModalSalirMarte = ({ title, message, setModalSalir, data, page }) =
         const objetoSinCamposVacios = {
           ...deleteVoid,
         };
-    
+
         if (deleteVoid.propuesta_valor === '') {
           delete objetoSinCamposVacios.propuesta_valor;
         }
@@ -96,15 +98,13 @@ export const ModalSalirMarte = ({ title, message, setModalSalir, data, page }) =
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent} ref={modalMarteRef}>
-          <p>{title}</p>
-          <strong>{message}</strong>
-          <div className={styles.ButtonContent}>
-            <button className="btnModal-cancel" onClick={() => handleAlert('CANCELAR', data, page)}>
-              No
-            </button>
-            <button className="btnModal-ok" onClick={() => handleAlert('OK', data, page)}>
-              Si
-            </button>
+
+          <h1>{title}</h1>
+          <p className="text-center" dangerouslySetInnerHTML={{ __html: message }}></p>
+
+          <div className={`${styles.ButtonContent} buttons`}>
+            <Button onClick={() => handleAlert('CANCELAR', data, page)} text="GUARDAR" isAlt={true} />
+            <Button onClick={() => handleAlert('OK', data, page)} text="CONTINUAR" />
           </div>
         </div>
       </div>
@@ -134,10 +134,8 @@ export const ModalMarte = (props) => {
         <div className={styles.ModalContent}>
           <h3>{title}</h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
-              {buttonName}
-            </button>
+          <div className={`buttons`}>
+            <Button onClick={() => handleManageModal()} text={buttonName} />
           </div>
         </div>
       </div>

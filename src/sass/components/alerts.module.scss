@@ -40,13 +40,13 @@
   .ModalContent {
     background-color: rgba(77, 84, 47, 0.45);
     color: $--colorWhite;
-    max-width: 420px;
+    max-width: 648px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 36px 36px 24px;
+    padding: 54px;
     position: relative;
     margin: 0 auto;
     &::before {

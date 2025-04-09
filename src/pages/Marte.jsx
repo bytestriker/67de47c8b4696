@@ -142,6 +142,15 @@ const Marte = () => {
 
   return (
     <section className="planetWrap">
+      {1 && (
+        <ModalSalirMarte
+          title="Paso 2"
+          message="<p>Haz completado tu Business Model Canvas. Ahora haremos el cruce de cada concepto.</p><br/><p>¿Qué deseas hacer?</p>"
+          setModalSalir={setModalSalir}
+          data={dataMarte}
+          page={page}
+        />
+      )}
       <ScrollToTop />
       <ButtonGoHome
         className="planetBackToTheHomepage"
@@ -151,7 +160,6 @@ const Marte = () => {
         text="Volver al Inicio"
       />
       <div className="planetContainer">
-        {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
         <div className="planetContent">
           {page === 1 ? (
             <MarteQ1Valor

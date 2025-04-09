@@ -86,10 +86,8 @@ export const ModalSuccesProject = (props) => {
             Haz completado <strong>Mercurio</strong> de tu proyecto
           </p>
           {getLuna() ? <h4>getLuna().nombre</h4> : ''}
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleAlert()}>
-              INICIO
-            </button>
+          <div className={`${styles.ButtonContent} buttons`}>
+            <Button className={styles.buttonContinue} onClick={() => handleAlert()} text="INICIO" />
           </div>
         </div>
       </div>
@@ -104,11 +102,13 @@ export const ModalInfoProject = (props) => {
       <div className="container">
         <div className={styles.ModalContent}>
           <h3>¡INFORMACIÓN!</h3>
-          <p>{message.message}</p>
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => setModal(false)}>
-              CONTINUAR
-            </button>
+          <p dangerouslySetInnerHTML={{ __html: message.message }}></p>
+          <div className={`${styles.ButtonContent} buttons`}>
+            <Button
+              className={styles.buttonContinue}
+              onClick={() => setModal(false)}
+              text="CONTINUAR"
+            />
           </div>
         </div>
       </div>
