@@ -33,7 +33,7 @@
     path {
       transform-origin: center;
       transform-box: fill-box;
-      animation: scaleUp 2s ease-in infinite;
+      animation: scaleUp 1.8s cubic-bezier(.5,0,.5,1) infinite;
       &:nth-child(n+2):nth-child(-n+7) {
         animation-delay: 0.2s;
       }
@@ -48,9 +48,9 @@
 }
 
 @keyframes scaleUp {
-  0% {  transform: scale(1);    }
-  50%{  transform: scale(0.01); opacity: 0; }
-  100% {  transform: scale(1);  }
+  0% {  transform: scale(0.01); opacity: 0;   }
+  60%{  transform: scale(1); opacity: 1; }
+  100% {  transform: scale(0.01); opacity: 0; }
 }
 
 .modalAlert {

@@ -1,0 +1,66 @@
+@import '@Sass/variables';
+@import '@Sass/fonts';
+
+.tankPack {
+  position: relative;
+  width: 210px;
+  height: 270px;
+  cursor: pointer;
+  .tankPackInfo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    span {
+      display: block;
+      align-self: flex-end;
+      width: 50%;
+      text-align: center;
+    }
+    h3 {
+      margin: 32px 0 9px;
+    }
+    p {
+      margin: 0;;
+    }
+  }
+  svg {
+    path {
+      transition: all 0.2s linear;
+      &:nth-child(1) {
+        fill: #4D542F;
+        fill-opacity: 0.45;
+        stroke: #E0FF4E;
+      }
+      &:nth-child(2) {
+        fill: #4D542F;
+        fill-opacity: 0.45;
+      }
+      &:nth-child(3) {
+        fill: #E0FF4E;
+      }
+      &:nth-child(4) {
+        stroke: #E0FF4E;
+      }
+      &:nth-child(5) {
+        fill: #E0FF4E;
+        stroke: #E0FF4E;
+      }
+    }
+  }
+  &:hover {
+    path {
+      &:nth-child(n):nth-child(-n+2) {
+        fill: #FB6C2B;
+      }
+      &:nth-child(n+3):nth-child(-n+4) {
+        filter: drop-shadow(0 0 4px #E0FF4E);
+
+      }
+    }
+    
+  }
+}

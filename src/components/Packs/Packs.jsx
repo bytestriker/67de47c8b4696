@@ -9,6 +9,9 @@ import { storeBuyTank } from '@Store/global';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title } from '@Components/Atomos/Titles';
 import NavPack from '@Components/Packs/navPacks';
+import TankPack from '@Components/Packs/tankPack';
+import ButtonGoHome from '@Components/ButtonGoHome';
+import Button from '@Components/Button';
 
 import { instanceWithRocket } from '@Config/axios';
 import { useHistory  } from 'react-router-dom';
@@ -81,7 +84,7 @@ const Packs = () => {
   };
 
   return (
-    <section>
+    <section className="planetWrap">
       <ScrollToTop />
       <NavPack
         navPackState={navPackState}
@@ -93,53 +96,50 @@ const Packs = () => {
         totalPacks={totalPacks}
         setTotalPacks={setTotalPacks}
       />
-      <div className="Packs">
-        <div className="container">
-          <div className="packContent">
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="packContent">
         {/*     <GoBack /> */}
-            <Title title="NUESTROS PAQUETES" />
-
-            <p className="packsParagraph">
-              Completa tu plan de negocios de la mano de <b>ROCKET NOW</b>.<br></br> La mejor guía y
-              red de apoyo para emprendedores como tú.
-            </p>
-
-            <div>
-              <ul className="packsItemsContent">
-                {Items.map((pack) => (
-                  <li key={pack.id} className="packsItems" onClick={() => handlePack(pack)}>
-                    <span>
-                      <img src={_Tank} alt="tanque" />
-                    </span>
-                    <div className="articlePack">
-                      <h4>{pack.name}</h4>
-                      <p>{pack.description}</p>
-                      <a to="/gracias" className="linkCompra">
-                        {pack.nameButton}
-                      </a>
-                    </div>
-                  </li>
-                ))}
-                <li className="packsItems packsItems-codigo">
-                  <div className="articlePack">
-                    <p>¡Ingresa tu Código de Descuento <strong>aquí</strong>!</p>
-                  </div>
-                  <form onSubmit={handleSubmit}>
-                    <input
-                      type="text"
-                      value={codigo}
-                      onChange={handleCodigoChange}
-                      placeholder="Código"
-                    /> 
-                    <div className="articlePack articlePack-error">
-                      <p>{codeMessage}</p>
-                    </div>
-                    <button type="submit" className='buttonPlanet'>ENVIAR</button>
-                  </form>
-                </li>
-              </ul>
-            </div>
+        <h2>NUESTROS PAQUETES</h2>
+        <p>Completa tu plan de negocios de la mano de <b>ROCKET NOW</b>.<br></br> La mejor guía y red de apoyo para emprendedores como tú.</p>
+        <div className="packsGrid">
+          {Items.map((pack) => (
+            <TankPack key={pack.id} data={pack} handleClick={() => handlePack(pack)} />
+            /*<li key={pack.id} className="packsItems" onClick={() => handlePack(pack)}>
+              <span>
+                <img src={_Tank} alt="tanque" />
+              </span>
+              <div className="articlePack">
+                <h4>{pack.name}</h4>
+                <p>{pack.description}</p>
+                <a to="/gracias" className="linkCompra">
+                  {pack.nameButton}
+                </a>
+              </div>
+            </li>/*/
+          ))}
+        </div>
+        <div>
+          <div className="articlePack">
+            <p>¡Ingresa tu Código de Descuento <strong>aquí</strong>!</p>
           </div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={codigo}
+              onChange={handleCodigoChange}
+              placeholder="Código"
+            /> 
+            <div className="articlePack articlePack-error">
+              <p>{codeMessage}</p>
+            </div>
+            <Button text="ENVIAR" type="submit" />
+          </form>
         </div>
       </div>
     </section>
