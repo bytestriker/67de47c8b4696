@@ -22,12 +22,11 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <ErrorBoundary>
-
-    <QueryClientProvider client={queryClient}>
-      <AppProvider>
-        <AppRouter />
-      </AppProvider>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <AppProvider>
+          <AppRouter />
+        </AppProvider>
+      </QueryClientProvider>
     </ErrorBoundary>
   );
 };
