@@ -327,6 +327,16 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
       <fieldset>
         <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
         <ValueProposition
@@ -505,6 +515,18 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
+      {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
+
+      
       <fieldset>
         <ToolTip text="Alianzas Clave" tool={texts.instruccion_6} />
         <KeyPartners
@@ -689,6 +711,17 @@ export const MarteNegocios = ({
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
+
       <div className="infoMarte">
         <div>
           <span>Propuesta de Valor</span>
@@ -703,7 +736,7 @@ export const MarteNegocios = ({
       <fieldset>
         <label htmlFor="">Propuesta de Valor</label>
         <div className="select">
-          <select name="" id="" onClick={() => handlePropositionClick()}>
+          <select name="" id="" onChange={() => handlePropositionClick()}>
             {dataMarte?.value_proposition.map((option, index) => (
               <option key={index} className={style.option}>
                 {option}

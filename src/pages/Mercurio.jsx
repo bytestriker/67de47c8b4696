@@ -174,6 +174,17 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
       <form method="POST">
         <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}>{}</h2>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+        {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
+
         <fieldset>
           <label htmlFor="launchQ1" className="text-right">
             1/3
@@ -261,7 +272,7 @@ export const MercurioQ2 = ({
         <WatchPlanetVideo
           params={[
             {
-              link_text: texts?.seccion_de_apoyo || "Ver video",
+              link_text: texts?.seccion_de_apoyo || 'Ver video',
               alt: 'play video',
               url: texts?.link_video,
             },
@@ -357,22 +368,20 @@ export const MercurioQ3 = ({
   return (
     <div className="questionWrap">
       <form method="POST">
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
-      <h4 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h4>
+        <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
+        <h4 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h4>
         <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-        {
-          texts?.link_video && (
+        {texts?.link_video && (
           <WatchPlanetVideo
             params={[
               {
-                link_text: texts?.seccion_de_apoyo || "Ver video",
+                link_text: texts?.seccion_de_apoyo || 'Ver video',
                 alt: 'play video',
                 url: texts?.link_video,
               },
             ]}
           />
-          )
-        }
+        )}
         <fieldset>
           <label className="text-right">3/3</label>
           <textarea
@@ -409,7 +418,6 @@ export const MercurioQ3 = ({
           </button> */}
         </div>
       </form>
-
     </div>
   );
 };

@@ -380,6 +380,17 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
       <h2 dangerouslySetInnerHTML={{ __html: texts.subtitulo_1 }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
 
+
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       {/*        <div className={urano.checkText}>
         <input type="checkbox" name="checkInput" id="checkInput" className={urano.checkInput} />
         <p>Subir después</p>
@@ -455,6 +466,16 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <fieldset className="inputSearch" id="fieldset-search">
         <input
           type="search"
@@ -522,6 +543,16 @@ export const Marketing = ({ setTitle, texts, params }) => {
       <h2 dangerouslySetInnerHTML={{ __html: market.categoria }}></h2>
 
       <p dangerouslySetInnerHTML={{ __html: market.descripcion_de_categoria }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <div className={urano.cardMarketing}>
         {proveedores?.length > 0 ? (
           proveedores?.map((items, index) => (

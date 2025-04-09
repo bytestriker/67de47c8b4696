@@ -14,6 +14,7 @@ import grid from '@Assets/images/planet-grid.png';
 import mercurio from '@Assets/images/planets/mercurio.png';
 import _colonizar from '@Assets/images/colonizar.svg';
 import _rayo from '@Assets/images/rayo.svg';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import empieza from '@Assets/images/planets/empieza.svg';
 
 // Styles

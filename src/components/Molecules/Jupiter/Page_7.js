@@ -318,7 +318,9 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
             <option value="">Opcion 3</option>
           </select>
         </div>
-      </fieldset><fieldset>
+      </fieldset>
+      
+      <fieldset>
         <label htmlFor="">Opcion 3</label>
         <div className="select">
           <select name="" id="">

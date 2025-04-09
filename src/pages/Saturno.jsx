@@ -115,9 +115,9 @@ const Saturno = () => {
       setTexts4(saturnoQ4);
     }
   }, [saturnoQ4]);
-  console.log("texts ", texts)
-  console.log("texts2 ", texts2)
-  console.log("texts3 ", texts3)
+  console.log('texts ', texts);
+  console.log('texts2 ', texts2);
+  console.log('texts3 ', texts3);
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -137,8 +137,7 @@ const Saturno = () => {
               texts={texts}
               setTitle={setTitle}
             />
-          )
-          }
+          )}
           {page === 2 && (
             <Awarenesss
               setPage={setPage}
@@ -146,8 +145,7 @@ const Saturno = () => {
               texts={texts}
               setTitle={setTitle}
             />
-          )
-          }
+          )}
           {page === 3 && (
             <Consideration
               setPage={setPage}
@@ -155,8 +153,7 @@ const Saturno = () => {
               texts={texts2}
               setTitle={setTitle}
             />
-          )
-          }
+          )}
           {page === 4 && (
             <Purchase
               setPage={setPage}
@@ -164,8 +161,7 @@ const Saturno = () => {
               texts={texts3}
               setTitle={setTitle}
             />
-          )
-          }
+          )}
           {page === 5 && (
             <Retention
               setPage={setPage}
@@ -174,8 +170,7 @@ const Saturno = () => {
               texts={texts4}
               setTitle={setTitle}
             />
-          )
-          }
+          )}
         </div>
       </div>
       {modalSalir && (
@@ -187,7 +182,7 @@ const Saturno = () => {
           proyect={getLuna().id}
           page={page}
         />
-      )  }
+      )}
 
       {modal && (
         <ModalSaturno
@@ -200,7 +195,7 @@ const Saturno = () => {
           setModal={setModal}
           page={5}
         />
-      )  }
+      )}
     </section>
   );
 };
@@ -239,25 +234,26 @@ export const Awareness = ({ setPage, dataSaturno, texts, setTitle }) => {
       setButtonNext(false);
     }
   };
-  
+
   return (
     <div className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || ' Placeholder Awareness' }}></h2>
+      <h2
+        dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || ' Placeholder Awareness' }}
+      ></h2>
       {/* <SaberMas data={texts} /> */}
-      {
-        texts?.link_video &&
+      {texts?.link_video && (
         <WatchPlanetVideo
           params={[
             {
-              playvideo: video, 
-              alt:"play video",
+              playvideo: video,
+              alt: 'play video',
               url: texts?.link_video,
               // You can add additional video params here if needed
-            }
-          ]} 
+            },
+          ]}
         />
-      }
+      )}
 
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <Button text="SIGUIENTE" isCentered onClick={() => setPage(2)} />
@@ -303,10 +299,12 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Placeholder Awareness' }}></h2>
+      <h2
+        dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Placeholder Awareness' }}
+      ></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts.icono : megaphone} alt="megaphone" />
-        <p dangerouslySetInnerHTML={{__html:texts.descripcion_1}}></p>
+        <p dangerouslySetInnerHTML={{ __html: texts.descripcion_1 }}></p>
       </div>
       <ValueAwareness
         dataSaturno={dataSaturno}
@@ -316,7 +314,11 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
       />
       <div className="fieldsets">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(1)} />
-        <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
+        <Button
+          text="SIGUIENTE"
+          onClick={() => setPage(3)}
+          disabled={buttonNext ? '' : 'disabled'}
+        />
       </div>
     </form>
   );
@@ -359,13 +361,30 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-        <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Consideration Heading Placeholder'}}></h2>
+      <h2
+        dangerouslySetInnerHTML={{
+          __html: texts?.titulo_de_la_vista || 'Consideration Heading Placeholder',
+        }}
+      ></h2>
       <div className="gridIconText">
-        <img src={texts?.icono ? texts?.icono : idea} alt="idea" /> 
-        <p dangerouslySetInnerHTML={{__html: texts.descripcion_1 || 'Text content placeholder for saturno considerations'}}></p>
-        {/* 
-        */}
+        <img src={texts?.icono ? texts?.icono : idea} alt="idea" />
+        <p
+          dangerouslySetInnerHTML={{
+            __html: texts.descripcion_1 || 'Text content placeholder for saturno considerations',
+          }}
+        ></p>
       </div>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+              // You can add additional video params here if needed
+            },
+          ]}
+        />
+      )}
       <ValueConsideration
         dataSaturno={dataSaturno}
         getValueConsideration={getValueConsideration}
@@ -374,7 +393,11 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
       />
       <div className="fieldsets">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(2)} />
-        <Button text="SIGUIENTE" onClick={() => setPage(4)} disabled={buttonNext ? '' : 'disabled'} />
+        <Button
+          text="SIGUIENTE"
+          onClick={() => setPage(4)}
+          disabled={buttonNext ? '' : 'disabled'}
+        />
       </div>
     </form>
   );
@@ -416,12 +439,28 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Purchase Heading Placeholder'}}></h2>
+      <h2
+        dangerouslySetInnerHTML={{
+          __html: texts?.titulo_de_la_vista || 'Purchase Heading Placeholder',
+        }}
+      ></h2>
 
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : buy} alt="buy" />
         <p>{texts.descripcion_1}</p>
       </div>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+              // You can add additional video params here if needed
+            },
+          ]}
+        />
+      )}
+
       <ValuePurchase
         dataSaturno={dataSaturno}
         getValuePurchase={getValuePurchase}
@@ -430,7 +469,11 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
       />
       <div className="fieldsets">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(3)} />
-        <Button text="SUPERIOR" onClick={() => setPage(5)} disabled={buttonNext ? '' : 'disabled'} />
+        <Button
+          text="SUPERIOR"
+          onClick={() => setPage(5)}
+          disabled={buttonNext ? '' : 'disabled'}
+        />
       </div>
     </form>
   );
@@ -495,11 +538,27 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Retention Heading Placeholder'}}></h2>
+      <h2
+        dangerouslySetInnerHTML={{
+          __html: texts?.titulo_de_la_vista || 'Retention Heading Placeholder',
+        }}
+      ></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts?.icono : magnet} alt="magnet" />
         <p>{texts.descripcion_1}</p>
       </div>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+              // You can add additional video params here if needed
+            },
+          ]}
+        />
+      )}
+
       <ValueRetention
         dataSaturno={dataSaturno}
         getValueRetention={getValueRetention}
@@ -508,7 +567,11 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
       />
       <div className="fieldsets">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(4)} />
-        <Button text="SIGUIENTE" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />
+        <Button
+          text="SIGUIENTE"
+          onClick={() => handleSubmit()}
+          disabled={buttonNext ? '' : 'disabled'}
+        />
       </div>
     </form>
   );

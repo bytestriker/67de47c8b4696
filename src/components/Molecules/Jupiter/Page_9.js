@@ -14,7 +14,7 @@ import { uploadLogo } from '@Service/jupiter.service';
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
-import { SaberMas } from '@Components/Atomos/Buttons';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Carrusel from '@Components/Atomos/Slider';
 import Button from '@Components/Button';
 
@@ -130,6 +130,17 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html:texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )} 
+      
       <div className={jupiter.upload}>
         <img src={upload} alt="upload" />
         <input
