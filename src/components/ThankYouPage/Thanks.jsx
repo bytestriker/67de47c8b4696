@@ -56,9 +56,7 @@ const Thanks = () => {
             Haz abonado <strong>{tanquesData.amountDefault}</strong> taques
           </p>
           <span className={page.links}>
-            <button className="buttonPlanet" onClick={() => handleChange()}>
-              CANJEAR
-            </button>
+            <Button text="CANJEAR" onClick={() => handleChange()} />
           </span>
           <span className={page.links}>
             <LinkRouter rute="/" label="INICIO" classItem={page.linkInicio} />
@@ -69,7 +67,7 @@ const Thanks = () => {
       return (
         <>
           <p>Descubre más sobre cómo despegar tu proyecto.</p>
-          <LinkRouter rute="/" label="¡EMPIEZA AHORA!" />
+          <LinkRouter className="buttonPrimary" rute="/" label="¡EMPIEZA AHORA!" />
         </>
       );
     }

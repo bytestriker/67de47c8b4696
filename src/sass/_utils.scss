@@ -28,7 +28,10 @@ ul.content{
   text-align: end;
   list-style: none;
   text-decoration: none;
+  margin: 0;
+  padding: 0;
   li {
     cursor: pointer;
+    margin-top: 8px;
   }
 }

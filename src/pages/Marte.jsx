@@ -193,7 +193,7 @@ const Marte = () => {
               getLuna={getLuna}
               texts={texts3}
             />
-          ) }
+          )}
         </div>
       </div>
 
@@ -224,8 +224,7 @@ export const MarteQ1Valor = ({ setPage, setMarte, dataMarte, getMarte, setTitle,
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      {
-        texts?.link_video && (
+      {texts?.link_video && (
         <WatchPlanetVideo
           params={[
             {
@@ -697,32 +696,23 @@ export const MarteNegocios = ({
         <label htmlFor="">Propuesta de Valor</label>
         <div className="select">
           <select name="" id="" onClick={() => handlePropositionClick()}>
-          {dataMarte?.value_proposition.map((option, index) => (
-                  <option
-                    key={index}
-                    className={style.option}
-                    
-                  >
-                    {option}
-                  </option>
-                ))}
-
+            {dataMarte?.value_proposition.map((option, index) => (
+              <option key={index} className={style.option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
       </fieldset>
       <fieldset>
         <label htmlFor="">Fuentes de Ingreso</label>
         <div className="select">
-          <select name="" id="" onChange={()=>handleRevenueClick()}>
-          {dataMarte?.revenue_streams.map((option, index) => (
-                  <option
-                    key={index}
-                    className={style.option}
-                    
-                  >
-                    {option}
-                  </option>
-                ))}
+          <select name="" id="" onChange={() => handleRevenueClick()}>
+            {dataMarte?.revenue_streams.map((option, index) => (
+              <option key={index} className={style.option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
       </fieldset>

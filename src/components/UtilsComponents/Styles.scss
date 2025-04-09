@@ -27,6 +27,9 @@
   }
 
   svg {
+    display: block;
+    width: 320px;
+    height: 320px;
     path {
       transform-origin: center;
       transform-box: fill-box;

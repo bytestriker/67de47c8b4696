@@ -1,5 +1,3 @@
-import '@Components/Button/button.scss';
-
 const Button = ({
   text = "Click me",
   type = "button",

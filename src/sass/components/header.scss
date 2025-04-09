@@ -140,7 +140,10 @@ header {
       text-align: right;
       cursor: pointer;
       + div {
-        margin-top: 12px
+        margin-top: 16px
+      }
+      &:hover {
+        color: #E6F85A;
       }
     }
     div {
@@ -160,7 +163,7 @@ header {
         }
       }
       + a {
-        margin-top: 12px
+        margin-top: 16px
       }
     }
     nav {
@@ -171,7 +174,6 @@ header {
         line-height: 32px;
       }
     }
-
   }
 }
 

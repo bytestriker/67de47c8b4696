@@ -77,14 +77,15 @@ const Main = () => {
 
   return (
     <>
-      {getLoading ? <Loading /> : null}
-      {warningData.modalAlert ? (
-        <ModalInfoProject setAlert={setAlert} warningData={warningData} />
-      ) : null}
+      { getLoading && <Loading /> }
       {
-        storeTankModal.modalTank ? <ModalBlockPlanet /> : null
+        warningData.modalAlert &&
+        <ModalInfoProject setAlert={setAlert} warningData={warningData} />
       }
-      
+      {
+        storeTankModal.modalTank &&
+        <ModalBlockPlanet />
+      }
       {
         popupstate.modalP
           ? <ModalPopup setPopup={setPopup} />
