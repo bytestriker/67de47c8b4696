@@ -198,43 +198,48 @@ export const VenusQ4Conclusion = ({
   };
 
   return (
-    <form method="POST" className="">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h3 className={style.paintpoint}>{texts.pregunta}</h3>
+      <h3 className="text-center">{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
+      <fieldset>
       {
-        elementos.map((elemento, index) => (
+        elementos.map((elemento, index) =>
         <div key={index}>
           <div className="select">
-              {elemento.selectedDebilidad || 'Selecciona una debilidad'}
-            <option value="" disabled selected></option>
-            {debilidad.map((option, optionIndex) => (
-                <div
-                  key={optionIndex}
-                  className={style.option}
-                  onClick={() => handleDebilidadClick(index, option)}
-                >
-                  {option}
-                </div>
-              ))}
+            <select>
+              <option value="" disabled selected>{elemento.selectedDebilidad || 'Selecciona una debilidad'}</option>
+            {
+              debilidad.map((option, optionIndex) => (
+              <option
+                key={optionIndex}
+                className={style.option}
+                onClick={() => handleDebilidadClick(index, option)}>
+                {option}
+              </option>
+            ))}
+            </select>
           </div>
           <div className="select">
-            <option value="" disabled selected>{elemento.selectedAmenaza || 'Selecciona una amenaza'}</option>
-            {amenaza.map((option, optionIndex) => (
-                <div
+            <select>
+              <option value="" disabled selected>{elemento.selectedAmenaza || 'Selecciona una amenaza'}</option>
+              {
+                amenaza.map((option, optionIndex) => (
+                <option
                   key={optionIndex}
                   className={style.option}
-                  onClick={() => handleAmenazaClick(index, option)}
-                >
+                  onClick={() => handleAmenazaClick(index, option)}>
                   {option}
-                </div>
+                </option>
               ))}
+            </select>
           </div>
         </div>
-      ))}
-      <a className="buttonAdd" onClick={addElemento}>
-        <span>Agregar más</span>
-      </a>
+        )}
+        <a className="buttonAdd" onClick={addElemento}>
+          <span>Agregar más</span>
+        </a>
+      </fieldset>
       <fieldset>
         <textarea
           ref={inputConclusion}
@@ -255,8 +260,10 @@ export const VenusQ4Conclusion = ({
           disabled={buttonNext ? '' : 'disabled'} />
         <Button
           text="BUYER PERSONA"
-          onClick={() => handleSubmit('next')}
-          disabled={buttonNext ? '' : 'disabled'} />
+          onClick={() => setPage(8) }
+          //onClick={() => handleSubmit('next')}
+          //disabled={buttonNext ? '' : 'disabled'}
+        />
       </div>
     </form>
   );
