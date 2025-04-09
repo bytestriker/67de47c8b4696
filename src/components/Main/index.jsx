@@ -23,6 +23,7 @@ import ThanksCode from '@Components/ThankYouPage/ThanksCode';
 import SocialHub from '@Components/SocialHub/SocialHub';
 import Welcome from '@Components/Welcome/Welcome';
 import Header from '@Components/Header';
+import NotFound from '@Components/NotFound';
 import Footer from '@Components/Footer';
 import Loading from '@Components/UtilsComponents/Loading';
 import { ModalInfoProject, ModalBlockPlanet, ModalPopup } from '@Components/Atomos/Alerts';
@@ -113,6 +114,9 @@ const Main = () => {
             <PrivateRoute exact path="/urano" component={Urano} />
             <PrivateRoute exact path="/carrito" component={ShoppingCar} />
             <PrivateRoute exact path="/checkout" component={Checkout} />
+            {/* 404 fallback */}
+            <Route component={NotFound} />
+
             {/* 
           <Route path="*">
             <Redirect to="/" />
