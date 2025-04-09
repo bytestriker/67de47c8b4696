@@ -7,6 +7,7 @@ import useAuth from '@Auth/userAuth';
 
 // COMPONENTS
 import { LinkRouter, GoBack } from '@Components/UtilsComponents/Button';
+import ButtonGoHome from '@Components/ButtonGoHome';
 
 // IMAGES
 import _Astronaut from '@Assets/images/astronauta.png';
@@ -35,17 +36,21 @@ const Advisory = () => {
   };
 
   return (
-    <section className="Advisory">
-      <div className="container">
-        <GoBack />
-        <div className="AdvisoryContent">
+    <section className="planetWrap">
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="planetContainer">
+        <div className="planetContent">
           <h2>ASESORÍA PERSONALIZADA</h2>
           <p>Tenemos al experto que necesitas.</p>
           <form className="col-lg-8 col-md-8 col-sm-12 col-xs-12" onSubmit={handleSubmit(onSubmit)}>
-            <div className="formGroup">
-              <label htmlFor="theme" className="label_advisory">
-                Tema
-              </label>
+            <fieldset>
+              <label htmlFor="theme">Tema</label>
               <input type={'theme'} name="theme" id="theme" className="advisory_input" placeholder=" " {...register('theme', { required: true })} />
               {errors.theme && (
                 <span className="spanError">
@@ -53,25 +58,18 @@ const Advisory = () => {
                   <span>Ingrese el tema</span>
                 </span>
               )}
-            </div>
-
-            <div className="formGroup">
-              <label htmlFor="launchQ1" className="label_advisory">
-                Asesoría
-              </label>
-              <textarea className="advisory_textArea" name="advisory" id="advisory" cols="20" rows="10" placeholder=" " {...register('advisory', { required: true })}></textarea>
+            </fieldset>
+            <fieldset>
+              <label htmlFor="launchQ1">Asesoría</label>
+              <textarea name="advisory" id="advisory" cols="20" rows="10" placeholder=" " {...register('advisory', { required: true })}></textarea>
               {errors.advisory && (
                 <span className="spanError">
                   <FaInfoCircle />
                   <span>Ingrese su descripción</span>
                 </span>
               )}
-            </div>
-            <div className="buttonContent">
-              <button className="buttonRegister" type="submit">
-                ENVIAR
-              </button>
-            </div>
+            </fieldset>
+            <Button text="ENVIAR" type="submit" />
           </form>
         </div>
       </div>
