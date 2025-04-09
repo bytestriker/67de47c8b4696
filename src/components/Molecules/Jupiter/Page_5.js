@@ -53,7 +53,7 @@ export const Significativos = ({ setPage, setTitle, texts, dataJupiter }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
       <ValueSignificativos
         getValueSignificados={getValueSignificados}
@@ -61,7 +61,7 @@ export const Significativos = ({ setPage, setTitle, texts, dataJupiter }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(4)} />
+        <Button text="ANTERIOR" isSubmit={true} isAlt={true} onClick={() => setPage(4)} />
         <Button text="SIGUIENTE" isSubmit={true} onClick={() => setPage(6)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
     </form>

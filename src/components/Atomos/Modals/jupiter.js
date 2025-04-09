@@ -12,35 +12,6 @@ import { useEventJupiter } from '@Hooks/useEventsJupiter';
 // import styles from '@Sass/components/modals.module.scss';
 import styles from '@Sass/components/alerts.module.scss';
 
-export const ModalJupiter = ({ setModal, setPage, message, title, buttonName, page }) => {
-  const history = useHistory();
-
-  const handleManageModal = () => {
-    if (page && page !== 9) {
-      setPage(page);
-      setModal(false);
-      return;
-    }
-    setModal(false);
-    history.push('/');
-  };
-  return (
-    <div className={styles.Modal}>
-      <div className="container">
-        <div className={styles.ModalContent}>
-          <h3>{title}</h3>
-          <p dangerouslySetInnerHTML={{ __html: message }}></p>
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
-              {buttonName}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export const ModalSalirJupiter = ({
   title,
   message,
@@ -209,6 +180,35 @@ export const ModalSalirJupiter = ({
               onClick={() => handleAlert('OK', proyectID, dataJupiter, page)}
             >
               Si
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ModalJupiter = ({ setModal, setPage, message, title, buttonName, page }) => {
+  const history = useHistory();
+
+  const handleManageModal = () => {
+    if (page && page !== 9) {
+      setPage(page);
+      setModal(false);
+      return;
+    }
+    setModal(false);
+    history.push('/');
+  };
+  return (
+    <div className={styles.Modal}>
+      <div className="container">
+        <div className={styles.ModalContent}>
+          <h3>{title}</h3>
+          <p dangerouslySetInnerHTML={{ __html: message }}></p>
+          <div className={styles.ButtonContent}>
+            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
+              {buttonName}
             </button>
           </div>
         </div>

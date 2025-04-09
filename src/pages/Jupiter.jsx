@@ -49,8 +49,17 @@ const Jupiter = () => {
   );
 
   const { jupiterGetProjectById, jupiterGetNombres, jupiterGetMarca } = useEventJupiter();
-  const { jupiterQ1, jupiterQ2, jupiterQ3, jupiterQ4, jupiterQ5, jupiterQ6, jupiterQ7, jupiterQ8, jupiterQ9 } =
-    JupiterWPText();
+  const {
+    jupiterQ1,
+    jupiterQ2,
+    jupiterQ3,
+    jupiterQ4,
+    jupiterQ5,
+    jupiterQ6,
+    jupiterQ7,
+    jupiterQ8,
+    jupiterQ9,
+  } = JupiterWPText();
 
   const [page, setPage] = useState(1);
   const [modalSalir, setModalSalir] = useState(false);
@@ -165,7 +174,7 @@ const Jupiter = () => {
       const marcas = await jupiterGetMarca();
       if (marcas.code === 0) {
         const { logotipo, descripcion_marca } = marcas.data;
-        if (descripcion_marca === "") {
+        if (descripcion_marca === '') {
           setPage(8);
           return;
         }
@@ -180,6 +189,28 @@ const Jupiter = () => {
 
   return (
     <section className="planetWrap">
+      {modalSalir && (
+        <ModalSalirJupiter
+          title="Estás a punto de salir"
+          message="¿Deseas guardar tu información?"
+          setModalSalir={setModalSalir}
+          dataJupiter={dataJupiter}
+          proyectID={getLuna().id}
+          page={page}
+        />
+      )}
+      {modal && (
+        <ModalJupiter
+          title="¡FELICIDADES!"
+          message={`Haz completado <strong>
+             Jupiter</strong> de tu proyecto
+           <strong>${getLuna().nombre}</strong>`}
+          buttonName="INICIO"
+          setPage={setPage}
+          setModal={setModal}
+          page={page}
+        />
+      )}
       <ButtonGoHome
         className="planetBackToTheHomepage"
         onClick={() => {
@@ -192,12 +223,7 @@ const Jupiter = () => {
         <div className="planetContent">
           <div className="cpBorderTop"></div>
           {page === 1 ? (
-            <Intro
-              setPage={setPage}
-              setTitle={setTitle}
-              texts={texts1}
-              dataJupiter={dataJupiter}
-            />
+            <Intro setPage={setPage} setTitle={setTitle} texts={texts1} dataJupiter={dataJupiter} />
           ) : null}
           {page === 2 ? (
             <Caracteristicas
@@ -231,24 +257,17 @@ const Jupiter = () => {
               dataJupiter={dataJupiter}
             />
           ) : null}
-          {page === 6 ? <IdeasNombre
+          {page === 6 ? (
+            <IdeasNombre
               setPage={setPage}
               setTitle={setTitle}
               texts={texts6}
               dataJupiter={dataJupiter}
-            /> : null}
-          {page === 7 ? <Nombres 
-          setPage={setPage} 
-          setTitle={setTitle} 
-          texts={texts7} 
-          /> : null}
-          {page === 8 ? (
-            <Marca
-              setPage={setPage}
-              setTitle={setTitle}
-              texts={texts8}
-              dataJupiter={dataJupiter}
             />
+          ) : null}
+          {page === 7 ? <Nombres setPage={setPage} setTitle={setTitle} texts={texts7} /> : null}
+          {page === 8 ? (
+            <Marca setPage={setPage} setTitle={setTitle} texts={texts8} dataJupiter={dataJupiter} />
           ) : null}
           {page === 9 ? (
             <Logo
@@ -262,7 +281,7 @@ const Jupiter = () => {
           ) : null}
         </div>
       </div>
-      {modalSalir ? (
+      {modalSalir && (
         <ModalSalirJupiter
           title="Estás a punto de salir"
           message="¿Deseas guardar tu información?"
@@ -271,17 +290,19 @@ const Jupiter = () => {
           proyectID={getLuna().id}
           page={page}
         />
-      ) : null}
-      {modal ? (
+      ) }
+      {modal && (
         <ModalJupiter
           title="¡FELICIDADES!"
-          message={`Haz completado <strong> Jupiter</strong> de tu proyecto<strong>${getLuna().nombre}</strong>`}
+          message={`Haz completado <strong> Jupiter</strong> de tu proyecto<strong>${
+            getLuna().nombre
+          }</strong>`}
           buttonName="INICIO"
           setPage={setPage}
           setModal={setModal}
           page={page}
         />
-      ) : null}
+      ) }
     </section>
   );
 };

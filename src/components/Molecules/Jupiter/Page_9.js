@@ -128,7 +128,7 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html:texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <div className={jupiter.upload}>
         <img src={upload} alt="upload" />
@@ -153,7 +153,7 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
           <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setModal(true)}>
             SIGUIENTE
           </button>*/}
-        <Button text="ANTERIOR" onClick={() => setPage(8)} />
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(8)} />
         <Button text="SIGUIENTE" onClick={() => setModal(true)} />
       </div>
     </form>

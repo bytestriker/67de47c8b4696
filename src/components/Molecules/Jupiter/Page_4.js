@@ -52,7 +52,7 @@ export const Nombre = ({ setPage, setTitle, texts, dataJupiter }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
       <ValueNombre
         getValueObjetivos={getValueObjetivos}
@@ -60,7 +60,7 @@ export const Nombre = ({ setPage, setTitle, texts, dataJupiter }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isSubmit={true} onClick={() => setPage(3)} />
+        <Button text="ANTERIOR" isAlt={true} isSubmit={true} onClick={() => setPage(3)} />
         <Button text="SIGUIENTE" isSubmit={true} onClick={() => setPage(5)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
     </form>

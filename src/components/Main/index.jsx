@@ -51,7 +51,6 @@ const Main = () => {
   const currentPathName =
     location.pathname !== '/' ? location.pathname.toLowerCase().split('/').pop() : 'home';
 
-  
   // Store global
   const { warningData, setAlert } = globalStore(
     (state) => ({
@@ -75,7 +74,7 @@ const Main = () => {
     }),
     shallow
   );
-console.log(" main component   ")
+  console.log(' main component   ');
   return (
     <>
       {getLoading && <Loading />}

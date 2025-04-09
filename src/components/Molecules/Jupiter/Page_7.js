@@ -213,7 +213,7 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.pregunta}}></h2>
+      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       {/*<div className={jupiter.selectContainer}>
         <label>Opción 1</label>
