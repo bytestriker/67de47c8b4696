@@ -9,7 +9,6 @@ const Button = ({
   isAstronaut = false,
   disabled = false
   }) => {
-    console.log({text})
   return (
     <div className={isCentered ? "centerButton" : null}>
       <button className={className ? className : "buttonPrimary"} type={type} onClick={onClick} disabled={disabled}>

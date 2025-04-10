@@ -231,24 +231,18 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
             },
           ]}
         />
-      )} 
-
-      
-      <div className={_jupiter_style.selectContainer}>
-        <label>Opción 1</label>
-        <div className={_jupiter_style.selectHeader} onClick={toggleSelectOpcion1}>
-          <span className={_jupiter_style.selectSpanText}>
-            {opcion_1?.selectedOpcion1?.opcion || opcion_1?.selectedOpcion1}
+      )}
+      <div className="selectContainer">
+        <div className="selectHeader" onClick={toggleSelectOpcion1}>
+          <span>{opcion_1?.selectedOpcion1?.opcion || opcion_1?.selectedOpcion1}
           </span>
-          <span className={_jupiter_style.selectSpanArrow}>
-            {opcion_1?.isOpenOpcion1 ? <FaCaretUp /> : <FaCaretDown />}
-          </span>
+          {opcion_1?.isOpenOpcion1 ? <FaCaretUp /> : <FaCaretDown />}
         </div>
         {opcion_1.isOpenOpcion1 && (
-          <div className={_jupiter_style.selectOptions}>
+          <div className="selectOptions">
             {opcion_1.opciones.map((option, optionIndex) => (
               <div
-                className={_jupiter_style.option}
+                className="option"
                 key={optionIndex}
                 onClick={() => handleOpcion1Click(option)}
               >
@@ -258,21 +252,17 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
           </div>
         )}
       </div>
-      <div className={_jupiter_style.selectContainer}>
-        <label>Opción 2</label>
-        <div className={_jupiter_style.selectHeader} onClick={toggleSelectOpcion2}>
-          <span className={_jupiter_style.selectSpanText}>
-            {opcion_2?.selectedOpcion2?.opcion || opcion_2?.selectedOpcion2}
+      <div className="selectContainer">
+        <div className="selectHeader" onClick={toggleSelectOpcion2}>
+          <span>{opcion_2?.selectedOpcion2?.opcion || opcion_2?.selectedOpcion2}
           </span>
-          <span className={_jupiter_style.selectSpanArrow}>
-            {opcion_2?.isOpenOpcion2 ? <FaCaretUp /> : <FaCaretDown />}
-          </span>
+          {opcion_2?.isOpenOpcion2 ? <FaCaretUp /> : <FaCaretDown />}
         </div>
         {opcion_2.isOpenOpcion2 && (
-          <div className={_jupiter_style.selectOptions}>
+          <div className="selectOptions">
             {opcion_2.opciones.map((option, optionIndex) => (
               <div
-                className={_jupiter_style.option}
+                className="option"
                 key={optionIndex}
                 onClick={() => handleOpcion2Click(option)}
               >
@@ -282,21 +272,17 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
           </div>
         )}
       </div>
-      <div className={_jupiter_style.selectContainer}>
-        <label>Opción 3</label>
-        <div className={_jupiter_style.selectHeader} onClick={toggleSelectOpcion3}>
-          <span className={_jupiter_style.selectSpanText}>
-            {opcion_3?.selectedOpcion3?.opcion || opcion_3?.selectedOpcion3}
+      <div className="selectContainer">
+        <div className="selectHeader" onClick={toggleSelectOpcion3}>
+          <span>{opcion_3?.selectedOpcion3?.opcion || opcion_3?.selectedOpcion3}
           </span>
-          <span className={_jupiter_style.selectSpanArrow}>
-            {opcion_3?.isOpenOpcion3 ? <FaCaretUp /> : <FaCaretDown />}
-          </span>
+          {opcion_3?.isOpenOpcion3 ? <FaCaretUp /> : <FaCaretDown />}
         </div>
         {opcion_3.isOpenOpcion3 && (
-          <div className={_jupiter_style.selectOptions}>
+          <div className="selectOptions">
             {opcion_3.opciones.map((option, optionIndex) => (
               <div
-                className={_jupiter_style.option}
+                className="option"
                 key={optionIndex}
                 onClick={() => handleOpcion3Click(option)}
               >
@@ -306,61 +292,10 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
           </div>
         )}
       </div>
-      
-     
-
-      {/* <fieldset>
-        <label htmlFor="">Opcion 1</label>
-        <div className="select">
-          <select name="" id="">
-            <option value="">Opcion 1</option>
-            <option value="">Opcion 2</option>
-            <option value="">Opcion 3</option>
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <label htmlFor="">Opcion 2</label>
-        <div className="select">
-          <select name="" id="">
-            <option value="">Opcion 1</option>
-            <option value="">Opcion 2</option>
-            <option value="">Opcion 3</option>
-          </select>
-        </div>
-      </fieldset>
-      
-      <fieldset>
-        <label htmlFor="">Opcion 3</label>
-        <div className="select">
-          <select name="" id="">
-            <option value="">Opcion 1</option>
-            <option value="">Opcion 2</option>
-            <option value="">Opcion 3</option>
-          </select>
-        </div>
-      </fieldset>
-       */}
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(6)} />
-          {/* disabled={buttonNext ? '' : 'disabled'} */}
-        <Button
-          type="button"
-          text="GUARDAR"
-          
-          onClick={() => handleSubmit('save')}
-        >
-          GUARDAR
-        </Button>
-        {/*<button
-          type="button"
-          className={buttonNext ? jupiter.btnStepDos : jupiter.btnStepDosOff}
-          disabled={buttonNext ? '' : 'disabled'}
-          onClick={() => handleSubmit('next')}
-        >
-          SIGUIENTE
-        </button>*/}
-        {/* <Button text="SIGUIENTE" onClick={() => setPage(8)} /> */}
+        <Button text="ANTERIOR" onClick={() => setPage(6)} />
+        <Button text="GUARDAR" onClick={() => handleSubmit('save')} disabled={buttonNext ? '' : 'disabled'} />
+        <Button text="SIGUIENTE" onClick={() => handleSubmit('next')} disabled={buttonNext ? '' : 'disabled'} />
       </div>
     </form>
   );
