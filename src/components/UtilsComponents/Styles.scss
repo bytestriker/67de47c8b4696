@@ -31,9 +31,10 @@
     width: 320px;
     height: 320px;
     path {
+      animation: scaleUp 1.8s cubic-bezier(.5,0,.5,1) infinite;
       transform-origin: center;
       transform-box: fill-box;
-      animation: scaleUp 1.8s cubic-bezier(.5,0,.5,1) infinite;
+      opacity: 0;
       &:nth-child(n+2):nth-child(-n+7) {
         animation-delay: 0.2s;
       }
