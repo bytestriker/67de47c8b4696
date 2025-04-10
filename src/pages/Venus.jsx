@@ -256,7 +256,12 @@ const Venus = () => {
               dataVenus={dataVenus}
             />
           ) : null}
-          {page === 2 ? <VenusQ1Foda setPage={setPage} setTitle={setTitle} texts={texts2} /> : null}
+          {page === 2 ?
+            <VenusQ1Foda
+              setPage={setPage}
+              setTitle={setTitle}
+              texts={texts2}
+            /> : null}
           {page === 3 ? (
             <VenusQ2Foda
               setPage={setPage}

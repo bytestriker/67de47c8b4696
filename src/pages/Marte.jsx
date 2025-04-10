@@ -517,6 +517,7 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
+<<<<<<< Updated upstream
 
       {texts?.link_video && (
         <WatchPlanetVideo
@@ -528,6 +529,18 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           ]}
         />
       )}
+=======
+      {texts?.link_video && (
+          <WatchPlanetVideo
+            params={[
+              {
+                alt: 'play video',
+                url: texts?.link_video,
+              },
+            ]}
+          />
+        )}
+>>>>>>> Stashed changes
 
       <fieldset>
         <ToolTip text="Alianzas Clave" tool={texts.instruccion_6} />

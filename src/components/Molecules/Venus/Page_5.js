@@ -201,33 +201,36 @@ export const VenusQ2Conclusion = ({
       <h3 className="text-center">{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
       <fieldset>
-        {
-          elementos.map((elemento, index) =>
-          <div key={index}>
-            <div className="select">
-              <select>
-                <option disabled selected>{elemento.selectedOportunidades || 'Selecciona una oportunidad'}</option>
-                {
-                  oportunidad.map((option, optionIndex) =>
-                  <option key={optionIndex} onClick={() => handleOportunidadClick(index, option)}>
-                    {option}
-                  </option>)
-                }
-              </select>
+        {elementos.map((elemento, index) => (
+          <div key={index} className="selectContainer">
+            <div className="selectHeader" onClick={() => toggleSelectOportunidad(index)}>
+              <span>{elemento.selectedOportunidades || 'Selecciona una oportunidad'}</span>
+              {elemento.isOpenOportunidades ? <FaCaretUp /> : <FaCaretDown />}
             </div>
-            <div className="select">
-              <select>
-                <option disabled selected>{elemento.selectedDebilidades || 'Selecciona una debilidad'}</option>
-                {
-                  debilidades.map((option, optionIndex) => (
-                  <option key={optionIndex} onClick={() => handleDebilidadClick(index, option)}>
+            {elemento.isOpenOportunidades && (
+              <div className="selectOptions">
+                {oportunidad.map((option, optionIndex) => (
+                  <div key={optionIndex} onClick={() => handleOportunidadClick(index, option)}>
                     {option}
-                  </option>
+                  </div>
                 ))}
-              </select>
+              </div>
+            )}
+            <div className="selectHeader" onClick={() => toggleSelectDebilidad(index)}>
+              <span>{elemento.selectedDebilidades || 'Selecciona una debilidad'}</span>
+              {elemento.isOpenDebilidades ? <FaCaretUp /> : <FaCaretDown />}
             </div>
-          </div>)
-        }
+            {elemento.isOpenDebilidades && (
+              <div className="selectOptions">
+                {debilidades.map((option, optionIndex) => (
+                  <div key={optionIndex} onClick={() => handleDebilidadClick(index, option)}>
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
         <a className="buttonAdd" onClick={addElemento}>
           <span>Agregar más</span>
         </a>
@@ -249,13 +252,13 @@ export const VenusQ2Conclusion = ({
           text="GUARDAR"
           onClick={() => handleSubmit('save')}
           disabled={buttonNext ? '' : 'disabled'}
-          />
+        />
         <Button
           text="SIGUIENTE"
           onClick={() => setPage(6)}
           //onClick={() => handleSubmit('next')}
           //disabled={buttonNext ? '' : 'disabled'}
-          />
+        />
       </div>
     </form>
   );

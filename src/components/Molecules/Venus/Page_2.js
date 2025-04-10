@@ -50,31 +50,29 @@ export const VenusQ1Foda = ({ setPage, setTitle, texts }) => {
   }, [fortaleza, oportunidad]);
 
   return (
-    <section className="questionWrap">
+    <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <SaberMas data={texts} />
-      <form method="POST">
-        <h3 className={style.fortalezas}>Fortalezas</h3>
-        <p className={style.questions}>{texts.instruccion_de_fortalezas}</p>
-        <ValueFortalezas
-          valueFortaleza={valueFortaleza}
-          setValueFortaleza={setValueFortaleza}
-          setFortaleza={setFortaleza}
-        />
-        <h3 className={style.fortalezas}>Oportunidades</h3>
-        <p className={style.questions}>{texts.instruccion_de_oportunidades}</p>
-        <ValueOportunidades
-          valueOportunidad={valueOportunidad}
-          setValueOportunidad={setValueOportunidad}
-          setOportunidades={setOportunidades}
-        />
-        <div className="buttons">
-          <Button text="ANTERIOR" onClick={() => setPage(1)} isAlt />
-          <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
-        </div>
-      </form>
-    </section>
+      <h3 className={style.fortalezas}>Fortalezas</h3>
+      <p className={style.questions}>{texts.instruccion_de_fortalezas}</p>
+      <ValueFortalezas
+        valueFortaleza={valueFortaleza}
+        setValueFortaleza={setValueFortaleza}
+        setFortaleza={setFortaleza}
+      />
+      <h3 className={style.fortalezas}>Oportunidades</h3>
+      <p className={style.questions}>{texts.instruccion_de_oportunidades}</p>
+      <ValueOportunidades
+        valueOportunidad={valueOportunidad}
+        setValueOportunidad={setValueOportunidad}
+        setOportunidades={setOportunidades}
+      />
+      <div className="buttons">
+        <Button text="ANTERIOR" onClick={() => setPage(1)} isAlt />
+        <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
+      </div>
+    </form>
   );
 };

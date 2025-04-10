@@ -11,6 +11,7 @@ import { BiLoaderAlt } from 'react-icons/bi';
 
 // Components
 import { Title } from '@Components/Atomos/Titles';
+import playIcon from '@Assets/images/icon-play.svg';
 
 // Styles
 import style from '@Sass/components/buttons.module.scss';
@@ -96,34 +97,14 @@ export const SaberMas = ({ data }) => {
   };
 
   return (
-    <p className={style.saberMas}>
-      <a href="#" onClick={openModalVideo}>
+    <p>
+      <a href="#" onClick={openModalVideo} class="moreInfo">
+        <img src={ playIcon } alt="{data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}" />
         {data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}
         {modalVideo ? (
-          <section
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              backgroundColor: 'rgba(0,0,0,0.9)',
-              zIndex: 9999,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <div style={{ width: '100%', maxWidth: '75%', position: 'relative' }}>
+          <section className="modalBackdrop">
+            <div className="modalVideo">
               <IoCloseOutline
-                style={{
-                  position: 'absolute',
-                  top: '-40px',
-                  right: '0',
-                  color: 'white',
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                }}
                 aria-label="Cerrar Ventana"
                 onClick={() => {
                   setModalVideo(false);
@@ -131,29 +112,12 @@ export const SaberMas = ({ data }) => {
                 }}
               />
               <div style={{ width: '100%', aspectRatio: '16/9' }}>
-                {videoLoading && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <BiLoaderAlt
-                      style={{
-                        fontSize: '3rem',
-                        color: 'white',
-                        animation: 'spin 1s linear infinite',
-                      }}
-                    />
-                  </div>
-                )}
-                {handleVideo()}
+                {
+                  handleVideo()
+                }
+                {
+                  videoLoading && <div><BiLoaderAlt /></div>
+                }
               </div>
             </div>
           </section>

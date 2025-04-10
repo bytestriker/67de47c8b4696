@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { shallow } from 'zustand/shallow';
 
-import { FaPlusCircle, FaCaretDown, FaCaretUp } from 'react-icons/fa';
+
+import { FaChevronDown, FaChevronUp, FaPlusCircle, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 
 // Store
 import { venusStore } from '@Store/venus';
@@ -201,33 +202,36 @@ export const VenusQ1Conclusion = ({
       <h3 className="text-center">{texts.pregunta}</h3>
       <ParagraphPlanet text={texts.descripcion} />
       <fieldset>
-        {
-          elementos.map((elemento, index) =>
-          <div key={index}>
-            <div className="select">
-              <select name="" id="">
-                <option disabled selected>{elemento.selectedFortaleza || 'Selecciona una fortaleza'}</option>
-              {
-                fortaleza.map((option, idx) =>
-                <option key={idx} onClick={() => handleFortalezaClick(index, option)}>
-                  {option}
-                </option>)
-              }
-              </select>
-            </div>
-            <div className="select">
-              <select name="" id="">
-                <option disabled selected>{elemento.selectedOportunidad || 'Selecciona una oportunidad'}</option>
-              {
-                oportunidad.map((option, idx) =>
-                <option key={idx} className={style.option} onClick={() => handleFortalezaClick(index, option)}>
-                  {option}
-                </option>)
-              }
-              </select>
-            </div>
+      {elementos.map((elemento, index) => (
+        <div key={index} className="selectContainer">
+          <div className="selectHeader" onClick={() => toggleSelectFortaleza(index)}>
+            <span>{elemento.selectedFortaleza || 'Selecciona una fortaleza'}</span>
+            { elemento.isOpenFortaleza ? <FaChevronUp /> : <FaChevronDown /> }
           </div>
-        )}
+          {elemento.isOpenFortaleza && (
+            <div className="selectOptions">
+            {fortaleza.map((option, optionIndex) => (
+              <div key={optionIndex} onClick={() => handleFortalezaClick(index, option)}>
+                {option}
+              </div>
+              ))}
+            </div>
+          )}
+          <div className="selectHeader" onClick={() => toggleSelectOportunidad(index)}>
+            <span>{elemento.selectedOportunidad || 'Selecciona una oportunidad'}</span>
+            { elemento.isOpenFortaleza ? <FaChevronUp /> : <FaChevronDown /> }
+          </div>
+          {elemento.isOpenOportunidad && (
+            <div className="selectOptions">
+              {oportunidad.map((option, optionIndex) => (
+                <div key={optionIndex} onClick={() => handleOportunidadClick(index, option)}>
+                  {option}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+          ))}
         <a className="buttonAdd" onClick={addElemento}>
           <span>Agregar más</span>
         </a>
