@@ -231,18 +231,19 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
             },
           ]}
         />
-      )}
-      <div className="selectContainer">
-        <div className="selectHeader" onClick={toggleSelectOpcion1}>
-          <span>{opcion_1?.selectedOpcion1?.opcion || opcion_1?.selectedOpcion1}
-          </span>
+      )} 
+
+      
+      <div className={`selectContainer`}>
+        <label>Opción 1</label>
+        <div className={`selectHeader`} onClick={toggleSelectOpcion1}>
+          <span >{opcion_1?.selectedOpcion1?.opcion || opcion_1?.selectedOpcion1} </span>
           {opcion_1?.isOpenOpcion1 ? <FaCaretUp /> : <FaCaretDown />}
         </div>
         {opcion_1.isOpenOpcion1 && (
-          <div className="selectOptions">
+          <div className={`selectOptions`}>
             {opcion_1.opciones.map((option, optionIndex) => (
               <div
-                className="option"
                 key={optionIndex}
                 onClick={() => handleOpcion1Click(option)}
               >
@@ -252,17 +253,21 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
           </div>
         )}
       </div>
-      <div className="selectContainer">
-        <div className="selectHeader" onClick={toggleSelectOpcion2}>
-          <span>{opcion_2?.selectedOpcion2?.opcion || opcion_2?.selectedOpcion2}
+      <div className={`selectContainer`}>
+        <label>Opción 2</label>
+        <div className={`selectHeader`} onClick={toggleSelectOpcion2}>
+          <span className={`selectSpanText`}>
+            {opcion_2?.selectedOpcion2?.opcion || opcion_2?.selectedOpcion2}
           </span>
-          {opcion_2?.isOpenOpcion2 ? <FaCaretUp /> : <FaCaretDown />}
+          <span className={`selectSpanArrow`}>
+            {opcion_2?.isOpenOpcion2 ? <FaCaretUp /> : <FaCaretDown />}
+          </span>
         </div>
         {opcion_2.isOpenOpcion2 && (
-          <div className="selectOptions">
+          <div className={`selectOptions`}>
             {opcion_2.opciones.map((option, optionIndex) => (
               <div
-                className="option"
+                className={`option`}
                 key={optionIndex}
                 onClick={() => handleOpcion2Click(option)}
               >
@@ -272,17 +277,21 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
           </div>
         )}
       </div>
-      <div className="selectContainer">
-        <div className="selectHeader" onClick={toggleSelectOpcion3}>
-          <span>{opcion_3?.selectedOpcion3?.opcion || opcion_3?.selectedOpcion3}
+      <div className={`selectContainer`}>
+        <label>Opción 3</label>
+        <div className={`selectHeader`} onClick={toggleSelectOpcion3}>
+          <span className={`selectSpanText`}>
+            {opcion_3?.selectedOpcion3?.opcion || opcion_3?.selectedOpcion3}
           </span>
-          {opcion_3?.isOpenOpcion3 ? <FaCaretUp /> : <FaCaretDown />}
+          <span className={`selectSpanArrow`}>
+            {opcion_3?.isOpenOpcion3 ? <FaCaretUp /> : <FaCaretDown />}
+          </span>
         </div>
         {opcion_3.isOpenOpcion3 && (
-          <div className="selectOptions">
+          <div className={`selectOptions`}>
             {opcion_3.opciones.map((option, optionIndex) => (
               <div
-                className="option"
+                className={`option`}
                 key={optionIndex}
                 onClick={() => handleOpcion3Click(option)}
               >
