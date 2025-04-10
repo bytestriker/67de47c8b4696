@@ -8,9 +8,11 @@ import { venusStore } from '@Store/venus';
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
-import { SaberMas } from '@Components/Atomos/Buttons';
-import { PaintPoints } from '@Components/Atomos/Inputs/venus';
 import Button from '@Components/Button';
+import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
+import { PaintPoints } from '@Components/Atomos/Inputs/venus';
+import videoPreview from '@Assets/images/preview-video-venus.png';
+
 
 // Styles
 import style from '@Sass/pages/general.module.scss';
@@ -55,29 +57,27 @@ export const VenusQ0Target = ({ setPage, setTitle, texts, dataVenus }) => {
   //     setButton(false);
   //   }
   // }, [painpoints]);
+  console.log(texts)
 
 
   return (
-    <div className="questionWrap">
+    <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
-      <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
-      <form method="POST" >
-        <p className={style.identify}>{texts.instruccion}</p>
-        {/* <PaintPoints
-          dataPoints={dataPoints}
-          setDataPoints={setDataPoints}
-          setPainPoints={setPainPoints}
-        /> */}
-        {/* <button
-          className={ style.btnPlanet}
-          // className={!button ? style.btnPlanetOff : style.btnPlanet}
-          type="submit"
-        >
-          SIGUIENTE
-        </button> */}
-        <Button text="SIGUIENTE" isCentered={true} onClick={() => setPage(1)} />
-      </form>
-    </div>
+      <h3 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista }} className="text-center"></h3>
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              playvideo: videoPreview,
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
+      <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
+      <p dangerouslySetInnerHTML={{ __html: texts.instruccion }}></p>
+      <Button text="SIGUIENTE" onClick={() => setPage(1)} isCentered />
+    </form>
   );
 };

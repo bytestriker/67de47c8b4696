@@ -100,7 +100,6 @@ export const SaberMas = ({ data }) => {
       <a href="#" onClick={openModalVideo}>
         {data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}
         {modalVideo ? (
-          
           <section
             style={{
               position: 'fixed',
@@ -198,80 +197,27 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   };
 
   return (
-    <button onClick={openModalVideo}>
-      <img src={img_src} alt={img_alt} onClick={openModalVideo}/>
+    <button onClick={openModalVideo} >
       Reproducir Video
-      {modalVideo && (
-        <section
-          className={style.modal__bg}
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0,0,0,0.9)',
-            zIndex: 9999,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              maxWidth: '75%',
-              margin: '20px',
-            }}
-          >
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-              }}
-            >
-              <IoCloseOutline
-                style={{
-                  position: 'absolute',
-                  top: '-40px',
-                  right: '0',
-                  color: 'white',
-                  fontSize: '2rem',
-                  cursor: 'pointer',
-                }}
-                arial-label="Cerrar Ventana"
-                onClick={() => {
-                  setModalVideo(false);
-                  setVideoLoading(true); // Reset loading state when closing
-                }}
-              />
-              <div
-                style={{
-                  width: '100%',
-                  aspectRatio: '16/9',
-                }}
-              >
-                {handleVideo()} {/* Render the video here */}
-                {videoLoading && (
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      height: '100%',
-                    }}
-                  >
-                    <BiLoaderAlt
-                      style={{
-                        fontSize: '3rem',
-                        color: 'white',
-                        animation: 'spin 1s linear infinite',
-                      }}
-                    />
-                  </div>
-                )}
+      {
+        modalVideo && (
+        <section className="modalBackdrop">
+          <div className="modalVideo">
+            <IoCloseOutline
+              arial-label="Cerrar Ventana"
+              onClick={() => {
+                setModalVideo(false);
+                setVideoLoading(true); // Reset loading state when closing
+              }} />
+            {
+              handleVideo()
+            }
+            {
+              videoLoading &&
+              <div>
+                <BiLoaderAlt />
               </div>
-            </div>
+            }
           </div>
         </section>
       )}
