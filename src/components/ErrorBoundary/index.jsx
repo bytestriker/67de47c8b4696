@@ -1,16 +1,17 @@
+import React from 'react';
+
 import { useHistory } from 'react-router-dom';
-import Button from '@Components/Button';
 
 import styles from '@Sass/pages/notfound.module.scss';
 import _Astronaut from '@Assets/images/astronauta.png';
 import _moon from '@Assets/images/moon.png';
 
-import React from 'react';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
+
   }
 
   static getDerivedStateFromError(error) {
@@ -18,7 +19,7 @@ class ErrorBoundary extends React.Component {
   }
 
   handleRoute ()  {
-    history.push('/');
+    window.location.href = '/'
   };
 
 
@@ -39,7 +40,10 @@ class ErrorBoundary extends React.Component {
   
             <p>¡Algo salió mal al procesar la solicitud en el servidor!</p>
             <div className="fieldset">
-              <Button isAlt={true} onClick={()=>handleRoute()} text="Volver al Inicio" />
+            <div className="centerButton">
+
+              <button isAlt={true} onClick={()=>handleRoute()} value="Volver al Inicio" className='buttonPrimary'/>
+            </div>
             </div>
           </div>
         </div>

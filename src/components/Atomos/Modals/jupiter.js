@@ -4,6 +4,7 @@ import { shallow } from 'zustand/shallow';
 
 // Store
 import { globalStore } from '@Store/global';
+import Button from '@Components/Button';
 
 // Hooks
 import { useEventJupiter } from '@Hooks/useEventsJupiter';
@@ -19,6 +20,7 @@ export const ModalSalirJupiter = ({
   dataJupiter,
   proyectID,
   page,
+  setPage,
 }) => {
   console.log(title, message, setModalSalir, dataJupiter, proyectID, page);
   const { setMessage, setAlert } = globalStore(
@@ -115,7 +117,7 @@ export const ModalSalirJupiter = ({
       if (pageIn === 6) {
         if (params.opcion_1 === '' || params.opcion_2 === '' || params.opcion_3 === '') {
           setModalSalir(false);
-          setMessage('Debes seleccionar tus opciones');
+          setMessage('¡Debes seleccionar tus opciones!');
           setAlert(true);
           return;
         }
@@ -124,6 +126,21 @@ export const ModalSalirJupiter = ({
         history.push('/');
         return;
       }
+
+
+      if (pageIn === 7) {
+        if (params.opcion_1 === '' || params.opcion_2 === '' || params.opcion_3 === '') {
+          setModalSalir(false);
+          setMessage('¡Debes seleccionar tus opciones!');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateNombres(id, params);
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }      
+
       if (pageIn === 8) {
         const { adjetivos } = params;
 
@@ -144,7 +161,7 @@ export const ModalSalirJupiter = ({
         history.push('/');
         return;
       }
-    } else if (action === 'CANCELAR') {
+    } else if (action === 'CONTINUAR') {
       setModalSalir(false);
       history.push('/');
     }
@@ -166,21 +183,18 @@ export const ModalSalirJupiter = ({
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent} ref={modalJupiterRef}>
-          <p>{title}</p>
-          <strong>{message}</strong>
-          <div className={styles.ButtonContent}>
-            <button
-              className="btnModal-cancel"
+          <h2 dangerouslySetInnerHTML={{__html:title}}></h2>
+          <p dangerouslySetInnerHTML={{__html:message}}></p>
+          <div className={`${styles.ButtonContent} buttons`}>
+            <Button
               onClick={() => handleAlert('CANCELAR', proyectID, dataJupiter, page)}
-            >
-              No
-            </button>
-            <button
-              className="btnModal-ok"
+              isAlt={true}
+              text="GUARDAR"
+            />
+            <Button
               onClick={() => handleAlert('OK', proyectID, dataJupiter, page)}
-            >
-              Si
-            </button>
+              text="CONTINUAR"
+            />
           </div>
         </div>
       </div>
@@ -206,7 +220,8 @@ export const ModalJupiter = ({ setModal, setPage, message, title, buttonName, pa
         <div className={styles.ModalContent}>
           <h3>{title}</h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
-          <div className={styles.ButtonContent}>
+          <p dangerouslySetInnerHTML={{ __html: message.message }}></p>
+          <div className={`${styles.ButtonContent} buttons`}>
             <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
               {buttonName}
             </button>

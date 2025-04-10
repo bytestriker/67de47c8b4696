@@ -197,6 +197,7 @@ const Jupiter = () => {
           dataJupiter={dataJupiter}
           proyectID={getLuna().id}
           page={page}
+          setPage={setPage}
         />
       )}
       {modal && (
@@ -222,9 +223,12 @@ const Jupiter = () => {
         {/* <ButtonClose setModalSalir={setModalSalir} titlePage={title} /> */}
         <div className="planetContent">
           <div className="cpBorderTop"></div>
+
+          {/*  */}
           {page === 1 && (
             <Intro setPage={setPage} setTitle={setTitle} texts={texts1} dataJupiter={dataJupiter} />
-          ) }
+          )}
+          {/*  */}
           {page === 2 && (
             <Caracteristicas
               setPage={setPage}
@@ -232,7 +236,8 @@ const Jupiter = () => {
               texts={texts2}
               dataJupiter={dataJupiter}
             />
-          ) }
+          )}
+          {/*  */}
           {page === 3 && (
             <Calificativos
               setPage={setPage}
@@ -240,7 +245,8 @@ const Jupiter = () => {
               texts={texts3}
               dataJupiter={dataJupiter}
             />
-          ) }
+          )}
+          {/*  */}
           {page === 4 && (
             <Nombre
               setPage={setPage}
@@ -248,7 +254,8 @@ const Jupiter = () => {
               texts={texts4}
               dataJupiter={dataJupiter}
             />
-          ) }
+          )}
+          {/*  */}
           {page === 5 && (
             <Significativos
               setPage={setPage}
@@ -256,7 +263,8 @@ const Jupiter = () => {
               texts={texts5}
               dataJupiter={dataJupiter}
             />
-          ) }
+          )}
+          {/*  */}
           {page === 6 && (
             <IdeasNombre
               setPage={setPage}
@@ -264,11 +272,21 @@ const Jupiter = () => {
               texts={texts6}
               dataJupiter={dataJupiter}
             />
-          ) }
-          {page === 7 && <Nombres setPage={setPage} setTitle={setTitle} texts={texts7} /> }
+          )}
+          {/*  */}
+          {page === 7 && (
+            <Nombres
+              setPage={setPage}
+              setModalSalir={setModalSalir}
+              modalSalir={modalSalir}
+              setTitle={setTitle}
+              texts={texts7}
+            />
+          )}
+          {/*  */}
           {page === 8 && (
             <Marca setPage={setPage} setTitle={setTitle} texts={texts8} dataJupiter={dataJupiter} />
-          ) }
+          )}
           {page === 9 && (
             <Logo
               setPage={setPage}
@@ -278,9 +296,10 @@ const Jupiter = () => {
               texts={texts9}
               dataJupiter={dataJupiter}
             />
-          ) }
+          )}
         </div>
       </div>
+
       {modalSalir && (
         <ModalSalirJupiter
           title="Estás a punto de salir"
@@ -290,7 +309,8 @@ const Jupiter = () => {
           proyectID={getLuna().id}
           page={page}
         />
-      ) }
+      )}
+
       {modal && (
         <ModalJupiter
           title="¡FELICIDADES!"
@@ -302,11 +322,9 @@ const Jupiter = () => {
           setModal={setModal}
           page={page}
         />
-      ) }
+      )}
 
       {page <= 8 && <HelperCard />}
-
-
     </section>
   );
 };

@@ -328,15 +328,15 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <fieldset>
         <ToolTip text="Propuesta de Valor" tool={texts.instruccion_1} />
         <ValueProposition
@@ -515,18 +515,20 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
 
-      
+      {texts?.link_video && (
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
+
       <fieldset>
         <ToolTip text="Alianzas Clave" tool={texts.instruccion_6} />
         <KeyPartners
@@ -575,8 +577,8 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           text="GUARDAR"
           isCentered={true}
           disabled={buttonNext ? '' : 'disabled'}
-          onClick={() => setPage(4)}
-          //onClick={() => handleSubmit('SAVE')}
+          // onClick={() => setPage(4)}
+          onClick={() => handleSubmit('SAVE')}
         />
 
         <Button
@@ -696,7 +698,7 @@ export const MarteNegocios = ({
 
   return (
     <form method="POST" className="questionWrap">
-      {modal ? (
+      {modal && (
         <ModalMarte
           title="¡FELICIDADES!"
           message={`Haz completado <strong>Marte</strong> de tu proyecto <strong>${
@@ -707,21 +709,20 @@ export const MarteNegocios = ({
           setModal={setModal}
           page={5}
         />
-      ) : null}
+      )}
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta }}></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
-
+        <WatchPlanetVideo
+          params={[
+            {
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
       <div className="infoMarte">
         <div>
           <span>Propuesta de Valor</span>

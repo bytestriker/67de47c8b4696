@@ -24,11 +24,11 @@ import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
-import style from '@Sass/pages/general.module.scss';
-import jupiter from '@Sass/pages/jupiter.module.scss';
+// import style from '@Sass/pages/general.module.scss';
+import _jupiter_style from '@Sass/pages/jupiter.module.scss';
 
-/* Page 6 */
-export const Nombres = ({ setPage, setTitle, texts }) => {
+{/* Página 7: Prioridades de los Nombres */}
+export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir }) => {
   const { setLoading } = useAuth();
 
   const { dataJupiter, setStateOpcion1, setStateOpcion2, setStateOpcion3 } = jupiterStore(
@@ -197,8 +197,9 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
     if (res.code === 0) {
       if (params === 'save') {
         setLoading(false);
-        setAlert(true);
-        setMessage('Tus datos se han guardado correctamente.');
+        setModalSalir(true);
+        // setAlert(true);
+        // setMessage('Tus datos se han guardado correctamente.');
       } else if (params === 'next') {
         setLoading(false);
         setPage(8);
@@ -211,8 +212,13 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
   };
   console.log("jupiter page 7 texts ", texts)
 
+  const handleModalConfirm = () => {
+    
+  }
+
   return (
     <form method="POST" className="questionWrap">
+      Paso 7| página 7 
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
@@ -227,21 +233,22 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
         />
       )} 
 
-      {/*<div className={jupiter.selectContainer}>
+      
+      <div className={_jupiter_style.selectContainer}>
         <label>Opción 1</label>
-        <div className={jupiter.selectHeader} onClick={toggleSelectOpcion1}>
-          <span className={jupiter.selectSpanText}>
+        <div className={_jupiter_style.selectHeader} onClick={toggleSelectOpcion1}>
+          <span className={_jupiter_style.selectSpanText}>
             {opcion_1?.selectedOpcion1?.opcion || opcion_1?.selectedOpcion1}
           </span>
-          <span className={jupiter.selectSpanArrow}>
+          <span className={_jupiter_style.selectSpanArrow}>
             {opcion_1?.isOpenOpcion1 ? <FaCaretUp /> : <FaCaretDown />}
           </span>
         </div>
         {opcion_1.isOpenOpcion1 && (
-          <div className={jupiter.selectOptions}>
+          <div className={_jupiter_style.selectOptions}>
             {opcion_1.opciones.map((option, optionIndex) => (
               <div
-                className={jupiter.option}
+                className={_jupiter_style.option}
                 key={optionIndex}
                 onClick={() => handleOpcion1Click(option)}
               >
@@ -251,21 +258,21 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
           </div>
         )}
       </div>
-      <div className={jupiter.selectContainer}>
+      <div className={_jupiter_style.selectContainer}>
         <label>Opción 2</label>
-        <div className={jupiter.selectHeader} onClick={toggleSelectOpcion2}>
-          <span className={jupiter.selectSpanText}>
+        <div className={_jupiter_style.selectHeader} onClick={toggleSelectOpcion2}>
+          <span className={_jupiter_style.selectSpanText}>
             {opcion_2?.selectedOpcion2?.opcion || opcion_2?.selectedOpcion2}
           </span>
-          <span className={jupiter.selectSpanArrow}>
+          <span className={_jupiter_style.selectSpanArrow}>
             {opcion_2?.isOpenOpcion2 ? <FaCaretUp /> : <FaCaretDown />}
           </span>
         </div>
         {opcion_2.isOpenOpcion2 && (
-          <div className={jupiter.selectOptions}>
+          <div className={_jupiter_style.selectOptions}>
             {opcion_2.opciones.map((option, optionIndex) => (
               <div
-                className={jupiter.option}
+                className={_jupiter_style.option}
                 key={optionIndex}
                 onClick={() => handleOpcion2Click(option)}
               >
@@ -275,21 +282,21 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
           </div>
         )}
       </div>
-      <div className={jupiter.selectContainer}>
+      <div className={_jupiter_style.selectContainer}>
         <label>Opción 3</label>
-        <div className={jupiter.selectHeader} onClick={toggleSelectOpcion3}>
-          <span className={jupiter.selectSpanText}>
+        <div className={_jupiter_style.selectHeader} onClick={toggleSelectOpcion3}>
+          <span className={_jupiter_style.selectSpanText}>
             {opcion_3?.selectedOpcion3?.opcion || opcion_3?.selectedOpcion3}
           </span>
-          <span className={jupiter.selectSpanArrow}>
+          <span className={_jupiter_style.selectSpanArrow}>
             {opcion_3?.isOpenOpcion3 ? <FaCaretUp /> : <FaCaretDown />}
           </span>
         </div>
         {opcion_3.isOpenOpcion3 && (
-          <div className={jupiter.selectOptions}>
+          <div className={_jupiter_style.selectOptions}>
             {opcion_3.opciones.map((option, optionIndex) => (
               <div
-                className={jupiter.option}
+                className={_jupiter_style.option}
                 key={optionIndex}
                 onClick={() => handleOpcion3Click(option)}
               >
@@ -298,8 +305,11 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
             ))}
           </div>
         )}
-      </div>*/}
-      <fieldset>
+      </div>
+      
+     
+
+      {/* <fieldset>
         <label htmlFor="">Opcion 1</label>
         <div className="select">
           <select name="" id="">
@@ -330,7 +340,7 @@ export const Nombres = ({ setPage, setTitle, texts }) => {
           </select>
         </div>
       </fieldset>
-      
+       */}
       <div className="buttons">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(6)} />
           {/* disabled={buttonNext ? '' : 'disabled'} */}
