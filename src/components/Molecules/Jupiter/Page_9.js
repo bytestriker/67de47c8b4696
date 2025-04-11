@@ -157,7 +157,7 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
       </div> */}
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion_general_de_las_plataformas_recomendadas }}></p>
       <div className={jupiter.carrusel}>{componentSlider}</div>
-      <div className="fieldsets">
+      <div className="buttons">
         {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(8)}>
             ANTERIOR
           </button>

@@ -50,7 +50,9 @@ export const ModalSuccesProject = (props) => {
       <div className="container">
         <div className={styles.ModalContent}>
           <h3>¡FELICIDADES!</h3>
-          <p>Haz completado <strong>Mercurio</strong> de tu proyecto</p>
+          <p>
+            Haz completado <strong>Mercurio</strong> de tu proyecto
+          </p>
           {nameProject()}
           <Button text="INICIO" isCentered={true} onClick={() => handleAlert()} />
         </div>
@@ -64,12 +66,10 @@ export const ModalInfoProject = ({ setAlert, warningData }) => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-        <h3>¡INFORMACIÓN!</h3>
-          <p>{warningData.message}</p>
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => setAlert(false)}>
-              CONTINUAR
-            </button>
+          <h3>¡INFORMACIÓN!</h3>
+          <p dangerouslySetInnerHTML={{__html:warningData.message}}></p>
+          <div className="buttons">
+            <Button onClick={() => setAlert(false)} text="CONTINUAR" />
           </div>
         </div>
       </div>

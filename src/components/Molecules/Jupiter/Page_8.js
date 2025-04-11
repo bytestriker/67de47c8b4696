@@ -96,7 +96,7 @@ export const Marca = ({ setPage, setTitle, texts, dataJupiter }) => {
         setDescripcionMarca={setDescripcionMarca}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(7)}>
             ANTERIOR
           </button>
@@ -108,8 +108,8 @@ export const Marca = ({ setPage, setTitle, texts, dataJupiter }) => {
           >
             SIGUIENTE
           </button>*/}
-        <Button text="ANTERIOR" onClick={() => setPage(7)} />
-        <Button text="SIGUIENTE" onClick={() => setPage(9)} />
+        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(7)} />
+        <Button text="SIGUIENTE" onClick={() => setPage(9)} disabled={!buttonNext && 'disabled'}/>
 
       </div>
     </form>
