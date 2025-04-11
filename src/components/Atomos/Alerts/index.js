@@ -85,9 +85,7 @@ export const ModalPopup = ({ setPopup }) => {
           <h3>¡Próximamente!</h3>
           <p>Muy pronto tendremos nuevos servicios increíbles</p>
           <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => setPopup(false)}>
-              OK
-            </button>
+            <Button className={styles.buttonContinue} onClick={() => setPopup(false)} text="OK"/>
           </div>
         </div>
       </div>
@@ -113,7 +111,7 @@ export const ModalBlockPlanet = () => {
   );
   const history = useHistory();
 
-  const handleRute = () => {
+  const handleRoute = () => {
     if (storeTankModal.exchange) {
       handlePlanet(storeTankModal.rute, dataLuna.id);
       setModal(false);
@@ -127,17 +125,11 @@ export const ModalBlockPlanet = () => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3 dangerouslySetInnerHTML={{ __html: storeTankModal.title }}></h3>
+          <h2 dangerouslySetInnerHTML={{ __html: storeTankModal.title }}></h2>
           <p dangerouslySetInnerHTML={{ __html: storeTankModal.message }}></p>
-          <div className={general.contentButtons}>
-            <div className={general.flexButtons}>
-              <button className="btnModal-cancel" onClick={() => setModal(false)}>
-                No
-              </button>
-              <button className="btnModal-ok" onClick={() => handleRute()}>
-                Si
-              </button>
-            </div>
+          <div className={general.flexButtons}>
+            <Button  onClick={() => setModal(false)} text="NO" isAlt={true}/>
+            <Button  onClick={() => handleRoute()} text="SÍ"/>
           </div>
         </div>
       </div>
