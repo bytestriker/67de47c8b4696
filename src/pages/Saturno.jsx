@@ -300,7 +300,7 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2
-        dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista || 'Placeholder Awareness' }}
+        dangerouslySetInnerHTML={{ __html: texts?.subtitulo_de_la_vista || 'Placeholder Awareness' }}
       ></h2>
       <div className="gridIconText">
         <img src={texts?.icono ? texts.icono : megaphone} alt="megaphone" />
@@ -312,7 +312,7 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValueAwareness={setValueAwareness}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(1)} />
         <Button
           text="SIGUIENTE"
@@ -391,7 +391,7 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValueConsideration={setValueConsideration}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(2)} />
         <Button
           text="SIGUIENTE"
@@ -467,7 +467,7 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
         setValuePurchase={setValuePurchase}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(3)} />
         <Button
           text="SUPERIOR"
@@ -565,7 +565,7 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
         setValueRetention={setValueRetention}
         textDisabled={buttonNext}
       />
-      <div className="fieldsets">
+      <div className="buttons">
         <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(4)} />
         <Button
           text="SIGUIENTE"

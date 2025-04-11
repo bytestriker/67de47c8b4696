@@ -161,7 +161,7 @@ const Marte = () => {
       />
       <div className="planetContainer">
         <div className="planetContent">
-          {page === 1 ? (
+          {page === 1 && (
             <MarteQ1Valor
               setPage={setPage}
               getMarte={getMarte}
@@ -170,8 +170,8 @@ const Marte = () => {
               setTitle={setTitle}
               texts={texts}
             />
-          ) : null}
-          {page === 2 ? (
+          )}
+          {page === 2 && (
             <MarteQ1Canvas
               setPage={setPage}
               setModal={setModal}
@@ -179,8 +179,8 @@ const Marte = () => {
               setTitle={setTitle}
               texts={texts2}
             />
-          ) : null}
-          {page === 3 ? (
+          )}
+          {page === 3 && (
             <MarteQ2Canvas
               setPage={setPage}
               setModal={setModal}
@@ -188,7 +188,7 @@ const Marte = () => {
               setTitle={setTitle}
               texts={texts2}
             />
-          ) : null}
+          )}
           {page === 4 && (
             <MarteNegocios
               setPage={setPage}
@@ -322,6 +322,8 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
     setButtonNext(allHaveAtLeastOne);
   };
 
+  console.log('the texts ', texts);
+
   return (
     <form className="questionWrap">
       <ScrollToTop />
@@ -331,6 +333,7 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
         <WatchPlanetVideo
           params={[
             {
+              link_text: texts?.seccion_de_apoyo || 'Ver video',
               alt: 'play video',
               url: texts?.link_video,
             },
@@ -518,15 +521,16 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
       <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       {texts?.link_video && (
-          <WatchPlanetVideo
-            params={[
-              {
-                alt: 'play video',
-                url: texts?.link_video,
-              },
-            ]}
-          />
-        )}
+        <WatchPlanetVideo
+          params={[
+            {
+              link_text: texts?.seccion_de_apoyo || 'Ver video',
+              alt: 'play video',
+              url: texts?.link_video,
+            },
+          ]}
+        />
+      )}
 
       <fieldset>
         <ToolTip text="Alianzas Clave" tool={texts.instruccion_6} />
