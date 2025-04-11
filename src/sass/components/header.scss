@@ -9,20 +9,16 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 99;
   .header_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 3rem;
-
-    @include largeDevices {
-      padding: 32px 3rem;
-    }
+    padding: 32px 32px;
     .logo_content {
-      max-width: 50%;
+      width: 240px;
       img {
-        height: 32px;
+        width: 100%;
       }
       
     }
@@ -80,6 +76,7 @@ header {
       .iconTank {
         display: flex;
         align-items: center;
+        position: relative;
         gap: 6px;
         cursor: pointer;
         figure {
@@ -87,6 +84,23 @@ header {
           background-position: center;
           background-repeat: no-repeat;
           background-size: 20px;
+        }
+        @include mobilePlusMax {
+          span {
+            background: #E0FF4E;
+            border-radius: 100%;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -6px;
+            left: calc(100% - 12px);
+            width: 20px;
+            height: 20px;
+            font-weight: bold;
+            font-size: 12px;
+          }
         }
       }
 
