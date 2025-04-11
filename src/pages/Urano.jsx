@@ -121,8 +121,6 @@ const Urano = () => {
           {page === 4 && (
             <PL setPage={setPage} setTitle={setTitle} setModal={setModal} texts={texts3} />
           )}
-
-
         </div>
       </div>
 
@@ -264,8 +262,7 @@ export const Logo = ({ setPage, setTitle, texts }) => {
         <Button
           isCentered={true}
           text="SIGUIENTE"
-          className={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
-          disabled={getPrototipo.length <= 10 ? 'btn-disabled' : ''}
+          disabled={getPrototipo.length <= 10}
           onClick={handlePrototipo}
         />
       </div>
@@ -379,7 +376,6 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{ __html: texts.subtitulo_1 }}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
-
 
       {texts?.link_video && (
         <WatchPlanetVideo
@@ -650,7 +646,9 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h2 dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista || 'PL Heading Placeholder' }}></h2>
+      <h2
+        dangerouslySetInnerHTML={{ __html: texts.titulo_de_la_vista || 'PL Heading Placeholder' }}
+      ></h2>
       <p
         dangerouslySetInnerHTML={{ __html: texts.descripcion || 'PL Description Placeholder' }}
       ></p>
@@ -659,7 +657,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
         <WatchPlanetVideo
           params={[
             {
-              size:{"width": "50", "height": "50"},
+              size: { width: '50', height: '50' },
               alt: 'play video',
               link_text: texts?.seccion_de_apoyo || '¡Ver video!',
               url: texts?.link_video,
@@ -668,12 +666,11 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
         />
       )}
 
-
       {/* 
+      */}
       <a href={texts.adjuntar_formato_para_descargar} className="anchorDownload">
         <span>Descargar formato</span>
       </a> 
-      */}
 
       <fieldset>
         <div className="inputFileUpload">
