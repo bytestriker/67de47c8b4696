@@ -30,8 +30,7 @@ import { ButtonClose } from '@Components/Atomos/Buttons';
 
 // Styles
 import '@Sass/pages/planet.scss';
-import style from '@Sass/pages/general.module.scss';
-import jupiter from '@Sass/pages/jupiter.module.scss';
+import '@Sass/pages/jupiter.scss';
 
 const Jupiter = () => {
   const { getLuna } = lunaStore(

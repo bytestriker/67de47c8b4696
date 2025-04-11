@@ -327,6 +327,10 @@
   justify-content: center;
   margin: 0;
   padding: 24px 32px;
+  @include largeDevices {
+    padding: 24px 72px;
+
+  }
   .gridIconText {
     display: grid;
     grid-template-columns: 110px 1fr;
@@ -725,10 +729,11 @@
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjciIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA2NyA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTU2LjY0NjUgMjEuMDM5NEM1NS4xODk4IDkuNTY2MDIgNDUuMzY2NSAwLjY2NjAxNiAzMy40OTk4IDAuNjY2MDE2QzI0LjMxMzIgMC42NjYwMTYgMTYuMzMzMiA2LjAzNjAxIDEyLjY4OTggMTQuNDk5M0M1LjUyOTg0IDE2LjYzOTMgMC4xNjY1MDQgMjMuMzk5MyAwLjE2NjUwNCAzMC42NjZDMC4xNjY1MDQgMzkuODU2IDcuNjQzMTcgNDcuMzMyNyAxNi44MzMyIDQ3LjMzMjdINTMuNDk5OEM2MC44NTMyIDQ3LjMzMjcgNjYuODMzMiA0MS4zNTI3IDY2LjgzMzIgMzMuOTk5NEM2Ni44MjggMzEuMDExNCA2NS44MjE5IDI4LjExMTMgNjMuOTc1NSAyNS43NjIxQzYyLjEyOSAyMy40MTMgNTkuNTQ4NyAyMS43NTAyIDU2LjY0NjUgMjEuMDM5NFpNMzYuODMzMiAzMC42NjZWNDAuNjY2SDMwLjE2NjVWMzAuNjY2SDIwLjE2NjVMMzMuNDk5OCAxMy45OTkzTDQ2LjgzMzIgMzAuNjY2SDM2LjgzMzJaIiBmaWxsPSIjRTBGRjRFIi8+Cjwvc3ZnPgo=');
   background-position: center;
   background-repeat: no-repeat;
-  border: 4px dashed #E6F85A;
+  border: 3px dashed #E6F85A;
   position: relative;
   aspect-ratio: 24 / 6;
   width: 100%;
+  box-sizing: border-box;
   input {
     position: absolute;
     width: 100%;

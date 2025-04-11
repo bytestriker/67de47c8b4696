@@ -89,6 +89,10 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
   }, []);
 
   useEffect(() => {
+    setPage(9);
+  }, []);
+
+  useEffect(() => {
     if (
       dataJupiter?.opcion_1 !== '' &&
       dataJupiter?.opcion_2 !== '' &&
@@ -218,7 +222,6 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
 
   return (
     <form method="POST" className="questionWrap">
-      Paso 7| página 7 
       <ScrollToTop />
       <h2 dangerouslySetInnerHTML={{__html:texts?.titulo_de_la_vista}}></h2>
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>

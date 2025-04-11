@@ -75,55 +75,43 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
   const items = [
     <a
       href={texts.link_de_la_plataforma_recomendada_1}
-      className={jupiter.entriesBrands}
+      className="entriesBrands"
       key={1}
       target="_blank"
     >
       <img src={texts.imagen_de_la_plataforma_recomendada_1} alt="" />
-      <p>{texts.descripcion_de_la_plataforma_recomendada_1}</p>
+      <span>{texts.descripcion_de_la_plataforma_recomendada_1}</span>
     </a>,
 
     <a
       href={texts.link_de_la_plataforma_recomendada_2}
-      className={jupiter.entriesBrands}
+      className="entriesBrands"
       key={2}
       target="_blank"
     >
       <img src={texts.imagen_de_la_plataforma_recomendada_2} alt="" />
-      <p>{texts.descripcion_de_la_plataforma_recomendada_2}</p>
+      <span>{texts.descripcion_de_la_plataforma_recomendada_2}</span>
     </a>,
 
     <a
       href={texts.link_de_la_plataforma_recomendada_3}
-      className={jupiter.entriesBrands}
+      className="entriesBrands"
       key={3}
       target="_blank"
     >
       <img src={texts.imagen_de_la_plataforma_recomendada_3} alt="" />
-      <p>{texts.descripcion_de_la_plataforma_recomendada_3}</p>
+      <span>{texts.descripcion_de_la_plataforma_recomendada_3}</span>
     </a>,
     <a
       href={texts.link_de_la_plataforma_recomendada_4}
-      className={jupiter.entriesBrands}
+      className="entriesBrands"
       key={4}
       target="_blank"
     >
       <img src={texts.imagen_de_la_plataforma_recomendada_4} alt="" />
-      <p>{texts.descripcion_de_la_plataforma_recomendada_4}</p>
+      <span>{texts.descripcion_de_la_plataforma_recomendada_4}</span>
     </a>,
   ];
-
-  const componentSlider = (
-    <Carrusel
-      items={items}
-      controls={true}
-      controlsClass={'white'}
-      infinite={true}
-      disableBullets={true}
-      paddingLeft={0}
-      paddingRight={70}
-    />
-  );
 
   return (
     <form className="questionWrap">
@@ -140,15 +128,12 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
           ]}
         />
       )} 
-      
-      <div className={jupiter.upload}>
-        <img src={upload} alt="upload" />
+      <div className="inputFileUpload">
         <input
           type="file"
           name="fileInput"
           id="fileInput"
           onChange={handleImageDoc}
-          className={jupiter.fileInput}
         />
       </div>
       {/*  <div className={jupiter.checkText}>
@@ -156,7 +141,7 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
         <p>Subir después</p>
       </div> */}
       <p dangerouslySetInnerHTML={{ __html: texts?.descripcion_general_de_las_plataformas_recomendadas }}></p>
-      <div className={jupiter.carrusel}>{componentSlider}</div>
+      <Carrusel items={items} />
       <div className="buttons">
         {/*<button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setPage(8)}>
             ANTERIOR

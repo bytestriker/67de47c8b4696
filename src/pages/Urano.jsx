@@ -679,7 +679,6 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
             name="fileInput"
             id="fileInput"
             onChange={handleImageDoc}
-            className="uranoFileInput"
           />
         </div>
       </fieldset>

@@ -1,28 +1,31 @@
-import SliderComponent from './carrusel';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import "@Sass/_slider.scss"
+import chevronLeft from '@Assets/images/chevronLeft.svg'
+import chevronRight from '@Assets/images/chevronRight.svg'
 
-const Slider = ({
-  responsive,
-  infinite,
-  disableBullets,
-  items,
-  paddingLeft,
-  paddingRight,
-  controls,
-  controlsClass,
-}) => {
+const Slider = ({items}) => {
+
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 }
+  };
+
   return (
-    <>
-      <SliderComponent
-        responsive={responsive}
-        infinite={infinite}
-        disableBullets={disableBullets}
-        items={items}
-        paddingLeft={paddingLeft}
-        paddingRight={paddingRight}
-        controls={controls}
-        controlsClass={controlsClass}
-      />
-    </>
+    <AliceCarousel
+      mouseTracking
+      items={items}
+      infinite={true}
+      responsive={responsive}
+      controlsStrategy="responsive"
+      renderPrevButton={() => {
+        return <span><img src={chevronLeft} alt="Previous Button" />{}</span>
+      }}
+      renderNextButton={() => {
+        return <span><img src={chevronRight} alt="Next Button" />{}</span>
+      }}
+      disableDotsControls={true}
+    />
   );
 };
 
