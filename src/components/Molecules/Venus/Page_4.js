@@ -258,6 +258,7 @@ export const VenusQ1Conclusion = ({
           text="SIGUIENTE"
           onClick={() => setPage(5)}
           //onClick={() => handleSubmit('next')}
+          disabled={buttonNext ? '' : 'disabled'}
           />
       </div>
     </form>

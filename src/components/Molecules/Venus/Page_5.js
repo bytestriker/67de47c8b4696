@@ -198,8 +198,9 @@ export const VenusQ2Conclusion = ({
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h3 className="text-center">{texts.pregunta}</h3>
-      <ParagraphPlanet text={texts.descripcion} />
+      <h2>Cruce O.D.</h2>
+      <h3 dangerouslySetInnerHTML={{ __html: texts.pregunta }}>{texts.pregunta}</h3>
+      <p dangerouslySetInnerHTML={{__html:texts.pregunta}}>{texts.pregunta}</p>
       <fieldset>
         {elementos.map((elemento, index) => (
           <div key={index} className="selectContainer">
