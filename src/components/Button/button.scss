@@ -67,6 +67,11 @@
       position: relative;
     }
   }
+  &.buttonPlanetIncomplete {
+    svg {
+      display: none !important;
+    }
+  }
   &:hover {
     svg {
       &:first-of-type {

@@ -6,13 +6,6 @@ import { shallow } from 'zustand/shallow';
 import { globalStore } from '@Store/global';
 import Button from '@Components/Button';
 
-
-// hooks
-import {
-  createJupiterNombres,
-} from '@Service/jupiter.service';
-
-
 // Hooks
 import { useEventJupiter } from '@Hooks/useEventsJupiter';
 
@@ -21,14 +14,15 @@ import { useEventJupiter } from '@Hooks/useEventsJupiter';
 import styles from '@Sass/components/alerts.module.scss';
 
 export const ModalSalirJupiter = ({
-  setPage,
-  setModalSalir,
   title,
   message,
+  setModalSalir,
   dataJupiter,
   proyectID,
   page,
+  setPage,
 }) => {
+  console.log(title, message, setModalSalir, dataJupiter, proyectID, page);
   const { setMessage, setAlert } = globalStore(
     (state) => ({
       setMessage: state.setMessage,
@@ -41,75 +35,164 @@ export const ModalSalirJupiter = ({
   const history = useHistory();
   const modalJupiterRef = useRef(null);
 
+  const validateParams = (data) => {
+    const algunCampoVacio = data.some((value) => {
+      return value.trim() === '' || !value;
+    });
+    return algunCampoVacio;
+  };
 
-  const pageValidations = {
-    1: { fields: ['caracteristicas'], message: 'Debes ingresar las características' },
-    2: { fields: ['adjetivos_calificativos'], message: 'Debes ingresar los adjetivos' },
-    3: { fields: ['objetivos'], message: 'Debes ingresar los objetivos' },
-    4: { fields: ['significados'], message: 'Debes  los significados' },
-    5: { fields: ['ideas_nombre'], message: 'Debes ingresar los nombres' },
-    6: {
-      fields: ['opcion_1', 'opcion_2', 'opcion_3'],
-      message: '¡Debes seleccionar tus opciones! (Nombres)',
-    },
-    7: {
-      fields: ['opcion_1', 'opcion_2', 'opcion_3'],
-      message: '¡Debes seleccionar tus opciones!',
-    },
-    8: { fields: ['adjetivos'], message: 'Debes ingresar datos en esta sección' },
-  }; 
   const handleAlert = async (action, id, params, pageIn) => {
-    const validation = pageValidations[pageIn];
-    console.log({action, id, params, pageIn})
-
-    if (action === 'SAVE' || action === 'CONTINUE') {
-      // Validate required fields
-      if (
-        validation &&
-        validation.fields.some((field) =>
-          Array.isArray(params[field])
-            ? params[field].length === 0 || params[field].some((v) => !v?.trim())
-            : !params[field]?.trim()
-        )
-      ) {
+    if (action === 'OK') {
+      if (pageIn === 1) {
+        const { caracteristicas } = params;
+        if (caracteristicas.length === 0 || validateParams(caracteristicas)) {
+          setModalSalir(false);
+          setMessage('Debes ingresar datos en esta sección');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateProject(id, params);
         setModalSalir(false);
-        setMessage(validation.message);
-        setAlert(true);
+        history.push('/');
         return;
       }
 
-      // Save data based on page
-      if (pageIn <= 5) await jupiterCreateProject(id, params);
-      else if (pageIn <= 7) await jupiterCreateNombres(id, params);
-      else if (pageIn === 8) await jupiterCrearMarca(id, params);
-
-      if (action.toLowerCase() === 'continue') {
-        alert("aquí está tocando esta línea")
-        setPage(pageIn + 1);
+      if (pageIn === 2) {
+        const { adjetivos_calificativos } = params;
+        if (adjetivos_calificativos.length === 0 || validateParams(adjetivos_calificativos)) {
+          setModalSalir(false);
+          setMessage('Debes ingresar datos en esta sección');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateProject(id, params);
         setModalSalir(false);
-        return
-      } else {
-        alert("Me regresó como si hubiera oprimido OK");
-        history.push("/")
-        return
+        history.push('/');
+        return;
       }
+
+      if (pageIn === 3) {
+        const { objetivos } = params;
+        if (objetivos.length === 0 || validateParams(objetivos)) {
+          setModalSalir(false);
+          setMessage('Debes ingresar datos en esta sección');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateProject(id, params);
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }
+
+      if (pageIn === 4) {
+        const { significados } = params;
+        if (significados.length === 0 || validateParams(significados)) {
+          setModalSalir(false);
+          setMessage('Debes ingresar datos en esta sección');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateProject(id, params);
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }
+
+      if (pageIn === 5) {
+        const { ideas_nombre } = params;
+        if (ideas_nombre.length === 0 || validateParams(ideas_nombre)) {
+          setModalSalir(false);
+          setMessage('Debes ingresar datos en esta sección');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateProject(id, params);
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }
+
+      if (pageIn === 6) {
+        if (params.opcion_1 === '' || params.opcion_2 === '' || params.opcion_3 === '') {
+          setModalSalir(false);
+          setMessage('¡Debes seleccionar tus opciones!');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateNombres(id, params);
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }
+
+
+      if (pageIn === 7) {
+        if (params.opcion_1 === '' || params.opcion_2 === '' || params.opcion_3 === '') {
+          setModalSalir(false);
+          setMessage('¡Debes seleccionar tus opciones!');
+          setAlert(true);
+          return;
+        }
+        await jupiterCreateNombres(id, params);
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }      
+
+      if (pageIn === 8) {
+        const { adjetivos } = params;
+
+        if (adjetivos.length === 0 || validateParams(adjetivos)) {
+          setModalSalir(false);
+          setMessage('Debes agregar tus adjetivos');
+          setAlert(true);
+          return;
+        } else {
+          await jupiterCrearMarca(id, params);
+          setModalSalir(false);
+          history.push('/');
+          return;
+        }
+      }
+      if (pageIn === 9) {
+        setModalSalir(false);
+        history.push('/');
+        return;
+      }
+    } else if (action === 'CONTINUAR') {
+      setModalSalir(false);
+      history.push('/');
     }
   };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalJupiterRef.current && !modalJupiterRef.current.contains(event.target)) {
+        setModalSalir(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent} ref={modalJupiterRef}>
-          <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
-          <p dangerouslySetInnerHTML={{ __html: message }}></p>
+          <h2 dangerouslySetInnerHTML={{__html:title}}></h2>
+          <p dangerouslySetInnerHTML={{__html:message}}></p>
           <div className={`${styles.ButtonContent} buttons`}>
             <Button
-              onClick={() => handleAlert('SAVE', proyectID, dataJupiter, page)}
+              onClick={() => handleAlert('CANCELAR', proyectID, dataJupiter, page)}
               isAlt={true}
               text="GUARDAR"
             />
             <Button
-              onClick={() => handleAlert('CONTINUE', proyectID, dataJupiter, page)}
+              onClick={() => handleAlert('OK', proyectID, dataJupiter, page)}
               text="CONTINUAR"
             />
           </div>
@@ -135,13 +218,13 @@ export const ModalJupiter = ({ setModal, setPage, message, title, buttonName, pa
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3 dangerouslySetInnerHTML={{__html: title}}></h3>
+          <h3>{title}</h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <p dangerouslySetInnerHTML={{ __html: message.message }}></p>
-          <div className={`buttons`}>
-            <Button onClick={() => handleManageModal()}
-             text={buttonName}
-            />
+          <div className={`${styles.ButtonContent} buttons`}>
+            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
+              {buttonName}
+            </button>
           </div>
         </div>
       </div>

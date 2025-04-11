@@ -632,17 +632,21 @@
     display: block;
     position: relative;
   }
-  &.buttonPlanetCompleted {
+  &.buttonPlanetCompleted,
+  &.buttonPlanetIncomplete {
     svg {
-      &:first-of-type {
-
-        opacity: 0.5;
-      }
       &:last-of-type {
         path {
           filter: drop-shadow(0 0 5px #FB6C2B);
           stroke: #FB6C2B;
         }
+      }
+    }
+  }
+  &.buttonPlanetCompleted {
+    svg {
+      &:first-of-type {
+        opacity: 0.5;
       }
     }
     &::after {
@@ -652,6 +656,20 @@
       width: 14px;
       height: 12px;
       position: relative;
+    }
+  }
+  &.buttonPlanetIncomplete {
+    svg {
+      &:first-of-type {
+        opacity: 0.5;
+      }
+    }
+  }
+  &:hover {
+    svg {
+      &:first-of-type {
+        opacity: 0.5;
+      }
     }
   }
   &:hover {
