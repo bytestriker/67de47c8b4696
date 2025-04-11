@@ -7,10 +7,6 @@ import { marteStore } from '@Store/marte';
 // Hook
 import { valPackage } from '@Hooks/useValidatePlanet';
 
-// Styles
-import lines from '@Components/Planets/lines.module.scss';
-import buttons from '@Sass/components/buttons.module.scss';
-
 // Images
 import tank from '@Assets/images/planet-tank.svg';
 import lock from '@Assets/images/lock.svg';
@@ -54,11 +50,8 @@ export const Marte = ({ marteInfo }) => {
       setTitle(marteInfo.titulo);
     }
   }, [marteInfo]);
-  /* 
-  useEffect(() => {
-    console.log(dataMarte);
-  }, [dataMarte]); */
 
+  
   return (
     <div className="planetGridItem">
       <div className="planetFigure">

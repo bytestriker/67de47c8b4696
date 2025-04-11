@@ -147,6 +147,7 @@ const Marte = () => {
           title="Paso 2"
           message="<p>Haz completado tu Business Model Canvas. Ahora haremos el cruce de cada concepto.</p><br/><p>¿Qué deseas hacer?</p>"
           setModalSalir={setModalSalir}
+          modalSalir={modalSalir}
           data={dataMarte}
           page={page}
         />
@@ -184,6 +185,8 @@ const Marte = () => {
             <MarteQ2Canvas
               setPage={setPage}
               setModal={setModal}
+              setModalSalir={setModalSalir}
+              modalSalir={modalSalir}
               modal={modal}
               setTitle={setTitle}
               texts={texts2}
@@ -391,7 +394,7 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
 /** MARTE Q2 CANVAS
  * page 3
  */
-export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => {
+export const MarteQ2Canvas = ({ setPage, setModal, modal, setModalSalir, modalSalir, setTitle, texts }) => {
   const { marteCreateProject } = useEventsMarte();
   const [getKeyPartners, setKeyPartners] = useState(['', '', '']);
   const [getCostStructure, setCostStructure] = useState(['', '', '']);
@@ -467,6 +470,8 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
     if (deleteVoid.key_resources.length === 0) {
       delete objetoSinCamposVacios.key_resources;
     }
+
+    /*     
     if (param === 'SAVE') {
       const response = await marteCreateProject(objetoSinCamposVacios);
       if (response.status === 'OK') {
@@ -478,7 +483,9 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
       if (response.status === 'OK') {
         setPage(4);
       }
-    }
+    } 
+    */
+    setModalSalir(!modalSalir);
   };
 
   useEffect(() => {
@@ -583,13 +590,14 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setTitle, texts }) => 
           // onClick={() => setPage(4)}
           onClick={() => handleSubmit('SAVE')}
         />
-
+        {/* 
         <Button
           text="PASO 2"
           isCentered={true}
           disabled={buttonNext ? '' : 'disabled'}
           onClick={() => handleSubmit('NEXTPAGE')}
-        />
+        /> 
+        */}
       </div>
       {modal ? (
         <ModalMarte

@@ -19,17 +19,16 @@ import {
 
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
+import { Title2, ParagraphPlanet } from '@Components/Atomos/Titles';
 import { WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
 // import style from '@Sass/pages/general.module.scss';
 import _jupiter_style from '@Sass/pages/jupiter.module.scss';
-import { useHistory } from 'react-router-dom';
 
 {/* Página 7: Prioridades de los Nombres */}
 export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir }) => {
-  const history = useHistory();
   const { setLoading } = useAuth();
 
   const { dataJupiter, setStateOpcion1, setStateOpcion2, setStateOpcion3 } = jupiterStore(
@@ -194,15 +193,13 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
       opcion_2: dataJupiter?.opcion_2 || opcion_2.selectedOpcion2.opcion,
       opcion_3: dataJupiter?.opcion_3 || opcion_3.selectedOpcion3.opcion,
     });
-    console.log("params ", params);
     const res = await createJupiterNombres(getLuna().id, obj);
-    alert("res.code " + res.code);
     if (res.code === 0) {
       if (params === 'save') {
         setLoading(false);
-        // setModalSalir(true);
-        // setLoading(false);
-        history.push("/")
+        setModalSalir(true);
+        // setAlert(true);
+        // setMessage('Tus datos se han guardado correctamente.');
       } else if (params === 'next') {
         setLoading(false);
         setPage(8);
@@ -215,6 +212,9 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
   };
   console.log("jupiter page 7 texts ", texts)
 
+  const handleModalConfirm = () => {
+    
+  }
 
   return (
     <form method="POST" className="questionWrap">
@@ -302,9 +302,9 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
         )}
       </div>
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(6)} />
-        {/* <Button text="GUARDAR" onClick={() => handleSubmit('save')} disabled={!buttonNext && 'disabled'} /> */}
-        <Button text="SIGUIENTE" onClick={() => setModalSalir(!modalSalir)} disabled={!buttonNext && 'disabled'} />
+        <Button text="ANTERIOR" onClick={() => setPage(6)} />
+        <Button text="GUARDAR" onClick={() => handleSubmit('save')} disabled={buttonNext ? '' : 'disabled'} />
+        <Button text="SIGUIENTE" onClick={() => handleSubmit('next')} disabled={buttonNext ? '' : 'disabled'} />
       </div>
     </form>
   );

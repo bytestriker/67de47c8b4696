@@ -13,13 +13,13 @@ import { statusPlanet } from '@Helpers/constants';
 // Styles
 import styles from '@Sass/components/alerts.module.scss';
 
-export const ModalSalirMarte = ({ title, message, setModalSalir, data, page }) => {
+export const ModalSalirMarte = ({ title, message, setModalSalir, modalSalir, data, page }) => {
   const { marteCreateProject, marteCreateProjectBussines } = useEventsMarte();
   const history = useHistory();
   const modalMarteRef = useRef(null);
 
   const handleAlert = async (action, values, page) => {
-    if (action === 'OK') {
+    if (action === 'SAVE') {
       if (page !== 4) {
         const deleteVoid = {
           ...values,
@@ -76,7 +76,7 @@ export const ModalSalirMarte = ({ title, message, setModalSalir, data, page }) =
         setModalSalir(false);
         history.push('/');
       }
-    } else if (action === 'CANCELAR') {
+    } else if (action === 'CONTINUE') {
       setModalSalir(false);
       history.push('/');
     }
@@ -99,12 +99,12 @@ export const ModalSalirMarte = ({ title, message, setModalSalir, data, page }) =
       <div className="container">
         <div className={styles.ModalContent} ref={modalMarteRef}>
 
-          <h1>{title}</h1>
+          <h1 dangerouslySetInnerHTML={{__html: title}}></h1>
           <p className="text-center" dangerouslySetInnerHTML={{ __html: message }}></p>
 
-          <div className={`${styles.ButtonContent} buttons`}>
-            <Button onClick={() => handleAlert('CANCELAR', data, page)} text="GUARDAR" isAlt={true} />
-            <Button onClick={() => handleAlert('OK', data, page)} text="CONTINUAR" />
+          <div className={`buttons`}>
+            <Button onClick={() => handleAlert('SAVE', data, page)} text="GUARDAR" isAlt={true}/>
+            <Button onClick={() => handleAlert('CONTINUE', data, page)} text="CONTINUAR" />
           </div>
         </div>
       </div>

@@ -82,10 +82,10 @@ export const ModalPopup = ({ setPopup }) => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3>¡Próximamente!</h3>
+          <h3>¡PRÓXIMAMENTE!</h3>
           <p>Muy pronto tendremos nuevos servicios increíbles</p>
-          <div className={styles.ButtonContent}>
-            <Button className={styles.buttonContinue} onClick={() => setPopup(false)} text="OK"/>
+          <div className="buttons">
+            <Button onClick={() => setPopup(false)} text="OK"/>
           </div>
         </div>
       </div>
