@@ -149,6 +149,7 @@ const Marte = () => {
           setModalSalir={setModalSalir}
           modalSalir={modalSalir}
           data={dataMarte}
+          setPage={setPage}
           page={page}
         />
       )}
@@ -471,7 +472,7 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setModalSalir, modalSa
       delete objetoSinCamposVacios.key_resources;
     }
 
-    /*     
+    
     if (param === 'SAVE') {
       const response = await marteCreateProject(objetoSinCamposVacios);
       if (response.status === 'OK') {
@@ -484,8 +485,8 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setModalSalir, modalSa
         setPage(4);
       }
     } 
-    */
-    setModalSalir(!modalSalir);
+    
+    ;
   };
 
   useEffect(() => {
@@ -588,7 +589,7 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setModalSalir, modalSa
           isCentered={true}
           disabled={buttonNext ? '' : 'disabled'}
           // onClick={() => setPage(4)}
-          onClick={() => handleSubmit('SAVE')}
+          onClick={() => setModalSalir(!modalSalir)}
         />
         {/* 
         <Button

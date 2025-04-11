@@ -1,110 +1,122 @@
-/* eslint-disable no-unused-vars */
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import { shallow } from 'zustand/shallow';
+
+// Store
+import { globalStore } from '@Store/global';
+import Button from '@Components/Button';
 
 // Hooks
 import { useEventsMarte } from '@Hooks/useEventsMarte';
 
-import Button from '@Components/Button';
-
-// Constants
-import { statusPlanet } from '@Helpers/constants';
-
 // Styles
 import styles from '@Sass/components/alerts.module.scss';
 
-export const ModalSalirMarte = ({ title, message, setModalSalir, modalSalir, data, page }) => {
+export const ModalSalirMarte = ({
+  setPage,
+  setModalSalir,
+  title,
+  message,
+  data,
+  page,
+}) => {
+  const { setMessage, setAlert } = globalStore(
+    (state) => ({
+      setMessage: state.setMessage,
+      setAlert: state.setAlert,
+    }),
+    shallow
+  );
+
   const { marteCreateProject, marteCreateProjectBussines } = useEventsMarte();
   const history = useHistory();
   const modalMarteRef = useRef(null);
 
-  const handleAlert = async (action, values, page) => {
-    if (action === 'SAVE') {
-      if (page !== 4) {
-        const deleteVoid = {
-          ...values,
-          value_proposition: values.value_proposition.filter(Boolean),
-          key_activities: values.key_activities.filter(Boolean),
-          revenue_streams: values.revenue_streams.filter(Boolean),
-          customer_relationships: values.customer_relationships.filter(Boolean),
-          channels: values.channels.filter(Boolean),
-          key_partners: values.key_partners.filter(Boolean),
-          cost_structure: values.cost_structure.filter(Boolean),
-          customer_segments: values.customer_segments.filter(Boolean),
-          key_resources: values.key_resources.filter(Boolean),
-        };
-        const objetoSinCamposVacios = {
-          ...deleteVoid,
-        };
-
-        if (deleteVoid.propuesta_valor === '') {
-          delete objetoSinCamposVacios.propuesta_valor;
-        }
-        if (deleteVoid.value_proposition.length === 0) {
-          delete objetoSinCamposVacios.value_proposition;
-        }
-        if (deleteVoid.key_activities.length === 0) {
-          delete objetoSinCamposVacios.key_activities;
-        }
-        if (deleteVoid.revenue_streams.length === 0) {
-          delete objetoSinCamposVacios.revenue_streams;
-        }
-        if (deleteVoid.customer_relationships.length === 0) {
-          delete objetoSinCamposVacios.customer_relationships;
-        }
-        if (deleteVoid.channels.length === 0) {
-          delete objetoSinCamposVacios.channels;
-        }
-        if (deleteVoid.key_partners.length === 0) {
-          delete objetoSinCamposVacios.key_partners;
-        }
-        if (deleteVoid.cost_structure.length === 0) {
-          delete objetoSinCamposVacios.cost_structure;
-        }
-        if (deleteVoid.customer_segments.length === 0) {
-          delete objetoSinCamposVacios.customer_segments;
-        }
-        if (deleteVoid.key_resources.length === 0) {
-          delete objetoSinCamposVacios.key_resources;
-        }
-        await marteCreateProject(objetoSinCamposVacios);
-        setModalSalir(false);
-        history.push('/');
-      } else {
-        await marteCreateProjectBussines(values.modelo_negocio);
-        console.log('OK');
-        setModalSalir(false);
-        history.push('/');
-      }
-    } else if (action === 'CONTINUE') {
-      setModalSalir(false);
-      history.push('/');
-    }
+  const pageValidations = {
+    1: { fields: ['propuesta_valor'], message: 'Debes ingresar la propuesta de valor' },
+    2: { fields: ['customer_segments'], message: 'Debes ingresar los segmentos de clientes' },
+    3: { fields: ['key_activities'], message: 'Debes ingresar las actividades clave' },
+    4: { fields: ['modelo_negocio'], message: 'Debes completar el modelo de negocio' },
   };
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (modalMarteRef.current && !modalMarteRef.current.contains(event.target)) {
+  const cleanData = (values) => {
+    const cleaned = {
+      ...values,
+      value_proposition: values.value_proposition?.filter(Boolean) || [],
+      key_activities: values.key_activities?.filter(Boolean) || [],
+      revenue_streams: values.revenue_streams?.filter(Boolean) || [],
+      customer_relationships: values.customer_relationships?.filter(Boolean) || [],
+      channels: values.channels?.filter(Boolean) || [],
+      key_partners: values.key_partners?.filter(Boolean) || [],
+      cost_structure: values.cost_structure?.filter(Boolean) || [],
+      customer_segments: values.customer_segments?.filter(Boolean) || [],
+      key_resources: values.key_resources?.filter(Boolean) || [],
+    };
+
+    // Remove empty fields
+    Object.keys(cleaned).forEach(key => {
+      if (Array.isArray(cleaned[key]) && cleaned[key].length === 0) {
+        delete cleaned[key];
+      } else if (cleaned[key] === '') {
+        delete cleaned[key];
+      }
+    });
+
+    return cleaned;
+  };
+
+  const handleAlert = async (action, values, pageIn) => {
+    const validation = pageValidations[pageIn];
+
+    if (action === 'SAVE' || action === 'CONTINUE') {
+      // Validate required fields
+      if (
+        validation &&
+        validation.fields.some((field) =>
+          Array.isArray(values[field])
+            ? values[field].length === 0 || values[field].some((v) => !v?.trim())
+            : !values[field]?.trim()
+        )
+      ) {
         setModalSalir(false);
+        setMessage(validation.message);
+        setAlert(true);
+        return;
+      }
+
+      // Clean and save data based on page
+      const cleanedData = cleanData(values);
+      
+      if (pageIn <= 3) await marteCreateProject(cleanedData);
+      else if (pageIn === 4) await marteCreateProjectBussines(cleanedData.modelo_negocio);
+
+      if (action === 'CONTINUE') {
+        setPage(pageIn + 1);
+        setModalSalir(false);
+        return;
+      } else {
+        history.push("/");
+        return;
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  };
 
   return (
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent} ref={modalMarteRef}>
-
-          <h1 dangerouslySetInnerHTML={{__html: title}}></h1>
-          <p className="text-center" dangerouslySetInnerHTML={{ __html: message }}></p>
-
-          <div className={`buttons`}>
-            <Button onClick={() => handleAlert('SAVE', data, page)} text="GUARDAR" isAlt={true}/>
-            <Button onClick={() => handleAlert('CONTINUE', data, page)} text="CONTINUAR" />
+          <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
+          <p dangerouslySetInnerHTML={{ __html: message }}></p>
+          <div className={`${styles.ButtonContent} buttons`}>
+            <Button
+              onClick={() => handleAlert('SAVE', data, page)}
+              isAlt={true}
+              text="GUARDAR"
+            />
+            <Button
+              onClick={() => handleAlert('CONTINUE', data, page)}
+              text="CONTINUAR"
+            />
           </div>
         </div>
       </div>
@@ -112,17 +124,14 @@ export const ModalSalirMarte = ({ title, message, setModalSalir, modalSalir, dat
   );
 };
 
-export const ModalMarte = (props) => {
-  const { setModal, setPage, message, title, buttonName, page } = props;
+export const ModalMarte = ({ setModal, setPage, message, title, buttonName, page }) => {
   const history = useHistory();
 
   const handleManageModal = () => {
-    if (page) {
-      if (page !== 5) {
-        setPage(page);
-        setModal(false);
-        return;
-      }
+    if (page && page !== 5) {
+      setPage(page);
+      setModal(false);
+      return;
     }
     setModal(false);
     history.push('/');
@@ -132,7 +141,7 @@ export const ModalMarte = (props) => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3>{title}</h3>
+          <h3 dangerouslySetInnerHTML={{__html: title}}></h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <div className={`buttons`}>
             <Button onClick={() => handleManageModal()} text={buttonName} />
