@@ -191,13 +191,13 @@ const Jupiter = () => {
     <section className="planetWrap">
       {modalSalir && (
         <ModalSalirJupiter
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
+          title="Paso 2"
+          message="¿Qué deseas hacer?"
           setModalSalir={setModalSalir}
           dataJupiter={dataJupiter}
           proyectID={getLuna().id}
-          setPage={setPage}
           page={page}
+          setPage={setPage}
         />
       )}
       {modal && (
@@ -206,7 +206,7 @@ const Jupiter = () => {
           message={`Haz completado <strong>
              Jupiter</strong> de tu proyecto
            <strong>${getLuna().nombre}</strong>`}
-          buttonName="INICIO"
+          buttonName="IR AL INICIO"
           setPage={setPage}
           setModal={setModal}
           page={page}
@@ -300,29 +300,6 @@ const Jupiter = () => {
         </div>
       </div>
 
-      {modalSalir && (
-        <ModalSalirJupiter
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
-          setModalSalir={setModalSalir}
-          dataJupiter={dataJupiter}
-          proyectID={getLuna().id}
-          page={page}
-        />
-      )}
-
-      {modal && (
-        <ModalJupiter
-          title="¡FELICIDADES!"
-          message={`Haz completado <strong> Jupiter</strong> de tu proyecto<strong>${
-            getLuna().nombre
-          }</strong>`}
-          buttonName="INICIO"
-          setPage={setPage}
-          setModal={setModal}
-          page={page}
-        />
-      )}
 
       {page <= 8 && <HelperCard />}
     </section>
