@@ -240,38 +240,40 @@ const Venus = () => {
       <div className="planetContainer">
         {/*<ButtonClose setModalSalir={setModalSalir} titlePage={title} />*/}
         <div className="planetContent">
-          {page === 0 ? (
+          {page === 0 && (
             <VenusQ0Target
               setPage={setPage}
               setTitle={setTitle}
               texts={texts0}
               dataVenus={dataVenus}
             />
-          ) : null}
-          {page === 1 ? (
+          )}
+          {page === 1 && (
             <VenusQ1Target
               setPage={setPage}
               setTitle={setTitle}
               texts={texts}
               dataVenus={dataVenus}
             />
-          ) : null}
-          {page === 2 ?
-            <VenusQ1Foda
+          )}
+          {page === 2 &&
+            (<VenusQ1Foda
               setPage={setPage}
               setTitle={setTitle}
               texts={texts2}
-            /> : null}
-          {page === 3 ? (
+            /> )}
+          {page === 3 && (
             <VenusQ2Foda
               setPage={setPage}
               setModal={setModal}
+              setModalSalir={setModalSalir}
+              modalSalir={modalSalir}
               setTitle={setTitle}
               texts={texts2}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 4 ? (
+          )}
+          {page === 4 && (
             <VenusQ1Conclusion
               dataVenus={dataVenus}
               setPage={setPage}
@@ -280,8 +282,8 @@ const Venus = () => {
               texts={texts3}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 5 ? (
+          )}
+          {page === 5 && (
             <VenusQ2Conclusion
               dataVenus={dataVenus}
               setPage={setPage}
@@ -290,8 +292,8 @@ const Venus = () => {
               texts={texts3od}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 6 ? (
+          )}
+          {page === 6 && (
             <VenusQ3Conclusion
               dataVenus={dataVenus}
               setPage={setPage}
@@ -300,18 +302,20 @@ const Venus = () => {
               texts={texts3fa}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 7 ? (
+          )}
+          {page === 7 && (
             <VenusQ4Conclusion
               dataVenus={dataVenus}
               setPage={setPage}
               setModal={setModal}
+              setModalSalir={setModalSalir}
+              modalSalir={modalSalir}
               setTitle={setTitle}
               texts={texts3deam}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 8 ? (
+          )}
+          {page === 8 && (
             <BuyerInfo
               setPage={setPage}
               setModal={setModal}
@@ -321,8 +325,8 @@ const Venus = () => {
               setBuyer={setBuyer}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 9 ? (
+          )}
+          {page === 9 && (
             <Buyer
               setPage={setPage}
               setModal={setModal}
@@ -332,8 +336,8 @@ const Venus = () => {
               setBuyer={setBuyer}
               setMessage={setMessage}
             />
-          ) : null}
-          {page === 10 ? (
+          )}
+          {page === 10 && (
             <BuyerAdd
               setPage={setPage}
               setModal={setModal}
@@ -343,21 +347,22 @@ const Venus = () => {
               setBuyer={setBuyer}
               setMessage={setMessage}
             />
-          ) : null}
+          )}
         </div>
       </div>
-      {modalSalir ? (
+      {modalSalir && (
         <ModalSalirVenus
-          title="Estás a punto de salir"
-          message="¿Deseas guardar tu información?"
+          title="----"
+          message="¿Qué deseas hacer?"
           setModalSalir={setModalSalir}
           data={dataVenus}
           proyect={getLuna().id}
           page={page}
+          setPage={setPage}
         />
-      ) : null}
+      ) }
 
-      {modal ? (
+      {modal && (
         <ModalVenus
           title=""
           message={message}
@@ -366,7 +371,7 @@ const Venus = () => {
           setModal={setModal}
           page={page}
         />
-      ) : null}
+      ) }
     </div>
   );
 };

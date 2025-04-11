@@ -186,21 +186,17 @@ export const VenusQ2Conclusion = ({
     };
     const res = await venusCreateFoda2(objeto);
     if (res.code === 0) {
-      if (params === 'save') {
-        setMessage('Tus datos se han guardado correctamente.');
-        setModal(true);
-      } else if (params === 'next') {
-        setPage(6);
-      }
+      setPage(6);
     }
   };
 
+  console.log("venus page 5 texts ", texts)
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
       <h2>Cruce O.D.</h2>
-      <h3 dangerouslySetInnerHTML={{ __html: texts.pregunta }}>{texts.pregunta}</h3>
-      <p dangerouslySetInnerHTML={{__html:texts.pregunta}}>{texts.pregunta}</p>
+      {/* <h2 dangerouslySetInnerHTML={{ __html: texts?.titulo_de_la_vista }}></h2> */}
+      <p dangerouslySetInnerHTML={{__html:texts?.descripcion}}></p>
       <fieldset>
         {elementos.map((elemento, index) => (
           <div key={index} className="selectContainer">
@@ -250,15 +246,9 @@ export const VenusQ2Conclusion = ({
       <div className="buttons">
         <Button text="ANTERIOR" isAlt onClick={() => setPage(4)} />
         <Button
-          text="GUARDAR"
-          onClick={() => handleSubmit('save')}
-          disabled={buttonNext ? '' : 'disabled'}
-        />
-        <Button
           text="SIGUIENTE"
-          onClick={() => setPage(6)}
-          //onClick={() => handleSubmit('next')}
-          //disabled={buttonNext ? '' : 'disabled'}
+          onClick={() => handleSubmit('save')}
+          disabled={!buttonNext && 'disabled'}
         />
       </div>
     </form>

@@ -187,19 +187,14 @@ export const VenusQ1Conclusion = ({
     };
     const res = await venusCreateFoda1(objeto);
     if (res.code === 0) {
-      if (params === 'save') {
-        setMessage('Tus datos se han guardado correctamente.');
-        setModal(true);
-      } else if (params === 'next') {
-        setPage(5);
-      }
+      setPage(5);
     }
   };
 
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h2 className="text-center">Cruce F.O.</h2>
+      {/* <h2 className="text-center">Cruce F.O.</h2> */}
       <h3 dangerouslySetInnerHTML={{ __html: texts.pregunta }}></h3>
       <p dangerouslySetInnerHTML={{ __html: texts.descripcion }}></p>
       <fieldset>
@@ -249,19 +244,18 @@ export const VenusQ1Conclusion = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR" onClick={() => setPage(3)} isAlt />
-        <Button
-          text="GUARDAR"
-          onClick={() => handleSubmit('save')}
-          disabled={buttonNext ? '' : 'disabled'}
-          />
+        <Button text="ANTERIOR" onClick={() => setPage(3)} isAlt={true} />
         <Button
           text="SIGUIENTE"
-          onClick={() => setPage(5)}
-          //onClick={() => handleSubmit('next')}
-          // disabled={buttonNext ? '' : 'disabled'}
+          onClick={() => handleSubmit('save')}
+          disabled={!buttonNext && 'disabled'}
           />
-      </div>
+{/*         <Button
+          text="SIGUIENTE"
+          onClick={() => handleSubmit('next')}
+          disabled={!buttonNext && 'disabled'}
+          />
+ */}      </div>
     </form>
   );
 };

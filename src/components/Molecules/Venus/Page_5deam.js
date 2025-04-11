@@ -28,6 +28,8 @@ export const VenusQ4Conclusion = ({
   dataVenus,
   setPage,
   setModal,
+  setModalSalir,
+  modalSalir,
   setTitle,
   texts,
   setMessage,
@@ -185,7 +187,7 @@ export const VenusQ4Conclusion = ({
       debilidades_amenazas: array,
       conclusion: getDescription,
     };
-    console.log(objeto);
+
     const res = await venusCreateFoda4(objeto);
     if (res.code === 0) {
       if (params === 'save') {
@@ -256,14 +258,16 @@ export const VenusQ4Conclusion = ({
         <Button text="ANTERIOR" isAlt onClick={() => setPage(6)} />
         <Button
           text="GUARDAR"
-          onClick={() => handleSubmit('save')}
-          disabled={buttonNext ? '' : 'disabled'} />
+          onClick={() => setModalSalir(!modalSalir)}
+          disabled={!buttonNext && 'disabled'} />
+        {/*
         <Button
           text="BUYER PERSONA"
           onClick={() => setPage(8) }
-          //onClick={() => handleSubmit('next')}
-          //disabled={buttonNext ? '' : 'disabled'}
-        />
+          onClick={() => handleSubmit('next')}
+          disabled={buttonNext ? '' : 'disabled'}
+        /> 
+        */}
       </div>
     </form>
   );

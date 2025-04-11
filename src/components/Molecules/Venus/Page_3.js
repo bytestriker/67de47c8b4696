@@ -22,7 +22,7 @@ import style from '@Sass/pages/venus.module.scss';
  * Amenazas
  * page 3
  */
-export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) => {
+export const VenusQ2Foda = ({ setPage, setModal, setModalSalir, modalSalir, setTitle, texts, setMessage }) => {
   const { dataVenus, setDebilidades, setAmenazas } = venusStore(
     (state) => ({
       dataVenus: state.dataVenus,
@@ -103,20 +103,15 @@ export const VenusQ2Foda = ({ setPage, setModal, setTitle, texts, setMessage }) 
           setAmenazas={setAmenazas}
         />
       </div>
-      <div className="fieldsets">
+      <div className="buttons">
         <Button
+        isAlt={true}
           text="ANTERIOR"
           onClick={() => setPage(2)} />
         <Button
-          text="GUARDAR"
-          onClick={() => handleSubmit('save')}
-          disabled={buttonNext ? '' : 'disabled'}
-          />
-        <Button
-          text="PASO 2"
-          onClick={() => setPage(4)}
-          //onClick={() => handleSubmit('next')}
-          disabled={buttonNext ? '' : 'disabled'}
+          text="SIGUIENTE"
+          onClick={() => setModalSalir(!modalSalir)}
+          disabled={!buttonNext && 'disabled'}
           />
       </div>
     </form>

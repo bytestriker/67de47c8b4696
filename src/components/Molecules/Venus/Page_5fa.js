@@ -200,8 +200,8 @@ export const VenusQ3Conclusion = ({
   return (
     <form className="questionWrap">
       <ScrollToTop />
-      <h3 className="text-center">{texts.pregunta}</h3>
-      <ParagraphPlanet text={texts.descripcion} />
+      <h2 dangerouslySetInnerHTML={{ __html: texts?.pregunta}}></h2>
+      <p dangerouslySetInnerHTML={{ __html: texts?.descripcion}}></p>
       <fieldset>
         {
           elementos.map((elemento, index) => (
