@@ -6,6 +6,7 @@ import { shallow } from 'zustand/shallow';
 import { globalStore } from '@Store/global';
 import Button from '@Components/Button';
 
+
 // Hooks
 import { useEventJupiter } from '@Hooks/useEventsJupiter';
 

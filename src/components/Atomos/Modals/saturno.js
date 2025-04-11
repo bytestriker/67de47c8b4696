@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 // Hooks
 import { useEventSaturno } from '@Hooks/useEventSaturno';
+import Button from '@Components/Button';
 
 // Constants
 import { statusPlanet } from '@Helpers/constants';
@@ -49,18 +50,15 @@ export const ModalSalirSaturno = ({ title, message, setModalSalir, data, proyect
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent} ref={modalSaturnoRef}>
-          <p>{title}</p>
-          <strong>{message}</strong>
-          <div className={styles.ButtonContent}>
-            <button
+          <h2 dangerouslySetInnerHTML={{__html:title}}></h2>
+          <p><strong dangerouslySetInnerHTML={{__html: message}}></strong></p>
+          <div className="buttons">
+            <Button
               className="btnModal-cancel"
               onClick={() => handleAlert('CANCELAR', proyect, data)}
-            >
-              No
-            </button>
-            <button className="btnModal-ok" onClick={() => handleAlert('OK', proyect, data)}>
-              Si
-            </button>
+              text="NO"
+            />
+            <Button className="btnModal-ok" onClick={() => handleAlert('OK', proyect, data)} text="SÍ"/>
           </div>
         </div>
       </div>
@@ -87,12 +85,10 @@ export const ModalSaturno = (props) => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3>{title}</h3>
+          <h3 dangerouslySetInnerHTML={{__html: title}}></h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
-              {buttonName}
-            </button>
+          <div className="buttons">
+            <Button className={styles.buttonContinue} onClick={() => handleManageModal()} text={buttonName}/>
           </div>
         </div>
       </div>

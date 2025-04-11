@@ -7,9 +7,10 @@ import { globalStore } from '@Store/global';
 
 // Hooks
 import { useEventsVenus } from '@Hooks/useEventVenus';
+import Button from '@Components/Button';
 
 // Styles
-import styles from '@Sass/components/modals.module.scss';
+import styles from '@Sass/components/alerts.module.scss';
 
 export const ModalVenus = (props) => {
   const { setModal, setPage, message, title, buttonName, page } = props;
@@ -19,7 +20,7 @@ export const ModalVenus = (props) => {
     if (page === 9 || page === 10) {
       setPage(8);
       setModal(false);
-    }else{
+    } else {
       setModal(false);
     }
   };
@@ -27,12 +28,10 @@ export const ModalVenus = (props) => {
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3>{title}</h3>
+          <h3 dangerouslySetInnerHTML={{__html: title}}></h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
-          <div className={styles.ButtonContent}>
-            <button className={styles.buttonContinue} onClick={() => handleManageModal()}>
-              {buttonName}
-            </button>
+          <div className="buttons">
+            <Button onClick={() => handleManageModal()} text={buttonName} />
           </div>
         </div>
       </div>
@@ -204,34 +203,27 @@ export const ModalSalirVenus = ({ title, message, setModalSalir, data, proyect, 
     }
   };
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (modalVenusRef.current && !modalVenusRef.current.contains(event.target)) {
-        setModalSalir(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if (modalVenusRef.current && !modalVenusRef.current.contains(event.target)) {
+  //       setModalSalir(false);
+  //     }
+  //   }
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, []);
 
   return (
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent} ref={modalVenusRef}>
-          <p>{title}</p>
-          <strong>{message}</strong>
-          <div className={styles.ButtonContent}>
-            <button
-              className="btnModal-cancel"
-              onClick={() => handleAlert('CANCELAR', proyect, data)}
-            >
-              No
-            </button>
-            <button className="btnModal-ok" onClick={() => handleAlert('OK', proyect, data)}>
-              Si
-            </button>
+          <p dangerouslySetInnerHTML={{ __html: title }}></p>
+          <strong dangerouslySetInnerHTML={{ __html: message }}></strong>
+          <div className="buttons">
+            <Button isAlt={true} onClick={() => handleAlert('CANCELAR', proyect, data)} text="NO" />
+            <Button onClick={() => handleAlert('OK', proyect, data)} text="SÍ" />
           </div>
         </div>
       </div>
