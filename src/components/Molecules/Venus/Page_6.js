@@ -129,7 +129,7 @@ export const BuyerInfo = ({
       <Button
         text="CONTINUAR"
         onClick={() => setPage(9)}
-        disabled={buttonNext ? '' : 'disabled'} />
+        disabled={!buttonNext && 'disabled'} />
       <img src={astronout} alt="astronaut" />
     </div>
   );
