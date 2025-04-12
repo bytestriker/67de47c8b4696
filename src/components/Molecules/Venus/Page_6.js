@@ -34,7 +34,7 @@ export const BuyerInfo = ({
 }) => {
   const { venusGetProjectById, venusGetBuyerPersona, venusCreateBuyerPersona } = useEventsVenus();
 
-  const [buyerallnew, setBuyerallnew] = useState(buyerall);
+  const [buyerallnew, setBuyerallnew] = useState(buyerall || []);
   const [buttonNext, setButtonNext] = useState(false);
   const [isOpenBuyer, setIsOpenBuyer] = useState(false);
   const [namebuyer, setnamebuyer] = useState('');
@@ -56,31 +56,40 @@ export const BuyerInfo = ({
   }, []);
 
   const handleProjectById = async () => {
-    const buyerresult = await venusGetBuyerPersona();
-    setBuyerallnew(buyerresult.data);
-    if (buyerresult.data[0].completed === false) {
-      setButtonNext(true);
-    } else {
+    try {
+      const buyerresult = await venusGetBuyerPersona();
+      if (buyerresult?.data) {
+        setBuyerallnew(buyerresult.data);
+        if (buyerresult.data.length > 0 && buyerresult.data[0]?.completed === false) {
+          setButtonNext(true);
+        } else {
+          setButtonNext(false);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching buyer persona:', error);
+      setBuyerallnew([]);
       setButtonNext(false);
     }
   };
 
   const handleClickBuyer = (index, option) => {
-    if (index !== -1) {
+    if (index !== -1 && buyerallnew.length > index) {
+      const selectedBuyer = buyerallnew[index] || {};
       setBuyer({
-        id: buyerallnew[index]?.id || '',
-        nombre: buyerallnew[index]?.nombre || '',
-        frase: buyerallnew[index]?.frase || '',
-        edad: buyerallnew[index]?.edad || '',
-        ubicacion: buyerallnew[index]?.ubicacion || '',
-        profesion: buyerallnew[index]?.profesion || '',
-        background: buyerallnew[index]?.background || '',
-        goals: buyerallnew[index]?.goals || '',
-        motivations: buyerallnew[index]?.motivations || '',
-        frustrations: buyerallnew[index]?.frustrations || '',
+        id: selectedBuyer.id || '',
+        nombre: selectedBuyer.nombre || '',
+        frase: selectedBuyer.frase || '',
+        edad: selectedBuyer.edad || '',
+        ubicacion: selectedBuyer.ubicacion || '',
+        profesion: selectedBuyer.profesion || '',
+        background: selectedBuyer.background || '',
+        goals: selectedBuyer.goals || '',
+        motivations: selectedBuyer.motivations || '',
+        frustrations: selectedBuyer.frustrations || '',
       });
 
-      const nameselectbuyer = buyerallnew[index]?.nombre || '';
+      const nameselectbuyer = selectedBuyer.nombre || '';
       setButtonNext(true);
       setIsOpenBuyer(false);
       setnamebuyer(nameselectbuyer);
@@ -89,11 +98,15 @@ export const BuyerInfo = ({
     }
   };
 
+  const hasCompletedBuyers = buyerallnew.length > 0 && buyerallnew[0]?.completed;
+
   return (
     <div className="questionWrap">
-      <ParagraphPlanet text={texts.descripcion} />
+      <h2 dangerouslySetInnerHTML={{__html:texts.pregunta||'Buyer Persona'}}></h2>
+      <p dangerouslySetInnerHTML={{__html:texts.descripcion}}></p>
       <SaberMas data={texts} />
-      {buyerallnew[0].completed !== false && (
+      {/* 
+      {hasCompletedBuyers ? (
         <div>
           <span>
             <label className={style.identify}>Ver mis Buyer Persona</label>
@@ -107,7 +120,7 @@ export const BuyerInfo = ({
                 {isOpenBuyer ? <FaCaretUp /> : <FaCaretDown />}
               </span>
             </div>
-            {isOpenBuyer && (
+            {isOpenBuyer && buyerallnew.length > 0 && (
               <div className={style.selectOptions}>
                 {buyerallnew.map((option, optionIndex) => (
                   <div
@@ -125,12 +138,56 @@ export const BuyerInfo = ({
             <FaPlusCircle className={style.icon} /> <b>Agregar más Buyer Persona</b>
           </span>
         </div>
-      )}
+      ) : (
+        <div>
+          <p>No hay Buyer Personas disponibles. Crea una nueva.</p>
+          <span className={style.addbuyer} onClick={() => setPage(10)}>
+            <FaPlusCircle className={style.icon} /> <b>Crear Buyer Persona</b>
+          </span>
+        </div>
+      )} */}
+
+      { 1 === 2 && hasCompletedBuyers && (
+        <div>
+          <span>
+            <label className={style.identify}>Ver mis Buyer Persona</label>
+          </span>
+          <div key="buyerselect" className={style.selectContainer}>
+            <div className={style.selectHeader} onClick={() => setIsOpenBuyer(!isOpenBuyer)}>
+              <span className={style.selectSpanText}>
+                {namebuyer || 'Selecciona una buyer persona'}
+              </span>
+              <span className={style.selectSpanArrow}>
+                {isOpenBuyer ? <FaCaretUp /> : <FaCaretDown />}
+              </span>
+            </div>
+            {isOpenBuyer && buyerallnew.length > 0 && (
+              <div className={style.selectOptions}>
+                {buyerallnew.map((option, optionIndex) => (
+                  <div
+                    key={optionIndex}
+                    className={style.option}
+                    onClick={() => handleClickBuyer(optionIndex, option)}
+                  >
+                    {option.nombre}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <span className={style.addbuyer} onClick={() => setPage(10)}>
+            <FaPlusCircle className={style.icon} /> <b>Agregar más Buyer Persona</b>
+          </span>
+        </div>
+      ) }
+      <div className='buttons'>
+
       <Button
-        text="CONTINUAR"
+        text="SIGUIENTE"
         onClick={() => setPage(9)}
-        disabled={!buttonNext && 'disabled'} />
-      <img src={astronout} alt="astronaut" />
+        
+      />
+      </div>
     </div>
   );
 };

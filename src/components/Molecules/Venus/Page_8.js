@@ -14,7 +14,7 @@ import { useEventsVenus } from '@Hooks/useEventVenus';
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 
-import { ToolTipBackground } from '@Components/Atomos/Tooltips';
+import { ToolTip } from '@Components/Atomos/Tooltips';
 
 // Images
 import profile from '@Assets/images/profile.png';
@@ -158,7 +158,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         </div>
 
         <div className={style.card2}>
-          <ToolTipBackground text="Background" toottip={texts.background} />
+          <ToolTip text="Background" tool={texts.background} />
           <textarea
             {...register('background')}
             className={style.descripcion}
@@ -242,10 +242,8 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           </div>
         </div>
 
-        <div className={style.btnContent}>
-          <button type="submit" className={style.btnBuyer}>
-            GUARDAR
-          </button>
+        <div className="buttons">
+          <Button type="submit" isCentered text="GUARDAR"/>
         </div>
       </div>
     </form>

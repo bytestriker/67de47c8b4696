@@ -53,15 +53,10 @@ export const VenusQ2Foda = ({ setPage, setModal, setModalSalir, modalSalir, setT
       debilidades: dataVenus.debilidades,
       amenazas: dataVenus.amenazas,
     };
-
+    console.log("venus create project with data ", data)
     const res = await venusCreateProject(data);
     if (res.code === 0) {
-      if (params === 'save') {
-        setMessage('Tus datos se han guardado correctamente.');
-        setModal(true);
-      } else if (params === 'next') {
-        setPage(4);
-      }
+      setModalSalir(!modalSalir)
     }
   };
 
@@ -110,7 +105,7 @@ export const VenusQ2Foda = ({ setPage, setModal, setModalSalir, modalSalir, setT
           onClick={() => setPage(2)} />
         <Button
           text="SIGUIENTE"
-          onClick={() => setModalSalir(!modalSalir)}
+          onClick={() => handleSubmit()}
           disabled={!buttonNext && 'disabled'}
           />
       </div>

@@ -11,10 +11,11 @@ import { lunaStore } from '@Store/luna';
 // Hooks
 import { useEventsVenus } from '@Hooks/useEventVenus';
 
+import Button from '@Components/Button';
 // Components
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 
-import { ToolTipBackground } from '@Components/Atomos/Tooltips';
+import { ToolTip } from '@Components/Atomos/Tooltips';
 
 // Images
 import profile from '@Assets/images/profile.png';
@@ -40,7 +41,8 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
     }),
     shallow
   );
-  const { register } = useForm();
+  const { register, } = useForm();
+  
   
   const [activeSection, setActiveSection] = useState('');
 
@@ -83,8 +85,11 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
   };
 
   return (
-    <section className={style.venusQuestions} onSubmit={handleSubmit}>
+    <section className="questionWrap">
       <ScrollToTop />
+      @TODO!
+      <form onSubmit={handleSubmit} method="post" className='px-lg'>
+
       <div className={style.buyer}>
         <div className={style.card1}>
           <div className={style.card1Content}>
@@ -151,7 +156,7 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
         </div>
 
         <div className={style.card2}>
-          <ToolTipBackground text="Background" toottip={texts.background} />
+          <ToolTip text="Background" tool={texts.background} />
           <textarea
             {...register('background')}
             className={style.descripcion}
@@ -235,12 +240,12 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
           </div>
         </div>
 
-        <div className={style.btnContent}>
-          <button type="submit" className={style.btnBuyer}>
-            GUARDAR
-          </button>
+        <div className="buttons">
+          <Button isCentered type="submit" text="FINALIZAR"/>
         </div>
       </div>
+      </form>
+
     </section>
   );
 };

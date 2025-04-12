@@ -174,6 +174,7 @@ button {
 label {
   display: block;
 }
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   height: 16px;
@@ -181,4 +182,9 @@ input[type="search"]::-webkit-search-cancel-button {
   background: url('/assets/images/close-button.png') no-repeat center;
   background-size: contain;
   filter: brightness(0) saturate(100%) invert(85%) sepia(96%) saturate(1048%) hue-rotate(24deg) brightness(106%) contrast(102%);
+}
+
+
+.bg-primary {
+  background-color: #E0ff4e;
 }

@@ -46,7 +46,7 @@ export const VenusQ4Conclusion = ({
   const [debilidad, setDebilidad] = useState([]);
   const [amenaza, setAmenaza] = useState([]);
   const [getDescription, setDescription] = useState(dataVenus.foda_4.conclusion || '');
-  const [data, setData] = useState(dataVenus.foda_4.debilidades_amenazas|| []);
+  const [data, setData] = useState(dataVenus.foda_4.debilidades_amenazas || []);
   const [estadoActual] = useState({
     debilidades_amenazas: [],
   });
@@ -123,35 +123,22 @@ export const VenusQ4Conclusion = ({
         }));
         setElementos(array);
         setDescription(foda.data.conclusion);
-        // setDescription(conclusion);
       }
     }
   };
 
-  const toggleSelectDebilidad = (index) => {
+  const handleDebilidadChange = (index, e) => {
+    const value = e.target.value;
     const updatedElementos = [...elementos];
-    updatedElementos[index].isOpenDebilidad = !updatedElementos[index].isOpenDebilidad;
-    setElementos(updatedElementos);
-  };
-
-  const handleDebilidadClick = (index, option) => {
-    const updatedElementos = [...elementos];
-    updatedElementos[index].selectedDebilidad = option;
-    updatedElementos[index].isOpenDebilidad = false;
+    updatedElementos[index].selectedDebilidad = value;
     setElementos(updatedElementos);
     handleUpdateElementos(updatedElementos);
   };
 
-  const toggleSelectAmenaza = (index) => {
+  const handleAmenazaChange = (index, e) => {
+    const value = e.target.value;
     const updatedElementos = [...elementos];
-    updatedElementos[index].isOpenAmenaza = !updatedElementos[index].isOpenAmenaza;
-    setElementos(updatedElementos);
-  };
-
-  const handleAmenazaClick = (index, option) => {
-    const updatedElementos = [...elementos];
-    updatedElementos[index].selectedAmenaza = option;
-    updatedElementos[index].isOpenAmenaza = false;
+    updatedElementos[index].selectedAmenaza = value;
     setElementos(updatedElementos);
     handleUpdateElementos(updatedElementos);
   };
@@ -182,7 +169,6 @@ export const VenusQ4Conclusion = ({
       amenaza: elemento.selectedAmenaza,
     }));
     
-    
     const objeto = {
       debilidades_amenazas: array,
       conclusion: getDescription,
@@ -202,42 +188,40 @@ export const VenusQ4Conclusion = ({
   return (
     <form method="POST" className="questionWrap">
       <ScrollToTop />
-      <h3 className="text-center">{texts.pregunta}</h3>
-      <ParagraphPlanet text={texts.descripcion} />
+      <h3 className="text-center" dangerouslySetInnerHTML={{__html:texts.pregunta}}></h3>
+      <p dangerouslySetInnerHTML={{__html: texts.descripcion}}></p>
+
       <fieldset>
-      {
-        elementos.map((elemento, index) =>
-        <div key={index}>
-          <div className="select">
-            <select>
-              <option value="" disabled selected>{elemento.selectedDebilidad || 'Selecciona una debilidad'}</option>
-            {
-              debilidad.map((option, optionIndex) => (
-              <option
-                key={optionIndex}
-                className={style.option}
-                onClick={() => handleDebilidadClick(index, option)}>
-                {option}
-              </option>
-            ))}
-            </select>
+        {elementos.map((elemento, index) => (
+          <div key={index}>
+            <div className="select">
+              <select
+                value={elemento.selectedDebilidad}
+                onChange={(e) => handleDebilidadChange(index, e)}
+              >
+                <option value="" disabled>Selecciona una debilidad</option>
+                {debilidad.map((option, optionIndex) => (
+                  <option key={optionIndex} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="select">
+              <select
+                value={elemento.selectedAmenaza}
+                onChange={(e) => handleAmenazaChange(index, e)}
+              >
+                <option value="" disabled>Selecciona una amenaza</option>
+                {amenaza.map((option, optionIndex) => (
+                  <option key={optionIndex} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="select">
-            <select>
-              <option value="" disabled selected>{elemento.selectedAmenaza || 'Selecciona una amenaza'}</option>
-              {
-                amenaza.map((option, optionIndex) => (
-                <option
-                  key={optionIndex}
-                  className={style.option}
-                  onClick={() => handleAmenazaClick(index, option)}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        )}
+        ))}
         <a className="buttonAdd" onClick={addElemento}>
           <span>Agregar más</span>
         </a>
@@ -257,17 +241,9 @@ export const VenusQ4Conclusion = ({
       <div className="buttons">
         <Button text="ANTERIOR" isAlt onClick={() => setPage(6)} />
         <Button
-          text="GUARDAR"
+          text="SIGUIENTE"
           onClick={() => setModalSalir(!modalSalir)}
           disabled={!buttonNext && 'disabled'} />
-        {/*
-        <Button
-          text="BUYER PERSONA"
-          onClick={() => setPage(8) }
-          onClick={() => handleSubmit('next')}
-          disabled={buttonNext ? '' : 'disabled'}
-        /> 
-        */}
       </div>
     </form>
   );

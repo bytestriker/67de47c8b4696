@@ -54,11 +54,11 @@ export const ModalSalirSaturno = ({ title, message, setModalSalir, data, proyect
           <p><strong dangerouslySetInnerHTML={{__html: message}}></strong></p>
           <div className="buttons">
             <Button
-              className="btnModal-cancel"
+
               onClick={() => handleAlert('CANCELAR', proyect, data)}
               text="NO"
             />
-            <Button className="btnModal-ok" onClick={() => handleAlert('OK', proyect, data)} text="SÍ"/>
+            <Button onClick={() => handleAlert('OK', proyect, data)} text="SÍ"/>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ export const ModalSaturno = (props) => {
           <h3 dangerouslySetInnerHTML={{__html: title}}></h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <div className="buttons">
-            <Button className={styles.buttonContinue} onClick={() => handleManageModal()} text={buttonName}/>
+            <Button onClick={() => handleManageModal()} text={buttonName}/>
           </div>
         </div>
       </div>

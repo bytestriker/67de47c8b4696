@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
+import { FaPlusCircle } from 'react-icons/fa';
 
 // Store
 import { globalStore } from '@Store/global';
@@ -30,6 +31,8 @@ export const ModalVenus = ({ setModal, setPage, message, title, buttonName, page
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <div className={`${styles.ButtonContent} buttons`}>
             <Button onClick={() => handleManageModal()} text={buttonName} />
+            <FaPlusCircle /><b>Agregar más Buyer Persona</b>
+
           </div>
         </div>
       </div>
@@ -58,9 +61,11 @@ export const ModalSalirVenus = ({
     venusCreateProject, 
     venusCreateFoda1, 
     venusCreateFoda2, 
+    venusCreateFoda4,
     venusCreateBuyerPersona 
   } = useEventsVenus();
   
+
 
   const history = useHistory();
   const modalVenusRef = useRef(null);
@@ -171,7 +176,6 @@ export const ModalSalirVenus = ({
         <div className={styles.ModalContent} ref={modalVenusRef}>
           {page <= 3 && (<h2>Paso 2</h2>)}
           {page > 3 && (<h2>Paso 3</h2>)}
-          
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <div className={`${styles.ButtonContent} buttons`}>
             <Button isAlt={true}
@@ -179,7 +183,6 @@ export const ModalSalirVenus = ({
               text="GUARDAR" 
             />
             <Button 
-
               onClick={() => handleAlert('CONTINUE', proyectID, data)} 
               text="CONTINUAR" 
             />

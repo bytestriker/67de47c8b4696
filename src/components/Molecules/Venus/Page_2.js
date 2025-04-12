@@ -71,7 +71,7 @@ export const VenusQ1Foda = ({ setPage, setTitle, texts }) => {
       />
       <div className="buttons">
         <Button text="ANTERIOR" onClick={() => setPage(1)} isAlt />
-        <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
+        <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={!buttonNext && 'disabled'}/>
       </div>
     </form>
   );

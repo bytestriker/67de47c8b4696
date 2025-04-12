@@ -22,41 +22,41 @@ import style from '@Sass/pages/general.module.scss';
  * */
 export const VenusQ0Target = ({ setPage, setTitle, texts, dataVenus }) => {
   const { handleSubmit } = useForm();
-  // const { setPainPoints } = venusStore(
-  //   (state) => ({
-  //     setPainPoints: state.setPainPoints,
-  //     getVenus: state.getVenus,
-  //   }),
-  //   shallow
-  // );
+  const { setPainPoints } = venusStore(
+    (state) => ({
+      setPainPoints: state.setPainPoints,
+      getVenus: state.getVenus,
+    }),
+    shallow
+  );
 
   // states inputs
-  // const painpoints =
-  //   dataVenus.painpoints.length > 0
-  //     ? dataVenus.painpoints
-  //     : [{ pain_point: '', pain_reliever: '' }];
-  // const [dataPoints, setDataPoints] = useState(painpoints);
-  // const [button, setButton] = useState(false);
+  const painpoints =
+    dataVenus.painpoints.length > 0
+      ? dataVenus.painpoints
+      : [{ pain_point: '', pain_reliever: '' }];
+  const [dataPoints, setDataPoints] = useState(painpoints);
+  const [button, setButton] = useState(false);
 
-  // const onSubmit = () => {
-  //   setPainPoints(dataPoints);
-  //   setPage(1);
-  // };
+  const onSubmit = () => {
+    setPainPoints(dataPoints);
+    setPage(1);
+  };
 
   useEffect(() => {
     setTitle(texts.titulo_de_la_vista);
   }, [texts]);
 
-  // useEffect(() => {
-  //   const allPropsNotEmpty = painpoints.some(
-  //     (point) => point.pain_point !== '' && point.pain_reliever !== ''
-  //   );
-  //   if (allPropsNotEmpty) {
-  //     setButton(true);
-  //   } else {
-  //     setButton(false);
-  //   }
-  // }, [painpoints]);
+  useEffect(() => {
+    const allPropsNotEmpty = painpoints.some(
+      (point) => point.pain_point !== '' && point.pain_reliever !== ''
+    );
+    if (allPropsNotEmpty) {
+      setButton(true);
+    } else {
+      setButton(false);
+    }
+  }, [painpoints]);
   console.log(texts)
 
 
