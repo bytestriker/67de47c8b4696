@@ -102,6 +102,7 @@ export const BuyerInfo = ({
 
   return (
     <div className="questionWrap">
+      Page_6.js | BuyerInfo
       <h2 dangerouslySetInnerHTML={{__html:texts.pregunta||'Buyer Persona'}}></h2>
       <p dangerouslySetInnerHTML={{__html:texts.descripcion}}></p>
       <SaberMas data={texts} />
@@ -185,7 +186,6 @@ export const BuyerInfo = ({
       <Button
         text="SIGUIENTE"
         onClick={() => setPage(9)}
-        
       />
       </div>
     </div>

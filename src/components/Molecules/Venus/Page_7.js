@@ -87,6 +87,7 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
   return (
     <section className="questionWrap">
       <ScrollToTop />
+      Page_7.js | Buyer
       @TODO!
       <form onSubmit={handleSubmit} method="post" className='px-lg'>
 

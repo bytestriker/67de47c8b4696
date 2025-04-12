@@ -315,6 +315,7 @@ const Venus = () => {
               setMessage={setMessage}
             />
           )}
+          {/* Page_6.js: */}
           {page === 8 && (
             <BuyerInfo
               setPage={setPage}
@@ -326,6 +327,7 @@ const Venus = () => {
               setMessage={setMessage}
             />
           )}
+          {/* Page_7.js */}
           {page === 9 && (
             <Buyer
               setPage={setPage}
@@ -364,7 +366,7 @@ const Venus = () => {
 
       {modal && (
         <ModalVenus
-          title=""
+          title="¡Felicidades!"
           message={message}
           buttonName="Okay"
           setPage={setPage}

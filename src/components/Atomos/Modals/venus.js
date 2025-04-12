@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 import { FaPlusCircle } from 'react-icons/fa';
+import { LocalStoragePlanets } from '@Helpers/constants';
 
 // Store
 import { globalStore } from '@Store/global';
@@ -17,23 +18,26 @@ export const ModalVenus = ({ setModal, setPage, message, title, buttonName, page
   const history = useHistory();
 
   const handleManageModal = () => {
-    if (page === 9 || page === 10) {
-      setPage(8);
-    }
+    history.push('/');
     setModal(false);
   };
+
+  const handleAddMoreBuyers = () => {
+    setPage(10);
+    setModal(false);
+  }
 
   return (
     <div className={styles.Modal}>
       <div className="container">
         <div className={styles.ModalContent}>
-          <h3 dangerouslySetInnerHTML={{__html: title}}></h3>
+          <h3 dangerouslySetInnerHTML={{ __html: title }}></h3>
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <div className={`${styles.ButtonContent} buttons`}>
             <Button onClick={() => handleManageModal()} text={buttonName} />
-            <FaPlusCircle /><b>Agregar más Buyer Persona</b>
 
           </div>
+            <p onClick={()=>handleAddMoreBuyers()}><FaPlusCircle />&nbsp;<b>Agregar más Buyer Persona</b></p>
         </div>
       </div>
     </div>
