@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <Element name="bio">
-        <Video controls/>
+        <Video />
         <Planets />
       </Element>
       <Footer />

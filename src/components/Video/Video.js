@@ -62,14 +62,11 @@ const Index = () => {
   const previewVideo = (params) => {
 
     return (
-      <div className="video-container">
+      <div className="videoContainer">
         <img src={rocket} className="rocketImage" alt="rocket" />
-        <div className="video-launcher">
+        <div className="videoLauncher">
           <h1 className="fw-extralight">Haz de tu proyecto una realidad</h1>
-          <p>
-            Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que
-            conquistar el sistema solar.
-          </p>
+          <p>Descubre cómo formar tu negocio desde cero con este interactivo sitio donde tendrás que conquistar el sistema solar.</p>
         </div>
         <WatchSelfHostedVideo img_src={playvideo} alt_img="Play Video"/>
       </div>
