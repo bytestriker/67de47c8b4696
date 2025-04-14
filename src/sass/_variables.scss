@@ -107,7 +107,7 @@ $--fontFamily: 'Fahkwang', sans-serif;
   }
 }
 @mixin largeDevices1200 {
-  @media screen and (max-width: #{$largeDevice1200}) {
+  @media screen and (min-width: #{$largeDevice1200}) {
     @content;
   }
 }
@@ -152,6 +152,51 @@ $--fontFamily: 'Fahkwang', sans-serif;
 /* For small devices */
 @mixin smallDevices {
   @media screen and (max-width: #{$smallDevices}) {
+    @content;
+  }
+}
+
+// Breakpoints
+$breakpoint-xxl: 1440px; // Large desktops
+$breakpoint-xl: 1200px; // Large desktops
+$breakpoint-lg: 1024px; // Standard desktops
+$breakpoint-md: 768px;  // Tablets and small laptops
+$breakpoint-sm: 568px;  // Large phones / small tablets
+$breakpoint-xs: 360px;  // Small phones
+
+// Media Query Mixins
+@mixin xs {
+  @media screen and (min-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media screen and (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media screen and (min-width: #{$breakpoint-xxl}) {
     @content;
   }
 }
