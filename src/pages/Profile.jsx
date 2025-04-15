@@ -197,7 +197,7 @@ const Profile = () => {
               <h4>MIEMBRO DESDE MAYO 2022</h4>
             </div>
           */}
-          <div className="avatar">
+          <div className="inputAvatarUpload">
             <figure>
               {user.imagen && <img src={user.imagen} />}
               <input

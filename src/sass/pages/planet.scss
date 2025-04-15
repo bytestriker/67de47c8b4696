@@ -150,69 +150,6 @@
     @include largeDevices {
       max-width: 520px;
     }
-    .avatar {
-      position: relative;
-      margin-bottom: 20px;
-      &:before {
-        background: #E6F85A;
-        filter: blur(5px);
-        display: block;
-        position: absolute;
-        content: '';
-        width: 148px;
-        height: 148px;
-        border-radius: 100%;
-      }
-      figure {
-        background-color: #000000;
-        background-image: url('../../assets/images/default-profile-picture.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        position: relative;
-        margin: 0;
-        padding: 0;
-        width: 148px;
-        height: 148px;
-        border-radius: 100%;        
-        img {
-          border-radius: 100%;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          top: 0;
-          left: 0;
-          filter: drop-shadow(0 0 7px #E6F85A);
-          pointer-events: none;
-        }
-        input {
-          opacity: 0;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-        }
-        label {
-          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDQzMiA0MzIiPjxwYXRoIGZpbGw9IiNFNkY4NUEiIGQ9Ik0yMTMuNSAzcTg4LjUgMCAxNTEgNjIuNVQ0MjcgMjE2dC02Mi41IDE1MC41dC0xNTEgNjIuNXQtMTUxLTYyLjVUMCAyMTZUNjIuNSA2NS41VDIxMy41IDNNMzIwIDIzN3YtNDJoLTg1di04NmgtNDN2ODZoLTg1djQyaDg1djg2aDQzdi04NnoiLz48L3N2Zz4=');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-color: #000;
-          height: 36px;
-          width: 36px;
-          border-radius: 100%;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-        }
-        &:hover {
-          label {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDQzMiA0MzIiPjxwYXRoIGZpbGw9IiNFNkY4NUEiIGQ9Ik0yMzUgMTA5djg2aDg1djQyaC04NXY4NmgtNDN2LTg2aC04NXYtNDJoODV2LTg2ek0yMTMgM3E4OCAwIDE1MSA2Mi41VDQyNyAyMTZ0LTYzIDE1MC41VDIxMyA0MjlUNjIuNSAzNjYuNVQwIDIxNlQ2Mi41IDY1LjVUMjEzIDNtLjUgMzg0cTcwLjUgMCAxMjAuNS01MHQ1MC0xMjF0LTUwLTEyMXQtMTIwLjUtNTBUOTMgOTVUNDMgMjE2dDUwIDEyMXQxMjAuNSA1MCIvPjwvc3ZnPg==');
-          }
-        }
-      }
-      
-    }
   }
   .planetHelper {
     position: relative;
@@ -453,6 +390,66 @@
       font-size: 3rem;
       animation: spin 1s linear infinite;
 
+    }
+  }
+}
+
+.tabMenu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  a {
+    border-bottom: 1px solid rgba(76, 83, 46, 1);
+    display: block;
+    position: relative;
+    padding: 4px 24px;
+    cursor: pointer;
+    &::before {
+      background-color: rgba(230, 248, 90, 1);
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(100% - 1px);
+      left: 50%;
+      height: 3px;
+      width: 0;
+      opacity: 0;
+      transition: all 0.1s linear;
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      &::before {
+        transform: translateX(-50%);
+      }
+    }
+    &:first-child {
+      padding-left: 0;
+      &::before {
+        transform: translateX(calc(-50% - 12px));
+      }
+    }
+    &:last-child {
+      padding-right: 0;
+      &::before {
+        transform: translateX(calc(-50% + 12px));
+      }
+    }
+    &.activeTabMenuItem {
+      cursor: default;
+      &::before {
+        opacity: 1;
+      }
+      &:nth-child(2) {
+        &::before {
+          width: calc(100% - 48px);
+        }
+      }
+      &:first-child,
+      &:last-child {
+        &::before {
+          width: calc(100% - 24px);
+        }
+      }
     }
   }
 }
@@ -723,6 +720,70 @@
       background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBmaWxsPSIjRTBGRjRFIiBkPSJNOCAwYTggOCAwIDEgMSAwIDE2QTggOCAwIDAgMSA4IDBNMS41IDhhNi41IDYuNSAwIDEgMCAxMyAwYTYuNSA2LjUgMCAwIDAtMTMgMG03LjI1LTMuMjV2Mi41aDIuNWEuNzUuNzUgMCAwIDEgMCAxLjVoLTIuNXYyLjVhLjc1Ljc1IDAgMCAxLTEuNSAwdi0yLjVoLTIuNWEuNzUuNzUgMCAwIDEgMC0xLjVoMi41di0yLjVhLjc1Ljc1IDAgMCAxIDEuNSAwIi8+PC9zdmc+");
     }
   }
+}
+
+
+.inputAvatarUpload {
+  position: relative;
+  margin-bottom: 20px;
+  &:before {
+    background: #E6F85A;
+    filter: blur(5px);
+    display: block;
+    position: absolute;
+    content: '';
+    width: 148px;
+    height: 148px;
+    border-radius: 100%;
+  }
+  figure {
+    background-color: #000000;
+    background-image: url('../../assets/images/default-profile-picture.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 148px;
+    height: 148px;
+    border-radius: 100%;        
+    img {
+      border-radius: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      filter: drop-shadow(0 0 7px #E6F85A);
+      pointer-events: none;
+    }
+    input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    label {
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDQzMiA0MzIiPjxwYXRoIGZpbGw9IiNFNkY4NUEiIGQ9Ik0yMTMuNSAzcTg4LjUgMCAxNTEgNjIuNVQ0MjcgMjE2dC02Mi41IDE1MC41dC0xNTEgNjIuNXQtMTUxLTYyLjVUMCAyMTZUNjIuNSA2NS41VDIxMy41IDNNMzIwIDIzN3YtNDJoLTg1di04NmgtNDN2ODZoLTg1djQyaDg1djg2aDQzdi04NnoiLz48L3N2Zz4=');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #000;
+      height: 36px;
+      width: 36px;
+      border-radius: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    &:hover {
+      label {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDQzMiA0MzIiPjxwYXRoIGZpbGw9IiNFNkY4NUEiIGQ9Ik0yMzUgMTA5djg2aDg1djQyaC04NXY4NmgtNDN2LTg2aC04NXYtNDJoODV2LTg2ek0yMTMgM3E4OCAwIDE1MSA2Mi41VDQyNyAyMTZ0LTYzIDE1MC41VDIxMyA0MjlUNjIuNSAzNjYuNVQwIDIxNlQ2Mi41IDY1LjVUMjEzIDNtLjUgMzg0cTcwLjUgMCAxMjAuNS01MHQ1MC0xMjF0LTUwLTEyMXQtMTIwLjUtNTBUOTMgOTVUNDMgMjE2dDUwIDEyMXQxMjAuNSA1MCIvPjwvc3ZnPg==');
+      }
+    }
+  }  
 }
 
 .inputFileUpload {

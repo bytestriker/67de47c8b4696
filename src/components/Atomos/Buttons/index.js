@@ -161,9 +161,8 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
   };
 
   return (
-    <button onClick={openModalVideo} className="moreInfo">
-        <img src={ playIcon } alt="Reproducir video" />
-        Reproducir Video
+    <button onClick={openModalVideo}>
+      Reproducir Video
       {
         modalVideo && (
         <section className="modalBackdrop">

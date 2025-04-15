@@ -42,8 +42,13 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
     shallow
   );
   const { register } = useForm();
-
   const [activeSection, setActiveSection] = useState('');
+
+  const sections = [
+    { key: 'GOALS', label: texts.goals },
+    { key: 'MOTIVATIONS', label: texts.motivations },
+    { key: 'FRUSTATIONS', label: texts.frustrations },
+  ];
 
   useEffect(() => {
     setTitle(texts.titulo_de_la_vista);
@@ -88,165 +93,140 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
 
   const handleMenu = (item) => {
     setActiveSection(item);
+    console.log(item);
   };
 
   return (
     <form className="questionWrap" onSubmit={handleSubmit}>
       <ScrollToTop />
-      <div className={style.buyer}>
-        <div className={style.card1}>
-          <div className={style.card1Content}>
-            <div className={style.imageContent}>
-              <img src={profile} alt="profile" />
-            </div>
+      <div className="avatarNameAndPhrase">
+        <div className="inputAvatarUpload">
+          <figure>
+            {profile && <img src={profile} />}
             <input
-              {...register('nombre')}
-              type="text"
-              placeholder="Nombre del buyer persona"
-              required
-              className={style.inputBuyernanme}
-              value={buyer.nombre}
-              onChange={(e) => setBuyer({ ...buyer, nombre: e.target.value })}
+              type="file"
+              name="fileInput"
+              id="fileInput"
+              onChange={() => {}}
             />
-            <input
-              {...register('frase')}
-              type="text"
-              placeholder="Frase favorita"
-              required
-              className={style.inputFrase}
-              value={buyer.frase}
-              onChange={(e) => setBuyer({ ...buyer, frase: e.target.value })}
-            />
-            <div className={style.iconsContent}>
-              <div className={style.box}>
-                <FaUser className={style.icon} />
-                <input
-                  {...register('edad')}
-                  type="number"
-                  placeholder="Edad"
-                  required
-                  className={style.inputCard1}
-                  value={buyer.edad}
-                  onChange={(e) => setBuyer({ ...buyer, edad: e.target.value })}
-                />
-              </div>
-              <div className={style.box}>
-                <FaMapMarkerAlt className={style.icon} />
-                <input
-                  {...register('ubicacion')}
-                  type="text"
-                  placeholder="Ubicación"
-                  required
-                  className={style.inputCard1}
-                  value={buyer.ubicacion}
-                  onChange={(e) => setBuyer({ ...buyer, ubicacion: e.target.value })}
-                />
-              </div>
-              <div className={style.box}>
-                <FaSuitcase className={style.icon} />
-                <input
-                  {...register('profesion')}
-                  type="text"
-                  placeholder="Profesión"
-                  required
-                  className={style.inputCard1}
-                  value={buyer.profesion}
-                  onChange={(e) => setBuyer({ ...buyer, profesion: e.target.value })}
-                />
-              </div>
-            </div>
-          </div>
+          </figure>
         </div>
-
-        <div className={style.card2}>
-          <ToolTip text="Background" tool={texts.background} />
-          <textarea
-            {...register('background')}
-            className={style.descripcion}
-            rows="10"
-            placeholder="Describe a tu buyer persona"
+        <fieldset>
+          <input
+            {...register('nombre')}
+            type="text"
+            placeholder="Nombre del buyer persona"
             required
-            value={buyer.background}
-            onChange={(e) => setBuyer({ ...buyer, background: e.target.value })}
-          ></textarea>
-        </div>
-
-        <div className={style.card3}>
-          <span className={style.options}>
-            <div className={`${style.item}`}>
-              <p
-                className={`${activeSection === 'GOALS' ? style.activeItem : ''}`}
-                onClick={() => handleMenu('GOALS')}
-              >
-                {texts.goals}
-              </p>
-            </div>
-            <div className={`${style.item}`}>
-              <p
-                className={`${activeSection === 'MOTIVATIONS' ? style.activeItem : ''}`}
-                onClick={() => handleMenu('MOTIVATIONS')}
-              >
-                {texts.motivations}
-              </p>
-            </div>
-            <div className={`${style.item}`}>
-              <p
-                className={`${activeSection === 'FRUSTATIONS' ? style.activeItem : ''}`}
-                onClick={() => handleMenu('FRUSTATIONS')}
-              >
-                {texts.frustrations}
-              </p>
-            </div>
-          </span>
-
-          <div className={`${style.section} ${activeSection === 'GOALS' ? style.active : ''}`}>
-            <p className={style.info}>{texts.instruccion_de_goals}</p>
-            <textarea
-            {...register('goals')}
-              className={style.metas}
-              rows="10"
-              placeholder="Describe tus objetivos"
-              required
-              value={buyer.goals}
-              onChange={(e) => setBuyer({ ...buyer, goals: e.target.value })}
-            ></textarea>
-          </div>
-
-          <div
-            className={`${style.section} ${activeSection === 'MOTIVATIONS' ? style.active : ''}`}
-          >
-            <p className={style.info}>{texts.instruccion_de_motivations}</p>
-            <textarea
-            {...register('motivations')}
-              className={style.metas}
-              rows="10"
-              placeholder="Describe tus motivaciones"
-              required
-              value={buyer.motivations}
-              onChange={(e) => setBuyer({ ...buyer, motivations: e.target.value })}
-            ></textarea>
-          </div>
-
-          <div
-            className={`${style.section} ${activeSection === 'FRUSTATIONS' ? style.active : ''}`}
-          >
-            <p className={style.info}>{texts.intruccion_de_frustrations}</p>
-            <textarea
-            {...register('frustrations')}
-              className={style.metas}
-              rows="10"
-              placeholder="Describe tus frustraciones"
-              required
-              value={buyer.frustrations}
-              onChange={(e) => setBuyer({ ...buyer, frustrations: e.target.value })}
-            ></textarea>
-          </div>
-        </div>
-
-        <div className="buttons">
-          <Button type="submit" isCentered text="GUARDAR"/>
-        </div>
+            className={style.inputBuyernanme}
+            value={buyer.nombre}
+            onChange={(e) => setBuyer({ ...buyer, nombre: e.target.value })}
+          />
+          <input
+            {...register('frase')}
+            type="text"
+            placeholder="Frase favorita"
+            required
+            className={style.inputFrase}
+            value={buyer.frase}
+            onChange={(e) => setBuyer({ ...buyer, frase: e.target.value })}
+          />
+        </fieldset>
       </div>
+      <div className="buyerAgeLocationAndProfession">
+        <fieldset>
+          <FaUser className={style.icon} />
+          <input
+            {...register('edad')}
+            type="number"
+            placeholder="Edad"
+            required
+            className={style.inputCard1}
+            value={buyer.edad}
+            onChange={(e) => setBuyer({ ...buyer, edad: e.target.value })}
+          />
+        </fieldset>
+        <fieldset>
+          <FaMapMarkerAlt className={style.icon} />
+          <input
+            {...register('ubicacion')}
+            type="text"
+            placeholder="Ubicación"
+            required
+            className={style.inputCard1}
+            value={buyer.ubicacion}
+            onChange={(e) => setBuyer({ ...buyer, ubicacion: e.target.value })}
+          />
+        </fieldset>
+        <fieldset>
+          <FaSuitcase className={style.icon} />
+          <input
+            {...register('profesion')}
+            type="text"
+            placeholder="Profesión"
+            required
+            className={style.inputCard1}
+            value={buyer.profesion}
+            onChange={(e) => setBuyer({ ...buyer, profesion: e.target.value })}
+          />
+        </fieldset>
+      </div>
+      <fieldset>
+        <ToolTip text="Background" tool={texts.background} />
+        <textarea
+          {...register('background')}
+          className={style.descripcion}
+          rows="10"
+          placeholder="Describe a tu buyer persona"
+          required
+          value={buyer.background}
+          onChange={(e) => setBuyer({ ...buyer, background: e.target.value })}
+        ></textarea>
+      </fieldset>
+      <nav className="tabMenu">
+      {
+        sections.map(({ key, label }) =>
+        <a key={key} className={`h3 ${activeSection === key && "activeTabMenuItem"}`} onClick={() => handleMenu(key)}>
+        {label}
+          </a>)
+      }
+      </nav>
+      <fieldset className={`${activeSection === 'GOALS' ? "activeTabContent" : "d-none"}`}>
+        <label>{texts.instruccion_de_goals}</label>
+        <textarea
+        {...register('goals')}
+          className={style.metas}
+          rows="10"
+          placeholder="Describe tus objetivos"
+          required
+          value={buyer.goals}
+          onChange={(e) => setBuyer({ ...buyer, goals: e.target.value })}
+        ></textarea>
+      </fieldset>
+      <fieldset className={`${activeSection === 'MOTIVATIONS' ? "activeTabContent" : "d-none"}`}>
+        <label>{texts.instruccion_de_motivations}</label>
+        <textarea
+        {...register('motivations')}
+          className={style.metas}
+          rows="10"
+          placeholder="Describe tus motivaciones"
+          required
+          value={buyer.motivations}
+          onChange={(e) => setBuyer({ ...buyer, motivations: e.target.value })}
+        ></textarea>
+      </fieldset>
+      <fieldset classNaXme={`${activeSection === 'FRUSTATIONS' ? "activeTabContent" : "d-none"}`}>
+        <label>{texts.intruccion_de_frustrations}</label>
+        <textarea
+        {...register('frustrations')}
+          className={style.metas}
+          rows="10"
+          placeholder="Describe tus frustraciones"
+          required
+          value={buyer.frustrations}
+          onChange={(e) => setBuyer({ ...buyer, frustrations: e.target.value })}
+        ></textarea>
+      </fieldset>
+      <Button text="GUARDAR" type="submit" isCentered />
     </form>
   );
 };
