@@ -108,7 +108,7 @@ export const Marca = ({ setPage, setTitle, texts, dataJupiter }) => {
           >
             SIGUIENTE
           </button>*/}
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(7)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(7)} />
         <Button text="SIGUIENTE" onClick={() => setPage(9)} disabled={!buttonNext && 'disabled'}/>
 
       </div>

@@ -244,7 +244,7 @@ export const VenusQ2Conclusion = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt onClick={() => setPage(4)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(4)} />
         <Button
           text="SIGUIENTE"
           onClick={() => handleSubmit('save')}

@@ -89,7 +89,7 @@ export const IdeasNombre = ({ setPage, setTitle, texts, dataJupiter }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true}  onClick={() => setPage(5)} />
+        <Button text="ANTERIOR" shape="alt"  onClick={() => setPage(5)} />
         <Button text="SIGUIENTE" onClick={() => setPage(7)} />
         { /*<Button text="SIGUIENTE" onClick={() => handleSubmit()} disabled={buttonNext ? '' : 'disabled'} />*/}
         

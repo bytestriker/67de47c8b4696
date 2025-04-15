@@ -27,7 +27,7 @@ const NotFound = () => {
           <img src={_moon} alt="moon" className={styles.moon} />
           <p>¡El recurso solicitado no se pudo encontrar en este servidor!</p>
           <div className="fieldset">
-            <Button isAlt={true} onClick={handleRute} text="Volver al Inicio" />
+            <Button shape="alt" onClick={handleRute} text="Volver al Inicio" />
           </div>
         </div>
       </div>

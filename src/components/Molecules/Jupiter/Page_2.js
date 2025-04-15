@@ -72,7 +72,7 @@ export const Caracteristicas = ({ setPage, setTitle, texts, dataJupiter }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(1)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(1)} />
         <Button text="SIGUIENTE" onClick={() => setPage(3)} disabled={buttonNext ? '' : 'disabled'}/>
       </div>
     </form>

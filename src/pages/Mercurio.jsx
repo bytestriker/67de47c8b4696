@@ -292,7 +292,7 @@ export const MercurioQ2 = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(1)} />
+        <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPage(1)} />
         <Button
           text="SIGUIENTE"
           disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
@@ -396,7 +396,7 @@ export const MercurioQ3 = ({
           ></textarea>
         </fieldset>
         <div className="buttons">
-          <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPage(2)} />
+          <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPage(2)} />
           <Button
             text="SIGUIENTE"
             disabled={dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}

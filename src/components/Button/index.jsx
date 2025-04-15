@@ -1,10 +1,4 @@
-const smallButtonShape = () => {
-  return (
-    <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M159 13L147 1H22L1 43H147H171L181 23L175 13H159Z" />
-    </svg>
-  )
-}
+import './button.scss';
 
 const Button = ({
   text = "Click me",
@@ -13,7 +7,7 @@ const Button = ({
   onClick = () => {},
   isCompleted = false,
   isCentered = false,
-  isAlt = false,
+  shape="alt" = false,
   isAstronaut = false,
   disabled = false,
   size = "md", // "sm" | "md" | "lg"

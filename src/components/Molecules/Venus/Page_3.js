@@ -100,7 +100,7 @@ export const VenusQ2Foda = ({ setPage, setModal, setModalSalir, modalSalir, setT
       </div>
       <div className="buttons">
         <Button
-        isAlt={true}
+        shape="alt"
           text="ANTERIOR"
           onClick={() => setPage(2)} />
         <Button

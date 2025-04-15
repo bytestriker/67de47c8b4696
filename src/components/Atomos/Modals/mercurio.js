@@ -53,7 +53,7 @@ export const ModalMercurio = (props) => {
           <p>{props.title}</p>
           <strong>{props.message}</strong>
           <div className="buttons">
-            <Button text="NO" isAlt onClick={() => handleAlert('CANCELAR', data)} />
+            <Button text="NO" shape="alt" onClick={() => handleAlert('CANCELAR', data)} />
             <Button text="SI" onClick={() => handleAlert('OK', data)} />
           </div>
         </div>

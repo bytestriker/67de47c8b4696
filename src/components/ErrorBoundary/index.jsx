@@ -37,7 +37,7 @@ class ErrorBoundary extends React.Component {
               <div className="fieldset">
                 <div className="centerButton">
                   <button
-                    isAlt={true}
+                    shape="alt"
                     onClick={() => handleRoute()}
                     value="Volver al Inicio"
                     className="buttonPrimary"

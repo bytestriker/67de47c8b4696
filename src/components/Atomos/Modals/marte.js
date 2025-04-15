@@ -110,7 +110,7 @@ export const ModalSalirMarte = ({
           <div className={`${styles.ButtonContent} buttons`}>
             <Button
               onClick={() => handleAlert('SAVE', data, page)}
-              isAlt={true}
+              shape="alt"
               text="GUARDAR"
             />
             <Button

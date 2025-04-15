@@ -204,7 +204,7 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="REGRESAR" isAlt onClick={() => setPageLuna(2)} />
+        <Button text="REGRESAR" shape="alt" onClick={() => setPageLuna(2)} />
         <Button
           text="SIGUIENTE"
           disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
@@ -298,7 +298,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
           ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="REGRESAR" isAlt isSubmit={false} onClick={() => setPageLuna(3)} />
+        <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPageLuna(3)} />
         {contextValue.isLogged() ? (
           <Button
             text="SIGUIENTE"

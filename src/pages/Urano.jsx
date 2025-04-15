@@ -425,7 +425,7 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
         </div>
       </fieldset>
       <div className="buttons">
-        <Button text="REGRESAR" onClick={() => setPage(1)} isAlt />
+        <Button text="REGRESAR" onClick={() => setPage(1)} shape="alt" />
         <Button text="SIGIUIENTE" onClick={() => setPage(3)} />
       </div>
     </div>
@@ -501,7 +501,7 @@ export const Prototipo = ({ setPage, setTitle, texts, categorias, setParams }) =
           SIGUIENTE
         </button> 
         */}
-        <Button text="REGRESAR" onClick={() => setPage(2)} isAlt />
+        <Button text="REGRESAR" onClick={() => setPage(2)} shape="alt" />
         <Button text="SIGUIENTE" onClick={() => setPage(4)} />
       </div>
 
@@ -696,7 +696,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
             SIGUIENTE
           </button>
         */}
-        <Button text="ANTERIOR" onClick={() => setPage(4)} isAlt />
+        <Button text="ANTERIOR" onClick={() => setPage(4)} shape="alt" />
         <Button text="SIGUIENTE" onClick={() => handleValidateProject()} />
       </div>
       {/*

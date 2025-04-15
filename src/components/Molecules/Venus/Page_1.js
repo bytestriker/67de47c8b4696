@@ -76,7 +76,7 @@ export const VenusQ1Target = ({ setPage, setTitle, texts, dataVenus }) => {
         SIGUIENTE
       </button> */}
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt onClick={() => setPage(0)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(0)} />
         <Button text="SIGUIENTE" disabled={!button ? 'disabled' : ''} type="submit" />
       </div>
     </form>

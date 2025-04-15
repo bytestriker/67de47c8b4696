@@ -313,7 +313,7 @@ export const Awarenesss = ({ setPage, dataSaturno, texts, setTitle }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(1)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(1)} />
         <Button
           text="SIGUIENTE"
           onClick={() => setPage(3)}
@@ -392,7 +392,7 @@ export const Consideration = ({ setPage, dataSaturno, texts, setTitle }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(2)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(2)} />
         <Button
           text="SIGUIENTE"
           onClick={() => setPage(4)}
@@ -468,7 +468,7 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(3)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(3)} />
         <Button
           text="SUPERIOR"
           onClick={() => setPage(5)}
@@ -566,7 +566,7 @@ export const Retention = ({ setPage, setModal, dataSaturno, texts, setTitle }) =
         textDisabled={buttonNext}
       />
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(4)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(4)} />
         <Button
           text="SIGUIENTE"
           onClick={() => handleSubmit()}

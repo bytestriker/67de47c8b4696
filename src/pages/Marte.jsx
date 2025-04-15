@@ -381,7 +381,7 @@ export const MarteQ1Canvas = ({ setPage, setTitle, texts }) => {
         <Channels dataMarte={dataMarte} getChannels={getChannels} setChannels={setChannels} />
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt onClick={() => setPage(1)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(1)} />
         <Button
           text="SIGUIENTE"
           onClick={() => handleSubmit()}
@@ -574,7 +574,7 @@ export const MarteQ2Canvas = ({ setPage, setModal, modal, setModalSalir, modalSa
         />
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt onClick={() => setPage(2)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(2)} />
         {/* <button
           type="button"
           className={buttonNext ? style.btnPlanet : style.btnPlanetOff}
@@ -843,7 +843,7 @@ export const MarteNegocios = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button isAlt text="ANTERIOR" onClick={() => setPage(3)} />
+        <Button shape="alt" text="ANTERIOR" onClick={() => setPage(3)} />
         <Button
           text="SIGUIENTE"
           onClick={() => handleSubmit()}

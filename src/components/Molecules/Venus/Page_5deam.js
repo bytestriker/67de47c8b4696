@@ -239,7 +239,7 @@ export const VenusQ4Conclusion = ({
         ></textarea>
       </fieldset>
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt onClick={() => setPage(6)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(6)} />
         <Button
           text="SIGUIENTE"
           onClick={() => setModalSalir(!modalSalir)}

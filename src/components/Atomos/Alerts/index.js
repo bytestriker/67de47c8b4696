@@ -128,7 +128,7 @@ export const ModalBlockPlanet = () => {
           <h2 dangerouslySetInnerHTML={{ __html: storeTankModal.title }}></h2>
           <p dangerouslySetInnerHTML={{ __html: storeTankModal.message }}></p>
           <div className={general.flexButtons}>
-            <Button  onClick={() => setModal(false)} text="NO" isAlt={true}/>
+            <Button  onClick={() => setModal(false)} text="NO" shape="alt"/>
             <Button  onClick={() => handleRoute()} text="SÍ"/>
           </div>
         </div>

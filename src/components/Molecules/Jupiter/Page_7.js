@@ -305,7 +305,7 @@ export const Nombres = ({ setPage, setTitle, texts, modalSalir, setModalSalir })
         )}
       </div>
       <div className="buttons">
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(6)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(6)} />
         {/* <Button text="GUARDAR" onClick={() => handleSubmit('save')} disabled={!buttonNext && 'disabled'} /> */}
         <Button text="SIGUIENTE" onClick={() => setModalSalir(!modalSalir)} disabled={!buttonNext && 'disabled'} />
       </div>

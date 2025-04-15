@@ -149,7 +149,7 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
           <button type="button" className={`${jupiter.btnPlanet}`} onClick={() => setModal(true)}>
             SIGUIENTE
           </button>*/}
-        <Button text="ANTERIOR" isAlt={true} onClick={() => setPage(8)} />
+        <Button text="ANTERIOR" shape="alt" onClick={() => setPage(8)} />
         <Button text="SIGUIENTE" onClick={() => setModal(true)} />
       </div>
     </form>

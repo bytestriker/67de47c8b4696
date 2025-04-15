@@ -17,6 +17,7 @@ import { BuyTanks } from '@Service/tanks.service';
 import { FaRegTimesCircle, FaInfoCircle } from 'react-icons/fa';
 
 // styles
+import '@Sass/pages/planet.scss';
 import styles from '@Sass/pages/checkout.module.scss';
 
 const Checkout = () => {

@@ -182,7 +182,7 @@ export const ModalSalirVenus = ({
           {page > 3 && (<h2>Paso 3</h2>)}
           <p dangerouslySetInnerHTML={{ __html: message }}></p>
           <div className={`${styles.ButtonContent} buttons`}>
-            <Button isAlt={true}
+            <Button shape="alt"
               onClick={() => handleAlert('SAVE', proyectID, data)} 
               text="GUARDAR" 
             />

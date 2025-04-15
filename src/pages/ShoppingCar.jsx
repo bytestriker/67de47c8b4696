@@ -101,7 +101,31 @@ const ShoppingCar = () => {
     <section className={styles.ShoppingCar}>
       <div className={styles.container}>
         <h2 className={styles.titlePage}>Carrito</h2>
-
+{/*         <table>
+          <thead>
+            <tr>
+              <td>PAQUETE</td>
+              <td>PRECIO</td>
+              <td>CANTIDAD DE PRODUCTO</td>
+              <td>CANTIDAD DE TANQUES</td>
+              <td>TOTAL</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div>
+                  <FaTimes onClick={() => handleClose()}/>
+                  <img src={tanke} alt="tanque" />
+                </div>
+              </td>
+              <td>{tanquesData.name}</td>
+              <td>{styles.precio}</td>
+              <td>{styles.tanques}</td>
+              <td>{totalPacks}</td>
+            </tr>
+          </tbody>
+        </table> */}
         <div className={styles.table}>
           <div className={styles.titlesContent}>
             <div className={styles.titleProduct}></div>

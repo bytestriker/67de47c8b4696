@@ -99,7 +99,7 @@ export const ModalSalirJupiter = ({
           <div className={`${styles.ButtonContent} buttons`}>
             <Button
               onClick={() => handleAlert('SAVE', proyectID, dataJupiter, page)}
-              isAlt={true}
+              shape="alt"
               text="GUARDAR"
             />
             <Button
