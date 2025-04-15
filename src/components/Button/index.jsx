@@ -1,3 +1,11 @@
+const smallButtonShape = () => {
+  return (
+    <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M159 13L147 1H22L1 43H147H171L181 23L175 13H159Z" />
+    </svg>
+  )
+}
+
 const Button = ({
   text = "Click me",
   type = "button",
@@ -7,61 +15,63 @@ const Button = ({
   isCentered = false,
   isAlt = false,
   isAstronaut = false,
-  disabled = false
-  }) => {
+  disabled = false,
+  size = "md", // "sm" | "md" | "lg"
+  shape = "default", // "default" | "alt" | "middle"
+}) => {
+  
+  const buttonShapes = {
+    sm: {
+      default: (
+        <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M159 13L147 1H1L21.5 43H147H171L181 23L175 13H159Z" />
+        </svg>
+      ),
+      alt: (
+        <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23 13L35 1H160.5L181 43H35H11L1 23L7 13H23Z" />
+        </svg>
+
+      ),
+      middle: (
+        <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21.5 43L1 1H160.5L181 43H21.5Z" />
+        </svg>
+      )
+    },
+    md: {
+      default: (
+        <svg width="242" height="44" viewBox="0 0 242 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M219 13L207 1H1L21.5 43H207H231L241 23L235 13H219Z" stroke="#8C4524" />
+        </svg>
+      ),
+      alt: (
+        <svg width="242" height="44" viewBox="0 0 242 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23 13L35 1H220.5L241 43H35H11L1 23L7 13H23Z" stroke="#8C4524" />
+        </svg>
+      ),
+    },
+    lg: {
+      default: (
+        <svg width="322" height="44" viewBox="0 0 322 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M299 13L287 1H1L21.5 43H287H311L321 23L315 13H299Z" stroke="#8C4524" />
+        </svg>
+      ),
+      alt: (
+        <svg width="322" height="44" viewBox="0 0 322 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23 13L35 1H300.5L321 43H35H11L1 23L7 13H23Z" stroke="#8C4524" />
+        </svg>
+      ),
+    },
+  };
+
+  const shapeSvg = buttonShapes[size]?.[shape];
+
   return (
     <div className={isCentered ? "centerButton" : null}>
-      <button className={className ? className : "buttonPrimary"} type={type} onClick={onClick} disabled={disabled}>
-        {isAlt ? (
-          <svg
-            width="242"
-            height="42"
-            viewBox="0 0 242 42"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M241 41L219 1H31.8771L21.8629 11.4348H5.17258L1 20.1304L11.0142 41H241Z"
-            />
-          </svg>
-        ) : (
-          <svg
-            width="242"
-            height="42"
-            viewBox="0 0 242 42"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-          >
-            <path
-              d="M23.5319 41L1 1H210.123L220.137 11.4348H236.827L241 20.1304L230.986 41H23.5319Z"
-            />
-          </svg>
-        )}
-        {isAlt ? (
-          <svg
-            width="242"
-            height="42"
-            viewBox="0 0 242 42"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M241 41L219 1H31.8771L21.8629 11.4348H5.17258L1 20.1304L11.0142 41H241Z"
-            />
-          </svg>
-        ) : (
-          <svg
-            width="242"
-            height="42"
-            viewBox="0 0 242 42"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-          >
-            <path
-              d="M23.5319 41L1 1H210.123L220.137 11.4348H236.827L241 20.1304L230.986 41H23.5319Z"
-            />
-          </svg>
-        )}
+      <button className={className ? className : `buttonPrimary ${size}`} type={type} onClick={onClick} disabled={disabled}>
+        {shapeSvg}
+        {shapeSvg}
         {text !== 'Click me' && <span>{text}</span>}
         {isAstronaut && (
           <svg

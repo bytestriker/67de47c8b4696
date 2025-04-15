@@ -1,6 +1,7 @@
 @import '@Sass/variables';
 @import '@Sass/fonts';
 
+
 .Packs {
   display: flex;
   padding-top: 1rem;
@@ -159,12 +160,28 @@
   }
 }
 
-.packsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 210px);
-  gap: 20px;
-  margin: auto;
-  width: 670px;
+.packContent {
+  text-align: center;
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  @include lg {
+    input {
+      max-width: 210px;
+    }
+  }
+
+  .packsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 210px);
+    gap: 20px;
+    margin: 32px auto;
+    width: 670px;
+  }
+
+
 }
 
 .articlePack-error {

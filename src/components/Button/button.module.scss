@@ -18,9 +18,17 @@
   color: inherit;
   font-size: inherit;
   text-align: center;
-  @include tabletPlus {
-    height: 48px;
-    width: 248px;
+  @include md {
+    height: 42px;
+    &.lg {
+      width: 322px;
+    }
+    &.md {
+      width: 242px;
+    }
+    &.md {
+      width: 182px;
+    }
   }
   svg {
     position: absolute;

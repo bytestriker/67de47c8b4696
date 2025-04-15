@@ -97,50 +97,37 @@ const Packs = () => {
         setTotalPacks={setTotalPacks}
       />
       <ButtonGoHome
-        className="planetBackToTheHomepage"
-        onClick={() => {
-          history.push('/');
-        }}
         text="Volver al Inicio"
-      />
+        className="planetBackToTheHomepage"
+        onClick={() => history.push('/')}
+        />
       <div className="packContent">
-        {/*     <GoBack /> */}
         <h2>NUESTROS PAQUETES</h2>
         <p>Completa tu plan de negocios de la mano de <b>ROCKET NOW</b>.<br></br> La mejor guía y red de apoyo para emprendedores como tú.</p>
         <div className="packsGrid">
-          {Items.map((pack) => (
-            <TankPack key={pack.id} data={pack} handleClick={() => handlePack(pack)} />
-            /*<li key={pack.id} className="packsItems" onClick={() => handlePack(pack)}>
-              <span>
-                <img src={_Tank} alt="tanque" />
-              </span>
-              <div className="articlePack">
-                <h4>{pack.name}</h4>
-                <p>{pack.description}</p>
-                <a to="/gracias" className="linkCompra">
-                  {pack.nameButton}
-                </a>
-              </div>
-            </li>/*/
-          ))}
+        {
+          Items.map((pack) =>
+          <TankPack key={pack.id} data={pack} handleClick={() => handlePack(pack)} />)
+        }
         </div>
-        <div>
-          <div className="articlePack">
-            <p>¡Ingresa tu Código de Descuento <strong>aquí</strong>!</p>
-          </div>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <p>Ingresa tu código de descuento <strong>aquí</strong>:</p>
+          <fieldset>
             <input
               type="text"
               value={codigo}
               onChange={handleCodigoChange}
               placeholder="Código"
             /> 
-            <div className="articlePack articlePack-error">
-              <p>{codeMessage}</p>
-            </div>
-            <Button text="ENVIAR" type="submit" />
-          </form>
-        </div>
+            {
+              codeMessage &&
+              <div className="articlePack articlePack-error">
+                <p>{codeMessage}</p>
+              </div>
+            }
+          </fieldset>
+          <Button text="CANJEA TUS TANQUES" size="lg" type="submit" />
+        </form>
       </div>
     </section>
   );

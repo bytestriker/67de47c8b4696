@@ -175,7 +175,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         <textarea
           {...register('background')}
           className={style.descripcion}
-          rows="10"
+          rows="6"
           placeholder="Describe a tu buyer persona"
           required
           value={buyer.background}
@@ -195,7 +195,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         <textarea
         {...register('goals')}
           className={style.metas}
-          rows="10"
+          rows="6"
           placeholder="Describe tus objetivos"
           required
           value={buyer.goals}
@@ -207,7 +207,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         <textarea
         {...register('motivations')}
           className={style.metas}
-          rows="10"
+          rows="6"
           placeholder="Describe tus motivaciones"
           required
           value={buyer.motivations}
