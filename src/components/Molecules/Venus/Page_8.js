@@ -99,7 +99,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
   return (
     <form className="questionWrap" onSubmit={handleSubmit}>
       <ScrollToTop />
-      <div className="avatarNameAndPhrase">
+      <fieldset className="avatarNameAndPhrase">
         <div className="inputAvatarUpload">
           <figure>
             {profile && <img src={profile} />}
@@ -111,7 +111,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
             />
           </figure>
         </div>
-        <fieldset>
+        <div>
           <input
             {...register('nombre')}
             type="text"
@@ -130,11 +130,10 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
             value={buyer.frase}
             onChange={(e) => setBuyer({ ...buyer, frase: e.target.value })}
           />
-        </fieldset>
-      </div>
+        </div>
+      </fieldset>
       <div className="buyerAgeLocationAndProfession">
         <fieldset>
-          <FaUser className={style.icon} />
           <input
             {...register('edad')}
             type="number"
@@ -144,9 +143,9 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
             value={buyer.edad}
             onChange={(e) => setBuyer({ ...buyer, edad: e.target.value })}
           />
+          <FaUser className={style.icon} />
         </fieldset>
         <fieldset>
-          <FaMapMarkerAlt className={style.icon} />
           <input
             {...register('ubicacion')}
             type="text"
@@ -156,9 +155,9 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
             value={buyer.ubicacion}
             onChange={(e) => setBuyer({ ...buyer, ubicacion: e.target.value })}
           />
+          <FaMapMarkerAlt className={style.icon} />
         </fieldset>
         <fieldset>
-          <FaSuitcase className={style.icon} />
           <input
             {...register('profesion')}
             type="text"
@@ -168,6 +167,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
             value={buyer.profesion}
             onChange={(e) => setBuyer({ ...buyer, profesion: e.target.value })}
           />
+          <FaSuitcase className={style.icon} />
         </fieldset>
       </div>
       <fieldset>
@@ -190,7 +190,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           </a>)
       }
       </nav>
-      <fieldset className={`${activeSection === 'GOALS' ? "activeTabContent" : "d-none"}`}>
+      <fieldset className={`${activeSection === 'GOALS' ? "d-block" : "d-none"}`}>
         <label>{texts.instruccion_de_goals}</label>
         <textarea
         {...register('goals')}
@@ -202,7 +202,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           onChange={(e) => setBuyer({ ...buyer, goals: e.target.value })}
         ></textarea>
       </fieldset>
-      <fieldset className={`${activeSection === 'MOTIVATIONS' ? "activeTabContent" : "d-none"}`}>
+      <fieldset className={`${activeSection === 'MOTIVATIONS' ? "d-block" : "d-none"}`}>
         <label>{texts.instruccion_de_motivations}</label>
         <textarea
         {...register('motivations')}
@@ -214,7 +214,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           onChange={(e) => setBuyer({ ...buyer, motivations: e.target.value })}
         ></textarea>
       </fieldset>
-      <fieldset classNaXme={`${activeSection === 'FRUSTATIONS' ? "activeTabContent" : "d-none"}`}>
+      <fieldset className={`${activeSection === 'FRUSTATIONS' ? "d-block" : "d-none"}`}>
         <label>{texts.intruccion_de_frustrations}</label>
         <textarea
         {...register('frustrations')}
