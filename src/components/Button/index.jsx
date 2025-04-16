@@ -7,7 +7,6 @@ const Button = ({
   onClick = () => {},
   isCompleted = false,
   isCentered = false,
-  shape="alt" = false,
   isAstronaut = false,
   disabled = false,
   size = "md", // "sm" | "md" | "lg"
