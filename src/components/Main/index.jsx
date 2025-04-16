@@ -30,7 +30,7 @@ import { ModalInfoProject, ModalBlockPlanet, ModalPopup } from '@Components/Atom
 
 // Pages
 import Profile from '@Pages/Profile';
-import ShoppingCar from '@Pages/ShoppingCar';
+import ShoppingCart from '@Pages/ShoppingCart';
 import Mercurio from '@Pages/Mercurio';
 import Luna from '@Pages/Luna';
 import Login from '@Pages/Login';
@@ -112,7 +112,7 @@ const Main = () => {
           <PrivateRoute exact path="/jupiter" component={Jupiter} />
           <PrivateRoute exact path="/saturno" component={Saturno} />
           <PrivateRoute exact path="/urano" component={Urano} />
-          <PrivateRoute exact path="/carrito" component={ShoppingCar} />
+          <PrivateRoute exact path="/carrito" component={ShoppingCart} />
           <PrivateRoute exact path="/checkout" component={Checkout} />
           {/* <Route path="*" component={NotFound} /> */}
           {/*   */}

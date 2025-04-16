@@ -15,10 +15,9 @@ import iconTank from '@Assets/images/icon-tank.svg';
 
 // styles
 import '@Sass/pages/planet.scss';
-
 import '@Sass/pages/shoppingcart.scss';
 
-const ShoppingCar = () => {
+const ShoppingCart = () => {
   const { tanquesData, setTanques } = storeBuyTank(
     (state) => ({
       tanquesData: state.tanquesData,
@@ -137,15 +136,20 @@ const ShoppingCar = () => {
           </div>
           <div className="cartTotals">
             <div>
-              <h2>TOTAL DEL CARRITO</h2>
+              <h3>TOTAL DEL CARRITO</h3>
               <dl>
-                <dd>Subtotal</dd>
-                <dt>${tanquesData.price}.00</dt>
-                <dd>Total</dd>
-                <dt>${tanquesData.price}.00</dt>
+                <dt>Subtotal</dt>
+                <dd>${tanquesData.price}.00</dd>
+                <dt>Total</dt>
+                <dd>${tanquesData.price}.00</dd>
               </dl>
             </div>
-            <button onClick={() => handleNextPage()}>CHECKOUT</button>
+            <button onClick={() => handleNextPage()}>
+              <span>CHECKOUT</span>
+              <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.90798e-07 8.58275e-07L-1.90735e-06 24L4 24L12 12L4 -6.99382e-07L1.90798e-07 8.58275e-07Z" fill="#4D542F" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -153,4 +157,4 @@ const ShoppingCar = () => {
   );
 };
 
-export default ShoppingCar;
+export default ShoppingCart;

@@ -2,6 +2,20 @@
 @import '@Sass/fonts.scss';
 @import '@Sass/components/extends.scss';
 
+main.carrito,
+main.checkout {
+  background-image: url("../../assets/images/bg-stars.png"), url("../../assets/images/bg-checkout.jpg");
+  background-size: cover, 180vw;
+  background-position: center, right -7.5vw bottom;
+  background-repeat: no-repeat;
+  @include lg {
+    background-size: cover, contain;
+    background-position: center, right bottom;
+  }
+
+
+}
+
 .planetBackToTheHomepage {
   background-color: transparent;
   background-image: url(../../assets/images/button-bg.png);

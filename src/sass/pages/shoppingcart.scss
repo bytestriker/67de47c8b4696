@@ -1,64 +1,98 @@
 @import '@Sass/_variables.scss';
-
 @import '@Sass/_fonts.scss';
+
 .shoppingCart {
   margin: auto;
   max-width: 900px;
   width: 100%;
-
   .cartWrap {
     @include lg {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 48px;
     }
-  
-  }
-}
-.table {
-  grid-column: span 5;
-  .tableRow {
-    border-bottom: 1px solid #E6F85A;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    h4, div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    > div {
-      padding: 24px 0;
-    }
-  }
-  .displayProduct {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    .displayClose {
-      font-size: 1.4rem;
-      color: $--colorGreen;
-      cursor: pointer;
-    }
-
-    .displayProductImage {
-    }
-  }
-}
-
-.cartTotals {
-  grid-column: 3 / span 3;
-  div {
-    background-color: rgba(77, 84, 47, 0.45);
-    border: 1px solid #E6F85A;
-    dl {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      dt, dd {
+    .table {
+      grid-column: span 5;
+      .tableRow {
         border-bottom: 1px solid #E6F85A;
-      } 
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        h4, div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        > div {
+          padding: 24px 0;
+        }
+      }
+      .displayProduct {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    
+        .displayClose {
+          font-size: 1.4rem;
+          color: $--colorGreen;
+          cursor: pointer;
+        }
+    
+        .displayProductImage {
+        }
+      }
+    }
+    .cartTotals {
+      grid-column: 3 / span 3;
+      div {
+        background-color: rgba(77, 84, 47, 0.45);
+        border: 1px solid #E6F85A;
+        padding: 20px 32px 0;
+        dl {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          margin: 0;
+          dt, dd {
+            border-top: 1px solid #E6F85A;
+            margin: 0;
+            padding: 20px 0;
+          } 
+          dd {
+            text-align: right;
+          }
+        }
+      }
+      button {
+        background-image: url("../../assets/images/buttonCheckout.svg");
+        background-color: transparent;
+        border: 0;
+        color: #4D542F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        height: 38px;
+        width: calc(100% - 24px);
+        position: relative;
+        font-weight: bold;
+        svg {
+          display: block;
+          width: 6px;
+        }
+        &:after {
+          background-image: inherit;
+          background-position: right;
+          display: block;
+          content: '';
+          height: 38px;
+          width: 24px;
+          position: absolute;
+          top: 0;
+          right: -24px;
+        }
+        
+      }
+      
     }
   }
-  
 }
