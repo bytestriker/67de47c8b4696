@@ -34,26 +34,30 @@ const Button = ({
     },
     md: {
       default: (
-        <svg width="242" height="44" viewBox="0 0 242 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M219 13L207 1H1L21.5 43H207H231L241 23L235 13H219Z" stroke="#8C4524" />
+        <svg width="202" height="44" viewBox="0 0 202 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M179 13L167 1H1L21.5 43H167H191L201 23L195 13H179Z" stroke="#8C4524"/>
         </svg>
       ),
       alt: (
-        <svg width="242" height="44" viewBox="0 0 242 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23 13L35 1H220.5L241 43H35H11L1 23L7 13H23Z" stroke="#8C4524" />
+        <svg width="202" height="44" viewBox="0 0 202 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23 13L35 1H180.5L201 43H35H11L1 23L7 13H23Z"/>
         </svg>
+
       ),
     },
     lg: {
       default: (
-        <svg width="322" height="44" viewBox="0 0 322 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M299 13L287 1H1L21.5 43H287H311L321 23L315 13H299Z" stroke="#8C4524" />
+        <svg width="302" height="44" viewBox="0 0 302 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M279 13L267 1H1L21.5 43H267H291L301 23L295 13H279Z" />
         </svg>
+
+
       ),
       alt: (
-        <svg width="322" height="44" viewBox="0 0 322 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23 13L35 1H300.5L321 43H35H11L1 23L7 13H23Z" stroke="#8C4524" />
+        <svg width="302" height="44" viewBox="0 0 302 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M23 13L35 1H280.5L301 43H35H11L1 23L7 13H23Z" />
         </svg>
+
       ),
     },
   };

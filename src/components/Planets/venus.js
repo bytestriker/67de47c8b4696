@@ -97,7 +97,7 @@ export const Venus = ({ venusInfo }) => {
       ) : (
         <Button
         onClick={() => validateProject('venus', 5)}
-        text="Empezar"
+        text="EMPIEZA AQUÍ"
         />
       )}
     </div>

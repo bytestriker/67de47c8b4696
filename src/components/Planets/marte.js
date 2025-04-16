@@ -96,7 +96,7 @@ export const Marte = ({ marteInfo }) => {
       ) : (
         <Button
         onClick={() => validateProject('marte', 5)}
-        text="Empezar"
+        text="EMPIEZA AQUÍ"
         />
         
       )}

@@ -1,0 +1,64 @@
+@import '@Sass/_variables.scss';
+
+@import '@Sass/_fonts.scss';
+.shoppingCart {
+  margin: auto;
+  max-width: 900px;
+  width: 100%;
+
+  .cartWrap {
+    @include lg {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 48px;
+    }
+  
+  }
+}
+.table {
+  grid-column: span 5;
+  .tableRow {
+    border-bottom: 1px solid #E6F85A;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    h4, div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    > div {
+      padding: 24px 0;
+    }
+  }
+  .displayProduct {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .displayClose {
+      font-size: 1.4rem;
+      color: $--colorGreen;
+      cursor: pointer;
+    }
+
+    .displayProductImage {
+    }
+  }
+}
+
+.cartTotals {
+  grid-column: 3 / span 3;
+  div {
+    background-color: rgba(77, 84, 47, 0.45);
+    border: 1px solid #E6F85A;
+    dl {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      dt, dd {
+        border-bottom: 1px solid #E6F85A;
+      } 
+    }
+  }
+  
+}

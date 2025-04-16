@@ -52,7 +52,9 @@ export const ComingSoon = ({ planet }) => {
 
   return (
     <>
-      <img src={empieza} alt="empieza" onClick={openModal}/>
+      <Button
+        text="EMPIEZA AQUÍ"
+        onClick={openModal} />
       {modal && (
       <div className="modalBackdrop">
         <button

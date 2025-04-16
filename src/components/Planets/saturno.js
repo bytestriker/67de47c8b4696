@@ -96,7 +96,7 @@ export const Saturno = ({ saturnoInfo }) => {
       ) : (
         <Button
         onClick={() => validateProject('saturno', 1)}
-        text="Empezar"
+        text="EMPIEZA AQUÍ"
         />
       )}
     </div>

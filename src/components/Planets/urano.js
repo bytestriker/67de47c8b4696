@@ -93,7 +93,7 @@ export const Urano = ({ uranoInfo }) => {
       ) : (
         <Button
         onClick={() => validateProject('urano', 3)}
-        text="Empezar"
+        text="EMPIEZA AQUÍ"
         />
       )}
     </div>

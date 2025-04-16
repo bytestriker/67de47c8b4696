@@ -7,12 +7,16 @@ import { storeBuyTank } from '@Store/global';
 
 // Icons
 import { FaTimes } from 'react-icons/fa';
+import ButtonGoHome from '@Components/ButtonGoHome';
+
 
 // images
-import tanke from '@Assets/images/tanquePack.png';
+import iconTank from '@Assets/images/icon-tank.svg';
 
 // styles
-import styles from '@Sass/pages/shoppingcar.module.scss';
+import '@Sass/pages/planet.scss';
+
+import '@Sass/pages/shoppingcart.scss';
 
 const ShoppingCar = () => {
   const { tanquesData, setTanques } = storeBuyTank(
@@ -98,102 +102,50 @@ const ShoppingCar = () => {
   }, [tanquesData]);
 
   return (
-    <section className={styles.ShoppingCar}>
-      <div className={styles.container}>
-        <h2 className={styles.titlePage}>Carrito</h2>
-{/*         <table>
-          <thead>
-            <tr>
-              <td>PAQUETE</td>
-              <td>PRECIO</td>
-              <td>CANTIDAD DE PRODUCTO</td>
-              <td>CANTIDAD DE TANQUES</td>
-              <td>TOTAL</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <FaTimes onClick={() => handleClose()}/>
-                  <img src={tanke} alt="tanque" />
-                </div>
-              </td>
-              <td>{tanquesData.name}</td>
-              <td>{styles.precio}</td>
-              <td>{styles.tanques}</td>
-              <td>{totalPacks}</td>
-            </tr>
-          </tbody>
-        </table> */}
-        <div className={styles.table}>
-          <div className={styles.titlesContent}>
-            <div className={styles.titleProduct}></div>
-            <div className={styles.titleProduct}>
-              <h4>PAQUETE</h4>
-            </div>
-            <div className={styles.titleProduct}>
+    <section className="planetWrap">
+      <ButtonGoHome
+        className="planetBackToTheHomepage"
+        onClick={() => {
+          history.push('/');
+        }}
+        text="Volver al Inicio"
+      />
+      <div className="shoppingCart">
+        <h2 className="text-center">Carrito</h2>
+        <div className="cartWrap">
+
+          <div className="table">
+            <div className="tableRow">
+              <h4>PRODUCTO</h4>
               <h4>PRECIO</h4>
-            </div>
-            <div className={styles.titleProduct}>
-              <h4>CANTIDAD DE PRODUCTO</h4>
-            </div>
-            <div className={styles.titleProduct}>
-              <h4>CANTIDAD DE TANQUES</h4>
-            </div>
-            <div className={styles.titleProduct}>
+              <h4>CANTIDAD</h4>
               <h4>TOTAL</h4>
             </div>
-          </div>
-
-          <div className={styles.displaysContent}>
-            <div className={styles.displayProduct}>
-              <span className={styles.displayClose} onClick={() => handleClose()}>
-                <FaTimes />
-              </span>
-
-              <div className={styles.displayProductImage}>
-                <img src={tanke} alt="tanque" />
+            <div className="tableRow">
+              <div className="displayProduct">
+                <FaTimes onClick={() => handleClose()}/>
+                <img src={iconTank} alt="tanque" />
+                <div>
+                  <h3>{tanquesData.name}</h3>
+                  <p>{totalPacks} tanques</p>
+                </div>
               </div>
+              <div className="precio">${tanquesData.priceDefault}.00</div>
+              <div className="cantidad">{totalAmount}</div>
+              <div className="subtotal">${totalPrice}.00</div>
             </div>
-
-            <div className={styles.name}>{tanquesData.name}</div>
-            <div className={styles.precio}>${tanquesData.priceDefault}.00</div>
-            <div className={styles.tanques}>
-       {/*        <button className={styles.tanqueButtonRest} onClick={handleClickRest}>
-                -
-              </button> */}
-              {totalPacks}
-            {/*   <button className={styles.tanqueButtonMore} onClick={handleClickMore}>
-                +
-              </button> */}
-            </div>
-
-            <div className={styles.cantidad}>{totalAmount}</div>
-            <div className={styles.subtotal}>${totalPrice}.00</div>
           </div>
-        </div>
-
-       
-
-        <div className={styles.totalContent}>
-          <div className={styles.totalInfo}>
-            <h2>TOTAL DEL CARRITO</h2>
-            <div className={styles.subtotal}>
-              <p>
-                <strong>Subtotal</strong>
-              </p>
-              <p>${tanquesData.price}.00</p>
+          <div className="cartTotals">
+            <div>
+              <h2>TOTAL DEL CARRITO</h2>
+              <dl>
+                <dd>Subtotal</dd>
+                <dt>${tanquesData.price}.00</dt>
+                <dd>Total</dd>
+                <dt>${tanquesData.price}.00</dt>
+              </dl>
             </div>
-            <div className={styles.total}>
-              <p>
-                <strong>Total</strong>
-              </p>
-              <p>${tanquesData.price}.00</p>
-            </div>
-            <button className={styles.checkout} onClick={() => handleNextPage()}>
-              CHECKOUT
-            </button>
+            <button onClick={() => handleNextPage()}>CHECKOUT</button>
           </div>
         </div>
       </div>

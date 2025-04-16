@@ -93,7 +93,7 @@ export const Jupiter = ({ jupiterInfo }) => {
       ) : (
         <Button
         onClick={() => validateProject('jupiter', 3)}
-        text="Empezar"
+        text="EMPIEZA AQUÍ"
         />
       )}
     </div>
