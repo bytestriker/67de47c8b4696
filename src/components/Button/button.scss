@@ -76,8 +76,18 @@
     }
   }
   &.buttonPlanetIncomplete {
+    color: #FB6C2B;
     svg {
-      display: none !important;
+      &:first-of-type {
+        opacity: 0;
+      }
+      &:last-of-type {
+        path {
+          filter: drop-shadow(0 0 5px #FB6C2B);
+          stroke: #FB6C2B;
+
+        }
+      }
     }
   }
   &:hover {

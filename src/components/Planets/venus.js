@@ -92,11 +92,16 @@ export const Venus = ({ venusInfo }) => {
               ? ''
               : ''
           }`}
-          onClick={() => validateProject('venus', 1)}
+          onClick={() => validateProject('venus', 5)}
         />
       ) : (
-        <img src={empieza} alt="empieza" onClick={() => validateProject('venus', 1)}/>
+        <Button
+        onClick={() => validateProject('venus', 5)}
+        text="Empezar"
+        />
       )}
     </div>
   );
 };
+{/* <img src={empieza} alt="empieza" onClick={() => validateProject('venus', 1)}/>
+ */}

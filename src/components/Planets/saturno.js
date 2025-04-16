@@ -94,8 +94,13 @@ export const Saturno = ({ saturnoInfo }) => {
           text={dataSaturno.label}
         />
       ) : (
-        <img src={empieza} alt="empieza" onClick={() => validateProject('saturno', 1)}/>
+        <Button
+        onClick={() => validateProject('saturno', 1)}
+        text="Empezar"
+        />
       )}
     </div>
   );
 };
+
+  {/* <img src={empieza} alt="empieza" onClick={() => validateProject('saturno', 1)}/> */}

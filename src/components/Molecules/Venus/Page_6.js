@@ -148,7 +148,7 @@ export const BuyerInfo = ({
         </div>
       )} */}
 
-      { 1 === 2 && hasCompletedBuyers && (
+      { hasCompletedBuyers && (
         <div>
           <span>
             <label className={style.identify}>Ver mis Buyer Persona</label>

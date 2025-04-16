@@ -89,13 +89,19 @@ export const Marte = ({ marteInfo }) => {
             ? ''
             : ''
         }`}
-        onClick={() => validateProject('marte', 1)}
+        onClick={() => validateProject('marte', 5)}
           text={dataMarte.label}
         
         />
       ) : (
-        <img src={empieza} alt="empieza" onClick={() => validateProject('marte', 1)}/>
+        <Button
+        onClick={() => validateProject('marte', 5)}
+        text="Empezar"
+        />
+        
       )}
     </div>
   );
 };
+
+  {/* <img src={empieza} alt="empieza" onClick={() => validateProject('marte', 1)}/> */}
