@@ -84,3 +84,5 @@ yarn-error.log*
 sonarqube/extensions
 sonarqube/data
 sonarqube/logs
+src/hooks/useConektaSubscription.js
+src/service/conekta_subscription.service.js
