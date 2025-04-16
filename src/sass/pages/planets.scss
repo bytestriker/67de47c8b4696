@@ -186,15 +186,18 @@ main {
 }
 
 .planetGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
   margin: 5vw auto;
   width: 86%;
   max-width: 1326px;
-  @include mediumDevices {
+  @include md {
     display: grid;
     grid-gap: 5vw;
     grid-template-columns:  repeat(2, 1fr);
   }
-  @include largeDevices {
+  @include xl {
     grid-template-columns:  repeat(6, 1fr);
   }
   .planetGridItem {
@@ -202,7 +205,6 @@ main {
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    height: 500px; 
     text-align: center;
     @include mediumDevices {
       
@@ -216,9 +218,10 @@ main {
       justify-content: center;
       align-items: center;
       width: 80%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 1 / 1;
       position: relative;
-      @include largeDevices {
+      @include lg {
+        aspect-ratio: 16 / 9;
         margin-bottom: 0.5vw;
 
         width: 100%;

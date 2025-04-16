@@ -397,8 +397,11 @@
 .tabMenu {
   display: flex;
   justify-content: center;
-  margin-bottom: 24px;
-  a {
+  margin: 24px auto;
+  @include lg {
+    font-size: 20px;
+  }
+  a.tabMenuItem {
     border-bottom: 1px solid rgba(76, 83, 46, 1);
     display: block;
     position: relative;
@@ -434,7 +437,7 @@
         transform: translateX(calc(-50% + 12px));
       }
     }
-    &.activeTabMenuItem {
+    &.activeItem {
       cursor: default;
       &::before {
         opacity: 1;
@@ -455,11 +458,15 @@
 }
 
 .avatarNameAndPhrase {
-  display: grid;
-  grid-template-columns: 148px 1fr;
-  align-items: center;
-  gap: 20px;
-  justify-content: center;
+  
+  @include lg {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
 }
 
 .buyerAgeLocationAndProfession {
@@ -469,18 +476,22 @@
   justify-content: center;
   fieldset {
     position: relative;
-    margin: 0;
+    margin-bottom: 0 !important;
+    label {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 0 10px;
+      text-align: center;
+    }
   }
-  svg {
+  /* svg {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
     left: 24px;
-  }
-  input {
-    padding: 12px 20px 12px 48px !important;
-  }
+  } */
 }
 
 .selectContainer {
@@ -644,6 +655,9 @@
 
 
 .inputAvatarUpload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   + div {
     margin-top: 20px;
@@ -664,7 +678,7 @@
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    margin: 0;
+    margin: auto;
     padding: 0;
     width: 148px;
     height: 148px;

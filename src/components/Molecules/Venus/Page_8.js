@@ -183,12 +183,15 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         ></textarea>
       </fieldset>
       <nav className="tabMenu">
-      {
-        sections.map(({ key, label }) =>
-        <a key={key} className={`h3 ${activeSection === key && "activeTabMenuItem"}`} onClick={() => handleMenu(key)}>
-        {label}
-          </a>)
-      }
+        {sections.map(({ key, label }) => (
+          <a
+            key={key}
+            className={`tabMenuItem ${activeSection === key && 'MenuItem'}`}
+            onClick={() => handleMenu(key)}
+          >
+            {label}
+          </a>
+        ))}
       </nav>
       <fieldset className={`${activeSection === 'GOALS' ? "d-block" : "d-none"}`}>
         <label>{texts.instruccion_de_goals}</label>

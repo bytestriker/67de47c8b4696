@@ -118,40 +118,46 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
       </fieldset>
       <div className="buyerAgeLocationAndProfession">
         <fieldset>
+          <label htmlFor="">
+            <FaUser />
+            <span>Edad</span>
+          </label>
           <input
             {...register('edad')}
             type="number"
-            placeholder="Edad"
             required
             className={style.inputCard1}
             value={buyer.edad}
             onChange={(e) => setBuyer({ ...buyer, edad: e.target.value })}
           />
-          <FaUser className={style.icon} />
         </fieldset>
         <fieldset>
+          <label htmlFor="">
+            <FaMapMarkerAlt />
+            <span>Ubicación</span>
+          </label>
           <input
             {...register('ubicacion')}
             type="text"
-            placeholder="Ubicación"
             required
             className={style.inputCard1}
             value={buyer.ubicacion}
             onChange={(e) => setBuyer({ ...buyer, ubicacion: e.target.value })}
           />
-          <FaMapMarkerAlt className={style.icon} />
         </fieldset>
         <fieldset>
+          <label htmlFor="">
+            <FaSuitcase />
+            <span>Profesión</span>
+          </label>
           <input
             {...register('profesion')}
             type="text"
-            placeholder="Profesión"
             required
             className={style.inputCard1}
             value={buyer.profesion}
             onChange={(e) => setBuyer({ ...buyer, profesion: e.target.value })}
           />
-          <FaSuitcase className={style.icon} />
         </fieldset>
       </div>
       <fieldset>
@@ -170,7 +176,7 @@ export const Buyer = ({ setModal, setTitle, texts, setMessage, buyer, setBuyer }
         {sections.map(({ key, label }) => (
           <a
             key={key}
-            className={`h3 ${activeSection === key && 'activeTabMenuItem'}`}
+            className={`tabMenuItem ${activeSection === key && 'MenuItem'}`}
             onClick={() => handleMenu(key)}
           >
             {label}

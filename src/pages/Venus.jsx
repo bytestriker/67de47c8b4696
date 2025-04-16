@@ -146,6 +146,7 @@ const Venus = () => {
 
   useEffect(() => {
     handleGetBuyerPersona();
+    setPage(9)
   }, []);
 
   const handleGetBuyerPersona = async () => {
