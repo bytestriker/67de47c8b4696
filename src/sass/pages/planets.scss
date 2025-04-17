@@ -142,32 +142,9 @@ main {
       }
     }
     .bulletList {
-      list-style: none;
-      position: absolute;
       top: 66%;
       right: 0;
       width: 25%;
-      li {
-        position: relative;
-        &:before {
-          border: 1px solid #E0FF4E;
-          display: block;
-          content: '';
-          width: 1.4vw;
-          height: 1.4vw;
-          position: absolute;
-          top: 50%;
-          right: 110%;
-          transform: translateY(-50%) rotate(45deg);
-          @include largeDevices {
-            width: .56vw;
-            height: .56vw;
-          }
-        }
-        &:not(:last-child) {  margin-bottom: 8px;}
-        &:nth-child(1) {  margin-left: 24%; }
-        &:nth-child(2) {  margin-left: 12%; }
-      }
     }
   }
 
@@ -273,6 +250,18 @@ main {
           }
         }
       }
+
+      .bulletList {
+        top: 10%;
+        left: 75%;
+        font-size: 85%;
+        li {
+          position: relative;
+          line-height: 1.5;
+          &:first-child { margin-left: -24%;}
+          &:last-child { margin-left: 20%;}
+        }
+      }
       .tankCount {
         display: flex;
         align-items: center;
@@ -334,5 +323,43 @@ main {
       &.planetGridItemUrano {   grid-column: 2 / 4; }
       &.planetGridItemNeptuno { grid-column: 4 / 6; }
     }
+  }
+}
+
+.bulletList {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  list-style: none;
+  li {
+    position: relative;
+    &:before {
+      border: 1px solid #E0FF4E;
+      display: block;
+      content: '';
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      top: 50%;
+      right: 110%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+  &.lg {
+    li {
+      &:before {
+        width: 1.4vw;
+        height: 1.4vw;
+        @include largeDevices {
+          width: .56vw;
+          height: .56vw;
+        }
+      }
+      &:not(:last-child) {  margin-bottom: 8px;}
+      &:nth-child(1) {  margin-left: 24%; }
+      &:nth-child(2) {  margin-left: 12%; }
+    }
+
   }
 }

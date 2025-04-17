@@ -46,13 +46,14 @@ main.home {
     aspect-ratio: 1.8 / 1;
   }
   .rocketImage {
+    pointer-events: none;
     position: absolute;
     top: 49%;
     mix-blend-mode: plus-lighter;
     left: -21%;
     width: 40vw;
     @include largeDevices {
-      top: 40%;
+      top: 64%;
     }
   }
   .videoContainer {

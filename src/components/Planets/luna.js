@@ -63,7 +63,7 @@ export const Luna = ({ lunaInfo }) => {
           <img src={bulletTop} alt="Bullet SVG" className="bulletTop" />
           <img src={bulletLeft} alt="Bullet SVG" className="bulletLeft" />
         </div>
-        <ul className="bulletList">
+        <ul className="bulletList lg">
           <li>Colonizar</li>
           <li>Liftoff!</li>
           <li>Transporte</li>
