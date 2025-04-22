@@ -338,6 +338,11 @@ const Checkout = () => {
           <fieldset>
             <div className="inputFileAnchor">
               <span>Adjuntar constancia de situacion fiscal</span>
+              <input
+                type="file"
+                id="constancia"
+                {...register('constancia')}
+              />
             </div>
           </fieldset>
           <Button text="REALIZAR COMPRA" type="submit" />
