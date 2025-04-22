@@ -128,7 +128,7 @@ export const Logo = ({ setPage, setTitle, setModal, modal, texts, dataJupiter })
           ]}
         />
       )} 
-      <div className="inputFileUpload">
+      <div className="inputFileCustom">
         <input
           type="file"
           name="fileInput"

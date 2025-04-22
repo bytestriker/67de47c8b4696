@@ -414,7 +414,7 @@ export const Pretotipo = ({ setPage, setTitle, texts }) => {
 
 */}
       <fieldset>
-        <div className="inputFileUpload">
+        <div className="inputFileCustom">
           <input
             type="file"
             name="fileInput"
@@ -673,7 +673,7 @@ export const PL = ({ setPage, setTitle, setModal, texts }) => {
       </a> 
 
       <fieldset>
-        <div className="inputFileUpload">
+        <div className="inputFileCustom">
           <input
             type="file"
             name="fileInput"
