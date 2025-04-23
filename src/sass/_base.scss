@@ -119,7 +119,7 @@ fieldset {
   }
 }
 
-input:not([type=file]), textarea, .input, .select select {
+input:not([type=file]):not([type=radio]):not([type=checkbox]), textarea, .input, .select select {
   appearance: none;
   background-color: rgba(0,0,0,0.5);
   border: 1px solid #E0FF4E;

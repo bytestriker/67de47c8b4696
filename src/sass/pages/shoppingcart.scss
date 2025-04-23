@@ -2,9 +2,14 @@
 @import '@Sass/_fonts.scss';
 
 .shoppingCart {
+  
   margin: auto;
-  max-width: 900px;
+  max-width: 1024px;
   width: 100%;
+  @include lg {
+    grid-column: span 2;
+  }
+  
   .cartWrap {
     @include lg {
       display: grid;
@@ -31,11 +36,18 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-    
-        .displayClose {
-          font-size: 1.4rem;
-          color: $--colorGreen;
-          cursor: pointer;
+        img {
+          display: block;
+          margin: 0 20px 0 12px;
+        }
+        div{
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          h3,p {
+            margin: 0;
+            text-align: left;
+          }
         }
     
         .displayProductImage {

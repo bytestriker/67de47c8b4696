@@ -65,11 +65,8 @@ main.checkout {
   scrollbar-color: #363636 transparent;
   @include largeDevices {
     display: grid;
-    grid-template-columns: 200px 1fr 280px;
+    grid-template-columns: 200px 1fr 380px;
     padding: 100px 32px 36px;
-  }
-  @include largeDevicesExtra {
-    grid-template-columns: 260px 1fr 320px;
   }
 
   .satelite {
@@ -79,11 +76,6 @@ main.checkout {
     right: 72px;
     z-index: -1;
     pointer-events: none;
-  }
-  .mainContainer{
-    margin: 0;
-    padding: 24px 32px;
-
   }
   /////
   .mainContainerInternals{
@@ -280,7 +272,6 @@ main.checkout {
   padding: 24px 32px;
   @include largeDevices {
     padding: 24px 72px;
-
   }
   .gridIconText {
     display: grid;
@@ -330,6 +321,10 @@ main.checkout {
     margin: 0 -32px;
     padding: 0;
     margin-bottom: 24px;
+    @include largeDevices {
+      margin: 0 -72px;
+      
+    }
     img {
       display: block;
       width: 100%;
