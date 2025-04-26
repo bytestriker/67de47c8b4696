@@ -577,6 +577,9 @@ main.checkout {
 
 .fieldsets {
   justify-content: space-between;
+  &.payment-methods {
+    justify-content: flex-start;
+  }
 }
 .buttons {
   justify-content: center;
