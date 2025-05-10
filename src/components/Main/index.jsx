@@ -42,6 +42,7 @@ import Saturno from '@Pages/Saturno';
 import Urano from '@Pages/Urano';
 import Checkout from '@Pages/Checkout';
 import RePassword from '@Pages/Password';
+import  StripeProvider from '@Components/StripeProvider'
 
 import style from '@Sass/pages/general.module.scss';
 
@@ -113,9 +114,10 @@ const Main = () => {
           <PrivateRoute exact path="/saturno" component={Saturno} />
           <PrivateRoute exact path="/urano" component={Urano} />
           <PrivateRoute exact path="/carrito" component={ShoppingCart} />
-          <PrivateRoute exact path="/checkout" component={Checkout} />
+          <StripeProvider>
+            <PrivateRoute exact path="/checkout" component={Checkout} />
+          </StripeProvider>
           {/* <Route path="*" component={NotFound} /> */}
-          {/*   */}
         </main>
       )}
     </>

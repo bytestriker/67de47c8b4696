@@ -2,7 +2,6 @@ import '@Components/Packs/tankPack.scss';
 
 const TankPack = ({data, handleClick}) => {
 
-  console.log(data)
   const numTanques = data?.description.replace(/[a-zA-Z\p{P}]/gu, '');
   return (
     <div onClick={handleClick} className="tankPack">
