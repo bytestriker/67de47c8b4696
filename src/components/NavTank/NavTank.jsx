@@ -37,7 +37,7 @@ const NavTank = ({ setNavTankState, navTankState }) => {
       <div className={styles.NavTankContent}>
         <figure className="tankFigure"></figure>
         <div className="tankWrap">
-          <h2>Te quedan <strong>12 tanques</strong></h2>
+          <h2>Te quedan <strong>{valueTank} tanques</strong></h2>
           <Button text="RECARGAR" isCentered={true} onClick={() => handleLink()} />
 
         </div>

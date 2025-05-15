@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link as Href, useLocation, useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
+// store
+import { storeRemainingTank } from '@Store/global';
 
 // context
 import useAuth from '@Auth/userAuth';
@@ -11,7 +13,6 @@ import { lunaStore } from '@Store/luna';
 // components
 import Nav from '../Nav/Nav';
 import NavTank from '../NavTank/NavTank';
-import Button from '@Components/Button';
 
 // images
 import _logo from '../../assets/images/RocketNow.png';
@@ -39,6 +40,18 @@ const Header = () => {
     }),
     shallow
   );
+  const { remainingTankData } = storeRemainingTank(
+    (state) => ({
+      remainingTankData: state.remainingTankData,
+    }),
+    shallow
+  );
+
+  const [valueTank, setValueTank] = useState(0);
+  useEffect(() => {
+    setValueTank(remainingTankData.remainingTanks);
+  }, [remainingTankData]);
+
 
   const [navState, setNavState] = useState(false);
   const [navTankState, setNavTankState] = useState(false);
@@ -81,7 +94,7 @@ const Header = () => {
           {contextValue.isLogged() ? (
             <div className="iconTank" title="Mis Tanques" onClick={() => setNavTankState(true)}>
               <figure></figure>
-              <span>x3</span>
+              <span>x{valueTank}</span>
             </div>
           ) : null}
           {!formItems.includes(currentPathName) ? (
