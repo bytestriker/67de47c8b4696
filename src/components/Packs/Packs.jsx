@@ -37,6 +37,7 @@ const Packs = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalPacks, setTotalPacks] = useState(1);
+  const [selectedPack, setSelectedPack] = useState("");
 
   const handlePack = (items) => {
     setTanques({
@@ -54,6 +55,7 @@ const Packs = () => {
     setTotalPrice(items.price);
     setTotalAmount(items.amount);
     setTotalPacks(1);
+    setSelectedPack(items.pack_id)
   };
 
   const [codigo, setCodigo] = useState('');
@@ -83,6 +85,8 @@ const Packs = () => {
     }
   };
 
+  console.log(Items);
+
   return (
     <section className="planetWrap">
       <ScrollToTop />
@@ -107,7 +111,7 @@ const Packs = () => {
         <div className="packsGrid">
         {
           Items.map((pack) =>
-          <TankPack key={pack.id} data={pack} handleClick={() => handlePack(pack)} />)
+          <TankPack key={pack.id} data={pack} handleClick={() => handlePack(pack)} isSelected={selectedPack === pack.pack_id} />)
         }
         </div>
         <form onSubmit={handleSubmit}>

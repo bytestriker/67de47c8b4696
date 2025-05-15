@@ -2,9 +2,9 @@
 @import '@Sass/fonts.scss';
 
 .NavPack {
+  background: linear-gradient(345deg, rgba(0,0,0,0.69) 0%, rgba(0,0,0,0.99) 100%);
   width: 420px;
   height: 100vh;
-  background-color: $--colorAzulMarino;
   z-index: 99999;
   position: fixed;
   top: 0;

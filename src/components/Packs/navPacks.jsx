@@ -13,6 +13,7 @@ import _Tank from '@Assets/images/tanquePack.png';
 
 // Styles
 import styles from '@Sass/components/navPack.module.scss';
+import Button from '@Components/Button';
 
 const NavPacks = ({
   navPackState,
@@ -117,9 +118,7 @@ const NavPacks = ({
             <p>${`${totalPrice}.00`}</p>
           </div>
           <div className={styles.Link}>
-            <button className="buttonPlanet" onClick={() => handlePagar()}>
-              VER CARRITO
-            </button>
+            <Button text="VER CARRITO" onClick={() => handlePagar()} />
           </div>
         </div>
       </div>

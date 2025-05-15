@@ -245,7 +245,8 @@ const Checkout = () => {
                 </span>
               )}
             </fieldset>
-            <fieldset>
+            <div className="fieldsets">
+              <fieldset>
               <input
                 type="email"
                 placeholder="Correo electrónico *"
@@ -271,6 +272,7 @@ const Checkout = () => {
                 </span>
               )}
             </fieldset>
+            </div>
             <fieldset>
               <CardElement
                 options={{
@@ -299,7 +301,6 @@ const Checkout = () => {
                 </span>
               )}
             </fieldset>
-
             <div className="fieldsets">
               <fieldset>
                 <input
@@ -378,17 +379,17 @@ const Checkout = () => {
                 <FaInfoCircle /> <span>{errors.root}</span>
               </span>
             )}
-            <Button text="REALIZAR COMPRA" type="submit" disabled={!stripe} />
+            <Button text="REALIZAR COMPRA" type="submit" size="lg" disabled={!stripe} />
           </form>
         </div>
         {/* Invoicing data */}
         <div className="checkOut">
-        <h2>DATOS DE FACTURACIÓN</h2>
-          <span onClick={() => togglePersonales()} >Ver más</span>
-          {isOpen && (
-            <form className={styles.form} onSubmit={handleSubmit1(onSubmitFactura)}>
-              <div className={styles.formControlPlus}>
-                <span className={styles.formInputs}>
+          <h2>DATOS DE FACTURACIÓN</h2>
+          {
+            !isOpen
+            ? <span onClick={() => togglePersonales()} >Ver más</span>
+            : <form className={styles.form} onSubmit={handleSubmit1(onSubmitFactura)}>
+                <fieldset>
                   <label htmlFor="company" className={styles.formLabel}>
                     Nombre de Empresa o Persona Física<small>*</small>
                   </label>
@@ -404,10 +405,9 @@ const Checkout = () => {
                       <FaInfoCircle /> <span>Ingrese su nombre o la empresa</span>
                     </span>
                   )}
-                </span>
-              </div>
-              <div className={styles.formControl}>
-                <span className={styles.formInputs}>
+                </fieldset>
+              <div className="fielsdests">
+                <fieldset>
                   <label htmlFor="businessname" className={styles.formLabel}>
                     Razón Social<small>*</small>
                   </label>
@@ -423,9 +423,8 @@ const Checkout = () => {
                       <FaInfoCircle /> <span>Ingrese su Razón Social</span>
                     </span>
                   )}
-                </span>
-
-                <span className={styles.formInputs}>
+                </fieldset>
+                <fieldset>
                   <label htmlFor="rfc" className={styles.formLabel}>
                     RFC<small>*</small>
                   </label>
@@ -441,11 +440,11 @@ const Checkout = () => {
                       <FaInfoCircle /> <span>Ingrese su RFC</span>
                     </span>
                   )}
-                </span>
+                </fieldset>
               </div>
 
-              <div className={styles.formControlPlus}>
-                <span className={styles.formInputs}>
+
+                <fieldset>
                   <label htmlFor="address" className={styles.formLabel}>
                     Dirección Fiscal<small>*</small>
                   </label>
@@ -462,44 +461,40 @@ const Checkout = () => {
                       <FaInfoCircle /> <span>Ingrese su dirección fiscal</span>
                     </span>
                   )}
-                </span>
+                </fieldset>
+              <div className="fieldsets">
+                <fieldset>
+                    <label htmlFor="numExt" className={styles.formLabel}>
+                      Número exterior<small>*</small>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder=""
+                      id="numExt"
+                      className={styles.inputText}
+                      {...register1('numExt', { required: true })}
+                    />
+                    {errorsbilling.numExt && (
+                      <span className={styles.spanError}>
+                        <FaInfoCircle /> <span>Ingrese su número exterior</span>
+                      </span>
+                    )}
+                  </fieldset>
+          <fieldset>
+                    <label htmlFor="numInt" className={styles.formLabel}>
+                      Número interior<small></small>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder=""
+                      id="numInt"
+                      className={styles.inputText}
+                      {...register1('numInt', { required: false })}
+                    />
+                </fieldset>
               </div>
-
-              <div className={styles.formControl}>
-                <span className={styles.formInputs}>
-                  <label htmlFor="numExt" className={styles.formLabel}>
-                    Número exterior<small>*</small>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder=""
-                    id="numExt"
-                    className={styles.inputText}
-                    {...register1('numExt', { required: true })}
-                  />
-                  {errorsbilling.numExt && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su número exterior</span>
-                    </span>
-                  )}
-                </span>
-
-                <span className={styles.formInputs}>
-                  <label htmlFor="numInt" className={styles.formLabel}>
-                    Número interior<small></small>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder=""
-                    id="numInt"
-                    className={styles.inputText}
-                    {...register1('numInt', { required: false })}
-                  />
-                </span>
-              </div>
-
-              <div className={styles.formControl}>
-                <span className={styles.formInputs}>
+              <div className="fieldsets">    
+                <fieldset>
                   <label htmlFor="location" className={styles.formLabel}>
                     Localidad / Ciudad<small>*</small>
                   </label>
@@ -515,9 +510,8 @@ const Checkout = () => {
                       <FaInfoCircle /> <span>Ingrese su localidad</span>
                     </span>
                   )}
-                </span>
-
-                <span className={styles.formInputs}>
+                </fieldset>
+                <fieldset>
                   <label htmlFor="postalCode" className={styles.formLabel}>
                     Código postal<small>*</small>
                   </label>
@@ -541,76 +535,91 @@ const Checkout = () => {
                       <FaInfoCircle /> <span>{errorsbilling.postalCode.message}</span>
                     </span>
                   )}
-                </span>
+              </fieldset>
               </div>
+              <div className="fieldsets">
+                <fieldset>
+                    <label htmlFor="phone" className={styles.formLabel}>
+                      Teléfono<small>*</small>
+                    </label>
+                    <input
+                      type="number"
+                      placeholder=""
+                      id="phone"
+                      minLength="0"
+                      maxLength="10"
+                      className={styles.inputText}
+                      {...register1('phone', {
+                        required: 'Ingrese su número de teléfono',
+                        pattern: {
+                          value: /^[0-9]{10}$/,
+                          message: 'El número de teléfono debe tener 10 dígitos y solo números',
+                        },
+                      })}
+                    />
+                    {errorsbilling.phone && (
+                      <span className={styles.spanError}>
+                        <FaInfoCircle /> <span>{errors.phone.message}</span>
+                      </span>
+                    )}
+                  </fieldset>
+                  <fieldset>
+                    <label htmlFor="email" className={styles.formLabel}>
+                      Correo electrónico<small>*</small>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder=""
+                      id="email"
+                      className={styles.inputText}
+                      {...register1('email', {
+                        required: true,
+                        pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+                      })}
+                    />
+                    {errorsbilling.email && (
+                      <span className={styles.spanError}>
+                        <FaInfoCircle /> <span>Ingrese su email</span>
+                      </span>
+                    )}
+                </fieldset>
+                </div>
 
-              <div className={styles.formControl}>
-                <span className={styles.formInputs}>
-                  <label htmlFor="phone" className={styles.formLabel}>
-                    Teléfono<small>*</small>
-                  </label>
-                  <input
-                    type="number"
-                    placeholder=""
-                    id="phone"
-                    minLength="0"
-                    maxLength="10"
-                    className={styles.inputText}
-                    {...register1('phone', {
-                      required: 'Ingrese su número de teléfono',
-                      pattern: {
-                        value: /^[0-9]{10}$/,
-                        message: 'El número de teléfono debe tener 10 dígitos y solo números',
-                      },
-                    })}
-                  />
-                  {errorsbilling.phone && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>{errors.phone.message}</span>
-                    </span>
-                  )}
-                </span>
-
-                <span className={styles.formInputs}>
-                  <label htmlFor="email" className={styles.formLabel}>
-                    Correo electrónico<small>*</small>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder=""
-                    id="email"
-                    className={styles.inputText}
-                    {...register1('email', {
-                      required: true,
-                      pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-                    })}
-                  />
-                  {errorsbilling.email && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su email</span>
-                    </span>
-                  )}
-                </span>
-              </div>
-              <button className={styles.compra} type="submit">
-                GUARDAR
-              </button>
+              <Button text="GUARDAR"></Button>
             </form>
-          )}
+          }
         </div>
       </div>
-      <div>
-        {modalsuccess ? (
-          <div className={styles.modal}>
-            <div className={styles.ModalContent}>
-              <div className={styles.closeNav}>
-                <FaRegTimesCircle className={styles.iconClose} onClick={() => setModalSuccess(false)} />
-              </div>
-              <div id="conektaIframeContainer" className={styles.success}>Datos Guardados</div>
-            </div>
-          </div>
-        ) : null}
+      <div className="checkoutCart">
+        <table className="checkoutCartTable">
+          <tr>
+            <th>TU PEDIDO</th>
+            <th>SUBTOTAL</th>
+          </tr>
+          <tr>
+            <td>{`${tanquesData.name} ${tanquesData.amount} tanques`}</td>
+            <td>{`$${tanquesData.price}.00`}{}</td>
+          </tr>
+          <tr>
+            <td>Subtotal</td>
+            <td>{tanquesData.price}</td>
+          </tr>
+          <tr>
+            <th>TOTAL</th>
+            <td>{tanquesData.price}.00</td>
+          </tr>
+        </table>
       </div>
+      {modalsuccess ? (
+        <div className={styles.modal}>
+          <div className={styles.ModalContent}>
+            <div className={styles.closeNav}>
+              <FaRegTimesCircle className={styles.iconClose} onClick={() => setModalSuccess(false)} />
+            </div>
+            <div id="conektaIframeContainer" className={styles.success}>Datos Guardados</div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 };

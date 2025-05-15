@@ -181,12 +181,46 @@
     width: 670px;
   }
 
-
 }
 
 .articlePack-error {
   text-align: center;
   p {
     font-size: 12px!important;
+  }
+}
+
+
+.checkoutCart {
+  background-color: rgba(77, 84, 47, 0.45);
+  border: 1px solid #E0FF4E;
+  padding: 12px 24px;
+  .checkoutCartTable {
+    border-collapse: collapse;
+    width: 100%;
+    tr {
+      &:first-child,
+      &:nth-last-child(2) {
+        th, td {
+          border-bottom: 1px solid #E0FF4E;
+        }
+      }
+      &:nth-child(2) {
+        td {
+          padding-bottom: 0;
+        }
+      }
+      th {
+        text-align: left;
+      }
+      th, td {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        &:last-child,
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
   }
 }

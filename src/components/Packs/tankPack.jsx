@@ -1,10 +1,11 @@
 import '@Components/Packs/tankPack.scss';
 
-const TankPack = ({data, handleClick}) => {
+const TankPack = ({data, handleClick, isSelected}) => {
 
   const numTanques = data?.description.replace(/[a-zA-Z\p{P}]/gu, '');
+
   return (
-    <div onClick={handleClick} className="tankPack">
+    <div onClick={handleClick} className={`tankPack ${isSelected ? 'isSelected' : '' }`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={210}
