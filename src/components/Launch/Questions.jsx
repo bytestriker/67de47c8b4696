@@ -145,6 +145,7 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
           <Button
             className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
             text="REGRESAR"
+            shape="alt"
             onClick={() => setPageLuna(1)}
             isAlt
           />
@@ -355,7 +356,6 @@ return (
   <div className="questionWrap">
     <ScrollToTop />
     <h2 dangerouslySetInnerHTML={{ __html: texts5.titulo_de_la_vista }}></h2>
-    <figure className={lunaStyle.LaunchQuestionVideo}>
       {texts5?.video && (
           <WatchPlanetVideo
             params={[
@@ -368,6 +368,7 @@ return (
             ]} 
           />
         )}
+    <figure className={lunaStyle.LaunchQuestionVideo}>
     </figure>
     <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.slogan }}></p>
     <p className="text-center" dangerouslySetInnerHTML={{ __html: texts5?.descripcion }}></p>
