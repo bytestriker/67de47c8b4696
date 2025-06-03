@@ -12,6 +12,7 @@ import ButtonGoHome from '@Components/ButtonGoHome';
 import '@Sass/pages/planet.scss';
 import '@Sass/pages/checkout.scss';
 import { instanceWithRocket } from '@Config/axios';
+import classnames from 'classnames';
 
 import styles from '@Sass/pages/checkout.module.scss';
 
@@ -37,8 +38,10 @@ const Checkout = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    formState: { errors, touchedFields },
+  } = useForm({
+    mode: 'onTouched'
+  });
 
   const history = useHistory();
   const location = useLocation();
@@ -59,7 +62,7 @@ const Checkout = () => {
     register: register1,
     handleSubmit: handleSubmit1,
     setValue: setValue1,
-    formState: { errors: errorsbilling },
+    formState: { errors: errorsbilling, touchedFields: touchedBillingFields },
   } = useForm();
 
 
@@ -196,11 +199,8 @@ const Checkout = () => {
     }
   };
 
-
   const onSubmitFactura = async data => {
-
     const send = JSON.stringify(data);
-
     try {
       const response = await instanceWithRocket.post(
         `checkout/billing_data`,
@@ -214,10 +214,7 @@ const Checkout = () => {
       const { response } = error;
       return { messageError: response.data.error, status: response.status, code: -1 };
     }
-   
   };
-
-  console.log("tanquesData ", tanquesData)
 
   return (
     <section className="planetWrap">
@@ -227,50 +224,77 @@ const Checkout = () => {
         text="Volver al Inicio"
       />
       <div className="planetContainer">
-        {/* Stripe Check Out form  */}
         <div className="checkOut">
           <h2>Pasarela de Pago</h2>
-
+          {/* Stripe Check Out form  */}
           <form onSubmit={handleSubmit(onSubmit)}>
             <fieldset>
               <input
+                id="cardName"
                 type="text"
                 placeholder="Titular de la Tarjeta *"
-                id="cardName"
-                {...register('cardName', { required: true })}
+                className={classnames({
+                  'is-valid': touchedFields.cardName && !errors.cardName,
+                  'is-invalid': errors.cardName,
+                })}
+                {...register('cardName', {
+                  required: 'Ingrese el nombre del titular',
+                  minLength: {
+                    value: 3,
+                    message: 'Ingresa un nombre válido'
+                  }
+                })}
               />
-              {errors.cardName && (
-                <span className="text-danger">
-                  <FaInfoCircle /> <span>Ingrese el nombre del titular</span>
-                </span>
-              )}
+              {
+                errors.cardName &&
+                <span className="text-danger">{errors.cardName.message}</span>
+              }
             </fieldset>
             <div className="fieldsets">
               <fieldset>
               <input
+                id="email"
                 type="email"
                 placeholder="Correo electrónico *"
-                id="email"
-                {...register('email', { required: true })}
+                className={classnames({
+                  'is-valid': touchedFields.email && !errors.email,
+                  'is-invalid': errors.email,
+                })}
+                {...register('email', {
+                  required: 'Ingrese su correo electrónico',
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: 'Correo inválido',
+                  },
+                })}
               />
-              {errors.email && (
-                <span className="text-danger">
-                  <FaInfoCircle /> <span>Ingrese su correo electrónico</span>
-                </span>
-              )}
+              {
+                errors.email &&
+                <span className="text-danger">{errors.email.message}</span>
+              }
             </fieldset>
             <fieldset>
               <input
+                id="phone"
                 type="tel"
                 placeholder="Teléfono *"
-                id="phone"
-                {...register('phone', { required: true })}
+                maxLength={10}
+                className={classnames({
+                  'is-valid': touchedFields.phone && !errors.phone,
+                  'is-invalid': errors.phone,
+                })}
+                {...register('phone', {
+                  required: 'Ingrese su número de teléfono',
+                  minLength: {
+                    value: 10,
+                    message: 'Teléfono inválido'
+                  }
+                })}
               />
-              {errors.phone && (
-                <span className="text-danger">
-                  <FaInfoCircle /> <span>Ingrese su número de teléfono</span>
-                </span>
-              )}
+              {
+                errors.phone &&
+                <span className="text-danger">{errors.phone.message}</span>
+              }
             </fieldset>
             </div>
             <fieldset>
@@ -289,76 +313,90 @@ const Checkout = () => {
             </fieldset>
             <fieldset>
               <input
+                id="direccionFiscal"
                 type="text"
                 placeholder="Dirección *"
-                id="direccionFiscal"
-                name="direccionFiscal"
-                {...register('direccionFiscal', { required: true })}
+                className={classnames({
+                  'is-valid': touchedFields.direccionFiscal && !errors.direccionFiscal,
+                  'is-invalid': errors.direccionFiscal,
+                })}
+                {...register('direccionFiscal', {
+                  required: 'Ingrese su direccion fiscal'
+                })}
               />
-              {errors.direccionFiscal && (
-                <span className="text-danger">
-                  <FaInfoCircle /> <span>Ingrese su direccion fiscal</span>
-                </span>
-              )}
+              {
+                errors.direccionFiscal &&
+                <span className="text-danger">{errors.direccionFiscal.message}</span>
+              }
             </fieldset>
             <div className="fieldsets">
               <fieldset>
                 <input
+                  id="numExt"
                   type="text"
                   placeholder="Número exterior *"
-                  id="numExt"
-                  name="numExt"
-                  {...register('numExt', { required: true })}
+                  className={classnames({
+                    'is-valid': touchedFields.numExt && !errors.numExt,
+                    'is-invalid': errors.numExt,
+                  })}
+                  {...register('numExt', { required: 'Ingrese el número exterior' })}
                 />
-                {errors.numExt && (
-                  <span className="text-danger">
-                    <FaInfoCircle /> <span>Ingrese el número exterior</span>
-                  </span>
-                )}
+                {
+                  errors.numExt && <span className="text-danger">{errors.numExt.message}</span>
+                }
               </fieldset>
               <fieldset>
                 <input
+                  id="numInt"
                   type="text"
                   placeholder="Número interior"
-                  id="numInt"
                   {...register('numInt')}
                 />
               </fieldset>
             </div>
             <fieldset>
               <input
+                id="location"
                 type="text"
                 placeholder="Localidad / Ciudad *"
-                id="location"
+                className={classnames({
+                  'is-valid': touchedFields.numExt && !errors.numExt,
+                  'is-invalid': errors.numExt,
+                })}
                 {...register('location', { required: true })}
               />
-              {errors.location && (
-                <span className="text-danger">
-                  <FaInfoCircle /> <span>Ingrese su localidad</span>
-                </span>
-              )}
+              {
+                errors.location && <span className="text-danger">Ingrese su localidad</span>
+              }
             </fieldset>
             <div className="fieldsets">
               <fieldset>
                 <input
+                  id="estadoProvincia"
                   type="text"
                   placeholder="Estado / Provincia *"
-                  id="estadoProvincia"
+                  className={classnames({
+                    'is-valid': touchedFields.estadoProvincia && !errors.estadoProvincia,
+                    'is-invalid': errors.estadoProvincia,
+                  })}
                   {...register('estadoProvincia', { required: true })}
                 />
-                {errors.estadoProvincia && (
-                  <span className="text-danger">
-                    <FaInfoCircle /> <span>Ingresa tu estado o provincia</span>
-                  </span>
-                )}
+                {
+                  errors.estadoProvincia &&
+                  <span className="text-danger">Ingresa tu estado o provincia</span>
+                }
               </fieldset>
               <fieldset>
                 <input
-                  type="number"
-                  placeholder="Código postal *"
                   id="postalCode"
-                  minLength="0"
-                  maxLength="5"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="\d*"
+                  placeholder="Código postal *"
+                  className={classnames({
+                    'is-valid': touchedFields.estadoProvincia && !errors.estadoProvincia,
+                    'is-invalid': errors.estadoProvincia,
+                  })}
                   {...register('postalCode', {
                     required: 'Ingrese su código postal',
                     pattern: {
@@ -367,10 +405,10 @@ const Checkout = () => {
                     },
                   })}
                 />
-                {errors.postalCode && (
-                  <span className="text-danger">
-                    <FaInfoCircle /> <span>{errors.postalcode}</span>
-                  </span>
+
+                {
+                  errors.postalCode && (
+                  <span className="text-danger">{errors.postalCode.message}</span>
                 )}
               </fieldset>
             </div>
@@ -379,7 +417,7 @@ const Checkout = () => {
                 <FaInfoCircle /> <span>{errors.root}</span>
               </span>
             )}
-            <Button text="REALIZAR COMPRA" type="submit" size="lg" disabled={!stripe} />
+            <Button text="REALIZAR COMPRA" type="submit" size="lg" disabled={!stripe} isCentered/>
           </form>
         </div>
         {/* Invoicing data */}
@@ -389,140 +427,126 @@ const Checkout = () => {
             !isOpen
             ? <span onClick={() => togglePersonales()} >Ver más</span>
             : <form className={styles.form} onSubmit={handleSubmit1(onSubmitFactura)}>
-                <fieldset>
-                  <label htmlFor="company" className={styles.formLabel}>
-                    Nombre de Empresa o Persona Física<small>*</small>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Empresa"
-                    id="company"
-                    className={styles.inputText}
-                    {...register1('company', { required: true })}
-                  />
-                  {errorsbilling.company && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su nombre o la empresa</span>
-                    </span>
-                  )}
-                </fieldset>
+              <fieldset>
+                <input
+                  id="company"
+                  type="text"
+                  placeholder="Nombre de Empresa o Persona Física *"
+                  className={classnames({
+                    'is-valid': touchedBillingFields.company && !errorsbilling.company,
+                    'is-invalid': errorsbilling.company,
+                  })}
+                  {...register1('company', { required: true })}
+                />
+                {
+                  errorsbilling.company && <span className="text-danger">Ingrese su nombre o la empresa</span>
+                }
+              </fieldset>
               <div className="fielsdests">
                 <fieldset>
-                  <label htmlFor="businessname" className={styles.formLabel}>
-                    Razón Social<small>*</small>
-                  </label>
                   <input
+                    id="businessname"
                     type="text"
                     placeholder="Razón Social"
-                    id="businessname"
-                    className={styles.inputText}
+                    className={classnames({
+                      'is-valid': touchedBillingFields.businessname && !errorsbilling.businessname,
+                      'is-invalid': errorsbilling.businessname,
+                    })}
                     {...register1('businessname', { required: true })}
                   />
-                  {errorsbilling.businessname && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su Razón Social</span>
-                    </span>
-                  )}
+                  {
+                    errorsbilling.businessname && <span className="text-danger">Ingrese su Razón Social</span>
+                  }
                 </fieldset>
                 <fieldset>
-                  <label htmlFor="rfc" className={styles.formLabel}>
-                    RFC<small>*</small>
-                  </label>
                   <input
-                    type="text"
-                    placeholder="RFC"
                     id="rfc"
-                    className={styles.inputText}
+                    type="text"
+                    placeholder="RFC *"
+                    className={classnames({
+                      'is-valid': touchedBillingFields.rfc && !errorsbilling.rfc,
+                      'is-invalid': errorsbilling.rfc,
+                    })}
                     {...register1('rfc', { required: true })}
                   />
-                  {errorsbilling.rfc && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su RFC</span>
-                    </span>
-                  )}
+                  {
+                    errorsbilling.rfc &&
+                    <span className="text-danger">Ingrese su RFC</span>
+                  }
                 </fieldset>
               </div>
-
-
-                <fieldset>
-                  <label htmlFor="address" className={styles.formLabel}>
-                    Dirección Fiscal<small>*</small>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Dirección Fiscal"
-                    id="address"
-                    name="address"
-                    className={styles.inputText}
-                    {...register1('address', { required: true })}
-                  />
-                  {errorsbilling.address && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su dirección fiscal</span>
-                    </span>
-                  )}
-                </fieldset>
+              <fieldset>
+                <input
+                  id="address"
+                  type="text"
+                  placeholder="Dirección Fiscal"
+                  className={classnames({
+                    'is-valid': touchedBillingFields.address && !errorsbilling.address,
+                    'is-invalid': errorsbilling.address,
+                  })}
+                  {...register1('address', { required: true })}
+                />
+                {
+                  errorsbilling.address && <span className="text-danger">Ingrese su dirección fiscal</span>
+                }
+              </fieldset>
               <div className="fieldsets">
                 <fieldset>
-                    <label htmlFor="numExt" className={styles.formLabel}>
-                      Número exterior<small>*</small>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder=""
-                      id="numExt"
-                      className={styles.inputText}
-                      {...register1('numExt', { required: true })}
-                    />
-                    {errorsbilling.numExt && (
-                      <span className={styles.spanError}>
-                        <FaInfoCircle /> <span>Ingrese su número exterior</span>
-                      </span>
-                    )}
-                  </fieldset>
-          <fieldset>
-                    <label htmlFor="numInt" className={styles.formLabel}>
-                      Número interior<small></small>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder=""
-                      id="numInt"
-                      className={styles.inputText}
-                      {...register1('numInt', { required: false })}
-                    />
+                  <input
+                    id="numExt"
+                    type="text"
+                    placeholder="Número exterior *"
+                    className={classnames({
+                      'is-valid': touchedBillingFields.numExt && !errorsbilling.numExt,
+                      'is-invalid': errorsbilling.numExt,
+                    })}
+                    {...register1('numExt', { required: true })}
+                  />
+                  {
+                    errorsbilling.numExt && <span className="text-danger">Ingrese su número</span>
+                  }
+                </fieldset>
+                <fieldset>
+                  <input
+                    id="numInt"
+                    type="text"
+                    placeholder="Número interior"
+                    className={classnames({
+                      'is-valid': touchedBillingFields.numInt && !errorsbilling.numInt,
+                      'is-invalid': errorsbilling.numInt,
+                    })}
+                    {...register1('numInt')}
+                  />
                 </fieldset>
               </div>
               <div className="fieldsets">    
                 <fieldset>
-                  <label htmlFor="location" className={styles.formLabel}>
-                    Localidad / Ciudad<small>*</small>
-                  </label>
                   <input
-                    type="text"
-                    placeholder=""
                     id="location"
-                    className={styles.inputText}
+                    type="text"
+                    placeholder="Localidad / Ciudad"
+                    className={classnames({
+                      'is-valid': touchedBillingFields.location && !errorsbilling.location,
+                      'is-invalid': errorsbilling.location,
+                    })}
                     {...register1('location', { required: true })}
                   />
-                  {errorsbilling.location && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>Ingrese su localidad</span>
-                    </span>
-                  )}
+                  {
+                    errorsbilling.location && <span className="text-danger">Ingrese su localidad</span>
+                  }
                 </fieldset>
                 <fieldset>
-                  <label htmlFor="postalCode" className={styles.formLabel}>
-                    Código postal<small>*</small>
-                  </label>
                   <input
-                    type="text"
-                    placeholder=""
                     id="postalCode"
-                    minLength="0"
-                    maxLength="5"
-                    className={styles.inputText}
-                    {...register1('postalCode', {
+                    type="text"
+                    inputMode="numeric"
+                    pattern="\d*"
+                    placeholder="Código postal *"
+                    className={classnames({
+                      'is-valid': touchedBillingFields.postalCode && !errorsbilling.postalCode,
+                      'is-invalid': errorsbilling.postalCode,
+                    })}
+                    {...register('postalCode', {
                       required: 'Ingrese su código postal',
                       pattern: {
                         value: /^[0-9]{5}$/,
@@ -530,62 +554,57 @@ const Checkout = () => {
                       },
                     })}
                   />
-                  {errorsbilling.postalCode && (
-                    <span className={styles.spanError}>
-                      <FaInfoCircle /> <span>{errorsbilling.postalCode.message}</span>
-                    </span>
-                  )}
-              </fieldset>
+                  {
+                    errorsbilling.postalCode && <span className="text-danger">{errorsbilling.postalCode.message}</span>
+                  }
+                </fieldset>
               </div>
               <div className="fieldsets">
                 <fieldset>
-                    <label htmlFor="phone" className={styles.formLabel}>
-                      Teléfono<small>*</small>
-                    </label>
-                    <input
-                      type="number"
-                      placeholder=""
-                      id="phone"
-                      minLength="0"
-                      maxLength="10"
-                      className={styles.inputText}
-                      {...register1('phone', {
-                        required: 'Ingrese su número de teléfono',
-                        pattern: {
-                          value: /^[0-9]{10}$/,
-                          message: 'El número de teléfono debe tener 10 dígitos y solo números',
-                        },
-                      })}
-                    />
-                    {errorsbilling.phone && (
-                      <span className={styles.spanError}>
-                        <FaInfoCircle /> <span>{errors.phone.message}</span>
-                      </span>
-                    )}
-                  </fieldset>
-                  <fieldset>
-                    <label htmlFor="email" className={styles.formLabel}>
-                      Correo electrónico<small>*</small>
-                    </label>
-                    <input
-                      type="email"
-                      placeholder=""
-                      id="email"
-                      className={styles.inputText}
-                      {...register1('email', {
-                        required: true,
-                        pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
-                      })}
-                    />
-                    {errorsbilling.email && (
-                      <span className={styles.spanError}>
-                        <FaInfoCircle /> <span>Ingrese su email</span>
-                      </span>
-                    )}
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Correo electrónico *"
+                    className={classnames({
+                      'is-valid': touchedBillingFields.email && !errorsbilling.email,
+                      'is-invalid': errorsbilling.email,
+                    })}
+                    {...register('email', {
+                      required: 'Ingrese su correo electrónico',
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: 'Correo inválido',
+                      },
+                    })}
+                  />
+                  {
+                    errorsbilling.email && <span className="text-danger">Ingrese su email</span>
+                  }
                 </fieldset>
-                </div>
-
-              <Button text="GUARDAR"></Button>
+                <fieldset>
+                  <input
+                    id="phone"
+                    type="tel"
+                    placeholder="Teléfono *"
+                    maxLength={10}
+                    className={classnames({
+                      'is-valid': touchedBillingFields.phone && !errorsbilling.phone,
+                      'is-invalid': errorsbilling.phone,
+                    })}
+                    {...register('phone', {
+                      required: 'Ingrese su número de teléfono',
+                      minLength: {
+                        value: 10,
+                        message: 'Teléfono inválido'
+                      }
+                    })}
+                  />
+                  {
+                    errorsbilling.phone && <span className="text-danger">{errors.phone.message}</span>
+                  }
+                </fieldset>
+              </div>
+              <Button text="GUARDAR" isCentered></Button>
             </form>
           }
         </div>

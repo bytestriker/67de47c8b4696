@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
-
 import useAuth from '@Auth/userAuth';
 
 // Store
@@ -9,21 +8,15 @@ import { lunaStore } from '@Store/luna';
 
 // COMPONENTS
 import { ScrollToTop } from '../UtilsComponents/ScrollTop';
-
 import { SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
 
 // Styles
 import general from '@Sass/pages/general.module.scss';
 import lunaStyle from '@Sass/pages/luna.module.scss';
-
-
 import video from '@Assets/images/video.svg';
 import boton_copiar from '@Assets/images/icons/boton_copiar.svg'
 import successIcon from '@Assets/images/icons/success-icon.svg'
-
-
-
 
 // Nombra tu proyecto
 export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
@@ -145,9 +138,8 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
           <Button
             className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
             text="REGRESAR"
-            shape="alt"
             onClick={() => setPageLuna(1)}
-            isAlt
+            shape="alt"
           />
           <Button
             className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
@@ -301,18 +293,10 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
       <div className="buttons">
         <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPageLuna(3)} />
         {contextValue.isLogged() ? (
-          <Button
-            text="SIGUIENTE"
-            isAlt={false}
-            isSubmit={false}
-            onClick={() => handleNextPage(6)}
+          <Button text="SIGUIENTE" isSubmit={false} onClick={() => handleNextPage(6)}
           />
         ) : (
-          <Button
-            text="SIGUIENTE"
-            isAlt={false}
-            isSubmit={false}
-            onClick={() => handleNextPage(5)}
+          <Button text="SIGUIENTE" isSubmit={false} onClick={() => handleNextPage(5)}
           />
         )}
         </div>

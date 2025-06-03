@@ -18,6 +18,7 @@
   color: inherit;
   font-size: inherit;
   text-align: center;
+  outline: none;
   @include md {
     height: 42px;
     &.lg {
