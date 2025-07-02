@@ -64,7 +64,11 @@ export const Tierra = ({ tierraInfo }) => {
         </div>
 
         <img src={tierra} alt="planet" className="planetImage" />
-
+        <ul className="bulletList">
+          <li>Colonizar</li>
+          <li>Transporte</li>
+          <li>Base</li>
+        </ul>
         <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>

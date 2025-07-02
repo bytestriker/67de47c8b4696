@@ -140,6 +140,7 @@ const Luna = () => {
   return (
     <section className="planetWrap">
       <img src={satelite} alt="Satelite" className="satelite" />
+      <img src={astronauta} alt="Space Man" className="space-man" />
       <ButtonGoHome
         className="planetBackToTheHomepage"
         onClick={() => {
@@ -211,7 +212,6 @@ const Luna = () => {
         <span className="planetHelperBorder planetHelperBorderBottom"></span>
       </div> */}
       <HelperCard />
-      <img src={astronauta} alt="Space Man" className="space-man" />
     </section>
   );
 };

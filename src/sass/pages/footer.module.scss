@@ -47,18 +47,30 @@
       }
       .linksFooter {
         display: flex;
-        flex-direction: row;
-        gap: 10px;
+        flex-wrap: wrap;
         position: relative;
+        white-space: nowrap;
 
         .linkFooter {
           color: $--colorYellow;
           font-size: 0.7rem;
+          display: flex;
+          align-items: center;
           line-height: 1.9;
           font-weight: 700;
           cursor: pointer;
           text-decoration: none;
           width: auto;
+          &:not(:last-child) {
+            &:after {
+              display: block;
+              content: '';
+              width: 1px;
+              height: 10px;
+              background-color: $--colorYellow;
+              margin: 0 10px;
+            }
+          }
 
           &:hover {
             @extend %transition;

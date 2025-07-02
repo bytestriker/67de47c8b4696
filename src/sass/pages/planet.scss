@@ -96,6 +96,7 @@ main.checkout {
     top: 9px;
     width: 100%;
     order: +1;
+    z-index: 1;
     @include largeDevices {
       order: initial;
       margin: 0 auto;
@@ -158,16 +159,19 @@ main.checkout {
     }
   }
   .planetHelper {
+    box-sizing: border-box;
     position: relative;
     padding: 0 3vw;
     width: 100%;
+        background-image: url(../../assets/images/card-corners.svg);
+
     @include largeDevices {
       position: sticky;
       top: 132px;
       padding: 0;
       max-width: 320px;
     }
-    .planetHelperBorder {
+    /* .planetHelperBorder {
       align-items: center;
       display: flex;
       justify-content: center;
@@ -188,7 +192,7 @@ main.checkout {
         border-style: solid;
         border-color: rgb(152, 69, 55);
       }
-    }
+    } */
     .planetHelperBorderTop {
       &::after {
         border-width: 1px 1px 0 0;

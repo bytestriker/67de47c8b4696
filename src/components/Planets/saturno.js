@@ -65,9 +65,14 @@ export const Saturno = ({ saturnoInfo }) => {
           </div>
           )
         }
+        <ul className="bulletList bulletList-saturno">
+          <li>Colonizar</li>
+          <li>Transporte</li>
+          <li>Base</li>
+        </ul>
         <div className="tankCount">
           <img src={tank} alt="tank" />
-          <span>x3</span>
+          <span>x1</span>
         </div>
       </div>
 

@@ -152,6 +152,7 @@ main {
     @include largeDevices1024 {
       padding: 0 10vw;
       text-align: center;
+      margin-top: -16px;
     }
     h2 {
       margin: 0
@@ -165,8 +166,8 @@ main {
 .planetGrid {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  margin: 5vw auto;
+  gap: 60px;
+  margin: 60px auto;
   width: 86%;
   max-width: 1326px;
   @include md {
@@ -252,14 +253,33 @@ main {
       }
 
       .bulletList {
-        top: 10%;
-        left: 75%;
+        top: 50px;
+        left: 80%;
+        height: 60px;
         font-size: 85%;
         li {
           position: relative;
-          line-height: 1.5;
-          &:first-child { margin-left: -24%;}
-          &:last-child { margin-left: 20%;}
+          line-height: 20px;
+          &:only-child {
+            margin: 20px 0 0 0 !important;
+          }
+          &:first-child { margin-left: -6px;}
+          &:last-child { margin-left: 10px;}
+        }
+        &.bulletList-saturno {
+          top: 180px;
+          left: 90%;
+          @include largeDevices {
+            top: 100px;
+            left: 80%;
+          }
+          li {
+
+            &:nth-child(2) { margin-left: -15px;}
+            &:last-child { margin-left: -26px;}
+          }
+
+
         }
       }
       .tankCount {

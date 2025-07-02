@@ -14,11 +14,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px 32px;
+    padding: 32px;
     .logo_content {
-      width: 240px;
       img {
-        width: 100%;
+        &.logo-mobile {
+          height: 40px !important;
+        }
+        &.logo-desktop{
+          display: none;
+        }
+        @include largeDevices {
+          height: 32px;
+          &.logo-mobile {
+            display: none;
+          }
+          &.logo-desktop{
+            display: block;
+            width: 240px;
+          }
+        }
       }
       
     }

@@ -64,6 +64,11 @@ export const Urano = ({ uranoInfo }) => {
             <img src={lock} alt="lock" />
           </div>
         )}
+        <ul className="bulletList">
+          <li>Colonizar</li>
+          <li>Transporte</li>
+          <li>Base</li>
+        </ul>
         <div className="tankCount">
           <img src={tank} alt="tank" />
           <span>x3</span>

@@ -16,6 +16,7 @@ import NavTank from '../NavTank/NavTank';
 
 // images
 import _logo from '../../assets/images/RocketNow.png';
+import _Logo from "@Assets/images/rocket_footer.svg";
 import _astro from '../../assets/images/icon_astronaut.png';
 import _earth from '../../assets/images/icon_earth.png';
 import _tank from '../../assets/images/tanque.png';
@@ -68,7 +69,8 @@ const Header = () => {
     <header>
       <div className="header_content">
         <Href to="/" className="logo_content">
-          <img src={_logo} alt="logo" className="logo" />
+          <img src={_Logo} alt="logo" className="logo-mobile" />
+          <img src={_logo} alt="logo" className="logo-desktop" />
         </Href>
         <div className="list_items">
           {contextValue.isLogged() ? (

@@ -43,8 +43,6 @@ main {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow: auto;
-  min-height: 100vh;
   width: 100%;
   &.launch{
     background-image: url("../assets/images/planets/luna-radar.svg"), url("../assets/images/planets/luna-bg.png"), url("../assets/images/bg-stars.png");

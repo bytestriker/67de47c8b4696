@@ -65,10 +65,13 @@ export const Venus = ({ venusInfo }) => {
             <img src={lock} alt="lock" />
           </div>
         )}
-
+        <ul className="bulletList">
+          <li>Colonizar</li>
+          <li>Transporte</li>
+        </ul>
         <div className="tankCount">
           <img src={tank} alt="tank" />
-          <span>x3</span>
+          <span>x5</span>
         </div>
       </div>
       <div className="planetInfo">

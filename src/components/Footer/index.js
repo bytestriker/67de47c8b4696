@@ -41,13 +41,13 @@ const Footer = () => {
           </div>
           <div className={styles.linksFooter}>
             <Link to="/acerca-de-nosotros" className={styles.linkFooter}>
-              ACERCA DE NOSOTROS |
+              <span>ACERCA DE NOSOTROS</span>
             </Link>
             <Link to="/privacidad" className={styles.linkFooter}>
-              AVISO DE PRIVACIDAD |
+              <span>AVISO DE PRIVACIDAD</span>
             </Link>
             <Link to="/terminos" className={styles.linkFooter}>
-              TÉRMINOS Y CONDICIONES 
+              <span>TÉRMINOS Y CONDICIONES</span>
             </Link>
           </div>
           <p className={styles.copy}>ROCKET NOW {hanldeDate()}. TODOS LOS DERECHOS RESERVADOS</p>

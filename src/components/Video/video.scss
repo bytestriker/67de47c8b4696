@@ -8,9 +8,9 @@ body {
 }
 main.home {
   background-image: url("../../assets/images/bg-earth.jpg");
-  background-position: top -21vw center;
+  background-position: top;
   background-repeat: no-repeat;
-  background-size: 500vw;
+  background-size: 500%;
   @include lg {
     background-position: top center;
     background-size: 212vw;
