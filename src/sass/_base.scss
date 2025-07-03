@@ -230,6 +230,10 @@ input:not([type=file]):not([type=radio]):not([type=checkbox]), textarea, .input,
     background-position: right 20px center;
     background-repeat: no-repeat;
   }
+  &#projectName::placeholder {
+    text-align: center;
+    font-style: italic;
+  }
 }
 
 .text-danger {

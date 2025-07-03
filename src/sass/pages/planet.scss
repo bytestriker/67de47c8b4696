@@ -63,6 +63,7 @@ main.checkout {
   gap: 24px; 
   padding: 100px 0 0;
   scrollbar-color: #363636 transparent;
+  min-height: 100vh;
   @include largeDevices {
     display: grid;
     grid-template-columns: 200px 1fr 380px;
@@ -158,18 +159,58 @@ main.checkout {
       max-width: 520px;
     }
   }
-  .planetHelper {
-    box-sizing: border-box;
-    position: relative;
+  .helperWrapper {
     padding: 0 3vw;
+  }
+  .planetHelper {
+    position: relative;
     width: 100%;
-        background-image: url(../../assets/images/card-corners.svg);
-
+    box-sizing: border-box;
+    padding: 0 3vw;
+    font-size: 85%;
     @include largeDevices {
       position: sticky;
       top: 132px;
       padding: 0;
       max-width: 320px;
+    }
+    .polygon-content {
+      border: 1px solid #E6F85A;
+      inset: 0px;
+      clip-path: polygon(0% 25px, 25px 0%, 100% 0%, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0% 100%);
+      background-color: rgba(152, 69, 33, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      &:before,
+      &:after {
+        display: block;
+        content: '';
+        width: 36px;
+        height: 36px;
+        transform: rotate(45deg);
+        position: absolute;
+      }
+      &:before {
+        border-right: 1px solid white;
+        top: -27px;
+        transform-origin: top left;
+        left: -1px;
+      }
+      &:after {
+        border-left: 1px solid white;
+        bottom: -27px;
+        transform-origin: bottom right;
+        right: -1px;
+      }
+      .polygon-inner {
+        padding: 12px 16px;
+        position: relative;
+        font-weight: bold;
+        z-index: 2;
+      }
     }
     /* .planetHelperBorder {
       align-items: center;
@@ -217,11 +258,9 @@ main.checkout {
       width: 100%;
     }
     .planetHelperTitle {
-      border-bottom: 1px solid #984521;
       display: flex;
       align-items: center;
-      padding-bottom: 12px;
-      margin: 0 20px;
+      position: relative;
       &::before {
         background-position: center;
         background-repeat: no-repeat;
@@ -229,6 +268,17 @@ main.checkout {
         content: '';
         width: 36px;
         height: 36px;
+      }
+      &:after {
+        content: '';
+        background-color: #984521;
+        display: block;
+        width: auto;
+        left: 48px;
+        top: 100%;
+        right: 0;
+        height: 1px;
+        position: absolute;
       }
       h2 {
         font-size: 17px;
@@ -248,12 +298,20 @@ main.checkout {
     }
     
     .planetHelperContent {
-      padding: 1px 20px;
+      display: flex;
+      align-items: end;
+      @include largeDevices {
+        flex-direction: column;
+      }
+      p:last-child() {
+        margin-bottom: 0;
+      }
       a {
         display: flex;
         align-items: center;
         gap: 9px;
         position: relative;
+        margin-right: 12px;
         &::after {
           background: url(data:image/svg+xml,%3Csvg%20width%3D%225%22%20height%3D%2212%22%20viewBox%3D%220%200%205%2012%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M9.61651e-07%200.5L0%2011.5L1.5625%2011.5L5%206L1.5625%200.5L9.61651e-07%200.5Z%22%20fill%3D%22%23E6F85A%22%2F%3E%3C%2Fsvg%3E);
           display: block;

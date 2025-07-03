@@ -180,6 +180,7 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
     <form method="POST" className="formContent" onSubmit={handleSubmit(onSubmit)}>
       <h2>Restablece tu contraseña</h2>
       <fieldset>
+        <label htmlFor="password">Nueva contraseña</label>
         <input
           type="text"
           name="password"
@@ -197,6 +198,7 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
         {errors.password && <ErrorAlert message={errors.password.message} />}
       </fieldset>
       <fieldset>
+        <label htmlFor="repassword">Repite la contraseña</label>
         <input
           type="password"
           name="repassword"

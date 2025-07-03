@@ -74,7 +74,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
           type="text"
           name="projectName"
           id="projectName"
-          placeholder="NOMBRE"
+          placeholder="Nombre"
           value={getLuna().nombre}
           onChange={(e) => handleNameProject(e)}
         />
