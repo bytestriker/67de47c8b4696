@@ -118,8 +118,8 @@ const Nav = ({ setNavState, navState }) => {
               <ul className="content">
               {data && data.length > 0
                 ? data.map((item) => (
-                    <li key={item.id} className={`content_li`}>
-                      <strong className="" onClick={() => handleURL(item)} id={item.id} ref={reference}>
+                    <li key={item.id} className="content_li">
+                      <strong onClick={() => handleURL(item)} id={item.id} ref={reference}>
                         {item.nombre}
                       </strong>
                     </li>

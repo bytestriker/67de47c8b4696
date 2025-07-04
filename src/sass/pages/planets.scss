@@ -282,6 +282,10 @@ main {
         width: 90px;
         height: 50px;
         bottom: 0;
+        @include lg {
+          left: 62%;
+          bottom: -6px;
+        }
         img {
           position: absolute;
           width: inherit;

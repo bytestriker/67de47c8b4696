@@ -199,6 +199,11 @@
       height: auto;
       display: flex;
       justify-content: center;
+      &:last-child {
+        @include md {
+          margin-right: 0 !important;
+        }
+      }
     }
 
     .swiper-scrollbar {
