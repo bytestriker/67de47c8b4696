@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { shallow } from 'zustand/shallow';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Scrollbar } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/scrollbar';
 
 // store
 import { storeBuyTank } from '@Store/global';
 
 // Components
-// import { LinkRouter, GoBack } from '@Components/UtilsComponents/Button';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { Title } from '@Components/Atomos/Titles';
 import NavPack from '@Components/Packs/navPacks';
@@ -66,14 +71,10 @@ const Packs = () => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Aquí puedes agregar la lógica para manejar el código introducido
     try {
       const response = await instanceWithRocket.post(`/codigoPromocion`, {codigo});
       const { message, status } = response.data;
       if(status === 200){
-     
-
-       // history.push({ pathname: '/graciasCode', from: location });
        window.location.href= '/graciasCode';
       }else{
         setCodeMessage(message);
@@ -84,8 +85,6 @@ const Packs = () => {
       return { messageError: response.data.error, status: response.status, code: -1 };
     }
   };
-
-  console.log(Items);
 
   return (
     <section className="planetWrap">
@@ -108,12 +107,20 @@ const Packs = () => {
       <div className="packContent">
         <h2>NUESTROS PAQUETES</h2>
         <p>Completa tu plan de negocios de la mano de <b>ROCKET NOW</b>.<br></br> La mejor guía y red de apoyo para emprendedores como tú.</p>
-        <div className="packsGrid">
-        {
-          Items.map((pack) =>
-          <TankPack key={pack.id} data={pack} handleClick={() => handlePack(pack)} isSelected={selectedPack === pack.pack_id} />)
-        }
-        </div>
+        <Swiper
+          modules={[Scrollbar]}
+          scrollbar={{ draggable: true }}
+          spaceBetween={30}
+          slidesPerView="auto"
+          freeMode={true}
+          className="packs-swiper"
+        >
+          {Items.map((pack) => (
+            <SwiperSlide key={pack.id} className="pack-slide">
+              <TankPack data={pack} handleClick={() => handlePack(pack)} isSelected={selectedPack === pack.pack_id} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
         <form onSubmit={handleSubmit}>
           <p>Ingresa tu código de descuento <strong>aquí</strong>:</p>
           <fieldset>
@@ -123,12 +130,11 @@ const Packs = () => {
               onChange={handleCodigoChange}
               placeholder="Código"
             /> 
-            {
-              codeMessage &&
+            {codeMessage && (
               <div className="articlePack articlePack-error">
                 <p>{codeMessage}</p>
               </div>
-            }
+            )}
           </fieldset>
           <Button text="CANJEA TUS TANQUES" size="lg" type="submit" />
         </form>

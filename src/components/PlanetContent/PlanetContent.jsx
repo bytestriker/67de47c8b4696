@@ -1,7 +1,5 @@
 // COMPONENTS
-import {
-  Luna, 
-} from '@Components/Planets';
+import { Luna } from '@Components/Planets';
 import PlanetsItem from '@Components/Planets/PlanetsItems';
 
 // Hook

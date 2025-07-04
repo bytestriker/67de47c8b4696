@@ -332,6 +332,9 @@ main.checkout {
   justify-content: center;
   margin: 0;
   padding: 24px 32px;
+  p {
+    color: white;
+  }
   @include largeDevices {
     padding: 24px 72px;
   }
@@ -370,6 +373,7 @@ main.checkout {
     align-items: stretch;
     gap: 24px;
     @include largeDevices {
+      justify-content: flex-start;
       align-items: center;
       flex-direction: row;
     }
@@ -508,7 +512,7 @@ main.checkout {
         transform: translateX(calc(-50% + 12px));
       }
     }
-    &.activeItem {
+    &.MenuItem {
       cursor: default;
       &::before {
         opacity: 1;
@@ -542,7 +546,7 @@ main.checkout {
 
 .buyerAgeLocationAndProfession {
   display: grid;
-  grid-template-columns: 0.8fr 1fr 1fr;
+  grid-template-columns: 90px 1fr 1fr;
   gap: 20px;
   justify-content: center;
   fieldset {
@@ -629,7 +633,7 @@ main.checkout {
     }
   }
   input {
-    margin: 0 !important;
+    margin: 0;
   }
   button {
     align-self: center;
@@ -735,16 +739,7 @@ main.checkout {
   + div {
     margin-top: 20px;
   }
-  &:before {
-    background: #E6F85A;
-    filter: blur(5px);
-    display: block;
-    position: absolute;
-    content: '';
-    width: 148px;
-    height: 148px;
-    border-radius: 100%;
-  }
+  
   figure {
     background-color: #000000;
     background-image: url('../../assets/images/default-profile-picture.svg');
@@ -755,7 +750,18 @@ main.checkout {
     padding: 0;
     width: 148px;
     height: 148px;
-    border-radius: 100%;        
+    border-radius: 100%;
+    &:before {
+      background: #E6F85A;
+      filter: blur(5px);
+      display: block;
+      position: absolute;
+      content: '';
+      width: 148px;
+      height: 148px;
+      border-radius: 100%;
+      z-index: -1;
+    }
     img {
       border-radius: 100%;
       width: 100%;

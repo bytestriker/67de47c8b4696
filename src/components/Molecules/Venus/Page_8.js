@@ -139,7 +139,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
             type="number"
             placeholder="Edad"
             required
-            className={style.inputCard1}
+            className="input-center"
             value={buyer.edad}
             onChange={(e) => setBuyer({ ...buyer, edad: e.target.value })}
           />

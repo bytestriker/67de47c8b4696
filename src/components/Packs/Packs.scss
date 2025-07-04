@@ -162,6 +162,7 @@
 
 .packContent {
   text-align: center;
+  width: 100%;
   form {
     display: flex;
     align-items: center;
@@ -173,14 +174,82 @@
     }
   }
 
-  .packsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 210px);
-    gap: 20px;
+  .packs-swiper {
+    box-sizing: border-box;
     margin: 32px auto;
-    width: 670px;
-  }
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
 
+    .swiper-wrapper {
+      margin-bottom: 40px;
+    }
+
+    &:not(.swiper-initialized) {
+      .swiper-wrapper {
+        justify-content: center;
+        gap: 30px;
+      }
+    }
+
+    .pack-slide {
+      width: auto !important;
+      height: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .swiper-scrollbar {
+      height: 8px;
+      bottom: 0px !important;
+      left: 24px !important;
+      width: calc(100vw - 48px) !important;
+
+      &:before {
+        background: rgba(243, 255, 150, 1);
+        content: '';
+        height: 2px;
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 100%;
+      }
+
+      &-drag {
+        background: transparent !important;
+        cursor: grab;
+        border-radius: 0 !important;
+        transform: skewX(-10deg);
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background: rgba(230, 248, 90, 1);
+          transform: skewX(-45deg);
+          pointer-events: none;
+        }
+
+        &:active {
+          cursor: grabbing;
+          background: rgba(230, 248, 90, 1);
+        }
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .swiper-wrapper {
+        justify-content: center;
+      }
+    }
+  }
 }
 
 .articlePack-error {

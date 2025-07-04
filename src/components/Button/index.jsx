@@ -10,68 +10,60 @@ const Button = ({
   isAstronaut = false,
   disabled = false,
   size = "md", // "sm" | "md" | "lg"
-  shape = "default", // "default" | "alt" | "middle"
+  shape = "default", // "default" | "alt"
 }) => {
   
   const buttonShapes = {
-    sm: {
-      default: (
-        <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M159 13L147 1H1L21.5 43H147H171L181 23L175 13H159Z" />
+    middle: (
+      <svg width="100%" height="40" viewBox="0 0 100 40" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0H100V1H0V0ZM0 39H100V40H0V39Z" fill="#E0FF4E"/>
+      </svg>
+    ),
+    default: {
+      left: (
+        <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32.0001 0.999884L23.1173 0.999882L1.71105 38.9999L32.0001 38.9999L32.0001 39.9999L0.000115076 39.9999L22.5323 -0.000118131L32.0001 -0.000116475L32.0001 0.999884Z" fill="#E0FF4E"/>
         </svg>
       ),
-      alt: (
-        <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23 13L35 1H160.5L181 43H35H11L1 23L7 13H23Z" />
-        </svg>
-
-      ),
-      middle: (
-        <svg width="182" height="44" viewBox="0 0 182 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21.5 43L1 1H160.5L181 43H21.5Z" />
+      right: (
+        <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 19.1307L27.8271 10.4344L11.1367 10.4344L1.12304 -0.000122267L-6.99382e-06 -0.00012207L-6.81898e-06 0.999878L0.696282 0.999878L10.416 11.1268L10.7109 11.4344L27.1982 11.4344L30.8906 19.1298L21.3564 38.9999L-1.74845e-07 38.9999L0 39.9999L21.9854 39.9999L32 19.1307Z" fill="#E0FF4E"/>
         </svg>
       )
     },
-    md: {
-      default: (
-        <svg width="202" height="44" viewBox="0 0 202 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M179 13L167 1H1L21.5 43H167H191L201 23L195 13H179Z" stroke="#8C4524"/>
+    alt: {
+      left: (
+        <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.000123895 20.869L4.17298 29.5653L20.8634 29.5653L30.8771 39.9999L32.0001 39.9999L32.0001 38.9999L31.3038 38.9999L21.5841 28.8729L21.2892 28.5653L4.80188 28.5653L1.1095 20.87L10.6437 0.99988L32.0001 0.999878L32.0001 -0.00012207L10.0148 -0.000120148L0.000123895 20.869Z" fill="#E0FF4E"/>
         </svg>
       ),
-      alt: (
-        <svg width="202" height="44" viewBox="0 0 202 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23 13L35 1H180.5L201 43H35H11L1 23L7 13H23Z"/>
+      right: (
+        <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.74228e-08 38.9999L8.88281 38.9999L30.2891 0.999878L3.40949e-06 0.999875L3.49691e-06 -0.000124868L32 -0.00012207L9.46777 39.9999L0 39.9999L8.74228e-08 38.9999Z" fill="#E0FF4E"/>
         </svg>
-
-      ),
-    },
-    lg: {
-      default: (
-        <svg width="302" height="44" viewBox="0 0 302 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M279 13L267 1H1L21.5 43H267H291L301 23L295 13H279Z" />
-        </svg>
-
-
-      ),
-      alt: (
-        <svg width="302" height="44" viewBox="0 0 302 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23 13L35 1H280.5L301 43H35H11L1 23L7 13H23Z" />
-        </svg>
-
-      ),
-    },
+      )
+    }
   };
 
-  const shapeSvg = buttonShapes[size]?.[shape];
+  const selectedShape = buttonShapes[shape] || buttonShapes.default;
 
   return (
     <div className={isCentered ? "centerButton" : null}>
-      <button className={className ? className : `buttonPrimary ${size}`} type={type} onClick={onClick} disabled={disabled}>
-        {shapeSvg}
-        {shapeSvg}
-        {text !== 'Click me' && <span>{text}</span>}
+      <button 
+        className={`buttonPrimary ${shape} ${className}`}
+        type={type} 
+        onClick={onClick} 
+        disabled={disabled}
+      >
+        <div className="buttonPrimaryBg">
+          {selectedShape.left}
+          {buttonShapes.middle}
+          {selectedShape.right}
+        </div>
+        {text !== 'Click me' && <span className="button-text">{text}</span>}
         {isAstronaut && (
           <svg
+            className="astronaut-icon"
             xmlns="http://www.w3.org/2000/svg"
             width="36"
             height="41.142857142857146"

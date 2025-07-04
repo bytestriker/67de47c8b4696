@@ -19,6 +19,9 @@ import { useEventsTanks } from '@Hooks/useFetchTanques';
 import styles from '@Sass/components/alerts.module.scss';
 import general from '@Sass/pages/general.module.scss';
 
+//Images
+import tankImage from '@Assets/images/imageTank.png';
+
 export const ErrorAlert = (props) => {
   return (
     <div className={styles.Alerts}>
@@ -124,12 +127,19 @@ export const ModalBlockPlanet = () => {
   return (
     <div className={styles.Modal}>
       <div className="container">
-        <div className={styles.ModalContent}>
-          <h2 dangerouslySetInnerHTML={{ __html: storeTankModal.title }}></h2>
-          <p dangerouslySetInnerHTML={{ __html: storeTankModal.message }}></p>
-          <div className={general.flexButtons}>
-            <Button  onClick={() => setModal(false)} text="NO" shape="alt"/>
-            <Button  onClick={() => handleRoute()} text="SÍ"/>
+        <div className={styles.ModalBlockPlanetContent}>
+          <div className={styles.ModalBlockPlanetContentInner}>
+            <figure>
+              <img src={tankImage } alt="" />
+            </figure>
+            <div>
+              <h2>¡Advertencia!</h2>
+              <p dangerouslySetInnerHTML={{ __html: `${storeTankModal.title} ${storeTankModal.message}` }}></p>
+              <div className={`${general.flexButtons} ${general.alt}`}>
+                <Button onClick={() => setModal(false)} text="NO" shape="alt"/>
+                <Button onClick={() => handleRoute()} text="SÍ"/>
+              </div>
+            </div>
           </div>
         </div>
       </div>

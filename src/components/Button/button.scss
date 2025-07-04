@@ -12,109 +12,134 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 45vw;
-  height: 10vw;
+  height: 40px;
   position: relative;
   color: inherit;
   font-size: inherit;
   text-align: center;
   outline: none;
-  @include md {
-    height: 42px;
-    &.lg {
-      width: 322px;
-    }
-    &.md {
-      width: 242px;
-    }
-    &.md {
-      width: 202px;
-    }
-  }
-  svg {
+  padding: 0 32px;
+
+  .buttonPrimaryBg {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    &:first-of-type {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+
+    &:before {
+      background-color: #FB6C2B;
       opacity: 0;
-      transition: opacity 0.15s ease-in;
-      path {
-        fill: #FB6C2B;
-      }
-    }
-    &:last-of-type {
-      stroke-width: 2px;
-      path {
-        filter: drop-shadow(0 0 4px #E0FF4E);
-        stroke: #E0FF4E;
-      }
-    }
-  }
-  span {
-    display: block;
-    position: relative;
-  }
-  &.buttonPlanetCompleted {
-    svg {
-      &:first-of-type {
-
-        opacity: 0.5;
-      }
-      &:last-of-type {
-        path {
-          filter: drop-shadow(0 0 5px #FB6C2B);
-          stroke: #FB6C2B;
-        }
-      }
-    }
-    &::after {
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNCAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xLjc1IDMuNjY2NjdMMCA1LjVMNS4yNSAxMUwxNCAxLjgzMzMzTDEyLjI1IDBMNS4yNSA3LjMzMzMzTDEuNzUgMy42NjY2N1oiIGZpbGw9IiNFNkY4NUEiLz4KPC9zdmc+');
-      display: block;
       content: '';
-      width: 14px;
-      height: 12px;
-      position: relative;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: opacity 0.2s ease-in-out;
+      clip-path: polygon(
+        22px 0,
+        calc(100% - 32px) 0,
+        calc(100% - 22px) 11px,
+        calc(100% - 5px) 11px,
+        100% 19px,
+        calc(100% - 11px) 100%,
+        0 100%
+      );
     }
-  }
-  &.buttonPlanetIncomplete {
-    color: #FB6C2B;
-    svg {
-      &:first-of-type {
-        opacity: 0;
-      }
-      &:last-of-type {
-        path {
-          filter: drop-shadow(0 0 5px #FB6C2B);
-          stroke: #FB6C2B;
 
-        }
-      }
-    }
-  }
-  &:hover {
+    
+    
     svg {
-      &:first-of-type {
-        opacity: 0.5;
+      height: 100%;
+      position: relative;
+      
+      &:first-child,
+      &:last-child {
+        flex: 0 0 32px;
+        width: 32px;
+      }
+      
+      &:nth-child(2) {
+        position: absolute;
+        left: 32px;
+        right: 32px;
+        width: calc(100% - 64px);
+        height: 100%;
       }
     }
   }
+
+  &.default {
+    .buttonPrimaryBg {
+      &:before {
+        clip-path: polygon(
+          22px 0,
+          calc(100% - 32px) 0,
+          calc(100% - 22px) 11px,
+          calc(100% - 5px) 11px,
+          100% 19px,
+          calc(100% - 11px) 100%,
+          0 100%
+        );
+      }
+    }
+  }
+
+  &.alt { 
+    .buttonPrimaryBg {
+      &:before {
+        clip-path: polygon(
+          32px 100%,
+          22px calc(100% - 11px),
+          5px calc(100% - 11px),
+          0 19px,
+          11px 0,
+          100% 0,
+          calc(100% - 22px) 100%
+        );
+      }
+    }
+  }
+
+  .button-text {
+    position: relative;
+    z-index: 1;
+    margin: 0 8px;
+  }
+
+  .astronaut-icon {
+    position: relative;
+    z-index: 1;
+    margin-left: 8px;
+  }
+
+  &:hover {
+    .buttonPrimaryBg {
+      &:before {
+        opacity: 0.55;
+      }
+    }
+  }
+
+  &.buttonPlanetCompleted {
+    .buttonPrimaryBg {
+      &:before {
+        opacity: 0.55;
+      }
+    }
+  }
+
   &:disabled {
     cursor: not-allowed;
-    svg {
-      &:last-of-type {
-        opacity: 0.25;
-        filter: none;
-      }
-    }
-    span {
+    opacity: 0.5;
+    
+    .button-text {
       opacity: 0.75;
-    }
-    &:hover {
-      svg {
-        &:first-of-type {
-          opacity: 0;
-        }
-      }
     }
   }
 }

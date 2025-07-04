@@ -470,7 +470,7 @@ export const Purchase = ({ setPage, dataSaturno, texts, setTitle }) => {
       <div className="buttons">
         <Button text="ANTERIOR" shape="alt" onClick={() => setPage(3)} />
         <Button
-          text="SUPERIOR"
+          text="SIGUIENTE"
           onClick={() => setPage(5)}
           disabled={buttonNext ? '' : 'disabled'}
         />

@@ -145,7 +145,7 @@ const ShoppingCart = () => {
               </dl>
             </div>
             <button onClick={() => handleNextPage()}>
-              <span>CHECKOUT</span>
+              <span>PAGAR AHORA</span>
               <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.90798e-07 8.58275e-07L-1.90735e-06 24L4 24L12 12L4 -6.99382e-07L1.90798e-07 8.58275e-07Z" fill="#4D542F" />
               </svg>
