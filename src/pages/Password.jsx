@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 // Context
@@ -10,6 +10,7 @@ import { ErrorAlert } from '@Components/Atomos/Alerts';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import Button from '@Components/Button';
 import ButtonClose from '@Components/ButtonClose';
+import { PasswordInput } from '@Components/Atomos/Inputs';
 
 // Service
 import { ConfirmEmail, restartPasword } from '@Service/entries';
@@ -180,13 +181,12 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
     <form method="POST" className="formContent" onSubmit={handleSubmit(onSubmit)}>
       <h2>Restablece tu contraseña</h2>
       <fieldset>
-        <label htmlFor="password">Nueva contraseña</label>
-        <input
-          type="text"
+        <PasswordInput
+          label="Nueva contraseña"
           name="password"
-          id="password"
           placeholder="Nueva contraseña*"
           required={true}
+          error={errors.password?.message}
           {...register('password', {
             required: 'Ingrese nuevamente la contraseña',
             pattern: {
@@ -195,16 +195,14 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
             },
           })}
         />
-        {errors.password && <ErrorAlert message={errors.password.message} />}
       </fieldset>
       <fieldset>
-        <label htmlFor="repassword">Repite la contraseña</label>
-        <input
-          type="password"
+        <PasswordInput
+          label="Repite la contraseña"
           name="repassword"
-          id="repassword"
           placeholder="Repite la contraseña*"
           required={true}
+          error={errors.repassword?.message}
           {...register('repassword', {
             required: 'Ingrese nuevamente la contraseña',
             pattern: {
@@ -212,9 +210,8 @@ export const RestartPasswordConfirm = ({ setPage, setLoading }) => {
               message: 'La contraseña debe ser mayor a 10 caracteres',
             },
           })}
-          />
+        />
       </fieldset>
-      {errors.repassword && <ErrorAlert message={errors.repassword.message} />}
       <Button
         text="Guardar contraseña"
         isCentered={true}

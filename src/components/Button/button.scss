@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.messageInfo {
+  margin-top: 16px;
+}
+
 .buttonPrimary {
   background-color: transparent;
   border: none;
@@ -109,7 +113,6 @@
   .button-text {
     position: relative;
     z-index: 1;
-    margin: 0 8px;
   }
 
   .astronaut-icon {
@@ -131,6 +134,14 @@
       &:before {
         opacity: 0.55;
       }
+    }
+    &::after {
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNCAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xLjc1IDMuNjY2NjdMMCA1LjVMNS4yNSAxMUwxNCAxLjgzMzMzTDEyLjI1IDBMNS4yNSA3LjMzMzMzTDEuNzUgMy42NjY2N1oiIGZpbGw9IiNFNkY4NUEiLz4KPC9zdmc+');
+      display: block;
+      content: '';
+      width: 14px;
+      height: 12px;
+      position: relative;
     }
   }
 

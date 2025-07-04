@@ -11,6 +11,24 @@ main.home {
   background-position: top;
   background-repeat: no-repeat;
   background-size: 500%;
+  position: relative;
+  &:before {
+    background-image: url("../../assets/images/bg-home-el-b.png"), url("../../assets/images/bg-home-el-d.png");
+    background-position: right 30.5%, -95% 66%;
+    background-repeat: no-repeat;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    @include lg {
+      background-image: url("../../assets/images/bg-home-el-a.png"), url("../../assets/images/bg-home-el-b.png"), url("../../assets/images/bg-home-el-c.png"), url("../../assets/images/bg-home-el-d.png");
+      background-position: 0 14%, right 45%, 45% 58%, 8% 75%;
+    }
+  } 
   @include lg {
     background-position: top center;
     background-size: 212vw;

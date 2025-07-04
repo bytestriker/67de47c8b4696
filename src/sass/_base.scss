@@ -312,7 +312,8 @@ input[type="search"]::-webkit-search-cancel-button {
   background-color: #E0ff4e;
 }
 
-.closeNav {
+.closeNav,
+.buttonClose {
   border: none;
   display: flex;
   align-items: center;

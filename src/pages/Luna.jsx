@@ -211,7 +211,7 @@ const Luna = () => {
         </div>
         <span className="planetHelperBorder planetHelperBorderBottom"></span>
       </div> */}
-      <HelperCard />
+      {getPageLuna < 5 && <HelperCard />}
     </section>
   );
 };
