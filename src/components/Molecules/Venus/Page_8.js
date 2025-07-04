@@ -171,7 +171,10 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         </fieldset>
       </div>
       <fieldset>
-        <ToolTip text="Background" tool={texts.background} />
+``        <ToolTip 
+          text="Background"
+          tool={texts.background}
+        />
         <textarea
           {...register('background')}
           className={style.descripcion}

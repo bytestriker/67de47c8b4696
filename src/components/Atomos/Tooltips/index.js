@@ -8,34 +8,52 @@ import question from '@Assets/images/bi_question-circle-fill.png';
 // Styles
 import '@Sass/components/tooltips.scss';
 
-export const ToolTip = (props) => {
+import { Tooltip } from 'react-tooltip';
+
+export const ToolTip = ({ text, tool }) => {
+  const id = `tooltip-${text.toLowerCase().replace(/\s+/g, '-')}`;
+  
   return (
     <div className="tooltipWrap">
-      <h3>{props.text}</h3>
-      <div className="tooltipContainer">
-        <div>
-          <span>{props.tool}</span>
-        </div>
-      </div>
+      <h3 
+        data-tooltip-id={id}
+        data-tooltip-content={tool}
+        data-tooltip-place="right"
+        data-tooltip-float={true}
+      >
+        {text}
+      </h3>
+      <Tooltip 
+        id={id}
+        className="tooltipCustom"
+        style={{ maxWidth: '300px' }}
+        multiline={true}
+      />
     </div>
   );
 };
 
-export const ToolTipBackground = (props) => {
+export const ToolTipBackground = ({ text, toottip }) => {
+  const id = `tooltip-bg-${text.toLowerCase().replace(/\s+/g, '-')}`;
+
   return (
-    <span className={style.Tooltip}>
-      <span className={style.TooltipContent}>
-        <span className={style.background}>
-          <h4>{props.text}</h4>
-          <span className={style.toolImg}>
-            <span className={style.TooltipText}>
-              <p>{props.toottip}</p>
-              <div className={style.tab}></div>
-            </span>
-            <img src={question} alt="question" />
-          </span>
-        </span>
+    <span className="tooltipBackground">
+      <h4>{text}</h4>
+      <span 
+        className="tooltipIcon"
+        data-tooltip-id={id}
+        data-tooltip-content={toottip}
+        data-tooltip-place="bottom"
+        data-tooltip-float={true}
+      >
+        <img src={question} alt="question" />
       </span>
+      <Tooltip 
+        id={id}
+        className="tooltipCustom"
+        style={{ maxWidth: '300px' }}
+        multiline={true}
+      />
     </span>
   );
 };

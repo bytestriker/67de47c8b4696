@@ -202,7 +202,8 @@ fieldset {
     }
   }
 
-  input + input {
+  input + input,
+  input + .fieldsets {
     margin-top: 20px;
   }
 }
