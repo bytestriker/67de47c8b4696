@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { shallow } from 'zustand/shallow';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { FaInfoCircle } from 'react-icons/fa';
+import { CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { FaInfoCircle, FaCreditCard, FaCalendarAlt, FaLock } from 'react-icons/fa';
 import useAuth from '@Auth/userAuth';
 import { storeBuyTank, globalStore, storeRemainingTank, storeModalTank } from '@Store/global';
 import { BuyTanks } from '@Service/tanks.service';
@@ -204,6 +204,23 @@ const Checkout = () => {
     }
   };
 
+  const cardStyle = {
+    style: {
+      base: {
+        fontSize: '16px',
+        color: '#fff',
+        '::placeholder': {
+          color: '#aab7c4',
+        },
+        iconColor: '#fff',
+      },
+      invalid: {
+        color: '#9e2146',
+        iconColor: '#9e2146'
+      },
+    }
+  };
+
   return (
     <section className="planetWrap">
       <ButtonGoHome
@@ -275,22 +292,39 @@ const Checkout = () => {
               </fieldset>
             </div>
             
-            <fieldset>
-              <CardElement
-                options={{
-                  style: {
-                    base: {
-                      fontSize: '16px',
-                      color: '#fff',
-                      '::placeholder': { color: '#aab7c4' },
-                    },
-                    invalid: { color: '#9e2146' },
-                  },
-                }}
-              />
-            </fieldset>
-            
-            {/* Rest of the form fields with similar pattern */}
+            <div className={styles.cardFields}>
+              <fieldset className={styles.cardFieldContainer}>
+                <div className={styles.cardFieldIcon}>
+                  <FaCreditCard />
+                </div>
+                <CardNumberElement 
+                  options={cardStyle}
+                  className={styles.cardField}
+                />
+              </fieldset>
+
+              <div className={styles.cardFieldsRow}>
+                <fieldset className={styles.cardFieldContainer}>
+                  <div className={styles.cardFieldIcon}>
+                    <FaCalendarAlt />
+                  </div>
+                  <CardExpiryElement 
+                    options={cardStyle}
+                    className={styles.cardField}
+                  />
+                </fieldset>
+
+                <fieldset className={styles.cardFieldContainer}>
+                  <div className={styles.cardFieldIcon}>
+                    <FaLock />
+                  </div>
+                  <CardCvcElement 
+                    options={cardStyle}
+                    className={styles.cardField}
+                  />
+                </fieldset>
+              </div>
+            </div>
             
             {errors.root && (
               <span className="text-warning">

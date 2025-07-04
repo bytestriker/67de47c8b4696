@@ -327,6 +327,113 @@
   }
 }
 
+.cardFields {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.cardFieldsRow {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cardFieldContainer {
+    width: 100%;
+  }
+}
+
+.cardFieldContainer {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 12px 16px 12px 48px;
+  border: 1px solid #E0FF4E;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+
+  // Hover state
+  &:hover {
+    border-color: #FB6C2B;
+  }
+
+  // Focus state
+  &:focus-within {
+    border-color: #FB6C2B;
+  }
+
+  // Error state
+  &[data-error="true"] {
+    border-color: #FB2B2B;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZyBmaWxsPSJub25lIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgc3Ryb2tlPSIjRkIyQjJCIiBzdHJva2Utd2lkdGg9IjEuNSIvPjxwYXRoIHN0cm9rZT0iI0ZCMkIyQiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuNSIgZD0iTTEyIDd2NiIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTYiIHI9IjEiIGZpbGw9IiNGQjJCMkIiLz48L2c+PC9zdmc+');
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+  }
+
+  // Complete state
+  &[data-complete="true"] {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjRTZGODVBIiBkPSJNMjAuNjY0IDUuMjUzYTEgMSAwIDAgMSAuMDgzIDEuNDExbC0xMC42NjYgMTJhMSAxIDAgMCAxLTEuNDk1IDBsLTUuMzMzLTZhMSAxIDAgMCAxIDEuNDk0LTEuMzI4bDQuNTg2IDUuMTU5bDkuOTItMTEuMTZhMSAxIDAgMCAxIDEuNDExLS4wODIiLz48L3N2Zz4=');
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+  }
+}
+
+.cardFieldIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #E0FF4E;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.cardField {
+  width: 100%;
+  color: #E0FF4E;
+  font-family: 'Fahkwang';
+  font-size: 18px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Loading state
+.cardFieldContainer.loading {
+  opacity: 0.7;
+  pointer-events: none;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /*.modal {
   margin: 0 auto;
   padding: 0;
