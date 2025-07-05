@@ -93,6 +93,10 @@ h1 {
   }
 }
 
+.sm {
+  font-size: 14px;
+}
+
 h1,h2,h3,h4,h5,h6,p {
   &:empty {
     display: none;
@@ -225,7 +229,9 @@ fieldset {
   }
 }
 
-input:not([type=file]):not([type=radio]):not([type=checkbox]), textarea, .input, .select select {
+input:not([type=file]):not([type=radio]):not([type=checkbox]),
+.input,
+.select select {
   appearance: none;
   background-color: rgba(0,0,0,0.5);
   border: 1px solid #E0FF4E;
@@ -236,7 +242,7 @@ input:not([type=file]):not([type=radio]):not([type=checkbox]), textarea, .input,
   padding: 12px 16px;
   width: 100%;
   height: 50px;
-  font-family: 'Fahkwang';
+  font-family: 'Fahkwang' !important;
   font-size: 18px;
   outline: none;
   &:focus {

@@ -26,13 +26,25 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    watch,
+  } = useForm({
+    defaultValues: {
+      nombre: '',
+      email: '',
+      password: ''
+    }
+  });
   const history = useHistory();
   const location = useLocation();
 
   const [message, setMessage] = useState('');
 
+  // Watch form values for debugging
+  const watchedFields = watch();
+  console.log('Form values:', watchedFields);
+
   const onSubmit = async (data) => {
+    console.log('Submitting form with data:', data);
     setLoading(true);
     handleRegister(data).then((res) => {
       setMessage(res);
@@ -87,21 +99,23 @@ const Register = () => {
     <section className="formWrap">
       <ScrollToTop />
       <div className="formContainer">
-        <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
+        <form className="formContent" onSubmit={handleSubmit(onSubmit)} noValidate>
           <ButtonClose onClick={() => history.push({ pathname: '/', from: location })}/>
           <h2>Crear cuenta</h2>
           <fieldset>
             <label htmlFor="nombre">Nombre de usuario *</label>
             <input
               type="text"
-              name="nombre"
               id="nombre"
               placeholder="Escribe tu nombre"
-              {...register('nombre', { required: true })}
+              {...register('nombre', { 
+                required: 'Ingrese su nombre',
+                minLength: { value: 2, message: 'El nombre debe tener al menos 2 caracteres' }
+              })}
             />
             {errors.nombre && (
               <span className="spanError">
-                <FaInfoCircle /> <span>Ingrese su nombre</span>
+                <FaInfoCircle /> <span>{errors.nombre.message}</span>
               </span>
             )}
           </fieldset>
@@ -109,28 +123,27 @@ const Register = () => {
             <label htmlFor="email">Dirección de correo electrónico *</label>
             <input
               type="email"
-              name="email"
               id="email"
               placeholder="ejemplo@rocketnow.mx"
               {...register('email', {
-                required: true,
-                pattern: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+                required: 'Ingrese su correo',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,
+                  message: 'Ingrese un correo válido'
+                }
               })}
             />
-
             {errors.email && (
               <span className="spanError">
-                <FaInfoCircle /> <span>Ingrese su correo</span>
+                <FaInfoCircle /> <span>{errors.email.message}</span>
               </span>
             )}
           </fieldset>
           <fieldset>
             <PasswordInput
               label="Contraseña"
-              name="password"
+              id="password"
               placeholder="* * * * * *"
-              required={true}
-              error={errors.password?.message}
               {...register('password', {
                 required: 'Ingrese su contraseña',
                 pattern: {
@@ -145,17 +158,15 @@ const Register = () => {
               </span>
             )}
           </fieldset>
-          {message ? (
+          {message && (
             <fieldset>
-              <span>
+              <span className="message-alert">
                 <FaInfoCircle /> {message}
               </span>
             </fieldset>
-          ) : (
-            ''
           )}
           <fieldset>
-            <label>
+            <label className="sm">
               Al continuar aceptas los <a onClick={() => window.open('/terminos', '_blank')}>Términos y Condiciones</a> del Aviso de Privacidad
             </label>
             <Button

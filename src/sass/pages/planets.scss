@@ -163,6 +163,10 @@ main {
   }
 }
 
+.planets {
+  overflow: hidden;
+}
+
 .planetGrid {
   display: flex;
   flex-direction: column;

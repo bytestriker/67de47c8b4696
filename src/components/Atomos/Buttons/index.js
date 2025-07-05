@@ -97,20 +97,20 @@ export const SaberMas = ({ data }) => {
   };
 
   return (
-    <p>
+    <div>
       <a href="#" onClick={openModalVideo} class="moreInfo">
         <img src={ playIcon } alt="{data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}" />
         {data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}
         {modalVideo ? (
           <section className="modalBackdrop">
             <div className="modalVideo">
-              <IoCloseOutline
+              <a
                 aria-label="Cerrar Ventana"
+                className="buttonClose"
                 onClick={() => {
                   setModalVideo(false);
                   setVideoLoading(true);
-                }}
-              />
+                }}></a>
               <div style={{ width: '100%', aspectRatio: '16/9' }}>
                 {
                   handleVideo()
@@ -123,7 +123,7 @@ export const SaberMas = ({ data }) => {
           </section>
         ) : null}
       </a>
-    </p>
+    </div>
   );
 };
 
@@ -168,12 +168,13 @@ export const WatchSelfHostedVideo = ({ img_src, img_alt }) => {
         modalVideo && (
         <section className="modalBackdrop">
           <div className="modalVideo">
-            <IoCloseOutline
-              arial-label="Cerrar Ventana"
+            <a
+              aria-label="Cerrar Ventana"
+              className="buttonClose"
               onClick={() => {
                 setModalVideo(false);
-                setVideoLoading(true); // Reset loading state when closing
-              }} />
+                setVideoLoading(true);
+              }}></a>
             {
               handleVideo()
             }

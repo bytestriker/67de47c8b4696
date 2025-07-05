@@ -54,7 +54,7 @@ const Advisory = () => {
       <div className="planetContainer">
         <div className="planetContent">
           <div className="questionWrap">
-            <h2>ASESORÍA PERSONALIZADA</h2>
+            <h2>Asesoría Personalizada</h2>
             <p>Tenemos al experto que necesitas.</p>
             <form onSubmit={handleSubmit(onSubmit)}>
               <fieldset>
