@@ -105,13 +105,15 @@ export const KeyActivities = ({ dataMarte, getKeyActivities, setKeyActivities })
           onChange={(event) => handleInputChange(event, indice)}
         />
       ))}
-
-      <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
-      {getKeyActivities.length === 5 ? null : (
-        <span className="buttonAdd" onClick={() => handleClick()}>
-          <span>Agregar más</span>
-        </span>
-      )}
+      <div className="fieldsets">
+        <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
+        {
+          getKeyActivities.length === 5 ? null :
+          <a className="buttonAdd" onClick={() => handleClick()}>
+            <span>Agregar más</span>
+          </a>
+        }
+      </div>
     </>
   );
 };
@@ -161,7 +163,6 @@ export const RevenueStreams = ({ dataMarte, getRevenueStreams, setRevenueStreams
         />
       ))}
       <div className="fieldsets">
-
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getRevenueStreams.length === 5 ? null : (
           <a className="buttonAdd" onClick={() => handleClick()}>
@@ -449,7 +450,6 @@ export const CustomerSegments = ({ dataMarte, getCustomerSegments, setCustomerSe
         />
       ))}
       <div className="fieldsets">
-
         <p>{textDisabled ? '' : '*Escribe un mínimo de 3 opciones.'}</p>
         {getCustomerSegments.length === 5 ? null : (
           <a className="buttonAdd" onClick={() => handleClick()}>

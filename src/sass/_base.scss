@@ -87,8 +87,6 @@ a {
   color: #E0FF4E;
 }
 
-
-
 fieldset {
   display: flex;
   align-items: stretch;
@@ -203,7 +201,9 @@ fieldset {
   }
 
   input + input,
-  input + .fieldsets {
+  input + .fieldsets,
+  textarea + textarea,
+  textarea + .fieldsets {
     margin-top: 20px;
   }
 }

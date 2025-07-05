@@ -22,10 +22,12 @@ main.checkout {
   background-size: 100% 100%;;
   border: 0;
   height: 60px;
-  position: sticky;
   top: 100px;
   width: 180px;
-  @include largeDevicesExtra {
+  @include lg {
+    position: sticky;
+  }
+  @include xxl {
     width: 260px;
   }
   span {
@@ -61,7 +63,7 @@ main.checkout {
   box-sizing: border-box;
   align-items: flex-start;
   gap: 24px; 
-  padding: 100px 0 0;
+  padding: 100px 0 48px;
   scrollbar-color: #363636 transparent;
   min-height: 100vh;
   @include largeDevices {
@@ -335,16 +337,15 @@ main.checkout {
   p {
     color: white;
   }
-  @include largeDevices {
+  @include xl {
     padding: 24px 72px;
   }
   .gridIconText {
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 24px;
     img {
-      display: block;
-      width: 100%;
+      width: 90px;
+      float: left;
+      margin-right: 14px;
+      margin-bottom: 5px;
     }
   }
   .grid3Columns {
@@ -387,7 +388,7 @@ main.checkout {
     margin: 0 -32px;
     padding: 0;
     margin-bottom: 24px;
-    @include largeDevices {
+    @include xl {
       margin: 0 -72px;
       
     }
@@ -624,7 +625,9 @@ main.checkout {
   display: flex;
   p {
     margin: 0;
-    width: 50%;
+    @include xl {
+      width: 50%;
+    }
   }
   fieldset {
     flex-grow: 1;
@@ -641,10 +644,18 @@ main.checkout {
 }
 
 .fieldsets {
-  align-items: start;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+  @include xl {
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0;
+  }
+
   p {
     margin: 0 !important;
+    font-size: 14px;
   }
   &.payment-methods {
     justify-content: flex-start;
@@ -894,7 +905,7 @@ main.checkout {
 
 .infoMarte {
   display: grid;
-  grid-template-columns: 1fr 120px 1fr;
+  grid-template-columns: minmax(100px, 200px) 120px minmax(100px, 200px);
   align-items: center;
   width: 100%;
   div {
@@ -903,14 +914,24 @@ main.checkout {
     background-position: left;
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 120px;
+    font-size: 14px;
+    @include xl {
+      font-size: 16px;
+    }
+    &:first-child {
+      justify-content: flex-end;
+      padding-right: 8px;
+      text-align: right;
+    }
     &:nth-child(2) {
       background-position: center;
+      justify-content: center;
       font-size: 90%;
     }
-    &:nth-child(3) {
+    &:last-child {
       background-position: right;
+      padding-left: 8px;
     }
     span {
       color: #FB6C2B;

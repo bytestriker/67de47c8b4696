@@ -333,17 +333,15 @@
 }
 
 .cardFieldsRow {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) auto;
+  align-items: start;
   gap: 1rem;
   margin-top: 1rem;
 
   @media (max-width: 576px) {
     flex-direction: column;
     gap: 0.5rem;
-  }
-
-  .cardFieldContainer {
-    width: 100%;
   }
 }
 

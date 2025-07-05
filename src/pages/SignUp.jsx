@@ -38,6 +38,50 @@ const Register = () => {
     });
   };
 
+  const handleFacebookLogin = async () => {
+    try {
+      setLoading(true);
+      const response = await new Promise((resolve, reject) => {
+        window.FB.login((response) => {
+          if (response.authResponse) {
+            resolve(response);
+          } else {
+            reject('User cancelled login or did not fully authorize.');
+          }
+        }, { 
+          scope: 'public_profile',
+          auth_type: 'rerequest',
+          return_scopes: true
+        });
+      });
+
+      // Get user data from Facebook
+      const userDataResponse = await new Promise((resolve) => {
+        window.FB.api('/me', { fields: 'name,email' }, (userData) => {
+          resolve(userData);
+        });
+      });
+
+      // Here you would typically send this data to your backend
+      const facebookData = {
+        nombre: userDataResponse.name,
+        email: userDataResponse.email || '', // Handle case where email might be undefined
+        facebookId: response.authResponse.userID,
+        accessToken: response.authResponse.accessToken
+      };
+
+      // Call your backend registration endpoint with Facebook data
+      handleRegister(facebookData).then((res) => {
+        setMessage(res);
+      });
+
+    } catch (error) {
+      setMessage(error.toString());
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="formWrap">
       <ScrollToTop />
@@ -105,7 +149,7 @@ const Register = () => {
           )}
           <fieldset>
             <label>
-              Al continuar aceptas los <strong onClick={() => history.push({ pathname: '/terminos', from: location })}>Términos y Condiciones</strong> del Aviso de Privacidad
+              Al continuar aceptas los <a onClick={() => window.open('/terminos', '_blank')}>Términos y Condiciones</a> del Aviso de Privacidad
             </label>
             <Button
               text="REGISTRARME"
@@ -113,7 +157,7 @@ const Register = () => {
               isCentered={true}
             />
           </fieldset>
-          <button className="buttonFacebook" type="button">
+          <button className="buttonFacebook" type="button" onClick={handleFacebookLogin}>
             <FaFacebookF />
             <span>FACEBOOK</span>
           </button>

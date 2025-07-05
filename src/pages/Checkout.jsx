@@ -68,12 +68,14 @@ const Checkout = () => {
       setMessage('Por favor complete todos los campos del formulario');
       return;
     }
+
     setLoading(true);
 
     try {
+      // Create payment method with the card number element only
       const { paymentMethod, error: paymentMethodError } = await stripe.createPaymentMethod({
         type: 'card',
-        card: elements.getElement(CardElement),
+        card: elements.getElement(CardNumberElement),
         billing_details: {
           name: user.name,
           email: user.email,
@@ -122,6 +124,7 @@ const Checkout = () => {
 
       if (confirmError) throw confirmError;
       return paymentIntent;
+
     } catch (error) {
       console.error('Payment error:', error);
       let errorMessage = 'Error al procesar el pago';
@@ -207,16 +210,17 @@ const Checkout = () => {
   const cardStyle = {
     style: {
       base: {
-        fontSize: '16px',
-        color: '#fff',
+        fontSize: '18px',
+        color: '#E0FF4E',
+        fontFamily: 'Fahkwang',
         '::placeholder': {
           color: '#aab7c4',
         },
-        iconColor: '#fff',
+        iconColor: '#E0FF4E',
       },
       invalid: {
-        color: '#9e2146',
-        iconColor: '#9e2146'
+        color: '#FB2B2B',
+        iconColor: '#FB2B2B'
       },
     }
   };
@@ -322,6 +326,26 @@ const Checkout = () => {
                     options={cardStyle}
                     className={styles.cardField}
                   />
+                </fieldset>
+
+                <fieldset>
+                  <input
+                    id="postalCode"
+                    type="text"
+                    placeholder="Código Postal *"
+                    maxLength={5}
+                    className={`${touchedFields.postalCode && !errors.postalCode ? 'is-valid' : ''} ${
+                      errors.postalCode ? 'is-invalid' : ''
+                    }`}
+                    {...register('postalCode', {
+                      required: 'Ingrese su código postal',
+                      minLength: {
+                        value: 5,
+                        message: 'Código postal inválido'
+                      }
+                    })}
+                  />
+                  {errors.postalCode && <span className="text-danger">{errors.postalCode.message}</span>}
                 </fieldset>
               </div>
             </div>
