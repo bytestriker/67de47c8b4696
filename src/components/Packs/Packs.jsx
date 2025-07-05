@@ -128,7 +128,7 @@ const Packs = () => {
               type="text"
               value={codigo}
               onChange={handleCodigoChange}
-              placeholder="Código"
+              placeholder="Código promocional"
             /> 
             {codeMessage && (
               <div className="articlePack articlePack-error">

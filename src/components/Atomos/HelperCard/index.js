@@ -19,7 +19,7 @@ export const HelperCard = ({
             </p>
             <a onClick={(e) => {
               e.preventDefault();
-              history.push('/');
+              history.push('/asesoria');
             }}>
               <span>Continuar</span>
             </a>

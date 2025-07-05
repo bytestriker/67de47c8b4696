@@ -27,11 +27,11 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Fahkwang';
-  font-size: 3vw;
+  font-size: 16px;
   overflow-x: hidden;
   color: #F4FABF;
   @include tabletPlus {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -62,18 +62,34 @@ h1,h2,h3,h4,h5 {
 }
 
 h2, .h2 {
-  font-size: 6vw;
+  font-size: 2rem;
   font-weight: 300;
-  @include tabletPlus {
-    font-size: 32px;
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3rem;
   }
 }
 
 h3, .h3 {
-  font-size: 5vw;
+  font-size: 1.75rem;
   font-weight: 500;
-  @include tabletPlus {
-    font-size: 24px;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 2.25rem;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3rem;
   }
 }
 
@@ -110,9 +126,10 @@ fieldset {
       font-size: 18px;
     }
   }
-  /* input:not(:last-child), textarea:not(:last-child) {
-    margin-bottom: 16px;
-  } */
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
   &.method-paypal,
   &.method-cc {
     align-self: flex-start;
@@ -341,5 +358,25 @@ input[type="search"]::-webkit-search-cancel-button {
     border: 1px solid #E6F85A;
     border-radius: 100%;
     box-shadow: 0 0 6px #E6F85A, inset 0 0 6px #E6F85A;
+  }
+}
+
+.title-xl {
+  font-size: 3rem;
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 5rem;
+  }
+}
+
+.title-lg {
+  font-size: 2.5rem;
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3.5rem;
   }
 }

@@ -10,6 +10,7 @@ import { ErrorAlert } from '@Components/Atomos/Alerts';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import Button from '@Components/Button';
 import ButtonClose from '@Components/ButtonClose';
+import { PasswordInput } from '@Components/Atomos/Inputs';
 
 // SERVICE
 import { login } from '@Service/entries';
@@ -75,16 +76,18 @@ const Login = () => {
             {errors.email && <ErrorAlert message="Ingrese su correo" />}
           </fieldset>
           <fieldset>
-            <label htmlFor="password">Contraseña *</label>
-            <input
-              type="password"
+            <PasswordInput
+              label="Contraseña"
               name="password"
-              id="password"
               placeholder="* * * * * *"
-              {...register('password', { required: true })}
+              required={true}
+              error={errors.password?.message}
+              {...register('password', { 
+                required: 'Ingrese su contraseña'
+              })}
             />
           </fieldset>
-          {errors.password && <ErrorAlert message="Ingrese su password" />}
+          {errors.password && <ErrorAlert message="Ingrese su contraseña" />}
           {
             message &&
             <div className="contentinfo">

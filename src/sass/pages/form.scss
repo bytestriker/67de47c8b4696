@@ -49,8 +49,8 @@ main {
       justify-content: center;
       padding: 72px 4vw 2rem;
       position: relative;
-      @include largeDevices {
-        padding-top: 120px;
+      @include lg {
+        padding-top: 160px;
       }
 
       

@@ -14,10 +14,17 @@ import _Astronaut from '@Assets/images/astronauta.png';
 
 // STYLES
 import './Advisory.scss';
+import Button from '@Components/Button';
 
 export const Index = () => {
   const { advisory } = useAuth();
-  return <>{advisory ? <ThanksAdvisory /> : <Advisory />}</>;
+  return (
+    <>
+      {
+        advisory ? <ThanksAdvisory /> : <Advisory />
+      }
+    </>
+  );
 };
 
 // Formulario
@@ -46,31 +53,33 @@ const Advisory = () => {
       />
       <div className="planetContainer">
         <div className="planetContent">
-          <h2>ASESORÍA PERSONALIZADA</h2>
-          <p>Tenemos al experto que necesitas.</p>
-          <form className="col-lg-8 col-md-8 col-sm-12 col-xs-12" onSubmit={handleSubmit(onSubmit)}>
-            <fieldset>
-              <label htmlFor="theme">Tema</label>
-              <input type={'theme'} name="theme" id="theme" className="advisory_input" placeholder=" " {...register('theme', { required: true })} />
-              {errors.theme && (
-                <span className="spanError">
-                  <FaInfoCircle />
-                  <span>Ingrese el tema</span>
-                </span>
-              )}
-            </fieldset>
-            <fieldset>
-              <label htmlFor="launchQ1">Asesoría</label>
-              <textarea name="advisory" id="advisory" cols="20" rows="10" placeholder=" " {...register('advisory', { required: true })}></textarea>
-              {errors.advisory && (
-                <span className="spanError">
-                  <FaInfoCircle />
-                  <span>Ingrese su descripción</span>
-                </span>
-              )}
-            </fieldset>
-            <Button text="ENVIAR" type="submit" />
-          </form>
+          <div className="questionWrap">
+            <h2>ASESORÍA PERSONALIZADA</h2>
+            <p>Tenemos al experto que necesitas.</p>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <fieldset>
+                <label htmlFor="theme">Tema</label>
+                <textarea name="theme" id="theme" placeholder=" " {...register('theme', { required: true })}></textarea>
+                {errors.theme && (
+                  <span className="spanError">
+                    <FaInfoCircle />
+                    <span>Ingrese el tema</span>
+                  </span>
+                )}
+              </fieldset>
+              <fieldset>
+                <label htmlFor="launchQ1">Asesoría</label>
+                <textarea name="advisory" id="advisory" placeholder=" " {...register('advisory', { required: true })}></textarea>
+                {errors.advisory && (
+                  <span className="spanError">
+                    <FaInfoCircle />
+                    <span>Ingrese su descripción</span>
+                  </span>
+                )}
+              </fieldset>
+              <Button text="ENVIAR" type="submit" isCentered />
+            </form>
+          </div>
         </div>
       </div>
     </section>

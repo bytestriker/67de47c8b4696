@@ -8,25 +8,33 @@ import question from '@Assets/images/bi_question-circle-fill.png';
 // Styles
 import '@Sass/components/tooltips.scss';
 
+import { useState } from 'react';
+import { FaQuestionCircle } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
 
 export const ToolTip = ({ text, tool }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const id = `tooltip-${text.toLowerCase().replace(/\s+/g, '-')}`;
   
   return (
     <div className="tooltipWrap">
-      <h3 
+      <h3>{text}</h3>
+      <span 
+        className="tooltipIcon"
         data-tooltip-id={id}
         data-tooltip-content={tool}
         data-tooltip-place="right"
-        data-tooltip-float={true}
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
       >
-        {text}
-      </h3>
+        <FaQuestionCircle />
+      </span>
       <Tooltip 
         id={id}
         className="tooltipCustom"
         style={{ maxWidth: '300px' }}
+        isOpen={isOpen}
         multiline={true}
       />
     </div>
@@ -34,6 +42,7 @@ export const ToolTip = ({ text, tool }) => {
 };
 
 export const ToolTipBackground = ({ text, toottip }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const id = `tooltip-bg-${text.toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
@@ -44,14 +53,17 @@ export const ToolTipBackground = ({ text, toottip }) => {
         data-tooltip-id={id}
         data-tooltip-content={toottip}
         data-tooltip-place="bottom"
-        data-tooltip-float={true}
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
       >
-        <img src={question} alt="question" />
+        <FaQuestionCircle />
       </span>
       <Tooltip 
         id={id}
         className="tooltipCustom"
         style={{ maxWidth: '300px' }}
+        isOpen={isOpen}
         multiline={true}
       />
     </span>

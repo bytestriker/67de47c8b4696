@@ -55,6 +55,7 @@ main.home {
   height: 200vw;
   width: 100%;
   font-size: 3.2vw;
+  overflow: hidden;
   @include lg {
     aspect-ratio: 4 / 3;
     height: auto;

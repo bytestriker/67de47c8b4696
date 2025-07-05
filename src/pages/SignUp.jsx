@@ -8,6 +8,7 @@ import useAuth from '@Auth/userAuth';
 import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import Button from '@Components/Button';
 import ButtonClose from '@Components/ButtonClose';
+import { PasswordInput } from '@Components/Atomos/Inputs';
 
 // Hooks
 import { useEventsRegister } from '@Hooks/useEventsRegister';
@@ -124,17 +125,23 @@ const Register = () => {
             )}
           </fieldset>
           <fieldset>
-            <label htmlFor="passwordUser">Contraseña *</label>
-            <input
-              type="password"
+            <PasswordInput
+              label="Contraseña"
               name="password"
-              id="password"
               placeholder="* * * * * *"
-              {...register('password', { required: true })}
+              required={true}
+              error={errors.password?.message}
+              {...register('password', {
+                required: 'Ingrese su contraseña',
+                pattern: {
+                  value: /^\w{11,}$/,
+                  message: 'La contraseña debe ser mayor a 10 caracteres'
+                }
+              })}
             />
             {errors.password && (
               <span className="spanError">
-                <FaInfoCircle /> <span>Ingrese su password</span>
+                <FaInfoCircle /> <span>{errors.password.message}</span>
               </span>
             )}
           </fieldset>
