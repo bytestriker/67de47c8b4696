@@ -1,3 +1,4 @@
+import { useHistory, useLocation } from 'react-router-dom';
 import './button.scss';
 
 const Button = ({
@@ -9,6 +10,7 @@ const Button = ({
   isCentered = false,
   isAstronaut = false,
   disabled = false,
+  route = null,
   size = "md", // "sm" | "md" | "lg"
   shape = "default", // "default" | "alt"
 }) => {
@@ -44,15 +46,18 @@ const Button = ({
       )
     }
   };
-
   const selectedShape = buttonShapes[shape] || buttonShapes.default;
+  
+  const handleRoute = (link) => {
+    history.push({ pathname: link, from: location });
+  };
 
   return (
     <div className={isCentered ? "centerButton" : null}>
       <button 
         className={`buttonPrimary ${shape} ${className}`}
         type={type} 
-        onClick={onClick} 
+        onClick={route !== null ? handleRoute(route): onClick} 
         disabled={disabled}
       >
         <div className="buttonPrimaryBg">
