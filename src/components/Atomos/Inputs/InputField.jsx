@@ -3,12 +3,12 @@ import lunaStyle from '@Sass/pages/luna.module.scss'; // Assuming lunaStyle migh
 
 const InputField = ({
   label,
+  labelClassName,
   placeholder,
   value,
   onChange,
   type = 'text',
   inputRef,
-  className,
   rows,
   cols,
   id
@@ -17,14 +17,11 @@ const InputField = ({
 
   return (
     <fieldset>
-      {label && <label htmlFor={id} className="text-right">{label}</label>}
+      {label && <label htmlFor={id} className={labelClassName || ''}>{label}</label>}
       <InputComponent
         ref={inputRef}
-        className={className || (type === 'textarea' ? lunaStyle.response : '')} // Apply lunaStyle.response for textareas by default
         name={id}
         id={id}
-        cols={cols}
-        rows={rows}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

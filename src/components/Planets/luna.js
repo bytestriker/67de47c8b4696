@@ -53,6 +53,8 @@ export const Luna = ({ lunaInfo }) => {
     }
   }, [lunaInfo]);
 
+  console.log(getLuna(), dataLuna);
+
   return (
     <div id="launch-moon" className="lunaWrap">
       <div className="lunaFigure">

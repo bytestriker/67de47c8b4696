@@ -70,6 +70,7 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
 
       <InputField
         label="Nombre de tu proyecto"
+        labelClassName="text-center"
         placeholder="Nombre"
         value={getLuna().nombre}
         onChange={(e) => handleNameProject(e)}
@@ -120,6 +121,7 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
         <SaberMas data={texts2} />
         <InputField
           label="1/3"
+          labelClassName="text-right"
           placeholder="Escribe aquí tu idea"
           value={getLuna().que}
           onChange={(e) => handleQuestion1(e)}
@@ -131,15 +133,14 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
         />
         <div className="buttons">
           <Button
-            className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
             text="REGRESAR"
             onClick={() => setPageLuna(1)}
             shape="alt"
           />
           <Button
-            className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
             text="SIGUIENTE"
             onClick={() => handleNextPage(3)}
+            disabled={getLuna().que.length <= 12}
           />
         </div>
     </div>
@@ -179,6 +180,7 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
       <SaberMas data={texts3} />
       <InputField
         label="2/3"
+        labelClassName="text-right"
         placeholder="Desarrolla tu idea"
         value={getLuna().porque}
         onChange={(e) => handleQuestion2(e)}
@@ -192,11 +194,8 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
         <Button text="REGRESAR" shape="alt" onClick={() => setPageLuna(2)} />
         <Button
           text="SIGUIENTE"
-          disabled={getLuna().porque.length <= 12 ? 'disabled' : ''}
           onClick={() => handleNextPage(4)}
-          className={
-            getLuna().porque.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet
-          }
+          disabled={getLuna().porque.length <= 12}
         />
       </div>
     </div>
@@ -235,12 +234,6 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
     setTitlePage(texts4.titulo_de_la_vista);
   }, [texts4]);
 
-  console.log(
-    'eses', getLuna().como1 == "" && getLuna().como2 == "" && getLuna().como3 == ""
-    
-
-  )
-
   return (
     <div className="questionWrap">
       <ScrollToTop />
@@ -250,6 +243,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
       <SaberMas data={texts4} />
       <InputField
         label="3/3"
+        labelClassName="text-right"
         placeholder="Escribe tu primer punto"
         value={getLuna().como1}
         onChange={(e) => handleQuestion31(e)}
@@ -267,7 +261,7 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
         inputRef={Q3}
         type="textarea"
         rows="10"
-        cols="30"
+        cols="20"
         id="launchQ2"
         className="text-area-sm"
       />
