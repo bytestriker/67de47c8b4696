@@ -103,12 +103,7 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
         <div className="inputAvatarUpload">
           <figure>
             {profile && <img src={profile} />}
-            <input
-              type="file"
-              name="fileInput"
-              id="fileInput"
-              onChange={() => {}}
-            />
+            <input type="file" name="fileInput" id="fileInput" onChange={() => {}} />
           </figure>
         </div>
         <div>
@@ -134,47 +129,50 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
       </fieldset>
       <div className="buyerAgeLocationAndProfession">
         <fieldset>
+          <label htmlFor="">
+            <FaUser />
+            <span>Edad</span>
+          </label>
           <input
             {...register('edad')}
             type="number"
-            placeholder="Edad"
             required
-            className="input-center"
+            className={style.inputCard1}
             value={buyer.edad}
             onChange={(e) => setBuyer({ ...buyer, edad: e.target.value })}
           />
-          <FaUser className={style.icon} />
         </fieldset>
         <fieldset>
+          <label htmlFor="">
+            <FaMapMarkerAlt />
+            <span>Ubicación</span>
+          </label>
           <input
             {...register('ubicacion')}
             type="text"
-            placeholder="Ubicación"
             required
             className={style.inputCard1}
             value={buyer.ubicacion}
             onChange={(e) => setBuyer({ ...buyer, ubicacion: e.target.value })}
           />
-          <FaMapMarkerAlt className={style.icon} />
         </fieldset>
         <fieldset>
+          <label htmlFor="">
+            <FaSuitcase />
+            <span>Profesión</span>
+          </label>
           <input
             {...register('profesion')}
             type="text"
-            placeholder="Profesión"
             required
             className={style.inputCard1}
             value={buyer.profesion}
             onChange={(e) => setBuyer({ ...buyer, profesion: e.target.value })}
           />
-          <FaSuitcase className={style.icon} />
         </fieldset>
       </div>
       <fieldset>
-``        <ToolTip 
-          text="Background"
-          tool={texts.background}
-        />
+        <ToolTip text="Background" tool={texts.background} />
         <textarea
           {...register('background')}
           className={style.descripcion}
@@ -196,10 +194,10 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           </a>
         ))}
       </nav>
-      <fieldset className={`${activeSection === 'GOALS' ? "d-block" : "d-none"}`}>
+      <fieldset className={`${activeSection === 'GOALS' ? 'd-block' : 'd-none'}`}>
         <label>{texts.instruccion_de_goals}</label>
         <textarea
-        {...register('goals')}
+          {...register('goals')}
           className={style.metas}
           rows="6"
           placeholder="Describe tus objetivos"
@@ -208,10 +206,10 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           onChange={(e) => setBuyer({ ...buyer, goals: e.target.value })}
         ></textarea>
       </fieldset>
-      <fieldset className={`${activeSection === 'MOTIVATIONS' ? "d-block" : "d-none"}`}>
+      <fieldset className={`${activeSection === 'MOTIVATIONS' ? 'd-block' : 'd-none'}`}>
         <label>{texts.instruccion_de_motivations}</label>
         <textarea
-        {...register('motivations')}
+          {...register('motivations')}
           className={style.metas}
           rows="6"
           placeholder="Describe tus motivaciones"
@@ -220,10 +218,10 @@ export const BuyerAdd = ({ setModal, setTitle, texts, setMessage, buyer, setBuye
           onChange={(e) => setBuyer({ ...buyer, motivations: e.target.value })}
         ></textarea>
       </fieldset>
-      <fieldset className={`${activeSection === 'FRUSTATIONS' ? "d-block" : "d-none"}`}>
+      <fieldset className={`${activeSection === 'FRUSTATIONS' ? 'd-block' : 'd-none'}`}>
         <label>{texts.intruccion_de_frustrations}</label>
         <textarea
-        {...register('frustrations')}
+          {...register('frustrations')}
           className={style.metas}
           rows="10"
           placeholder="Describe tus frustraciones"

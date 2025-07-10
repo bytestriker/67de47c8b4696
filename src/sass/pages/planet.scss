@@ -428,6 +428,14 @@ main.checkout {
   }
 }
 
+.questionBlocks {
+  div + div {
+    border-top: 1px solid #E0FF4E;
+    margin-top: 4px;
+    padding-top: 20px;
+  }
+}
+
 .modalBackdrop {
   background: rgba(0, 0, 0, 0.8);
   display: flex;
