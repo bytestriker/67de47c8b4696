@@ -24,7 +24,6 @@ header {
           display: none;
         }
         @include largeDevices {
-          height: 32px;
           &.logo-mobile {
             display: none;
           }

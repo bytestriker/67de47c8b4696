@@ -15,6 +15,7 @@ import { ScrollToTop } from '@Components/UtilsComponents/ScrollTop';
 import { ParagraphPlanet } from '@Components/Atomos/Titles';
 import { SaberMas } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
+import Select from '@Components/Atomos/Select';
 
 // Images
 import cruce from '@Assets/images/cruce.png';
@@ -128,30 +129,16 @@ export const VenusQ1Conclusion = ({
     }
   };
 
-  const toggleSelectFortaleza = (index) => {
+  const handleFortalezaChange = (index, value) => {
     const updatedElementos = [...elementos];
-    updatedElementos[index].isOpenFortaleza = !updatedElementos[index].isOpenFortaleza;
-    setElementos(updatedElementos);
-  };
-
-  const handleFortalezaClick = (index, option) => {
-    const updatedElementos = [...elementos];
-    updatedElementos[index].selectedFortaleza = option;
-    updatedElementos[index].isOpenFortaleza = false;
+    updatedElementos[index].selectedFortaleza = value;
     setElementos(updatedElementos);
     handleUpdateElementos(updatedElementos);
   };
 
-  const toggleSelectOportunidad = (index) => {
+  const handleOportunidadChange = (index, value) => {
     const updatedElementos = [...elementos];
-    updatedElementos[index].isOpenOportunidad = !updatedElementos[index].isOpenOportunidad;
-    setElementos(updatedElementos);
-  };
-
-  const handleOportunidadClick = (index, option) => {
-    const updatedElementos = [...elementos];
-    updatedElementos[index].selectedOportunidad = option;
-    updatedElementos[index].isOpenOportunidad = false;
+    updatedElementos[index].selectedOportunidad = value;
     setElementos(updatedElementos);
     handleUpdateElementos(updatedElementos);
   };
@@ -200,32 +187,18 @@ export const VenusQ1Conclusion = ({
       <fieldset>
       {elementos.map((elemento, index) => (
         <div key={index} className="selectContainer">
-          <div className="selectHeader" onClick={() => toggleSelectFortaleza(index)}>
-            <span>{elemento.selectedFortaleza || 'Selecciona una fortaleza'}</span>
-            { elemento.isOpenFortaleza ? <FaChevronUp /> : <FaChevronDown /> }
-          </div>
-          {elemento.isOpenFortaleza && (
-            <div className="selectOptions">
-            {fortaleza.map((option, optionIndex) => (
-              <div key={optionIndex} onClick={() => handleFortalezaClick(index, option)}>
-                {option}
-              </div>
-              ))}
-            </div>
-          )}
-          <div className="selectHeader" onClick={() => toggleSelectOportunidad(index)}>
-            <span>{elemento.selectedOportunidad || 'Selecciona una oportunidad'}</span>
-            { elemento.isOpenFortaleza ? <FaChevronUp /> : <FaChevronDown /> }
-          </div>
-          {elemento.isOpenOportunidad && (
-            <div className="selectOptions">
-              {oportunidad.map((option, optionIndex) => (
-                <div key={optionIndex} onClick={() => handleOportunidadClick(index, option)}>
-                  {option}
-                </div>
-              ))}
-            </div>
-          )}
+          <Select
+            options={fortaleza}
+            selectedValue={elemento.selectedFortaleza}
+            placeholder="Selecciona una fortaleza"
+            onSelect={(value) => handleFortalezaChange(index, value)}
+          />
+          <Select
+            options={oportunidad}
+            selectedValue={elemento.selectedOportunidad}
+            placeholder="Selecciona una oportunidad"
+            onSelect={(value) => handleOportunidadChange(index, value)}
+          />
         </div>
           ))}
         <a className="buttonAdd" onClick={addElemento}>

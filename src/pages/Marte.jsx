@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
-import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 
 // Store
 import { marteStore } from '@Store/marte';
@@ -31,6 +30,7 @@ import {
 } from '@Components/Atomos/Inputs/marte';
 import ButtonGoHome from '@Components/ButtonGoHome';
 import Button from '@Components/Button';
+import Select from '@Components/Atomos/Select';
 
 // Images
 import galaxia from '@Assets/images/galaxia.png';
@@ -630,8 +630,6 @@ export const MarteNegocios = ({
 }) => {
   const { marteCreateProjectBussines, getModelBussines } = useEventsMarte();
   const [getBussinesDesc, setBussinesDesc] = useState('');
-  const [isOpenProposition, setIsOpenProposition] = useState(false);
-  const [isOpenRevenue, setIsOpenRevenue] = useState(false);
   const [selectedPropsition, setSelectedPropsition] = useState('');
   const [selectedRevenue, setSelectedRevenue] = useState('');
   const inputBussines = useRef(null);
@@ -682,20 +680,10 @@ export const MarteNegocios = ({
 
   const handlePropositionClick = (option) => {
     setSelectedPropsition(option);
-    setIsOpenProposition(false);
   };
 
   const handleRevenueClick = (option) => {
     setSelectedRevenue(option);
-    setIsOpenRevenue(false);
-  };
-
-  const toggleSelectProposition = () => {
-    setIsOpenProposition(!isOpenProposition);
-  };
-
-  const toggleSelectRevenue = () => {
-    setIsOpenRevenue(!isOpenRevenue);
   };
 
   useEffect(() => {
@@ -746,30 +734,20 @@ export const MarteNegocios = ({
           <span>Fuentes de Ingreso</span>
         </div>
       </div>
-      <fieldset>
-        <label htmlFor="">Propuesta de Valor</label>
-        <div className="select">
-          <select name="" id="" onChange={() => handlePropositionClick()}>
-            {dataMarte?.value_proposition.map((option, index) => (
-              <option key={index} className={style.option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <label htmlFor="">Fuentes de Ingreso</label>
-        <div className="select">
-          <select name="" id="" onChange={() => handleRevenueClick()}>
-            {dataMarte?.revenue_streams.map((option, index) => (
-              <option key={index} className={style.option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
+      <Select
+        label="Propuesta de Valor"
+        options={dataMarte?.value_proposition}
+        selectedValue={selectedPropsition}
+        placeholder="Selecciona una opción"
+        onSelect={handlePropositionClick}
+      />
+      <Select
+        label="Fuentes de Ingreso"
+        options={dataMarte?.revenue_streams}
+        selectedValue={selectedRevenue}
+        placeholder="Selecciona una opción"
+        onSelect={handleRevenueClick}
+      />
       {/*
       <div className={style.selectContainer}>
         {
