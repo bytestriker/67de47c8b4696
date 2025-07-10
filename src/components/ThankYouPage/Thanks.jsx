@@ -1,9 +1,11 @@
+import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
 // store
 import { storeModalTank, storeBuyTank } from '@Store/global';
 import { lunaStore } from '@Store/luna';
+import useAuth from '@Auth/userAuth';
 
 // Hooks
 import { useEventsTanks } from '@Hooks/useFetchTanques';
@@ -40,8 +42,15 @@ const Thanks = () => {
     }),
     shallow
   );
+  const { contextValue, setLoading, reloadPacks, setPageLuna } = useAuth();
   const { exchangeTanks } = useEventsTanks();
+  const { getTanks } = useEventsTanks();
   const location = useLocation();
+
+  useEffect(() => {
+    if (contextValue.isLogged())
+      getTanks();
+  }, [contextValue.isLogged(), reloadPacks]);
 
   const handleChange = () => {
     exchangeTanks(storeTankModal.planet, dataLuna.id);

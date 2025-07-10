@@ -16,6 +16,7 @@ import { useEventsTanks } from '@Hooks/useFetchTanques';
 // COMPONENTS
 import { LinkRouter } from '@Components/UtilsComponents/Button';
 import { Title } from '@Components/Atomos/Titles';
+import Button from '@Components/Button';
 
 // IMAGES
 import cohete from '@Assets/images/cohete.png';
@@ -91,24 +92,18 @@ const ThanksCode = () => {
     if (from?.pathname === '/checkout') {
       return (
         <>
-          <p>
-            Haz abonado <strong>{tanquesData.amountDefault}</strong> taques
-          </p>
-          <span className={page.links}>
-            <button className="buttonPlanet" onClick={() => handleChange()}>
-              CANJEAR
-            </button>
-          </span>
-          <span className={page.links}>
-            <LinkRouter rute="/" label="INICIO" classItem={page.linkInicio} />
-          </span>
+          <p>Haz abonado <strong>{tanquesData.amountDefault}</strong> taques</p>
+          <div className="buttons">
+            <Button text="CANJEAR" onClick={() => handleChange()} />
+            <Button text="INICIO" route="/" />
+          </div>
         </>
       );
     } else {
       return (
         <>
           <p>Tu <strong>Código de Descuento</strong> se aplicó exitosamente</p>
-          <LinkRouter rute="/" label="INICIO"/>
+          <Button text="INICIO" route="/" />
         </>
       );
     }
@@ -116,11 +111,11 @@ const ThanksCode = () => {
 
   return (
     <section className={page.ThankYou}>
-          <div className={page.ThankYouContent}>
-            <img src={cohete} alt="cohete" />
-            <Title title="¡GRACIAS!" />
-            {handleRute(location)}
-          </div>
+      <div className={page.ThankYouContent}>
+        <img src={cohete} alt="cohete" />
+        <Title title="¡GRACIAS!" />
+        {handleRute(location)}
+      </div>
     </section>
   );
 };

@@ -10,6 +10,7 @@ import { lunaStore } from '@Store/luna';
 import { ScrollToTop } from '../UtilsComponents/ScrollTop';
 import { SaberMas, WatchPlanetVideo } from '@Components/Atomos/Buttons';
 import Button from '@Components/Button';
+import InputField from '@Components/Atomos/Inputs/InputField';
 
 // Styles
 import general from '@Sass/pages/general.module.scss';
@@ -67,18 +68,15 @@ export const NameProject = ({ handleNextPage, texts, setTitlePage }) => {
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts?.descripcion }}></p>
       <h2>¿Cómo se va a llamar?</h2>
 
-      <fieldset>
-        <label htmlFor="email">Nombre de tu proyecto</label>
-        <input
-          ref={projectName}
-          type="text"
-          name="projectName"
-          id="projectName"
-          placeholder="Nombre"
-          value={getLuna().nombre}
-          onChange={(e) => handleNameProject(e)}
-        />
-      </fieldset>
+      <InputField
+        label="Nombre de tu proyecto"
+        placeholder="Nombre"
+        value={getLuna().nombre}
+        onChange={(e) => handleNameProject(e)}
+        inputRef={projectName}
+        id="projectName"
+      />
+
       <div className="buttons">
         <Button text="SIGUIENTE" isCentered={true} onClick={() => handleNextPage(2)} />
       </div>
@@ -120,20 +118,17 @@ export const QuestionsLaunch1 = ({ handleNextPage, setPageLuna, texts2, setTitle
         <p className="text-center" dangerouslySetInnerHTML={{ __html: texts2?.slogan }}></p>
         <p dangerouslySetInnerHTML={{ __html: texts2?.descripcion }}></p>
         <SaberMas data={texts2} />
-        <fieldset>
-          <label htmlFor="launchQ1" className="text-right">1/3</label>
-          <textarea
-            ref={Q1}
-            className={lunaStyle.response}
-            name="what"
-            id="launchQ1"
-            cols="30"
-            rows="10"
-            placeholder="Escribe aquí tu idea"
-            value={getLuna().que}
-            onChange={(e) => handleQuestion1(e)}
-          ></textarea>
-        </fieldset>
+        <InputField
+          label="1/3"
+          placeholder="Escribe aquí tu idea"
+          value={getLuna().que}
+          onChange={(e) => handleQuestion1(e)}
+          inputRef={Q1}
+          type="textarea"
+          rows="10"
+          cols="30"
+          id="launchQ1"
+        />
         <div className="buttons">
           <Button
             className={getLuna().que.length <= 12 ? lunaStyle.btnPlanetOff : lunaStyle.btnPlanet}
@@ -182,20 +177,17 @@ export const QuestionsLaunch2 = ({ handleNextPage, setPageLuna, texts3, setTitle
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts3?.slogan }}></p>
       <p dangerouslySetInnerHTML={{ __html: texts3?.descripcion }}></p>
       <SaberMas data={texts3} />
-      <fieldset>
-        <label htmlFor="launchQ1" className="text-right">2/3</label>
-        <textarea
-          ref={Q2}
-          className={lunaStyle.response}
-          name="why"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Desarrolla tu idea"
-          value={getLuna().porque}
-          onChange={(e) => handleQuestion2(e)}
-        ></textarea>
-      </fieldset>
+      <InputField
+        label="2/3"
+        placeholder="Desarrolla tu idea"
+        value={getLuna().porque}
+        onChange={(e) => handleQuestion2(e)}
+        inputRef={Q2}
+        type="textarea"
+        rows="10"
+        cols="30"
+        id="launchQ1"
+      />
       <div className="buttons">
         <Button text="REGRESAR" shape="alt" onClick={() => setPageLuna(2)} />
         <Button
@@ -243,6 +235,12 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
     setTitlePage(texts4.titulo_de_la_vista);
   }, [texts4]);
 
+  console.log(
+    'eses', getLuna().como1 == "" && getLuna().como2 == "" && getLuna().como3 == ""
+    
+
+  )
+
   return (
     <div className="questionWrap">
       <ScrollToTop />
@@ -250,53 +248,55 @@ export const QuestionsLaunch3 = ({ handleNextPage, setPageLuna, texts4, setTitle
       <p className="text-center" dangerouslySetInnerHTML={{ __html: texts4?.slogan }}></p>
       <p dangerouslySetInnerHTML={{ __html: texts4?.descripcion }}></p>
       <SaberMas data={texts4} />
-      <fieldset>
-        <label htmlFor="launchQ1" className="text-right">3/3</label>
-        <textarea
-          ref={Q3}
-          className="text-area-sm"
-          name="how"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Escribe tu primer punto"
-          value={getLuna().como1}
-          onChange={(e) => handleQuestion31(e)}
-        ></textarea>
-      </fieldset>
-      <fieldset>
-        <textarea
-          ref={Q3}
-          className="text-area-sm"
-          name="how"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Escribe tu segundo punto"
-          value={getLuna().como2}
-          onChange={(e) => handleQuestion32(e)}
-        ></textarea>
-      </fieldset>
-      <fieldset>
-        <textarea
-          ref={Q3}
-          className="text-area-sm"
-          name="how"
-          id="launchQ1"
-          cols="30"
-          rows="10"
-          placeholder="Escribe tu tercer punto"
-          value={getLuna().como3}
-          onChange={(e) => handleQuestion33(e)}
-          ></textarea>
-      </fieldset>
+      <InputField
+        label="3/3"
+        placeholder="Escribe tu primer punto"
+        value={getLuna().como1}
+        onChange={(e) => handleQuestion31(e)}
+        inputRef={Q3}
+        type="textarea"
+        rows="10"
+        cols="30"
+        id="launchQ1"
+        className="text-area-sm"
+      />
+      <InputField
+        placeholder="Escribe tu segundo punto"
+        value={getLuna().como2}
+        onChange={(e) => handleQuestion32(e)}
+        inputRef={Q3}
+        type="textarea"
+        rows="10"
+        cols="30"
+        id="launchQ2"
+        className="text-area-sm"
+      />
+      <InputField
+        placeholder="Escribe tu tercer punto"
+        value={getLuna().como3}
+        onChange={(e) => handleQuestion33(e)}
+        inputRef={Q3}
+        type="textarea"
+        rows="10"
+        cols="30"
+        id="launchQ3"
+        className="text-area-sm"
+      />
       <div className="buttons">
         <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPageLuna(3)} />
         {contextValue.isLogged() ? (
-          <Button text="SIGUIENTE" isSubmit={false} onClick={() => handleNextPage(6)}
+          <Button
+            text="SIGUIENTE"
+            isSubmit={false}
+            onClick={() => handleNextPage(6)}
+            disabled={getLuna().como1 == "" && getLuna().como2 == "" && getLuna().como3 == ""}
           />
         ) : (
-          <Button text="SIGUIENTE" isSubmit={false} onClick={() => handleNextPage(5)}
+          <Button
+            text="SIGUIENTE"
+            isSubmit={false}
+            onClick={() => handleNextPage(6)}
+            disabled={getLuna().como1 == "" || getLuna().como2 == "" || getLuna().como3 == ""}
           />
         )}
         </div>

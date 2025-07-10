@@ -98,7 +98,7 @@ export const SaberMas = ({ data }) => {
 
   return (
     <div>
-      <a href="#" onClick={openModalVideo} class="moreInfo">
+      <a href="#" onClick={openModalVideo} className="moreInfo">
         <img src={ playIcon } alt="{data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}" />
         {data?.seccion_de_apoyo ? data?.seccion_de_apoyo : 'Saber más'}
         {modalVideo ? (

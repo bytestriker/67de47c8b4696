@@ -48,7 +48,9 @@ const Button = ({
   };
   const selectedShape = buttonShapes[shape] || buttonShapes.default;
   
+  
   const handleRoute = (link) => {
+    const history = useHistory();
     history.push({ pathname: link, from: location });
   };
 
