@@ -8,6 +8,7 @@ import { ModalSuccesProject } from '@Components/Atomos/Alerts';
 import { ModalMercurio } from '@Components/Atomos/Modals';
 import ButtonGoHome from '@Components/ButtonGoHome';
 import Button from '@Components/Button';
+import InputField from '@Components/Atomos/Inputs/InputField';
 
 // Store
 import { mercurioStore } from '@Store/mercurio';
@@ -87,16 +88,16 @@ const MercurioMain = () => {
       const mercurio = getMercurio();
       // if (mercurio.que_resuelve === '') {
       //   setPage(1);
-      // } else if (mercurio.a_quien_resuelve === '') {
+      // } else if (mercurio.que_resuelve === '') {
       //   setPage(2);
-      // } else if (mercurio.a_quien_resuelve_new === '') {
+      // } else if (mercurio.a_quien_resuelve === '') {
       //   setPage(3);
       // }
       if (mercurio.que_resuelve === '') {
         setPage(1);
-      } else if (mercurio.a_quien_resuelve === '') {
+      } else if (mercurio.que_resuelve === '') {
         setPage(2);
-      } else if (mercurio.a_quien_resuelve_new === '') {
+      } else if (mercurio.a_quien_resuelve === '') {
         setPage(3);
       }
     }
@@ -184,42 +185,16 @@ export const MercurioQ1 = ({ setStateMercurio, dataMercurio, setPage, setTitlePa
             ]}
           />
         )}
-
         <fieldset>
           <label htmlFor="launchQ1" className="text-right">
             1/3
           </label>
         </fieldset>
-
-        {/* <textarea
-          className={style.inputProjectName}
-          name="mercurioQ1"
-          id="mercurioQ1"
-          placeholder="Escribe aquí tu idea"
-          {...register('mercurioQ1', { required: true, minLength: 16 })}
-          cols="30"
-          rows="10"
-          value={dataMercurio.que_resuelve}
-          onChange={(e) => handleQ1Mercurio(e)}
-        ></textarea> */}
-        {/* <div className={style.buttonsContent}> */}
-        {/* <button
-            className={
-              dataMercurio.que_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
-            }
-            type="button"
-            disabled={dataMercurio.que_resuelve.length <= 12 ? 'disabled' : ''}
-            onClick={() => setPage(2)}
-          >
-            SIGUIENTE
-          </button> */}
-
-        {/* <button className={style.btnPlanet} type="button" onClick={() => setPage(2)}>
-            SIGUIENTE
-          </button> */}
-
-        {/* </div> */}
-        <Button text="SIGUIENTE" isCentered={true} onClick={() => setPage(2)} />
+        <Button
+          text="SIGUIENTE"
+          isCentered={true}
+          onClick={() => setPage(2)}
+          />
       </form>
     </div>
   );
@@ -246,7 +221,7 @@ export const MercurioQ2 = ({
   const { register } = useForm();
 
   const handleQ2Mercurio = (event) => {
-    setStateMercurio({ ...dataMercurio, a_quien_resuelve: event.target.value });
+    setStateMercurio({ ...dataMercurio, que_resuelve: event.target.value });
   };
 
   // creamos proyecto si se completan las preguntas
@@ -279,52 +254,25 @@ export const MercurioQ2 = ({
           ]}
         />
       )}
-      <fieldset>
-        <label className="text-right">2/3</label>
-        <textarea
-          // className={style.inputProjectName}
-          name="mercurioQ2"
-          id="mercurioQ2"
-          placeholder="Escribe aquí tu idea"
-          {...register('mercurioQ2', { required: true, minLength: 16 })}
-          value={dataMercurio.a_quien_resuelve}
-          onChange={(e) => handleQ2Mercurio(e)}
-        ></textarea>
-      </fieldset>
+      <InputField
+        label="2/3"
+        labelClassName="text-right"
+        placeholder="Escribe aquí tu idea"
+        value={dataMercurio.que_resuelve}
+        onChange={(e) => handleQ2Mercurio(e)}
+        type="textarea"
+        rows="10"
+        cols="30"
+        id="mercurioQ2"
+      />
       <div className="buttons">
         <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPage(1)} />
         <Button
           text="SIGUIENTE"
-          disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
+          disabled={dataMercurio.que_resuelve.length <= 12 ? 'disabled' : ''}
           onClick={() => setPage(3)}
         />
       </div>
-      {/* <div className="d-none"> */}
-      {/* <button type="button" className={style.btnPlanet} onClick={() => setPage(1)}>
-            ANTERIOR
-          </button>
-          <button
-            className={
-              dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
-            }
-            type="button"
-            disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
-            onClick={() => setPage(3)}
-          >
-            SIGUIENTE
-          </button>
-           */}
-      {/* <button
-            className={
-              dataMercurio.a_quien_resuelve.length <= 12 ? style.btnPlanetOff : style.btnPlanet
-            }
-            type="button"
-            disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
-            onClick={() => saveProject()}
-          >
-            GUARDAR
-          </button> */}
-      {/* </div> */}
     </form>
   );
 };
@@ -350,7 +298,7 @@ export const MercurioQ3 = ({
   const { register } = useForm();
 
   const handleQ3Mercurio = (event) => {
-    setStateMercurio({ ...dataMercurio, a_quien_resuelve_new: event.target.value });
+    setStateMercurio({ ...dataMercurio, a_quien_resuelve: event.target.value });
   };
 
   // creamos proyecto si se completan las preguntas
@@ -382,40 +330,24 @@ export const MercurioQ3 = ({
             ]}
           />
         )}
-        <fieldset>
-          <label className="text-right">3/3</label>
-          <textarea
-            name="mercurioQ3"
-            id="mercurioQ3"
-            placeholder="Escribe aquí tu idea"
-            {...register('mercurioQ3', { required: true, minLength: 16 })}
-            cols="30"
-            rows="10"
-            value={dataMercurio.a_quien_resuelve_new}
-            onChange={(e) => handleQ3Mercurio(e)}
-          ></textarea>
-        </fieldset>
+        <InputField
+          label="3/3"
+          labelClassName="text-right"
+          placeholder="Escribe aquí tu idea"
+          value={dataMercurio.a_quien_resuelve}
+          onChange={(e) => handleQ3Mercurio(e)}
+          type="textarea"
+          rows="10"
+          cols="30"
+          id="mercurioQ3"
+        />
         <div className="buttons">
           <Button text="REGRESAR" shape="alt" isSubmit={false} onClick={() => setPage(2)} />
           <Button
             text="SIGUIENTE"
-            disabled={dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}
+            disabled={dataMercurio.a_quien_resuelve.length <= 12 ? 'disabled' : ''}
             onClick={() => saveProject()}
           />
-          {/* <button type="button" className={
-          btnPlanet} onClick={() => setPage(2)}>
-            ANTERIOR
-          </button>
-          <button
-            className={
-              dataMercurio.a_quien_resuelve_new.length <= 12 ? style.btnPlanetOff : style.btnPlanet
-            }
-            type="button"
-            disabled={dataMercurio.a_quien_resuelve_new.length <= 12 ? 'disabled' : ''}
-            onClick={() => saveProject()}
-          >
-            GUARDAR
-          </button> */}
         </div>
       </form>
     </div>

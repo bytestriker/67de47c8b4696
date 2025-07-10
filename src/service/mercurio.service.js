@@ -23,11 +23,7 @@ export const createProjectMercurio = async (items) => {
     } else {
       body.append('a_quien_resuelve', '');
     }
-    if (items.a_quien_resuelve_new) {
-      body.append('a_quien_resuelve_new', items.a_quien_resuelve_new);
-    } else {
-      body.append('a_quien_resuelve_new', '');
-    }
+    body.append('a_quien_resuelve_new', null);
     const response = await instanceWithRocket.post(
       `/projects/${param.id}/mercurio`,
       body,

@@ -17,22 +17,23 @@ export const useEventsRegister = () => {
   const handleRegister = async (data) => {
     try {
       const signup = await singUpUser(data);
+      console.log("Signup response:", signup);
       if (signup.code === 0) {
         const logIn = await login(data);
         const token = logIn.data;
         contextValue.login(token.token);
 
-        setTimeout(async () => {
-          const questions = JSON.parse(localStorage.getItem(LocalStoragePlanets.LUNA));
-          await createProject(questions);
+        const questions = JSON.parse(localStorage.getItem(LocalStoragePlanets.LUNA));
+        const createProjectResponse = await createProject(questions);
+        if (createProjectResponse.code === 0) {
           history.push('/');
-          setLoading(false);
-        }, 3000);
-
-        setTimeout(async () => {
           location.reload();
-        }, 4000);
-        
+        } else {
+          console.error("Error creating project:", createProjectResponse.messageError);
+          setLoading(false);
+          return "Ocurrió un error al crear el proyecto";
+        }
+        setLoading(false);
       } else if (signup.code < 0) {
         if (signup.messageError === 'The email has already been taken.') {
           setLoading(false);

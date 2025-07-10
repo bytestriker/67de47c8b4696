@@ -9,7 +9,6 @@ const mercurio = {
   id: '',
   que_resuelve: '',
   a_quien_resuelve: '',
-  a_quien_resuelve_new: '',
   complete: 0,
   label: statusPlanet.ACCEDER,
   lockedPlanet: false,

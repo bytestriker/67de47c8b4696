@@ -87,7 +87,6 @@ export const useEventsMercurio = () => {
           id: '',
           que_resuelve: '',
           a_quien_resuelve: '',
-          a_quien_resuelve_new: '',
           complete: 0,
           label: statusPlanet.ACCEDER,
           lockedPlanet: false,
@@ -101,15 +100,11 @@ export const useEventsMercurio = () => {
       if (!data.a_quien_resuelve) {
         data.a_quien_resuelve = '';
       }
-      if (!data.a_quien_resuelve_new) {
-        data.a_quien_resuelve_new = '';
-      }
       const project = JSON.stringify({
         planet: 'Mercurio',
         id: data.id,
         que_resuelve: data.que_resuelve,
         a_quien_resuelve: data.a_quien_resuelve,
-        a_quien_resuelve_new: data.a_quien_resuelve_new,
         complete,
         label,
         lockedPlanet: lockPlanet,
